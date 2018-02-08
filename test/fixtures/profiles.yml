@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id                          :integer          not null, primary key
+#  user_id                     :integer
+#  region                      :string
+#  data                        :jsonb
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  filled_attachment_types     :jsonb
+#  attachment_missing_sms_sent :boolean          default(FALSE)
+#  is_stashed                  :boolean          default(FALSE)
+#  welfare_template_effected   :boolean          default(TRUE)
+#  current_template_type       :integer
+#  current_welfare_template_id :integer
+#  date_of_employment          :string
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

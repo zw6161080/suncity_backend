@@ -1,0 +1,113 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 医疗信息
+
+# Describe your paths here
+paths:
+  /profiles/{profile_id}/medical_information:
+    post:
+      description: 更新医疗信息
+      tags:
+        - 医疗信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: update_prarams
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#definitions/UpdateParams'
+      responses:
+        200:
+          description: 更新成功
+        422:
+          description: 参数错误
+    get:
+      description: 获取档案太阳城爱心基金信息
+      tags:
+        - 太阳城爱心基金信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/MedicalInfo'
+
+definitions:
+  MedicalInfo:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          medical_information:
+            type: object
+            description: 参加情况
+          medical_template:
+            type: object
+            description: 医疗模板
+          now_year_medical_information:
+            description: 当年医疗信息
+            type: array
+            items:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: 项目中文名
+                english_name:
+                  type: string
+                  description: 项目英文名
+                simple_chinese_name:
+                  type: string
+                  description: 项目简体中文名
+                reimbursement_times:
+                  type: string
+                  description: 报销总次数
+                reimbursement_amount_limit:
+                  type:  string
+                  description: 单次报销限额
+                reimbursement_amount:
+                  type: string
+                  description: 报销总限额
+                has_used_reimbursement_times:
+                  type: string
+                  description: 已用报销次数
+                has_used_reimbursement_amount:
+                  type: string
+                  description: 已用报销金额
+                left_reimbursement_times:
+                  type: string
+                  description: 剩余报销次数
+                left_reimbursement_amount:
+                  type: string
+                  description: 剩余报销限额
+          medical_reimbursements:
+            type: array
+            items:
+              type: object
+            description: 报销历史
+  UpdateParams:
+    type: object
+    properties:
+      to_status:
+        type: string
+        description: '变更状态join/unjoin'
+      valid_data:
+        type: string
+        description: '生效日期'

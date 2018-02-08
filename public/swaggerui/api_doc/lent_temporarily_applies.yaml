@@ -1,0 +1,220 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 暂借申请
+
+# Describe your paths here
+paths:
+  /job_transfers/lent_temporarily_applies:
+    post:
+      description: 创建暂借申请
+      tags:
+        - 创建暂借申请
+      parameters:
+        - name: lent_temporarily_apply_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/LentTemporarilyApplyCreateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /job_transfers/lent_temporarily_applies/{lent_temporarily_apply_id}:
+    get:
+      description: 获取暂借申请详情
+      tags:
+        - 暂借申请记录
+      parameters:
+        - name: lent_temporarily_apply_id
+          in: path
+          required: true
+          type: integer
+          description: 暂借申请ID
+      responses:
+        200:
+          description: 响应暂借申请详情
+          schema:
+            $ref: '#/definitions/LentTemporarilyApplyData'
+
+definitions:
+  LentTemporarilyApplyCreateParams:
+    type: object
+    properties:
+      region:
+        type: string
+        description: 地区
+      creator_id:
+        type: integer
+        description: 创建者的user_id
+      apply_date:
+        type: string
+        description: 申请日期
+      comment:
+        type: string
+        description: 备注
+
+      lent_temporarily_items:
+        type: array
+        items:
+          type: object
+          properties:
+            region:
+              type: string
+              description: 地区
+            user_id:
+              type: integer
+              description: 員工id
+            lent_date:
+              type: string
+              description: 借出日期
+            return_date:
+              type: string
+              description: 归还日期
+            lent_location_id:
+              type: integer
+              description: 暂借场馆 id
+            lent_salary_calculation:
+              type: string
+              description: 借出薪酬模版 type
+            return_salary_calculation:
+              type: string
+              description: 归还薪酬模版 type
+            comment:
+              type: string
+              description: 备注
+        description: 暂借信息
+
+      approval_items:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 审批人id
+            datetime:
+              type: string
+              description: 审批时间 yyyy-mm-dd
+            comment:
+              type: string
+              description: 审批建议
+        description: 创建审批记录
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+              description: 附件名称 '1.jpg'
+            comment:
+              type: string
+              description: 附件备注 'test comment'
+            attachment_id:
+              type: integer
+              description: 附件id
+        description: 记录附件
+
+  LentTemporarilyApplyData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          region:
+            type: string
+            description: 地区
+          creator_id:
+            type: integer
+            description: 创建者的user_id
+          apply_date:
+            type: string
+            description: 申请日期
+          comment:
+            type: string
+            description: 备注
+
+          approval_items:
+            type: array
+            items:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 审批人id
+                datetime:
+                  type: string
+                  description: 审批时间
+                comment:
+                  type: string
+                  description: 审批建议
+            description: 创建审批记录
+
+          attend_attachments:
+            type: array
+            items:
+              type: object
+              properties:
+                file_name:
+                  type: string
+                  description: 附件名称 '1.jpg'
+                comment:
+                  type: string
+                  description: 附件备注 'test comment'
+                attachment_id:
+                  type: integer
+                  description: 附件id
+            description: 记录附件
+          lent_temporarily_items:
+            type: array
+            items:
+              type: object
+              properties:
+                region:
+                  type: string
+                  description: 地区
+                user_id:
+                  type: integer
+                  description: 员工id
+                lent_date:
+                  type: string
+                  description: 借出日期
+                return_date:
+                  type: string
+                  description: 归还日期
+                lent_location_id:
+                  type: integer
+                  description: 暂借场馆 id
+                lent_salary_calculation:
+                  type: string
+                  description: 借出薪酬模版 type
+                return_salary_calculation:
+                  type: string
+                  description: 归还薪酬模版 type
+                comment:
+                  type: string
+                  description: 备注
+                lent_location:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: 场馆 id
+                    chinese_name:
+                      type: string
+                      description: 名称
+                    english_name:
+                      type: string
+                      description: 名称
+                    simple_chinese_name:
+                      type: string
+                      description: 名称
+                  description: 暂借场馆信息（此处文档仅列出主要信息）
+

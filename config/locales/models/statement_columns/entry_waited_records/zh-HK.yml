@@ -1,0 +1,10 @@
+zh-HK:
+  entry_waited_records:
+    file_name: 待入職員工報表
+  statement_columns:
+    entry_waited_records:
+      empoid: 員工編號
+      name: 姓名
+      department: 部門
+      position: 職位
+      date_of_employment: 入職日期

@@ -1,0 +1,246 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 假期记录
+
+# Describe your paths here
+paths:
+  /holidays:
+    post:
+      description: 创建假期接口
+      tags:
+        - 假期
+      parameters:
+        - name: HolidayCreateParams
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/HolidayCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+    get:
+      description: 获取假期列表
+      tags:
+        - 假期
+      parameters:
+        - name: apply_time
+          in: query
+          required: false
+          type: string
+          description: 申请时间
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称
+        - name: category
+          in: query
+          required: false
+          type: string
+          description: 申请类型
+        - name: item_count
+          in: query
+          required: false
+          type: string
+          description: 假期总天数
+        - name: status
+          in: query
+          required: false
+          type: string
+          description: 申请状态
+        - name: creator_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 录入人中文姓名
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+      responses:
+        200:
+          description: 响应假期列表
+  /holidays/{holiday_id}:
+    get:
+      description: 获取假期信息
+      tags:
+        - 假期
+      parameters:
+        - name: holiday_id
+          in: path
+          required: true
+          type: integer
+          description: 假期ID
+      responses:
+        200:
+          description: 响应假期信息
+  /holidays/get_holiday_days:
+    get:
+      description: 获取各类类型假期剩余天数
+      tags:
+        - 假期
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+        - name: holiday_type
+          in: query
+          required: true
+          type: string
+          description: 假期类型
+      responses:
+        200:
+          description: 响应假期信息
+          schema:
+            $ref: '#/definitions/GetHolidayDays'
+  /holidays/get_holiday_item_list:
+    get:
+      description: 获取员工已经申请生效假期记录
+      tags:
+        - 假期
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: 响应假期信息
+          schema:
+            $ref: '#/definitions/ItemList'
+  /holidays/field_options:
+    get:
+      description: 获取记录列表可供筛选的字段
+      tags:
+        - 假期
+      responses:
+        200:
+          description: 成功响应
+definitions:
+  ItemList:
+    type: object
+    properties:
+      date:
+        type: array
+        items:
+          type: object
+          properties:
+            holiday_type:
+              type: string
+            start_time:
+              type: string
+      mete:
+        type: integer
+        description: 记录总数
+
+  GetHolidayDays:
+    type: object
+    properties:
+      date:
+        type: integer
+        description: 剩余天数
+  HolidayCreateParams:
+    type: object
+    properties:
+      user_id:
+        type: string
+        description: 员工的user_id
+      comment:
+        type: string
+        description: 备注
+      date:
+        type: string
+        description: 申请日期
+      holiday_items:
+        type: array
+        items:
+          type: object
+          properties:
+            holiday_type:
+              type: string
+              description: 假期类型 'annual_holiday'/'birthday_holiday'/'bonus_holiday'/'supplement_holiday'/'paid_illness_leave'/'none_paid_leave'/'paid_marriage_holiday'/'nonepaid_marriage_holiday'/'paid_grace_leave'/'nonepaid_grace_leave'/'awaiting_delivery_leave'/'paid_maternity_leave'/'nonepaid_maternity_leave'/'work_injury_leave'/'without_pay_stay_leave'/'pregnancy_leave'/'best_empolyee_holiday'/'other_leave'
+            start_time:
+              type: string
+              description: 假期开始时间 '2017/5/01'
+            end_time:
+              type: string
+              description: 假期结束时间 '2017/5/05'
+            comment:
+              type: string
+              description: '备注'
+        description: 创建假期记录数组
+      attend_approvals:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 审批人id
+            date:
+              type: string
+              description: 审批时间 2017-01-10
+            comment:
+              type: string
+              description: 审批建议
+        description: 创建假期审批记录
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+              description: 附件名称 'fn.jpg'
+            comment:
+              type: string
+              description: 附件备注 'test comment'
+            attachment_id:
+              type: integer
+              description: 附件id
+        description: 假期记录附件
+
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

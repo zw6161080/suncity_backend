@@ -1,0 +1,24 @@
+en:
+  appraisal_questionnaires:
+    file_name: Appraisal Questionnaire
+  statement_columns:
+    appraisal_questionnaires:
+      questionnaire_status: questionnaire_status
+      submit_date: submit_date
+      assessor_empoid: assessor_empoid
+      assessor_name: assessor_name
+      assessor_department: assessor_department
+      assessor_position: assessor_position
+      assessor_grade: assessor_grade
+      assessor_country: assessor_country
+      participator_empoid: participator_empoid
+      participator_name: participator_name
+      participator_department: participator_department
+      participator_position: participator_position
+      participator_grade: participator_grade
+      departmental_appraisal_group: departmental_appraisal_group
+      assess_type: assess_type
+      release_user: Releaser
+      release_date: Release date
+
+

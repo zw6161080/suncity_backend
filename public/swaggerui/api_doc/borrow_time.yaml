@@ -1,0 +1,607 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 借钟还钟
+
+# Describe your paths here
+paths:
+  /borrow_times:
+    get:
+      description: 获取借钟还钟列表页
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: record_type
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 记录类型
+
+        - name: borrow_type
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 类别
+        - name: status
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 状态
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 员工中文名(甲方)
+        - name: user_empoid
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 员工编号(甲方)
+        - name: user_department_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 部门中文名(甲方)
+        - name: user_location_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 场馆中文名(甲方)
+        - name: user_position_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 职位中文名(甲方)
+        - name: borrower_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 员工中文名(乙方)
+        - name: borrower_empoid
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 员工编号(乙方)
+        - name: borrower_department_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 部门中文名(乙方)
+        - name: borrower_location_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 场馆中文名(乙方)
+        - name: borrower_position_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 职位中文名(乙方)
+        - name: borrow_date
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 借钟日期
+        - name: borrow_input_date
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 借钟录入日期
+        - name: borrow_creator_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 借钟录入人中文名
+        - name: return_date
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 还钟日期
+        - name: return_input_date
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 还钟录入日期
+        - name: return_creator_chinese_name
+          in: query
+          required: false
+          type: array
+          items:
+            type: string
+          description: 还钟录入人中文名
+      responses:
+        200:
+          description: 获取借钟还钟列表
+          schema:
+            $ref: '#/definitions/BorrowTimeListData'
+
+    post:
+      description: 借钟
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 还钟成功
+  /borrow_times/{id}/return_time:
+    patch:
+      description: 还钟
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+        - name: return_time_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/ReturnTimeParams'
+      responses:
+        200:
+          description: 更新成功
+
+  /borrow_times/field_options:
+    get:
+      description: 获取列表筛选参数
+      responses:
+        200:
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/FeildOptionsData'
+
+  /borrow_times/judge_borrow:
+    get:
+      description: 判断当月是否已经有借钟记录
+      parameters:
+        - name: user_id
+          in: query
+          type: integer
+          required: true
+          description: 员工ID
+      responses:
+        200:
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/JudgeBorrowData'
+
+  /borrow_times/{id}:
+    get:
+      description: 获取借钟还钟信息
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 借钟还钟ID
+      responses:
+        200:
+          description: 响应借钟还钟信息
+          schema:
+            $ref: '#/definitions/DetailedInformationData'
+  /borrow_times/final_working_time:
+    get:
+      description: 获取调整后上班时间段
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 借钟员工id
+        - name: borrower_id
+          in: query
+          required: false
+          type: integer
+          description: 被借鍾員工id
+        - name: borrow_begin_time
+          in: query
+          required: true
+          type: string
+          description: 借钟开始时间
+        - name: borrow_end_time
+          in: query
+          required: true
+          type: string
+          description: 借钟结束时间
+        - name: borrow_date
+          in: query
+          required: true
+          type: string
+          description: 借钟日期
+      responses:
+        200:
+          description: 响应借钟还钟信息
+          schema:
+            $ref: '#/definitions/NewWorkingTimeData'
+
+
+definitions:
+  JudgeBorrowData:
+    type: object
+    properties:
+      date:
+        type: boolean
+  NewWorkingTimeData:
+    type: object
+    properties:
+      date:
+        type: object
+        properties:
+          user_new_working_time:
+            type: array
+            items:
+              type: string
+          borrower_new_working_time:
+            type: array
+            items:
+              type: string
+
+  ReturnTimeParams:
+    type: object
+    properties:
+      return_date:
+        type: string
+      return_from:
+        type: string
+      return_to:
+        type: string
+      borrow_reason:
+        type: string
+        description: 调整原因
+      borrow_comment:
+        type: string
+        description: 还钟备注
+      attend_approvals:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: number
+            date:
+              type: string
+            comment:
+              type: string
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+            comment:
+              type: string
+            attachment_id:
+              type: number
+
+  CreateParams:
+    type: object
+    properties:
+      record_type:
+        type: string
+        description: 记录类型
+      borrow_type:
+        type: string
+        description: 借钟类型
+      user_id:
+        type: integer
+        description: 申请借钟人id
+      borrower_id:
+        type: integer
+        description: 被借钟人id
+      borrow_date:
+        type: string
+        description: '借钟日期2019/09/10'
+      borrow_from:
+        type: string
+        description: '借钟开始时间19:00'
+      borrow_to:
+        type: string
+        description: '借钟结束时间20:00'
+      borrow_reason:
+        type: string
+        description: 调整原因
+      borrow_comment:
+        type: string
+        description: 借钟备注
+      attend_approvals:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 审批人id
+            date:
+              type: string
+              description: 审批时间 2017-01-10
+            comment:
+              type: string
+              description: 审批建议
+        description: 创建修订考勤记录审批记录
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+              description: 附件名称 'fn.jpg'
+            comment:
+              type: string
+              description: 附件备注 'test comment'
+            attachment_id:
+              type: integer
+              description: 附件id
+        description: 修订考勤记录附件
+
+  DetailedInformationData:
+    type: object
+    properties:
+      date:
+        type: object
+        properties:
+          id:
+            type: integer
+          record_type:
+            type: string
+          borrow_type:
+            type: string
+          user_id:
+            type: integer
+          borrow_id:
+            type: integer
+          borrow_date:
+            type: string
+          borrow_from:
+            type: string
+          borrow_to:
+            type: string
+          borrow_input_date:
+            type: string
+          borrow_creator_id:
+            type: integer
+          return_date:
+            type: string
+          return_from:
+            type: string
+          return_to:
+            type: string
+          return_input_date:
+            type: string
+          return_creator_id:
+            type: integer
+          reason:
+            type: string
+          borrow_comment:
+            type: string
+          return_comment:
+            type: string
+
+          attend_approvals:
+            type: array
+            items:
+              type: object
+          attend_attachments:
+            type: array
+            items:
+              type: object
+          attend_return_approvals:
+            type: array
+            items:
+              type: object
+          attend_return_attachments:
+            type: array
+            items:
+              type: object
+          user:
+            type: object
+          borrower:
+            type: object
+          borrower_creator:
+            type: object
+          return_creator:
+            type: object
+          status:
+            type: string
+  FeildOptionsData:
+    type: object
+    properties:
+      date:
+        type: object
+        properties:
+          user_department_chinese_name:
+            type: array
+            items:
+              type: string
+          user_location_chinese_name:
+            type: array
+            items:
+              type: string
+          user_position_chinese_name:
+            type: array
+            items:
+              type: string
+          borrower_department_chinese_name:
+            type: array
+            items:
+              type: string
+          borrower_location_chinese_name:
+            type: array
+            items:
+              type: string
+          borrower_postion_chinese_name:
+            type: array
+            items:
+              type: string
+          borrow_date:
+            type: array
+            items:
+              type: string
+          borrow_input_date:
+            type: array
+            items:
+             type: string
+          return_date:
+            type: array
+            items:
+              type: string
+          return_input_date:
+            type: array
+            items:
+              type: string
+
+  BorrowTimeListData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 借钟还钟记录ID
+            record_type:
+              type: string
+              description: 记录类型
+            borrower_type:
+              type: string
+              description: 类别
+            status:
+              type: string
+              description: 状态
+            user_chinese_name:
+              type: string
+              description: 员工姓名(甲方)
+            user_empoid:
+              type: string
+              description: 员工编号(甲方)
+            user_department_chinese_name:
+              type: string
+              description: 员工部门(甲方)
+            user_location_chinese_name:
+              type: string
+              description: 员工场馆(甲方)
+            user_position_chinese_name:
+              type: string
+              description: 员工职位
+            borrower_chinese_name:
+              type: string
+              description: 员工姓名(乙方)
+            borrower_empoid:
+              type: string
+              description: 员工编号(乙方)
+            borrower_department_chinese_name:
+              type: string
+              description: 员工部门
+            borrower_location_chinese_name:
+              type: string
+              description: 员工场馆
+            borrower_position_chinese_name:
+              type: string
+              description: 员工职位
+            borrow_creator_chinese_name:
+              type: string
+              description: 借钟录入人
+            borrow_date:
+              type: string
+              description: 借钟日期
+            borrow_input_date:
+              type: string
+              description: 借钟录入日期
+            borrow_from:
+              type: string
+              description: 借钟开始时间
+            borrow_to:
+              type: string
+              description: 借钟解释时间
+            return_date:
+              type: string
+              description: 还钟日期
+            return_from:
+              type: string
+              description: 还钟开始时间
+            return_to:
+              type: string
+              description: 还钟结束时间
+            return_input_date:
+              type: string
+              description: 还钟录入日期
+            return_creator_chinese_name:
+              type: string
+              description: 还钟录入人
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 记录总数
+          current_page:
+            type: integer
+            description: 当前页码
+          total_pages:
+            type: integer
+            description: 总页数
+
+
+

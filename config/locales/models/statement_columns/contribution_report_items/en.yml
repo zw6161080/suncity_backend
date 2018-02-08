@@ -1,0 +1,24 @@
+en:
+  contribution_report_items:
+    file_name: Contribution report item
+  statement_columns:
+    contribution_report_items:
+      year_month: Contribution year/month
+      employee_id: ID
+      employee_chinese_name: Chinese name
+      employee_english_name: English name
+      department: Department
+      position: Position
+      grade: Grade
+      member_retirement_fund_number: Member retirement fund number
+      relevant_income: Relevant income(MOP)
+      employee_voluntary_contribution_percentage: Employee voluntary contribution percentage
+      employee_voluntary_contribution_amount: Employee voluntary contribution amount
+      percentage_of_voluntary_contributions_of_members: Percentage of voluntary contributions of members
+      membership_voluntary_contributions_amount: Membership voluntary contributions amount
+      employer_contribution_percentage: Employer contribution percentage
+      employer_contribution_count: Employer contribution count
+      percentage_of_contribution_of_members: Percentage of contribution of members
+      count_of_contribution_of_members: Count of contribution of members
+      percentage_of_contribution_of_governmment: Percentage of contribution of government
+      count_of_contribution_of_governmment: Count of contribution of government

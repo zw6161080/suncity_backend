@@ -1,0 +1,21 @@
+en:
+  education_informations:
+    file_name: education_informations
+  statement_columns:
+    education_informations:
+      empoid: ID
+      name: Name
+      location: Location
+      department: Department
+      position: Position
+      date_of_employment: Date of employment
+      leave_date: Leave date
+      from_mm_yyyy: From
+      to_mm_yyyy: To
+      college_university: University
+      educational_department: Colleage
+      graduate_level: Graduate level
+      diploma_degree_attained: Diploma degree attained
+      certificate_issue_date: Certificate issue date
+      graduated: Graduated
+      highest: Highest

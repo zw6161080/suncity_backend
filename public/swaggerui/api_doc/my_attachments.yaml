@@ -1,0 +1,167 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 我的文件
+
+# Describe your paths here
+paths:
+  /users/{id}/my_attachments/head_index:
+    get:
+      description: 获取导航栏我的文件列表信息
+      tags:
+        - 我的文件
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/HeadIndex'
+  /users/{id}/my_attachments/all_index:
+    get:
+      description: 获取我的文件列表信息
+      tags:
+        - 我的文件
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: 员工id
+        - name: query_key
+          type: string
+          description: 搜索关键子
+          in: query
+          required: false
+        - name: more_record_count
+          type: integer
+          description: 点击展示更多的次数
+          in: query
+          required: false
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/AllIndex'
+  /my_attachments/{id}:
+    delete:
+      description: 删除或取消我的文件
+      tags:
+        - 我的文件
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: 我的文件记录id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/DeleteDetail'
+  /my_attachments/{id}/download:
+    get:
+      description: 下载我的文件
+      tags:
+        - 我的文件
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: 我的文件记录id
+      responses:
+        200:
+          description: ok
+definitions:
+  AllIndex:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 记录id
+            status:
+              type: string
+              description: '状态（generating, completed）'
+            download_process:
+              type: string
+              description: 下载进度
+            file_name:
+              type: string
+              description: 文件名称
+            attachment_id:
+              type: string
+              description: 基本文件id
+            user_id:
+              type: integer
+              description: 员工id
+      meta:
+        type: object
+        properties:
+          hsa_more_records:
+            type: boolean
+            description: 是否有更多記錄
+  DeleteDetail:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 记录id
+      status:
+        type: string
+        description: '状态（generating, completed）'
+      download_process:
+        type: string
+        description: 下载进度
+      file_name:
+        type: string
+        description: 文件名称
+      attachment_id:
+        type: string
+        description: 基本文件id
+      user_id:
+        type: integer
+        description: 员工id
+  HeadIndex:
+    type: array
+    items:
+      type: object
+      description: 一条我的文件记录
+      properties:
+        id:
+          type: integer
+          description: 记录id
+        status:
+          type: string
+          description: '状态（generating, completed）'
+        download_process:
+          type: string
+          description: 下载进度
+        file_name:
+          type: string
+          description: 文件名称
+        attachment_id:
+          type: string
+          description: 基本文件id
+        user_id:
+          type: integer
+          description: 员工id
+
+
+
+
+

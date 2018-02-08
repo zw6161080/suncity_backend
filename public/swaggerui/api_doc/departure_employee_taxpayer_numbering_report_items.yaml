@@ -1,0 +1,41 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 离职雇员纳税人编号表
+
+# Describe your paths here
+paths:
+  /departure_employee_taxpayer_numbering_report_items/{id}/update_beneficiary_name:
+    patch:
+      tags:
+        - 离职雇员纳税人编号表
+      description: 更新受益人姓名
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: '记录id'
+          required: true
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateParams'
+      responses:
+        200:
+          description: ok
+        422:
+          description: '参数错误'
+definitions:
+  UpdateParams:
+    type: object
+    properties:
+      beneficiary_name:
+        type: string
+        description: '受益人姓名'
+

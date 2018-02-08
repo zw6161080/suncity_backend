@@ -1,0 +1,74 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 组织架构
+
+# Describe your paths here
+paths:
+  /departments:
+    get:
+      tags:
+        - 部门列表
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/DepartmentList'
+  /locations/all_locations:
+    get:
+      tags:
+        - 獲取所有場館信息
+      responses:
+        200:
+          description: ok
+  /locations/tree:
+    get:
+      tags:
+        - 场馆组织架构
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/LocationTree'
+definitions:
+  DepartmentList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            heads:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: 员工记录id
+              description: 负责人组
+  LocationTree:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 场馆id
+            children:
+              type: array
+              items:
+                type: object
+                description: 子场馆
+
+
+

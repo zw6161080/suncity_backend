@@ -1,0 +1,8 @@
+求職編號: <%= @applicant_profile.applicant_no %>
+求職人姓名(中): <%= @applicant_profile.chinese_name %>
+求職人姓名(英): <%= @applicant_profile.english_name %>
+性別: <%= @applicant_profile.gender_chinese_name %>
+應徵部門: <%= @audience.applicant_position.department.chinese_name rescue '待定' %>
+應徵職位: <%= @audience.applicant_position.position.chinese_name rescue '待定' %>
+接見狀態: <%= @audience.status_chinese_name %>
+原因: <%= @comment %>

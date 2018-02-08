@@ -1,0 +1,95 @@
+pay_slips:
+  columns:
+    - key: year_month
+      data_index: year_month
+      value_type: string
+      value_format: 'YYYY/MM'
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: year_month_options
+    - key: salary_begin
+      data_index: salary_begin
+      value_type: date_value
+      value_format: 'YYYY/MM/DD'
+      sorter: true
+    - key: salary_end
+      data_index: salary_end
+      value_type: day_range
+      value_format: 'YYYY/MM/DD'
+      sorter: true
+    - key: name
+      data_index: user
+      value_type: obj_value
+      sorter: true
+      search_type: search
+    - key: empoid
+      data_index: user.empoid
+      value_type: string_value
+      sorter: true
+      search_type: search
+
+    - key: company_name
+      data_index: user.company_name
+      value_type: string_value
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: company_name
+      search_attribute: user.company_name
+
+    - key: department_id
+      data_index: user.department
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+    - key: position_id
+      data_index: user.position
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+    - key: location_id
+      data_index: user.location
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: location_options
+      search_attribute: user.location_id
+    - key: entry_on_this_month
+      data_index: entry_on_this_month
+      value_type: bool_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: Yes
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: No
+          simple_chinese_name: 否
+    - key: leave_on_this_month
+      data_index: leave_on_this_month
+      value_type: bool_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: Yes
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: No
+          simple_chinese_name: 否
+

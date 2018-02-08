@@ -1,0 +1,144 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 考勤状态
+
+# Describe your paths here
+paths:
+  /attendance_states:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        获取考勤状态列表
+      # This is array of GET operation parameters:
+      # Expected responses for this operation:
+      tags:
+        - 考勤状态
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AttendanceState'
+    post:
+      description: |
+        创建考勤状态
+      parameters:
+        - name: attendance_state_params
+          in: body
+          required: true
+          description: 修改数据
+          schema:
+            $ref: '#/definitions/AttendanceStateParams'
+      tags:
+        - 考勤状态
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+  /attendance_states/{attendance_state_id}:
+    patch:
+      description: 修改考勤表状态
+      tags:
+        - 考勤状态
+      parameters:
+        - name: attendance_state_params
+          in: body
+          required: true
+          description: 修改数据
+          schema:
+            $ref: '#/definitions/AttendanceStateParams'
+
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+    delete:
+      tags:
+        - 考勤状态
+      description: 删除考勤表状态
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+    parameters:
+      - name: attendance_state_id
+        in: path
+        required: true
+        type: string
+
+definitions:
+  AttendanceStateParams:
+    type: object
+    properties:
+      code:
+        type: string
+        description: 代号
+      chinese_name:
+        type: string
+        description: 中文名称
+      english_name:
+        type: string
+        description: 英文名称
+      comment:
+        type: string
+        description: 备注
+      parent_id:
+        type: integer
+        description: 父状态ID
+    required: [
+      'code', 'chinese_name', 'english_name', 'parent_id'
+    ]
+
+  AttendanceState:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: ID
+      code:
+        type: string
+        description: 代号
+      chinese_name:
+        type: string
+        description: 中文名称
+      english_name:
+        type: string
+        description: 英文名称
+      comment:
+        type: string
+        description: 备注
+      parent_id:
+        type: integer
+        description: 父状态ID
+      children:
+        type: array
+        description: 子状态
+        items:
+          title: AttendanceState
+          type: object
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

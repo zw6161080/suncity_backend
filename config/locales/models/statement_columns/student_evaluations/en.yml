@@ -1,0 +1,9 @@
+en:
+  student_evaluations:
+    student_evaluation:  Student evaluation
+  statement_columns:
+    student_evaluations:
+      empoid: ID
+      name: Name
+      department: Department
+      position: Position

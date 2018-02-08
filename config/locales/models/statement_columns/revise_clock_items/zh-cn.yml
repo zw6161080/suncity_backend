@@ -1,0 +1,12 @@
+zh-CN:
+  statement_columns:
+    revise_clock_items:
+      empoid: 员工编号
+      name: 姓名
+      department_id: 部门
+      position_id: 职位
+      clock_date: 飓风上班日期
+      money: 金额
+      creator_name: 录入人
+      created_at: 录入日期
+      

@@ -1,0 +1,24 @@
+zh-CN:
+  contribution_report_items:
+    file_name: 公积金供款报表
+  statement_columns:
+    contribution_report_items:
+      year_month: 公积金供款表月份
+      employee_id: 员工编号
+      employee_chinese_name: 中文姓名
+      employee_english_name: 英文姓名
+      department: 部门
+      position: 职位
+      grade: 职级
+      member_retirement_fund_number: 成员退休基金号码
+      relevant_income: 有关入息(MOP)
+      employee_voluntary_contribution_percentage: 雇主自愿性供款百分比
+      employee_voluntary_contribution_amount: 雇主自愿性供款金额
+      percentage_of_voluntary_contributions_of_members: 成员自愿性供款百分比
+      membership_voluntary_contributions_amount: 成员自愿性供款金额
+      employer_contribution_percentage: 雇主供款百分比
+      employer_contribution_count: 雇主供款金额
+      percentage_of_contribution_of_members: 成员供款百分比
+      count_of_contribution_of_members: 成员供款金额
+      percentage_of_contribution_of_governmment: 政府供款百分比
+      count_of_contribution_of_governmment: 政府供款金额

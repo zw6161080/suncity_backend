@@ -1,0 +1,55 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 新申请者档案
+
+# Describe your paths here
+paths:
+  /appliant_profiles/{id}:
+    get:
+      tags:
+        - 申请者档案详情页
+      description: 显示申请者详情
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: 申请者id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ApplicantProfileDetail'
+definitions:
+  ApplicantProfileDetail:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          create_profile_info:
+            type: object
+            properties:
+              position_id:
+                type: integer
+                description: 职位ID
+              department_id:
+                type: integer
+                description: 部门ID
+              date_of_employment:
+                type: string
+                description: 入職日期
+              seniority_calculation_date:
+                type: string
+                description: 年資計算日期
+              empoid:
+                type: string
+                description: 員工編號
+            description: 創建檔案預設值
+

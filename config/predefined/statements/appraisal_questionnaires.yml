@@ -1,0 +1,167 @@
+appraisal_questionnaires:
+  columns:
+    - key: submit_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: questionnaire.submit_date
+      search_attribute: questionnaire.submit_date
+      search_type: date
+      sorter: true
+
+    - key: assessor_empoid
+      value_type: string_value
+      data_index: assessor.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: questionnaire_status
+      value_type: select_value
+      data_index: questionnaire.is_filled_in
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 已完成
+          english_name: Has filled in
+          simple_chinese_name: 已完成
+        - key: false
+          chinese_name: 未完成
+          english_name: Not filled in
+          simple_chinese_name: 未完成
+      option:
+        - key: true
+          chinese_name: 已完成
+          english_name: Has filled in
+          simple_chinese_name: 已完成
+        - key: false
+          chinese_name: 未完成
+          english_name: Not filled in
+          simple_chinese_name: 未完成
+
+    - key: assessor_name
+      value_type: obj_value
+      data_index: assessor
+      search_type: search
+      sorter: true
+
+    - key: assessor_department
+      value_type: obj_value
+      data_index: assessor.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: assessor_position
+      value_type: obj_value
+      data_index: assessor.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: assessor_grade
+      value_type: string_value
+      data_index: assessor.grade
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: grade
+
+    - key: assessor_country
+      value_type: select_value
+      data_index: assessor.profile.data.personal_information.field_values.certificate_issued_country
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: nationality
+      option: nationality
+
+    - key: participator_empoid
+      value_type: string_value
+      data_index: appraisal_participator.empoid
+      search_type: search
+      sorter: true
+
+    - key: participator_name
+      value_type: obj_value
+      data_index: appraisal_participator
+      search_type: search
+      sorter: true
+
+    - key: participator_department
+      value_type: obj_value
+      data_index: appraisal_participator.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: appraisal_participator.department_id
+
+    - key: participator_position
+      value_type: obj_value
+      data_index: appraisal_participator.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: appraisal_participator.position_id
+
+    - key: participator_grade
+      value_type: string_value
+      data_index: appraisal_participator.grade
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: grade
+
+    - key: departmental_appraisal_group
+      value_type: string_value
+      data_index: departmental_appraisal_group
+#      search_type: string
+#      sorter: true
+
+    - key: assess_type
+      value_type: select_value
+      data_index: assess_type
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: self_assess
+          chinese_name: 自我評核
+          english_name: Self assess
+          simple_chinese_name: 自我评核
+        - key: superior_assess
+          chinese_name: 上司评核
+          english_name: Superior assess
+          simple_chinese_name: 同事评核
+        - key: colleague_assess
+          chinese_name: 同事评核
+          english_name: Colleague assess
+          simple_chinese_name: 上司评核
+        - key: subordinate_assess
+          chinese_name: 下属评核
+          english_name: Subordinate assess
+          simple_chinese_name: 下属评核
+      option:
+        - key: self_assess
+          chinese_name: 自我評核
+          english_name: Self assess
+          simple_chinese_name: 自我评核
+        - key: superior_assess
+          chinese_name: 上司评核
+          english_name: Superior assess
+          simple_chinese_name: 同事评核
+        - key: colleague_assess
+          chinese_name: 同事评核
+          english_name: Colleague assess
+          simple_chinese_name: 上司评核
+        - key: subordinate_assess
+          chinese_name: 下属评核
+          english_name: Subordinate assess
+          simple_chinese_name: 下属评核

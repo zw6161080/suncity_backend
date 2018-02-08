@@ -1,0 +1,22 @@
+category:
+  options:
+    - key: hong_kong_identity_card
+      chinese_name: 香港居民身份證
+      simple_chinese_name: 香港居民身份证
+      english_name: HKID
+    - key: valid_exit_entry_permit_eep_to_hk_macau
+      chinese_name: 港澳通行證
+      simple_chinese_name: 港澳通行证
+      english_name: HK/Macau pass
+    - key: passport
+      chinese_name: 護照
+      simple_chinese_name: 护照
+      english_name: Passport
+    - key: blue_card
+      chinese_name: 藍卡
+      simple_chinese_name: 蓝卡
+      english_name: Blue card
+    - key: street_paper
+      chinese_name: 行街紙
+      simple_chinese_name: 行街纸
+      english_name: Going-out pass

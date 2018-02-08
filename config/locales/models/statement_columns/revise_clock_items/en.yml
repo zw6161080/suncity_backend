@@ -1,0 +1,13 @@
+en:
+  statement_columns:
+    provident_fund_member_report_itmes:
+      empoid: ID
+      name: Name
+      department_id: Department
+      position_id: Position
+      clock_date: Hurricane Work
+      money: Amount of Money
+      creator_name: Inputer
+      created_at: Enter date
+
+

@@ -1,0 +1,14 @@
+zh-HK:
+  sign_lists_by_train:
+    sign_list: 签到名单
+  statement_columns:
+    sign_lists_by_train:
+      empoid: 員工編號
+      name: 員工姓名
+      department: 部門
+      position: 職位
+      title: 培訓班次
+      train_class_time: 培訓時間
+      working_status: 培訓期間狀態
+      sign_status: 簽到狀態
+      comment: 備注

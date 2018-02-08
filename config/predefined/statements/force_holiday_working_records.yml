@@ -1,0 +1,58 @@
+force_holiday_working_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+#      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+#      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: date_of_employment
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      search_type: date
+      sorter: true
+
+    - key: force_holiday_working_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: holiday_setting.holiday_date
+      search_type: date
+      sorter: true
+
+    - key: origin_working_range
+      value_type: string_value
+      data_index: origin_working_range
+
+    - key: origin_working_hours
+      value_type: string_value
+      data_index: origin_working_hours
+
+    - key: real_working_hours
+      value_type: string_value
+      data_index: real_working_hours

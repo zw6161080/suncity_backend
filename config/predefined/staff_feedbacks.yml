@@ -1,0 +1,13 @@
+track_statuses:
+  - key: untracked
+    chinese_name: 未跟進
+    english_name: Not following up
+    simple_chinese_name: 未跟进
+  - key: tracking
+    chinese_name: 跟進中
+    english_name: Following up
+    simple_chinese_name: 跟进中
+  - key: tracked
+    chinese_name: 跟進完成
+    english_name: Follow up
+    simple_chinese_name: 跟进完成

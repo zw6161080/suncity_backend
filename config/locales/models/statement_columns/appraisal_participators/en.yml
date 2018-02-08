@@ -1,0 +1,16 @@
+en:
+  appraisal_participators:
+    file_name: _List_of_360_assessment_
+  statement_columns:
+    appraisal_participators:
+      empoid: ID
+      oname: Name
+      location: Location
+      department: Department
+      position: Position
+      grade: Grade
+      division_of_job: Division of job
+      date_of_employment: Entry date
+      superior_assessor_candidates:    Candidates of superior assessment
+      colleague_assessor_candidates:   Candidates of colleague assessment
+      subordinate_assessor_candidates: Candidates of subordinate assessment

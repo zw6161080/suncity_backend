@@ -1,0 +1,146 @@
+bank_auto_pay_report_items:
+  columns:
+    - key: record_type
+      value_type: obj_value
+      data_index: record_type
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: annual_reward
+          chinese_name: 年度獎金
+          english_name: annual_reward
+          simple_chinese_name: 年度奖金
+        - key: salary
+          chinese_name: 工資
+          english_name: salary
+          simple_chinese_name: 工资
+
+
+    - key: year_month
+      value_type: date_value
+      value_format: 'yyyy/mm'
+      date_value_format: '%Y/%m'
+      data_index: year_month
+      search_type: screen
+      options_type: options
+      options_action: year_month_options
+      sorter: true
+
+    - key: balance_date
+      value_type: date_value
+      value_format: 'yyyy/mm/dd'
+      date_value_format: '%Y/%m/%d'
+      data_index: balance_date
+      search_type: date
+      sorter: true
+
+    - key: company
+      value_type: obj_value
+      data_index: company_name
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: company_name
+      search_attribute: company_name
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+
+    - key: employee_name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: position_id
+
+    - key: position_of_govt_record
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: id_number
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: bank_of_china_account_mop
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: amount_in_mop
+      value_type: number_value
+      data_index: amount_in_mop
+      search_type: search
+      sorter: true
+      search_attribute: amount_in_mop
+
+    - key: bank_of_china_account_hkd
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: amount_in_hkd
+      value_type: number_value
+      data_index: amount_in_hkd
+      search_type: search
+      sorter: true
+      search_attribute: amount_in_hkd
+
+    - key: cash_or_check
+      value_type: select_value
+      search_type: screen
+      sorter: true
+      options_type: selects
+      search_attribute: user.profile.position_information.payment_method
+      options_select_key: payment_method
+
+
+
+    - key: begin_work_date
+      value_type: date_value
+      value_format: 'yyyy/mm/dd'
+      date_value_format: '%Y/%m/%d'
+      data_index: begin_work_date
+      search_type: date
+      sorter: true
+
+    - key: end_work_date
+      value_type: date_value
+      value_format: 'yyyy/mm/dd'
+      data_index: end_work_date
+      date_value_format: '%Y/%m/%d'
+      search_type: date
+      sorter: true
+
+    - key: leave_in_this_month
+      value_type: bool_value
+      data_index: leave_in_this_month
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: provident_fund
+

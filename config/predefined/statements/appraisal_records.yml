@@ -1,0 +1,88 @@
+appraisal_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: location_options
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+
+    - key: grade
+      value_type: string_value
+      data_index: user.grade
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: grade
+
+    - key: division_of_job
+      value_type: select_value
+      data_index: user.profile.data.position_information.field_values.division_of_job
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: front_office
+          chinese_name: 前線
+          english_name: Front Office
+          simple_chinese_name: 前线
+        - key: back_office
+          chinese_name: 後勤
+          english_name: Back Office
+          simple_chinese_name: 后勤
+      option:
+        - key: front_office
+          chinese_name: 前線
+          english_name: Front Office
+          simple_chinese_name: 前线
+        - key: back_office
+          chinese_name: 後勤
+          english_name: Back Office
+          simple_chinese_name: 后勤
+
+    - key: date_of_employment
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      search_type: date
+      sorter: true
+
+  sub_columns:
+    - key: assessor_count
+    - key: assessment_score
+    - key: superior_count
+    - key: superior_score
+    - key: colleague_count
+    - key: colleague_score
+    - key: subordinate_count
+    - key: subordinate_score
+    - key: self_score

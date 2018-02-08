@@ -1,0 +1,20 @@
+zh-CN:
+  performance_interviews:
+    file_name: 绩效面谈
+  statement_columns:
+    performance_interviews:
+      performance_interview_status: 面谈状态
+      empoid: 员工编号
+      name: 姓名
+      location: 场馆
+      department: 部门
+      position: 职位
+      grade: 职级
+      division_of_job: 员工归属类别
+      date_of_employment: 入职日期
+      performance_moderator: 面谈主持人
+      interview_date: 面谈日期
+      interview_time: 面谈时间
+      attachment: 相关文件
+      operator: 录入人
+      operator_at: 录入日期

@@ -1,0 +1,923 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 藍卡
+
+# Describe your paths here
+paths:
+  /card_profiles/matching_search:
+    get:
+      description: '导入档案资料筛选项'
+      responses:
+        200:
+          description: '获取成功'
+          schema:
+            $ref: '#/definitions/UserSimpleData'
+  /approved_jobs:
+    get:
+      description: 获取獲批職位列表
+      responses:
+        200:
+          description: 获取獲批職位列表
+          schema:
+            $ref: '#/definitions/ApprovedJobsListData'
+    post:
+      description: 创建获批职位
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+      responses:
+        200:
+          description: '获取成功'
+          schema:
+            $ref: '#/definitions/ApprovedJobCreateParams'
+
+
+  /empo_cards/destroy_job_with_cards:
+    get:
+      description: 刪除获取獲批職位及其蓝卡配额
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: 获批职位的id(不是配额的id)
+      responses:
+        200:
+          description: 获取獲批職位下的蓝卡配额列表
+
+  /empo_cards:
+    get:
+      description: 获取獲批職位下的蓝卡配额列表
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+        description: 获批职位的id
+      responses:
+        200:
+          description: 获取獲批職位下的蓝卡配额列表
+          schema:
+            $ref: '#/definitions/EmpoCardsListData'
+    post:
+      description: 创建藍卡配額
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+
+  /empo_cards/{id}:
+    patch:
+      description: 更新藍卡配額
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+        - name: update_params
+          in: body
+          required: true
+          description: 參數
+          schema:
+            $ref: '#/definitions/UpdateParams'
+      responses:
+        200:
+          description: 更新成功
+
+    delete:
+      description: 删除模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 配额的id
+      responses:
+        200:
+          description: 成功删除
+
+  /card_profiles/export_xlsx:
+    get:
+      description: 获取藍卡資料列表
+      parameters:
+        - name: approved_job_name
+          in: path
+          type: string
+          description: 獲批職位名稱
+        - name: approved_job_number
+          in: path
+          type: string
+          description: 獲批職位編號
+        - name: certificate_within_60
+          in: path
+          type: string
+          description: 身份證60天內到期
+        - name: fingermold_within_2
+          in: path
+          type: string
+          description: 兩天內去打指模
+        - name: getcard_within_5
+          in: path
+          type: string
+          description: 取藍卡日5天內到期
+        - name: profile_within_90
+          in: path
+          type: string
+          description: 藍卡90天內到期
+        - name: allocation_within_60
+          in: path
+          type: string
+          description: 配額失效日期60天內到期
+        - name: allocation_within_30
+          in: path
+          type: string
+          description: 配額失效日期30天內到期
+        - name: new_approval_within_90
+          in: path
+          type: string
+          description: 新批示有效期90天內到期
+      responses:
+        200:
+          description: 下載成功
+
+  /card_profiles:
+    get:
+      description: 获取藍卡資料列表
+      parameters:
+        - name: approved_job_name
+          in: path
+          type: string
+          description: 獲批職位名稱
+        - name: approved_job_number
+          in: path
+          type: string
+          description: 獲批職位編號
+        - name: certificate_within_60
+          in: path
+          type: string
+          description: 證件60天內到期，內容隨意，可爲’true‘
+        - name: fingermold_within_2
+          in: path
+          type: string
+          description: 兩天內打指模，內容隨意，可爲’true‘
+        - name: getcard_within_5
+          in: path
+          type: string
+          description: 5天內取卡，內容隨意，可爲’true‘
+        - name: card_within_90
+          in: path
+          type: string
+          description: 藍卡90天內到期，內容隨意，可爲’true‘
+        - name: allocation_within_60
+          in: path
+          type: string
+          description: 配額60天內到期，內容隨意，可爲’true‘
+        - name: allocation_within_30
+          in: path
+          type: string
+          description: 配額30天內到期，內容隨意，可爲’true‘
+        - name: new_approval_within_90
+          in: path
+          type: string
+          description: 新批示有效期60天內到期，內容隨意，可爲’true‘
+      responses:
+        200:
+          description: 获取獲批職位列表
+          schema:
+            $ref: '#/definitions/CardProfilesListData'
+
+    post:
+      description: 创建藍卡資料
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/ProfileCreateParams'
+      responses:
+        200:
+          description: 創建成功
+    patch:
+      description: 更新藍卡資料
+      parameters:
+        - name: update_params
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#/definitions/ProfileUpdateParams'
+      responses:
+        200:
+          description: 創建成功
+
+  /card_profiles/{id}:
+    get:
+      description: 获取单藍卡詳情頁
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 取得模板信息
+          schema:
+            $ref: '#/definitions/CardProfileEditData'
+
+  /card_attachments:
+    post:
+      description: 创建藍卡附件
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: create_params
+          schema:
+            $ref: '#/definitions/AttachmentCreateParams'
+      responses:
+        200:
+          description: 創建成功
+    patch:
+      description: 更新藍卡附件
+      parameters:
+        - name: update_params
+          in: body
+          required: true
+          description: Update_params
+          schema:
+            $ref: '#/definitions/AttachmentUpdateParams'
+      responses:
+        200:
+          description: 更新成功
+    delete:
+      description: 删除模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 成功删除
+
+
+
+  /card_histories:
+    post:
+      description: 创建藍卡歷史
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: create_params
+          schema:
+            $ref: '#/definitions/HistoryCreateParams'
+      responses:
+        200:
+          description: 創建成功
+    patch:
+      description: 创建藍卡歷史
+      parameters:
+        - name: update_params
+          in: body
+          required: true
+          description: Update_params
+          schema:
+            $ref: '#/definitions/HistoryUpdateParams'
+      responses:
+        200:
+          description: 更新成功
+    delete:
+      description: 删除模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 成功删除
+
+#-----------------------------------------------------------
+definitions:
+  UserSimpleData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            empoid:
+              type: string
+              descrpition: '员工编号'
+            chinese_name:
+              type: string
+              description: '中文姓名'
+            english_name:
+              type: string
+              descripiton: '英文姓名'
+            position_id:
+              type: integer
+              description: '职位id'
+            department_id:
+              type: integer
+              description: '部门id'
+            id_card_number:
+              type: string
+              description: 身份证编号
+            email:
+              type: string
+              description: 邮箱
+            superior_email:
+              type: string
+              description: 领导邮箱
+            company_name:
+              type: string
+              description: 公司名称
+            employment_status:
+              type: string
+              descripiton: '雇佣状态'
+            grade:
+              type: string
+              descripiton: 职级
+            simple_chinese_name:
+              type: string
+              descripiton: 简体中文名
+            department:
+              type: object
+              description: 所在部门信息
+            position:
+              type: object
+              description: 所在职位信息
+  ApprovedJobCreateParams:
+    type: object
+    properties:
+      approved_job_name:
+        type: string
+        required: true
+        description: 獲批職位名稱
+      report_salary_count:
+        type: integer
+        required: true
+        description: 報政府薪金數量
+      report_salary_unit:
+        type: string
+        required: true
+        description: 報政府薪金單位
+
+  AttachmentUpdateParams:
+    type: object
+    properties:
+      id:
+        type: string
+        required: true
+        description: 藍卡附件iD
+      attachment_id:
+        type: string
+        description: 附件id
+      category:
+        type: string
+        description: 文件种类
+      file_name:
+        type: string
+        description: 文件名称
+      comment:
+        type: text
+        description: 备注
+
+  HistoryUpdateParams:
+    type: object
+    properties:
+      id:
+        type: string
+        required: true
+        description: 藍卡历史iD
+      certificate_valid_date:
+        type: string
+        description: 證件有效期
+      new_or_renew:
+        type: string
+        description: 新辦證/續期
+      card_valid_date:
+        type: string
+        description: 藍卡有效期
+      new_approval_valid_date:
+        type: string
+        description: 新批示有效期
+      date_to_get_card:
+        type: string
+        description: 取藍卡日期
+
+  HistoryCreateParams:
+    type: object
+    properties:
+      card_profile_id:
+        type: string
+        required: true
+        description: 藍卡資料ID
+      certificate_valid_date:
+        type: string
+        required: true
+        description: 證件有效期
+      new_or_renew:
+        type: string
+        description: 新辦證/續期
+      card_valid_date:
+        type: string
+        description: 藍卡有效期
+      new_approval_valid_date:
+        type: string
+        description: 新批示有效期
+      date_to_get_card:
+        type: string
+        description: 取藍卡日期
+
+
+  AttachmentCreateParams:
+    type: object
+    properties:
+      card_profile_id:
+        type: string
+        required: true
+        description: 藍卡資料ID
+      attachment_id:
+        type: string
+        required: true
+        description: 附件id
+      category:
+        type: string
+        required: true
+        description: 附件種類
+      file_name:
+        type: string
+        required: true
+        description: 附件名稱
+      comment:
+        type: string
+        description: 備注
+
+
+
+  CardProfileEditData:
+    type: object
+    properties:
+      id:
+        description: 藍卡資料ID
+      employ_information:
+        description: 員工信息
+      quota_information:
+        description: 配額信息
+      certificate_information:
+        description: 證件信息
+      street_paper_information:
+        description: 街紙信息
+      card_information:
+        description: 蘭卡信息
+      card_attachment_information:
+        description: 附件信息
+      card_history_information:
+        description: 藍卡歷史信息
+      comment_information:
+        description: 備注信息
+      record_information:
+        type: object
+        properties:
+          record:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: '变更字段位置(create_profile card_history_information card_attachment_information employ_information quota_information certificate_information street_paper_information card_information comment_information)'
+                action_type:
+                  type: string
+                  description: 编辑动作(add edit delete)；　type 为　create_profile时为空
+                current_user_id:
+                  type: integer
+                  description: 当前操作用户的id
+                value1:
+                  type: object
+                  description: 显示值１
+                value2:
+                  type: object
+                  description: 显示值２
+                value:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      column:
+                        type: string
+                        description: 发生编辑的字段
+                      value1:
+                        type: string
+                        description: 相关文件显示值１
+                      value2:
+                        type: string
+                        description: 相关文件显示值２
+                  description: 相关文件编辑的显示值数组
+
+
+  ProfileUpdateParams:
+    type: object
+    properties:
+      id:
+        type: integer
+        required: true
+        description: 藍卡資料ID
+      empo_chinese_name:
+        type: string
+        description: 中文名
+      empo_english_name:
+        type: string
+        description: 英文名
+      sex:
+        type: string
+        description: 性別
+      status:
+        type: string
+        description: 藍卡狀態
+      approved_job_name:
+        type: string
+        description: 獲批職位名稱
+      approved_job_number:
+        type: string
+        description: 獲批職位編號
+      allocation_company:
+        type: string
+        description: 配額所屬公司
+      allocation_valid_date:
+        type: string
+        description: 配額失效日期
+      approval_id:
+        type: string
+        description: 批示號
+      report_salary_count:
+        type: integer
+        description: 報政府薪金數量
+      report_salary_unit:
+        type: string
+        description: 報政府薪金單位
+      labor_company:
+        type: string
+        description: 所屬勞務公司
+      date_to_submit_data:
+        type: string
+        description: 員工交材料到勞務日期
+      certificate_type:
+        type: string
+        description: 證件類型
+      certificate_id:
+        type: string
+        description: 證件編號
+      date_to_submit_certificate:
+        type: string
+        description: 提交證件日期
+      date_to_stamp:
+        type: string
+        description: 蓋章日期
+      date_to_submit_fingermold:
+        type: string
+        description: 打指模日期
+      card_id:
+        type: string
+        description: 藍卡編號
+      cancel_date:
+        type: string
+        description: 取消日期
+      original_user:
+        type: string
+        description: 原使用人
+      comment:
+        type: text
+        description: 備注
+      empo_id:
+        type: string
+        description: 員工id
+
+
+  ProfileCreateParams:
+    type: object
+    properties:
+      empo_chinese_name:
+        type: string
+        required: true
+        description: 中文名
+      empo_english_name:
+        type: string
+        required: true
+        description: 英文名
+      sex:
+        type: string
+        required: true
+        description: 性別
+      status:
+        type: string
+        required: true
+        description: 藍卡狀態
+      approved_job_name:
+        type: string
+        required: true
+        description: 獲批職位名稱
+      approved_job_number:
+        type: string
+        required: true
+        description: 獲批職位編號
+      allocation_company:
+        type: string
+        required: true
+        description: 配額所屬公司
+      allocation_valid_date:
+        type: string
+        required: true
+        description: 配額失效日期
+      approval_id:
+        type: string
+        required: true
+        description: 批示號
+      report_salary_count:
+        type: integer
+        required: true
+        description: 報政府薪金數量
+      report_salary_unit:
+        type: string
+        required: true
+        description: 報政府薪金單位
+      labor_company:
+        type: string
+        required: true
+        description: 所屬勞務公司
+      date_to_submit_data:
+        type: string
+        description: 員工交材料到勞務日期
+      certificate_type:
+        type: string
+        required: true
+        description: 證件類型
+      certificate_id:
+        type: string
+        required: true
+        description: 證件編號
+      date_to_submit_certificate:
+        type: string
+        description: 提交證件日期
+      date_to_stamp:
+        type: string
+        description: 蓋章日期
+      date_to_submit_fingermold:
+        type: string
+        description: 打指模日期
+      card_id:
+        type: string
+        description: 藍卡編號
+      cancel_date:
+        type: string
+        description: 取消日期
+      original_user:
+        type: string
+        description: 原使用人
+      comment:
+        type: text
+        description: 備注
+      card_attachments:
+        type: array
+        items:
+           type: object
+           description: 附件的参数数组每一条包括:{attachment_id,file_name,category,comment}
+      card_histories:
+        type: array
+        items:
+           type: object
+           description: 藍卡歷史的参数数组每一条包括:{certificate_valid_date, new_or_renew, card_valid_date, new_approval_valid_date, date_to_get_card}
+
+  CardProfilesListData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID
+            photo_id:
+              type: integer
+              description: 照片id
+            empo_chinese_name:
+              type: string
+              description: 中文名
+            empo_english_name:
+              type: string
+              description: 英文名
+            empoid:
+              type: string
+              description: 員工編號
+            entry_date:
+              type: string
+              description: 入職日期
+            sex:
+              type: string
+              description: 性別
+            nation:
+              type: string
+              description: 國籍
+            status:
+              type: string
+              description: 蓝卡狀態
+            approved_job_name:
+              type: string
+              description: 獲批職位名称
+            approved_job_number:
+              type: string
+              description: 獲批職位編號
+            allocation_company:
+              type: string
+              description: 配額所屬公司
+            allocation_valid_date:
+              type: string
+              description: 配額失效日期
+            approval_id:
+              type: string
+              description: 批示號
+            report_salary_count:
+              type: integer
+              description: 報政府薪金數量
+            report_salary_unit:
+              type: string
+              description: 報政府薪金單位
+            labor_company:
+              type: string
+              description: 所屬勞務公司
+            date_to_submit_data:
+              type: string
+              description: 員工交資料給勞務日期
+            new_or_renew:
+              type: string
+              description: 新辦證/續期
+            certificate_type:
+              type: string
+              description: 證件類型
+            certificate_valid_date:
+              type: string
+              description: 證件有效期
+            date_to_submit_fingermold:
+              type: string
+              description: 打指模日期
+            date_to_get_card:
+              type: string
+              description: 取卡日期
+            card_id:
+              type: string
+              description: 藍卡編號
+            card_valid_date:
+              type: string
+              description: 藍卡有效期
+            cancel_date:
+              type: string
+              description: 取消日期
+            new_approval_valid_date:
+              type: string
+              description: 新批示有效期
+
+  UpdateParams:
+    type: object
+    properties:
+      approved_job_number:
+        type: string
+        description: 獲批職位編號
+      approval_valid_date:
+        type: string
+        description: 批示有效期
+      approved_number:
+        type: integer
+        description: 獲批人數
+      allocation_valid_date:
+        type: string
+        description: 配額失效日期
+
+  CreateParams:
+    type: object
+    properties:
+      approved_job_id:
+        type: string
+        required: true
+        description: 獲批職位的id
+      approved_job_number:
+        type: string
+        required: true
+        description: 獲批職位的编号
+      approval_valid_date:
+        type: string
+        required: true
+        description: 批示有效期
+      approved_number:
+        type: integer
+        required: true
+        description: 獲批人數
+      allocation_valid_date:
+        type: string
+        required: true
+        description: 配額失效日期
+
+  ApprovedJobsListData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID
+            number:
+              type: integer
+              description: 數量
+            approved_job_name:
+              type: string
+              description: 獲批職位名称
+            report_salary_count:
+              type: string
+              description: 報政府薪金數量
+            report_salary_unit:
+              type: string
+              description: 報政府薪金單位
+
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_page:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+
+  EmpoCardsListData:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: ID
+              approved_job_name:
+                type: string
+                description: 獲批職位名称
+              approved_job_id:
+                type: string
+                description: 獲批職位的id
+              approved_job_number:
+                type: string
+                description: 獲批職位編號
+              approval_valid_date:
+                type: date
+                description: 批示有效期
+              report_salary_count:
+                type: integer
+                description: 報政府薪金數量
+              report_salary_unit:
+                type: string
+                description: 報政府薪金單位
+              allocation_valid_date:
+                type: date
+                description: 配額失效日期
+              approved_number:
+                type: integer
+                description: 獲批人數
+              used_number:
+                type: integer
+                description: 已打指模人數
+              operator_name:
+                type: string
+                description: 經手人
+              updated_at:
+                type: date
+                description: 修改日期
+

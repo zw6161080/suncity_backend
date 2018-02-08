@@ -1,0 +1,423 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 用户排更设定
+
+# Describe your paths here
+paths:
+  /rosters/{roster_id}/shift_user_settings:
+    get:
+      description: 获取某排班表的用户排更设定列表
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段。默认empoid
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序增减（desc/asc）。默认desc
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: '职位id'
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: '员工编号'
+        - name: date_of_employment
+          in: query
+          required: false
+          type: string
+          description: '入职日期（2017/05/06）'
+        - name: name
+          in: query
+          required: false
+          type: string
+          descripiton: '姓名'
+      responses:
+        200:
+          description:  获取某排班表的用户排更设定
+          schema:
+            $ref: '#/definitions/ListData'
+
+    post:
+      description: 创建某排班表的用户排更设定
+      parameters:
+        - name: roster_id
+          in: query
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_user_setting_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/ShiftUserSettingCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+    patch:
+      description: 创建某排班表的用户排更设定
+      parameters:
+        - name: roster_id
+          in: query
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_user_setting_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/ShiftUserSettingCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}:
+    get:
+      description: 获取某条设定详细
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+    delete:
+      description: 删除某条设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+            
+  /rosters/{roster_id}/shift_user_settings/{id}/add_shifts:
+    patch:
+      description: 添加到 本月排班设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+        - name: shift_ids
+          in: body
+          type: array
+          items:
+            type: integer
+            description: shift id
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}/remove_shifts:
+    patch:
+      description: 移除 本月排班设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+        - name: shift_ids
+          in: body
+          type: array
+          items:
+            type: integer
+            description: shift id
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}/update_shift_special_item:
+    patch:
+      description: 更新 时间段的 特殊排班设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+        - name: shift_special_item_key
+          in: body
+          type: string
+          description: 某个时间段的主键hash
+        - name: shift_special_item
+          in: body
+          type: object
+          properties:
+            from:
+              type: string
+              description: 时间(2016-1-1)
+            to:
+              type: string
+              description: 时间(2016-1-2)
+            shift_ids:
+              type: array
+              items:
+                type: integer
+              description: shift id
+          description: 新的值
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}/add_rests:
+    patch:
+      description: 添加 公休设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+        - name: wdays
+          in: body
+          type: array
+          items:
+            type: integer
+            description: 周几
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}/remove_rests:
+    patch:
+      description: 删除 公休设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+        - name: wdays
+          in: body
+          type: array
+          items:
+            type: integer
+            description: 周几
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}/update_rest_special_item:
+    patch:
+      description: 更新 时间段的 特殊排班设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+        - name: rest_special_item_key
+          in: body
+          type: string
+          description: 某个时间段的主键hash
+        - name: rest_special_item
+          in: body
+          type: object
+          properties:
+            from:
+              type: string
+              description: 时间(2016-1-1)
+            to:
+              type: string
+              description: 时间(2016-1-2)
+            wdays:
+              type: array
+              items:
+                type: integer
+              description: 周几
+          description: 新的值
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}/empty_settings:
+    patch:
+      description: 清空设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+    responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_user_settings/{id}/dup_from_previous:
+    patch:
+      description: 复制上月设定
+      parameters:
+        - name: roster_id
+          in: query
+          type: integer
+          description: roster id
+        - name: id
+          in: query
+          type: integer
+          description: 设定记录id
+    responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+definitions:
+  ShiftUserSettingCreateParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: UserID
+      shift_interval:
+        type: array
+        items:
+          type: integer
+        description: 本月排班 shift id 数组
+      rest_interval:
+        type: array
+        items:
+          type: integer
+        description: 本月公休数组 （1：周一， 2：周二 ... 6周六， 0:周日）
+      shift_special:
+        type: array
+        items:
+          type: object
+          properties:
+            from:
+              type: string
+              description: 时间(2016-1-1)
+            to:
+              type: string
+              description: 时间(2016-1-2)
+            shift_ids:
+              type: array
+              items:
+                type: integer
+              description: shift id
+        description: 排班特殊时间段
+      rest_special:
+        type: array
+        items:
+          type: object
+          properties:
+            from:
+              type: string
+              description: 时间(2016-1-1)
+            to:
+              type: string
+              description: 时间(2016-1-2)
+            wdays:
+              type: array
+              items:
+                type: integer
+              description: 星期（1：周一， 2：周二 ... 6周六， 0:周日）
+        description: 公休特殊时间段
+    description: 用户排更设定中文名称
+  ListData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            empoid:
+              type: string
+              description: '员工编号'
+            name:
+              type: string
+              description: '姓名'
+            date_of_employment:
+              type: string
+              descripiton: '入职日期'
+            position:
+              type: object
+              description: '员工职位'
+
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

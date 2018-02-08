@@ -1,0 +1,69 @@
+en:
+  occupation_tax_items:
+    file_name: Occuption tax report
+  statement_columns:
+    occupation_tax_items:
+      employee_id: ID
+      chinese_name: Chinese Name
+      english_name: English Name
+      employee_name: Name
+      department: Department
+      position: Position
+      type_of_id: Type of ID
+      id_number: ID Card No.
+      tax_number: Tax number
+      career_entry_date: Entry Date
+      resigned_date: Resigned Date
+      double_pay_bonus_and_award: Double pay/Bonus/Attendance bonus
+      month_1_company: Month 1 Company name
+      month_1_income_mop: Month 1 Income (MOP)
+      month_1_tax_mop: Month 1 Tax (MOP)
+      month_2_company: Month 2 Company name
+      month_2_income_mop: Month 2 Income (MOP)
+      month_2_tax_mop: Month 2 Tax (MOP)
+      month_3_company: Month 3 Company name
+      month_3_income_mop: Month 3 Income (MOP)
+      month_3_tax_mop: Month 3 Tax (MOP)
+      quarter_1_income_mop: Quarter 1 Income (MOP)
+      quarter_1_tax_mop_before_adjust: Quarter 1 Tax (Before Adjust) (MOP)
+      quarter_1_tax_mop_after_adjust: Quarter 1 Tax (After Adjust) (MOP)
+      month_4_company: Month 4 Company name
+      month_4_income_mop: Month 4 Income (MOP)
+      month_4_tax_mop: Month 4 Tax (MOP)
+      month_5_company: Month 5 Company name
+      month_5_income_mop: Month 5 Income (MOP)
+      month_5_tax_mop: Month 5 Tax (MOP)
+      month_6_company: Month 6 Company name
+      month_6_income_mop: Month 6 Income (MOP)
+      month_6_tax_mop: Month 6 Tax (MOP)
+      quarter_2_income_mop: Quater 2 Income (MOP)
+      quarter_2_tax_mop_before_adjust: Quarter 2 Tax (Before Adjust) (MOP)
+      quarter_2_tax_mop_after_adjust: Quarter 2 Tax (After Adjust) (MOP)
+      month_7_company: Month 7 Company name
+      month_7_income_mop: Month 7 Income (MOP)
+      month_7_tax_mop: Month 7 Tax (MOP)
+      month_8_company: Month 8 Company name
+      month_8_income_mop: Month 8 Income (MOP)
+      month_8_tax_mop: Month 8 Tax (MOP)
+      month_9_company: Month 9 Company name
+      month_9_income_mop: Month 9 Income (MOP)
+      month_9_tax_mop: Month 9 Tax (MOP)
+      quarter_3_income_mop: Quarter 3 Income (MOP)
+      quarter_3_tax_mop_before_adjust: Quarter 3 Tax (Before Adjust) (MOP)
+      quarter_3_tax_mop_after_adjust: Quarter 3 Tax (After Adjust) (MOP)
+      month_10_company: Month 10 Company name
+      month_10_income_mop: Month 10 Income (MOP)
+      month_10_tax_mop: Month 10 Tax (MOP)
+      month_11_company: Month 11 Company name
+      month_11_income_mop: Month 11 Income (MOP)
+      month_11_tax_mop: Month 11 Tax (MOP)
+      month_12_company: Month 12 Company name
+      month_12_income_mop: Month 12 Income (MOP)
+      month_12_tax_mop: Month 12 Tax (MOP)
+      quarter_4_income_mop: Quarter 4 Income (MOP)
+      quarter_4_tax_mop_before_adjust: Quarter 4 Tax (Before Adjust) (MOP)
+      year_income_mop: Year Income (MOP)
+      year_payable_tax_mop: Year Payable Tax (MOP)
+      year_paid_tax_mop: Year Paid Tax (MOP)
+      quarter_4_tax_mop_after_adjust: Quarter 4 Tax (After Adjust) (MOP)
+      comment: Remarks

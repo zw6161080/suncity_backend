@@ -1,0 +1,99 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 假期结余报表
+
+# Describe your paths here
+paths:
+  /holidays_remaining/index:
+    get:
+      description: 获取一页假期结余列表
+      tags:
+        - 假期结余
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: string
+          description: 查询的页面编号
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: holiday_type
+          in: query
+          required: false
+          type: string
+          description: 查询结余假期的类型
+        - name: year_before_remained
+          in: query
+          required: false
+          type: string
+          description: 查询前年剩余该类型的假期天数的列表
+        - name: last_year_remained
+          in: query
+          required: false
+          type: string
+          description: 查询去年剩余该类型的假期天数的列表
+        - name: this_year_remained
+          in: query
+          required: false
+          type: string
+          description: 查询今天年剩余该类型的假期天数的列表
+        - name: this_year_used
+          in: query
+          type: string
+          description: 查询今天已经申请该类型的假期天数的列表
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+      responses:
+        200:
+          description: 成功响应
+  /holidays_remaining/field_options:
+    get:
+      description: 获取假假期结余列表可供筛选的字段
+      tags:
+        - 假期结余
+      responses:
+        200:
+          description: 成功响应
+  /holidays_remaining/export:
+    get:
+      description: 导出当前假期结余的记录列表
+      tags:
+        - 假期结余
+      responses:
+        200:
+          description: 成功响应
+
+
+

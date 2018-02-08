@@ -1,0 +1,125 @@
+options:
+  - url: rosters
+    name: 排班表
+  - url: attendance_states
+    name: 考勤状态
+  - url: shifts
+    name: 更组
+  - url: shift_employee_count_settings
+    name: 班别设定排班
+  - url: shift_groups
+    name: 更组设定
+  - url: shift_user_settings
+    name: 用户排更设定
+  - url: revise_clocks
+    name: 修订考勤记录
+  - url: over_times
+    name: 加班
+  - url: absenteeisms
+    name: 旷工
+  - url: holidays
+    name: 假期
+  - url: holiday_reports
+    name: 休假記錄
+  - url: holidays_approve
+    name: 假期審批
+  - url: holidays_remaining
+    name: 假期结余报表
+  - url: public_holidays
+    name: 假日定义
+  - url: holiday_switches
+    name: 调更调休
+  - url: immediate_leaves
+    name: 即告
+  - url: over_time_reports
+    name: 加班记录报表
+  - url: welfare_templates
+    name: 福利模板
+  - url: salary_template
+    name: 薪酬模板
+  - url: new_profiles
+    name: 新增档案接口
+  - url: paid_sick_leave_award_reports
+    name: 有薪病假奖励假报表
+  - url: annual_work_award_reports
+    name: 全年勤工獎報表
+  - url: sign_card_reports
+    name: 签卡记录報表
+  - url: welfare_for_typhoon_reports
+    name: 台风津贴报表
+  - url: borrow_time
+    name: 借钟还钟
+  - url: lankas
+    name: 蓝卡
+  - url: job_transfer
+    name: 职位调配
+  - url: pass_trials
+    name: 通过试用期
+  - url: pass_entry_trials
+    name: 通过入职试用期
+  - url: special_assessments
+    name: 特别评估
+  - url: assessment_questionnaire_items
+    name: 通过试用期问卷
+  - url: transfer_position_apply_by_employees
+    name: 调职申请（员工发起）
+  - url: transfer_position_apply_by_departments
+    name: 调职申请（部门发起）
+  - url: transfer_location_applies
+    name: 调館申请
+  - url: lent_temporarily_applies
+    name: 暂借申请
+  - url: dimissions
+    name: 离职
+  - url: staff_feedbacks
+    name: 员工意见及投诉
+  - url: punishments
+    name: 纪律处分申请
+  - url: float_salaries
+    name: 浮动薪金
+  - url: provident_fund
+    name: 公积金
+  - url: suncity_charity
+    name: 太阳城爱心基金
+  - url: medical_information
+    name: 医疗信息
+  - url: love_funds
+    name: 爱心基金
+  - url: medical_insurance
+    name: 医疗
+  - url: goods_managements
+    name: 物品管理
+  - url: train
+    name: 培训
+  - url: train_template
+    name: 培训模板
+  - url: new_profile1
+    name: 培训档案相关
+  - url: contributions
+    name: 公积金供款报表
+  - url: departure_employee_taxpayer_numbering_report_items
+    name: 離職僱員納稅人編號表
+  - url: refactor_of_profile
+    name: 档案重构
+  - url: salary_column_template
+    name: 薪酬表头模板
+  - url: month_salary_report
+    name: 在职员工每月薪酬
+  - url: pay_slip
+    name: 工资单
+  - url: annual_award_report
+    name: 年度奖金
+  - url: salary_values
+    name: 薪金值
+  - url: occupation_tax_items
+    name: 职业税
+  - url: organizational_structure
+    name: 组织架构
+  - url: new_applicant_profiles
+    name: 新申请者档案
+  - url: alter_roster
+    name: 排序考勤接口修復補充
+  - url: my_attachments
+    name: 我的文件
+
+

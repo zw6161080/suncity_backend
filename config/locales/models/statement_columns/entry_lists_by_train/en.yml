@@ -1,0 +1,19 @@
+en:
+  entry_lists_by_train:
+    entry_list: Attendance sheet
+  statement_columns:
+    entry_lists_by_train:
+      registration_time: Registration time
+      empoid: ID
+      name: Name
+      department: Department
+      position: Position
+      is_can_be_absent: Whether to exempt absence
+      working_status: State during the traing
+      title: Training classes
+      is_in_working_time: Whether to train at work time
+      registration_status: Registration status
+      creator_name: Applicant name
+      creator_department: Applicant department
+      creator_position: Applicant position
+      change_reason: Change reason

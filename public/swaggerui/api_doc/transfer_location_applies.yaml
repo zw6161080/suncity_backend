@@ -1,0 +1,312 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 调館申请
+
+# Describe your paths here
+paths:
+  /job_transfers/transfer_location_applies:
+    post:
+      description: 创建调館申请
+      tags:
+        - 创建调館申请
+      parameters:
+        - name: transfer_location_apply_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/TransferLocationApplyCreateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /job_transfers/transfer_location_applies/{transfer_location_apply_id}:
+    get:
+      description: 获取调館申请详情
+      tags:
+        - 调館申请记录
+      parameters:
+        - name: transfer_location_apply_id
+          in: path
+          required: true
+          type: integer
+          description: 调館申请ID
+      responses:
+        200:
+          description: 响应调館申请详情
+          schema:
+            $ref: '#/definitions/TransferLocationApplyData'
+
+definitions:
+  TransferLocationApplyCreateParams:
+    type: object
+    properties:
+      region:
+        type: string
+        description: 地区
+      apply_date:
+        type: string
+        description: 申请日期
+      comment:
+        type: string
+        description: 备注
+
+      transfer_location_items:
+        type: array
+        items:
+          type: object
+          properties:
+            region:
+              type: string
+              description: 地区
+            user_id:
+              type: integer
+              description: 員工id
+            transfer_date:
+              type: string
+              description: 调配日期
+            transfer_location_id:
+              type: integer
+              description: 调配场馆 id
+            salary_calculation:
+              type: string
+              description: 薪酬模版 key (adjust_the_salary_to_adjust_the_proportion_of_the_month, do_not_adjust_the_salary, adjustments_are_not_adjusted_in_proportion_to_the_remuneration_of_month)
+            comment:
+              type: string
+              description: 备注
+        description: 调馆信息
+      approval_items:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 审批人id
+            datetime:
+              type: string
+              description: 审批时间 yyyy-mm-dd
+            comment:
+              type: string
+              description: 审批建议
+        description: 创建审批记录
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+              description: 附件名称 '1.jpg'
+            comment:
+              type: string
+              description: 附件备注 'test comment'
+            attachment_id:
+              type: integer
+              description: 附件id
+        description: 记录附件
+
+  TransferLocationApplyData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          region:
+            type: string
+            description: 地区
+          creator_id:
+            type: integer
+            description: 创建者的user_id
+          apply_date:
+            type: string
+            description: 申请日期
+          comment:
+            type: string
+            description: 备注
+
+          approval_items:
+            type: array
+            items:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 审批人id
+                datetime:
+                  type: string
+                  description: 审批时间
+                comment:
+                  type: string
+                  description: 审批建议
+            description: 创建审批记录
+
+          attend_attachments:
+            type: array
+            items:
+              type: object
+              properties:
+                file_name:
+                  type: string
+                  description: 附件名称 '1.jpg'
+                comment:
+                  type: string
+                  description: 附件备注 'test comment'
+                attachment_id:
+                  type: integer
+                  description: 附件id
+            description: 记录附件
+
+          transfer_location_items:
+            type: array
+            items:
+              type: object
+              properties:
+                region:
+                  type: string
+                  description: 地区
+                user_id:
+                  type: integer
+                  description: 員工id
+                transfer_date:
+                  type: string
+                  description: 调配日期
+                transfer_location_id:
+                  type: integer
+                  description: 调配场馆 id
+                salary_calculation:
+                  type: string
+                  description: 薪酬计算(adjust_the_salary_to_adjust_the_proportion_of_the_month, do_not_adjust_the_salary, adjustments_are_not_adjusted_in_proportion_to_the_remuneration_of_month)
+                comment:
+                  type: string
+                  description: 备注
+                transfer_location:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: 场馆 id
+                    chinese_name:
+                      type: string
+                      description: 名称
+                    english_name:
+                      type: string
+                      description: 名称
+                    simple_chinese_name:
+                      type: string
+                      description: 名称
+                  description: 调配场馆信息（此处文档仅列出主要信息）
+
+                # salary_template:
+                #   type: object
+                #   properties:
+                #     id:
+                #       type: integer
+                #       description: 薪酬模版 id
+                #     chinese_name:
+                #       type: string
+                #       description: 名称
+                #     english_name:
+                #       type: string
+                #       description: 名称
+                #     simple_chinese_name:
+                #       type: string
+                #       description: 名称
+                #   description: 薪酬信息（此处文档仅列出主要信息）
+
+                user:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: 用户 id
+                    chinese_name:
+                      type: string
+                      description: 姓名
+                    english_name:
+                      type: string
+                      description: 姓名
+                    simple_chinese_name:
+                      type: string
+                      description: 姓名
+                    grade:
+                      type: string
+                      description: 职级
+                    location:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: location id
+                        chinese_name:
+                          type: string
+                          description: 名称
+                        english_name:
+                          type: string
+                          description: 名称
+                        simple_chinese_name:
+                          type: string
+                          description: 名称
+                      description: 场馆信息（此处文档仅列出主要信息）
+                    department:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: department id
+                        chinese_name:
+                          type: string
+                          description: 名称
+                        english_name:
+                          type: string
+                          description: 名称
+                        simple_chinese_name:
+                          type: string
+                          description: 名称
+                      description: 部门信息（此处文档仅列出主要信息）
+
+                    position:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: position id
+                        chinese_name:
+                          type: string
+                          description: 名称
+                        english_name:
+                          type: string
+                          description: 名称
+                        simple_chinese_name:
+                          type: string
+                          description: 名称
+                      description: 职位信息（此处文档仅列出主要信息）
+                  description: 用户信息（此处文档仅列出主要信息）
+
+            description: 创建审批记录
+
+          creator:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 创建者 id
+              chinese_name:
+                type: string
+                description: 姓名
+              english_name:
+                type: string
+                description: 姓名
+              simple_chinese_name:
+                type: string
+                description: 姓名
+              grade:
+                type: string
+                description: 职级
+            description: 创建者信息（此处文档仅列出主要信息）

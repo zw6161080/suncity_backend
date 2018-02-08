@@ -1,0 +1,175 @@
+followups:
+  - key: return_employee_manual
+    chinese_name: 歸還員工手冊
+    english_name: Return staff manual
+    simple_chinese_name: 归还员工手册
+  - key: return_employee_card
+    chinese_name: 歸還員工名牌
+    english_name: Return staff brand name
+    simple_chinese_name: 归还员工名牌
+  - key: return_employee_credential
+    chinese_name: 歸還太陽城員工證
+    english_name: Return the sun city staff certificate
+    simple_chinese_name: 归还太阳城员工证
+  - key: return_employee_uniform
+    chinese_name: 歸還員工制服
+    english_name: Return staff uniform
+    simple_chinese_name: 归还员工制服
+  - key: uniform_fee
+    only_dimission_type: resignation
+    chinese_name: 制服費
+    english_name: Uniform cost
+    simple_chinese_name: 制服费
+  - key: return_gambling_house_employee_credential
+    chinese_name: 歸還賭場員工工作證
+    english_name: Return casino staff work permit
+    simple_chinese_name: 归还赌场员工工作证
+  - key: return_employee_passport
+    chinese_name: 歸還員工護照
+    english_name: Return staff passport
+    simple_chinese_name: 归还员工护照
+  - key: return_mobile_phone
+    chinese_name: 歸還公司手提電話
+    english_name: Return the company's mobile phone
+    simple_chinese_name: 归还公司手提电话
+  - key: return_electronic_equipment
+    chinese_name: 歸還公司電子器材
+    english_name: Return the company's electronic equipment
+    simple_chinese_name: 归还公司电子器材
+  - key: clear_storage_box
+    chinese_name: 清空貯物櫃
+    english_name: Clear the lockers
+    simple_chinese_name: 清空贮物柜
+  - key: cancel_company_email
+    chinese_name: 取消公司電郵
+    english_name: Cancel company email
+    simple_chinese_name: 取消公司电邮
+  - key: square_up_last_salary
+    chinese_name: 記清尾期薪酬
+    english_name: Remember the remuneration of the last month
+    simple_chinese_name: 记清尾期薪酬
+  - key: check_up_profile
+    chinese_name: 檢查個人資料檔案
+    english_name: Check your profile file
+    simple_chinese_name: 检查个人资料档案
+  - key: others
+    chinese_name: 其他
+    english_name: Others
+    simple_chinese_name: 其他
+
+resignation_reasons:
+  - key: lack_of_opportunities
+    chinese_name: 缺乏發展空間/晉升空間
+    english_name: Lack of development space / promotion opportunities
+    simple_chinese_name: 缺乏发展空间/晋升空间
+  - key: health_reason
+    chinese_name: 健康問題
+    english_name: Health problems
+    simple_chinese_name: 健康问题
+  - key: family_or_immigrant
+    chinese_name: 家庭因素或移民
+    english_name: Family factors or immigration
+    simple_chinese_name: 家庭因素或移民
+  - key: work_manner_shift
+    chinese_name: 工作模式/輪班
+    english_name: Working mode / shift
+    simple_chinese_name: 工作模式/轮班
+  - key: work_mismatch
+    chinese_name: 工作錯配
+    english_name: Work mismatch
+    simple_chinese_name: 工作错配
+  - key: work_pressure
+    chinese_name: 工作壓力/工作量
+    english_name: Working pressure / work load
+    simple_chinese_name: 工作压力/工作量
+  - key: work_envionment
+    chinese_name: 工作環境
+    english_name: Working environment
+    simple_chinese_name: 工作环境
+  - key: better_salary_from_other_company
+    chinese_name: 其他公司提供更優厚待遇
+    english_name: Other companies offer more favorable treatment
+    simple_chinese_name: 其他公司提供更优厚待遇
+  - key: colleague_relation
+    chinese_name: 上司、同事之間關系
+    english_name: The relationship between the boss and the colleague
+    simple_chinese_name: 上司、同事之间关系
+  - key: career_transition
+    chinese_name: 轉換職業
+    english_name: Conversion career
+    simple_chinese_name: 转换职业
+  - key: studies
+    chinese_name: 升學
+    english_name: To study
+    simple_chinese_name: 升学
+  - key: no_opinion
+    chinese_name: 沒有意見（拒絕回應）
+    english_name: No comments (refusal to respond)
+    simple_chinese_name: 没有意见（拒绝回应）
+  - key: others
+    chinese_name: 其他
+    english_name: Others
+    simple_chinese_name: 其他
+
+resignation_future_plans:
+  - key: other_local_company
+    chinese_name: 其他本地公司
+    english_name: Other local companies
+    simple_chinese_name: 其他本地公司
+  - key: other_local_gambling_house
+    chinese_name: 其他本地賭廳/賭場
+    english_name: Other local gambling / casino
+    simple_chinese_name: 其他本地赌厅/赌场
+  - key: out_of_macau
+    chinese_name: 離開澳門
+    english_name: Leave Macau
+    simple_chinese_name: 离开澳门
+  - key: not_clear
+    chinese_name: 不詳
+    english_name: Unknown
+    simple_chinese_name: 不详
+  - key: other
+    chinese_name: 其他
+    english_name: Others
+    simple_chinese_name: 其他
+
+
+resignation_certificate_languages:
+  - key: chinese
+    chinese_name: 中文
+    english_name: Chinese
+    simple_chinese_name: 繁体中文
+  - key: english
+    chinese_name: 英文
+    english_name: English
+    simple_chinese_name: 英文
+
+termination_reasons:
+  - key: improper_action
+    chinese_name: 行爲不當
+    english_name: Improper behavior
+    simple_chinese_name: 行为不当
+  - key: termination_of_contract
+    chinese_name: 合約完結
+    english_name: Contract ends
+    simple_chinese_name: 合约完结
+  - key: poor_performance
+    chinese_name: 工作表現欠佳
+    english_name: Poor performance
+    simple_chinese_name: 工作表现欠佳
+  - key: bribe_taking
+    chinese_name: 私受茶資/饋贈
+    english_name: Private tea / gift
+    simple_chinese_name: 私受茶资/馈赠
+  - key: run_out_of_credit
+    chinese_name: 紀律記分用畢
+    english_name: Disciplinary runs out
+    simple_chinese_name: 纪律记分用毕
+  - key: not_pass_trial_period
+    chinese_name: 無法通過試用期
+    english_name: Can not pass the probation period
+    simple_chinese_name: 无法通过试用期
+  - key: other
+    chinese_name: 其他
+    english_name: Others
+    simple_chinese_name: 其他

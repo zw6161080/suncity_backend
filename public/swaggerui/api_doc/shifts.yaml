@@ -1,0 +1,138 @@
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 班别
+
+# Describe your paths here
+paths:
+  /rosters/{roster_id}/shifts:
+    get:
+      description: 班别列表
+      tags:
+        - 班别
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+    post:
+      description: 创建班别
+      tags:
+        - 班别
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/ShiftCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shifts/{id}:
+    patch:
+      description: 更新班别
+      tags:
+        - 班别
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 班别ID
+        - name: shift_params
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#/definitions/ShiftUpdateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+definitions:
+  ShiftCreateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 班别中文名称
+      english_name:
+        type: string
+        description: 班别中文名称
+      start_time:
+        type: boolean
+        description: 开始时间
+      end_time:
+        type: string
+        description: 结束时间
+      time_length:
+        type: integer
+        description: 时长
+      allow_be_late_minute:
+        type: integer
+        description: 可迟到分钟
+      allow_leave_early_minute:
+        type: integer
+        description: 可早退分钟
+
+  ShiftUpdateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 班别中文名称
+      english_name:
+        type: string
+        description: 班别中文名称
+      start_time:
+        type: boolean
+        description: 开始时间
+      end_time:
+        type: string
+        description: 结束时间
+      time_length:
+        type: integer
+        description: 时长
+      allow_be_late_minute:
+        type: integer
+        description: 可迟到分钟
+      allow_leave_early_minute:
+        type: integer
+        description: 可早退分钟
+
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

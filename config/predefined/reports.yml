@@ -1,0 +1,134 @@
+attendance_report:
+  chinese_name: 考勤結算報表
+  english_name: Attendance settlement report
+  simple_chinese_name: 考勤结算报表
+  url_type: by_setting
+  rows_url: /attendance_month_report_items
+  columns_url: /attendance_month_report_items/columns
+  options_url: /attendance_month_report_items/options
+
+accounting_statement_report:
+  chinese_name: 会计月结报表
+  english_name: Accounting statement report
+  simple_chinese_name: 会计月结报表
+  url_type: by_setting
+  rows_url: /accounting_statement_month_items
+  columns_url: /accounting_statement_month_items/columns
+  options_url: /accounting_statement_month_items/options
+
+payroll_report:
+  chinese_name: 工資單
+  english_name: Payroll
+  simple_chinese_name: 工资单
+  url_type: by_setting
+  rows_url: /payroll_items
+  columns_url: /payroll_items/columns
+  options_url: /payroll_items/options
+
+dimission_salary_report:
+  chinese_name: 離職尾期薪金
+  english_name: Dimission Salary
+  simple_chinese_name: 离职尾期薪金
+  url_type: by_setting
+  rows_url: /dismission_salary_items
+  columns_url: /dismission_salary_items/columns
+  options_url: /dismission_salary_items/options
+
+annual_bonus_report:
+  chinese_name: 年度獎金
+  english_name: Annual Bonus
+  simple_chinese_name: 年度奖金
+  url_type: by_setting
+  rows_url: /annual_bonus_items
+  columns_url: /annual_bonus_items/columns
+  options_url: /annual_bonus_items/options
+
+social_security_fund_report:
+  chinese_name: 社會保障基金
+  english_name: Social Security Fund
+  simple_chinese_name: 社会保障基金
+  url_type: by_setting
+  rows_url: /social_security_fund_items
+  columns_url: /social_security_fund_items/columns
+  options_url: /social_security_fund_items/options
+
+occupation_tax_report:
+  chinese_name: 職業稅
+  english_name: Occupation Tax
+  simple_chinese_name: 职业税
+  url_type: by_setting
+  rows_url: /occupation_tax_items
+  columns_url: /occupation_tax_items/columns
+  options_url: /occupation_tax_items/options
+
+goods_category_report:
+  chinese_name: 物品類別管理
+  english_name: Goods Category Management
+  simple_chinese_name: 物品类别管理
+  url_type: by_setting
+  rows_url: /goods_categories
+  columns_url: /goods_categories/columns
+  options_url: /goods_categories/options
+
+goods_signing_report:
+  chinese_name: 物品簽收
+  english_name: Goods Receipt
+  simple_chinese_name: 物品签收
+  url_type: by_setting
+  rows_url: /goods_signings
+  columns_url: /goods_signings/columns
+  options_url: /goods_signings/options
+
+contribution_report:
+  chinese_name: 公積金供款報表
+  english_name: Contribution Table
+  simple_chinese_name: 公积金供款报表
+  url_type: by_setting
+  rows_url: /contribution_report_items
+  columns_url: /contribution_report_items/columns
+  options_url: /contribution_report_items/options
+
+employee_fund_switching_report:
+  chinese_name: 成員基金投資調配表
+  english_name: Employee Fund Switching Table
+  simple_chinese_name: 成员基金投资调配表
+  url_type: by_setting
+  rows_url: /employee_fund_switching_report_items
+  columns_url: /employee_fund_switching_report_items/columns
+  options_url: /employee_fund_switching_report_items/options
+
+employee_redemption_report:
+  chinese_name: 成員基金贖回表
+  english_name: Employee Redemption Table
+  simple_chinese_name: 成员基金赎回表
+  url_type: by_setting
+  rows_url: /employee_redemption_report_items
+  columns_url: /employee_redemption_report_items/columns
+  options_url: /employee_redemption_report_items/options
+
+departure_employee_taxpayer_numbering_report:
+  chinese_name: 離職僱員納稅人編號表
+  english_name: Departure Employee Taxpayer Numbering Table
+  simple_chinese_name: 离职雇员纳税人编号表
+  url_type: by_setting
+  rows_url: /departure_employee_taxpayer_numbering_report_items
+  columns_url: /departure_employee_taxpayer_numbering_report_items/columns
+  options_url: /departure_employee_taxpayer_numbering_report_items/options
+
+bank_auto_pay_report:
+  chinese_name: 銀行自動轉賬報表
+  english_name: Bank Auto Pay Report
+  simple_chinese_name: 银行自动转账报表
+  url_type: by_setting
+  rows_url: /bank_auto_pay_report_items
+  columns_url: /bank_auto_pay_report_items/columns
+  options_url: /bank_auto_pay_report_items/options
+
+training_absentee_report:
+  chinese_name: 培訓缺席記錄列表
+  english_name: Training absence record list
+  simple_chinese_name: 培训缺席记录列表
+  url_type: by_setting
+  rows_url: /training_absentees
+  columns_url: /training_absentees/columns
+  options_url: /training_absentees/options

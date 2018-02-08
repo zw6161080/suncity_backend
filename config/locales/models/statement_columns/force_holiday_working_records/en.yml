@@ -1,0 +1,15 @@
+en:
+  force_holiday_working_records:
+    file_name: force_holiday_working_report
+  statement_columns:
+    force_holiday_working_records:
+      empoid: NO.
+      name: Name
+      department: Department
+      position: Position
+      date_of_employment: Date of employment
+      force_holiday_working_date: Date
+      origin_working_range: Origin work range
+      origin_working_hours: Origin hours
+      real_working_hours: Real hours
+

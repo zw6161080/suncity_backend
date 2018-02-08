@@ -1,0 +1,383 @@
+provident_fund_member_report_items:
+  columns:
+    - key: participation_date
+      value_type: date_value
+      value_format: 'yyyy/mm/dd'
+      date_value_format: '%Y/%m/%d'
+      data_index: participation_date
+      search_type: null
+      sorter: false
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: chinese_name
+      value_type: string_value
+      data_index: user.chinese_name
+      search_type: search
+      sorter: true
+      search_attirbute: user.chinese_name
+
+    - key: english_name
+      value_type: string_value
+      data_index: user.english_name
+      search_type: search
+      sorter: true
+      search_attribute: user.english_name
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: grade
+      value_type: string_value
+      data_index: user.grade
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: grade_options
+      search_attribute: user.grade
+
+    - key: career_entry_date
+      value_type: date_value
+      data_index: profile.data.position_information.field_values.date_of_employment
+      value_format: yyyy/mm/dd
+      search_type: date
+      search_attribute: user.profile.position_information.date_of_employment
+      sorter: true
+
+    - key: date_of_birth
+      value_type: date_value
+      data_index: profile.data.personal_information.field_values.date_of_birth
+      search_type: date
+      search_attribute: user.profile.personal_information.date_of_birth
+      sorter: true
+
+    - key: gender
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.gender
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: gender_options
+      search_attribute: user.profile.personal_information.gender
+
+    - key: national
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.national
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: national_options
+      search_attribute: user.profile.personal_information.national
+
+    - key: place_of_birth
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.place_of_birth
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.place_of_birth
+
+
+    - key: mobile_number
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.mobile_number
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.mobile_number
+
+    - key: email
+      value_type: string_value
+      data_index: user.email
+      search_type: search
+      sorter: true
+      search_attribute: user.email
+
+    - key: address
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.address
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.address
+
+    - key: type_of_id
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.type_of_id
+      search_type: screen
+      sorter: true
+      search_attribute: user.profile.personal_information.type_of_id
+      options_type: selects
+      options_select_key: type_of_id
+
+    - key: certificate_issued_country
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.certificate_issued_country
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: nationality
+      search_attribute: user.profile.personal_information.certificate_issued_country
+
+    - key: id_number
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.id_number
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.id_number
+
+    - key: member_retirement_fund_number
+      value_type: string_value
+      data_index: profile.provident_fund.member_retirement_fund_number
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.member_retirement_fund_number
+
+    - key: tax_registration
+      value_type: string_value
+      data_index: profile.provident_fund.tax_registration
+      search_type: screen
+      options_type: selects
+      options_select_key: nationality
+      sorter: true
+      search_attribute: provident_fund.tax_registration
+
+    - key: tax_number
+      value_type: string_value
+      data_index: profile.data.personal_information.field_values.tax_number
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.tax_number
+
+    - key: icbc_account_number_mop
+      value_type: string_value
+      data_index: profile.provident_fund.icbc_account_number_mop
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.icbc_account_number_mop
+
+    - key: icbc_account_number_rmb
+      value_type: string_value
+      data_index: profile.provident_fund.icbc_account_number_rmb
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.icbc_account_number_rmb
+
+
+    - key: is_an_american
+      value_type: bool_value
+      data_index: is_an_american
+      serach_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: YES
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: NO
+          simple_chinese_name: 否
+      search_attribute: provident_fund.is_an_american
+
+    - key: has_permanent_resident_certificate
+      value_type: bool_value
+      data_index: has_permanent_resident_certificate
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: YES
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: NO
+          simple_chinese_name: 否
+      search_attribute: provident_fund.has_permanent_resident_certificate
+
+
+    - key: supplier
+      value_type: string_value
+      data_index: supplier
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: to_define
+          chinese_name: 待定
+          english_name: to_define
+          simple_chinese_name: 待定
+
+    - key: steady_growth_fund_percentage
+      value_type: string_value
+      data_index: profile.provident_fund.steady_growth_fund_percentage
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.steady_growth_fund_percentage
+
+    - key: steady_fund_percentage
+      value_type: string_value
+      data_index: profile.provident_fund.steady_fund_percentage
+      search_type: search
+      sorter: true
+      search_attribute: profile.provident_fund.steady_fund_percentage
+
+    - key: a_fund_percentage
+      value_type: string_value
+      data_index: profile.provident_fund.a_fund_percentage
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.a_fund_percentage
+
+    - key: b_fund_percentage
+      value_type: string_value
+      data_index: profile.provident_fund.b_fund_percentage
+      serach_type: search
+      soerter: true
+      search_attribute: provident_fund.b_fund_percentage
+
+    - key: employment_of_status
+      value_type: string_value
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: on_working
+          chinese_name: 在職
+          english_name: on_working
+          simple_chinese_name: 在职
+        - key: leave_out
+          chinese_name: 已離職
+          english_name: leave_out
+          simple_chinese_name: 已离职
+      sorter: true
+
+    - key: provident_fund_resignation_date
+      data_index: provident_fund_resignation_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      date_value_format: '%Y/%m/%d'
+      search_type: date
+      sorter: true
+      search_attribute: provident_fund.provident_fund_resignation_date
+
+    - key: provident_fund_resignation_reason
+      data_index: provident_fund_resignation_reason
+      value_type: string
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.provident_fund_resignation_reason
+
+    - key: first_beneficiary_name
+      value_type: string_value
+      data_index: first_beneficiary.name
+      search_type: null
+
+    - key: first_beneficiary_certificate_type
+      value_type: string_value
+      data_index: first_beneficiary.certificate_type
+      search_type: null
+      options_type: selects
+      options_select_key: type_of_id
+
+    - key: first_beneficiary_id_number
+      value_type: string_value
+      data_index: first_beneficiary.id_number
+      search_type: null
+
+    - key: first_beneficiary_relation
+      value_type: string
+      data_index: first_beneficiary.relationship
+      search_type: null
+
+    - key: first_beneficiaray_percentage
+      value_type: string
+      data_index: first_beneficiary.percentage
+      search_type: null
+
+    - key: first_beneficiary_address
+      value_type: string
+      data_index: first_beneficiary.address
+      search_type: null
+
+    - key: second_beneficiary_name
+      value_type: string_value
+      data_index: second_beneficiary.name
+      search_type: null
+
+    - key: second_beneficiary_certificate_type
+      value_type: string_value
+      data_index: second_beneficiary.certificate_type
+      search_type: null
+      options_type: selects
+      options_select_key: type_of_id
+
+    - key: second_beneficiary_id_number
+      value_type: string_value
+      data_index: second_beneficiary.id_number
+      search_type: null
+
+    - key: second_beneficiary_relation
+      value_type: string
+      data_index: second_beneficiary.relationship
+      search_type: null
+
+    - key: second_beneficiaray_percentage
+      value_type: string
+      data_index: second_beneficiary.percentage
+      search_type: null
+
+    - key: second_beneficiary_address
+      value_type: string
+      data_index: second_beneficiary.address
+      search_type: null
+    - key: third_beneficiary_name
+      value_type: string_value
+      data_index: third_beneficiary.name
+      search_type: null
+
+    - key: third_beneficiary_certificate_type
+      value_type: string_value
+      data_index: third_beneficiary.certificate_type
+      search_type: null
+      options_type: selects
+      options_select_key: type_of_id
+
+    - key: third_beneficiary_id_number
+      value_type: string_value
+      data_index: third_beneficiary.id_number
+      search_type: null
+
+    - key: third_beneficiary_relation
+      value_type: string
+      data_index: third_beneficiary.relationship
+      search_type: null
+
+    - key: third_beneficiaray_percentage
+      value_type: string
+      data_index: third_beneficiary.percentage
+      search_type: null
+
+    - key: third_beneficiary_address
+      value_type: string
+      data_index: third_beneficiary.address
+      search_type: null

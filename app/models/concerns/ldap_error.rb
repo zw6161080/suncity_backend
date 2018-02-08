@@ -1,0 +1,3 @@
+class LdapError < StandardError
+
+end

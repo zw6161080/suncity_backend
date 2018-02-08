@@ -1,0 +1,51 @@
+goods_categories:
+  columns:
+    - key: goods_name
+      value_type: obj_value
+      data_index: .
+      search_type: search
+      sorter: true
+      search_attribute: id
+
+    - key: unit
+      value_type: string_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: unit_options
+
+    - key: price_mop
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: distributed_count
+      value_type: number_value
+      search_type: search
+      data_index: distributed_count
+      sorter: true
+
+    - key: returned_count
+      value_type: number_value
+      search_type: search
+      data_index: returned_count
+      sorter: true
+
+    - key: unreturned_count
+      value_type: number_value
+      search_type: search
+      data_index: unreturned_count
+      sorter: true
+
+    - key: employee_name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+      search_attribute: user_id
+
+    - key: created_at
+      value_type: date_value
+      value_format: 'YYYY/MM/DD'
+      search_type: date
+      sorter: true

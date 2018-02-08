@@ -1,0 +1,14 @@
+en:
+  questionnaire_templates:
+    file_name: Questionnaire Template
+  statement_columns:
+    questionnaire_templates:
+      empoid: assessor_empoid
+      name: assessor_name
+      department: assessor_department
+      position: assessor_position
+      is_filled_in: is_filled_in
+      release_user: Releaser
+      release_date: Release date
+      comment: commit
+      submit_date: submit_date

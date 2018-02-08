@@ -1,0 +1,21 @@
+zh-CN:
+  education_informations:
+    file_name: 学历信息报表
+  statement_columns:
+    education_informations:
+      empoid: 员工编号
+      name: 姓名
+      location: 场馆
+      department: 部门
+      position: 职位
+      date_of_employment: 入职日期
+      leave_date: 离职日期
+      from_mm_yyyy: 由（月/年）入学
+      to_mm_yyyy: 由（月/年）毕业
+      college_university: 毕业院校
+      educational_department: 科系
+      graduate_level: 学历程度（如：初中/高中/大学）
+      diploma_degree_attained: 学位及专业
+      certificate_issue_date: 证书颁发日期
+      graduated: 是否毕业
+      highest: 是否最高学历

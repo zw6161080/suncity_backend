@@ -1,0 +1,22 @@
+en:
+  work_experences:
+    file_name: work_experiences_report
+  statement_columns:
+    work_experences:
+      empoid: ID
+      name: Name
+      location: Location
+      department: Department
+      position: Position
+      date_of_employment: Date of employment
+      leave_date: Leave date
+      company_organazition: Company
+      work_experience_position: Position
+      work_experience_from: From
+      work_experience_to: To
+      job_description: Content
+      work_experience_salary: Salary
+      work_experience_reason_for_leaving: Reason
+      work_experience_company_phone_number: Phone number
+      former_head: Header
+      work_experience_email: Email

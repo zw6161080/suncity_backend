@@ -1,0 +1,16 @@
+en:
+  professional_qualifications:
+    file_name: professional_qualifications
+  statement_columns:
+    professional_qualifications:
+      empoid: ID
+      name: Name
+      company_name: Company
+      location: Location
+      department: Department
+      position: Position
+      date_of_employment: Date of employment
+      leave_date: Leave date
+      professional_certificate: Professional certificate
+      orgnaization: Orgnaization
+      issue_date: Issue date

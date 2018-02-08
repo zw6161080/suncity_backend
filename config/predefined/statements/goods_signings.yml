@@ -1,0 +1,98 @@
+goods_signings:
+  columns:
+    - key: distribution_date
+      value_type: date_value
+      value_format: 'YYYY/MM/DD'
+      search_type: date
+      sorter: true
+
+    - key: goods_status
+      value_type: string_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: goods_status_options
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: employee_name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      value_format: null
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      value_format: null
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: career_entry_date
+      value_type: date_value
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      value_format: yyyy/mm/dd
+      search_type: date
+      search_attribute: user.profile.position_information.date_of_employment
+      sorter: true
+
+    - key: goods_category
+      value_type: obj_value
+      data_index: goods_category
+      search_type: search
+      sorter: true
+      search_attribute: goods_category_id
+      options_type: options
+      options_action: goods_category_options
+
+    - key: distribution_count_with_unit
+      value_type: string_value
+      search_type: search
+      data_index: distribution_count_with_unit
+      sorter: true
+      search_attribute: distribution_count
+
+    - key: distribution_total_value
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: sign_date
+      value_type: date_value
+      value_format: 'YYYY/MM/DD'
+      search_type: date
+      sorter: true
+
+    - key: return_date
+      value_type: date_value
+      value_format: 'YYYY/MM/DD'
+      search_type: date
+      sorter: true
+
+    - key: distributor
+      value_type: obj_value
+      search_type: search
+      sorter: true
+      search_attribute: distributor_id
+
+    - key: remarks
+      value_type: string_value
+      sorter: false

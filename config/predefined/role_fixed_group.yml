@@ -1,0 +1,81 @@
+admin_group:
+  chinese_name: 超級管理員組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 超級管理員組內成員擁有最高權限，可以在系統內查看所有數據，使用所有功能。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+recruit_group:
+  chinese_name: 招聘組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 招聘組內成員可以在公司的招聘過程中的進行資料管理、面試管理、簽約以及入職后的相關資料管理等。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+attendance_group:
+  chinese_name: 考勤組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 考勤組內成員可以對員工進行排班和考勤的設置以及日常的修訂和管理。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+payment_group:
+  chinese_name: 薪酬組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 薪酬組內成員可以對設定員工薪酬，管理愛心基金、醫療報銷、公積金以及員工每月薪酬和稅款。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+transfer_group:
+  chinese_name: 職位變動組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 職位變動組內成員可以管理員工的入職、通過試用期、調職、調館、暫借、離職等業務。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+#id 爲6
+blue_card_group:
+  chinese_name: 藍卡組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 藍卡組內成員可以管理外籍員工的藍卡辦理、續期的業務。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+relation_group:
+  chinese_name: 員工關係組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 員工關係組內成員可以設置系統內的個問卷模板，管理員工的意見及投訴、紀律處分、入/離職面談以及公司的360評核等業務。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+training_group:
+  chinese_name: 培訓組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 培訓組內成員可以發起并管理所有培訓的流程，管理所有員工跟進的客戶意見等業務。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+department_group:
+  chinese_name: 部門主管組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: 組內的成員為各部門主管及助理，可以對所在部門進行管理。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true
+vp_group:
+  chinese_name: VP級數據權限組
+  english_name: '' 
+  simple_chinese_name: ''
+  introduction_chinese_name: VP級數據權限組內成員可以查看總裁級、總監級的員工有關檔案盒薪酬的信息。
+  introduction_english_name: ''
+  introduction_simple_chinese_name: '' 
+  fixed: true

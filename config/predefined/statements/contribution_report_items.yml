@@ -1,0 +1,138 @@
+contribution_report_items:
+  columns:
+#    - key: year_month
+#      value_type: date_value
+#      value_format: 'yyyy/mm'
+#      data_index: year_month
+#      sorter: true
+#      search_type: screen
+#      options_type: options
+#      options_action: year_month_options
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: employee_chinese_name
+      value_type: string
+      data_index: user.chinese_name
+      search_type: search
+      sorter: true
+      search_attribute: user.chinese_name
+
+    - key: employee_english_name
+      value_type: string
+      data_index: user.english_name
+      search_type: search
+      sorter: true
+      search_attribute: user.english_name
+
+    - key: department
+      value_type: obj_value
+      value_format: null
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: department_id
+
+    - key: position
+      value_type: obj_value
+      value_format: null
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: position_id
+
+    - key: grade
+      value_type: string_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: grade_options
+
+    - key: member_retirement_fund_number
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: relevant_income
+      value_type: string_value
+      value_format: null
+      data_index: relevant_income
+      search_type: search
+      sorter: true
+
+    - key: employee_voluntary_contribution_percentage
+      value_type: string_value
+      value_format: null
+      data_index: employee_voluntary_contribution_percentage
+      search_type: decimal_range
+      sorter: false
+
+    - key: employee_voluntary_contribution_amount
+      value_type: string_value
+      value_format: null
+      data_index: employee_voluntary_contribution_amount
+      search_type: decimal_range
+      sorter: false
+
+    - key: percentage_of_voluntary_contributions_of_members
+      value_type: string_value
+      value_format: null
+      data_index: percentage_of_voluntary_contributions_of_members
+      search_type: decimal_range
+      sorter: false
+
+    - key: membership_voluntary_contributions_amount
+      value_type: string_value
+      value_format: null
+      data_index: membership_voluntary_contributions_amount
+      search_type: decimal_range
+      sorter: false
+
+    - key: employer_contribution_percentage
+      value_type: string_value
+      value_format: null
+      data_index: employer_contribution_percentage
+      search_type: decimal_range
+      sorter: false
+
+    - key: employer_contribution_count
+      value_type: string_value
+      value_format: null
+      data_index: employer_contribution_count
+      search_type: decimal_range
+      sorter: false
+
+    - key: percentage_of_contribution_of_members
+      value_type: string_value
+      value_format: null
+      data_index: percentage_of_contribution_of_members
+      search_type: decimal_range
+      sorter: false
+
+    - key: count_of_contribution_of_members
+      value_type: string_value
+      value_format: null
+      data_index: count_of_contribution_of_members
+      search_type: decimal_range
+      sorter: false
+
+    - key: percentage_of_contribution_of_governmment
+      value_type: string_value
+      value_format: null
+      data_index: percentage_of_contribution_of_governmment
+      search_type: decimal_range
+      sorter: false
+
+    - key: count_of_contribution_of_governmment
+      value_type: string_value
+      value_format: null
+      data_index: count_of_contribution_of_governmment
+      search_type: decimal_range
+      sorter: false

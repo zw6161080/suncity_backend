@@ -1,0 +1,16 @@
+zh-CN:
+  trains:
+    train_class: 培训课程
+  statement_columns:
+    trains:
+      status: 培训状态
+      train_name: 培训名称
+      train_number: 培训编号
+      train_date: 培训日期
+      registration_date: 报名日期
+      registration_method: 报名方式
+      online_or_offline_training: 线上/线下培训
+      train_template_type: 培训种类
+      training_credits: 培训学分
+      entry_lists_count: 报名人数
+      final_lists_count: 出席人数

@@ -1,0 +1,159 @@
+entry_lists_by_train:
+  columns:
+    - key: registration_time
+      data_index: registration_time
+      sorter: true
+      value_type: date_value
+      date_value_format: '%Y/%m/%d %H:%M'
+      value_format: 'YYYY/MM/DD hh:mm'
+
+    - key: empoid
+      data_index: user.empoid
+      value_type: string_value
+      sorter: true
+      search_type: search
+
+    - key: name
+      data_index: user
+      value_type: obj_value
+      sorter: true
+      search_type: search
+
+    - key: department_id
+      data_index: user.department
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position_id
+      data_index: user.position
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: is_can_be_absent
+      data_index: is_can_be_absent
+      value_type: bool_value
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: YES
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: NO
+          simple_chinese_name: 否
+
+    - key: working_status
+      data_index: working_status
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: on_duty
+          chinese_name: 在職
+          english_name: on_duty
+          simple_chinese_name: 在职
+        - key: leave
+          chinese_name: 離職
+          english_name: Turnover
+          simple_chinese_name: 离职
+
+    - key: title
+      data_index: title.name
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: title_options
+      search_attribute: title_id
+
+    - key: is_in_working_time
+      data_index: is_in_working_time
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: operating_hours
+          chinese_name: 工作時間
+          english_name: operating_hours
+          simple_chinese_name: 工作时间
+        - key: non_working_time
+          chinese_name: 非工作時間
+          english_name: non_working_time
+          simple_chinese_name: 非工作时间
+        - key: both_are
+          chinese_name: 兩者皆是
+          english_name: both_are
+          simple_chinese_name: 两者皆是
+        - key: to_define
+          chinese_name: 待定
+          english_name: to_define
+          simple_chinese_name: 待定
+
+    - key: registration_status
+      data_index: registration_status
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: staff_registration
+          chinese_name: 員工報名
+          english_name: staff_registration
+          simple_chinese_name: 员工报名
+        - key: department_registration
+          chinese_name: 部門報名
+          english_name: department_registration
+          simple_chinese_name: 部门报名
+        - key: invite_to_register
+          chinese_name: 邀請報名
+          english_name: invite_to_register
+          simple_chinese_name: 邀请报名
+        - key: invitation_to_be_confirmed
+          chinese_name: 邀請待確認
+          english_name: invitation_to_be_confirmed
+          simple_chinese_name: 邀请待确认
+        - key: cancel_the_registration
+          chinese_name: 取消報名
+          english_name: cancel_the_registration
+          simple_chinese_name: 取消报名
+
+    - key: creator_name
+      data_index: creator
+      value_type: obj_value
+      sorter: true
+      search_type: search
+
+    - key: creator_department
+      data_index: creator.department
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: creator_department_options
+      search_attribute: creator.department_id
+
+    - key: creator_position
+      data_index: creator.position
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: creator_position_options
+      search_attribute: creator.position_id
+
+    - key: change_reason
+      data_index: change_reason
+      value_type: string_value

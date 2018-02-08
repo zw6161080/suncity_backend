@@ -1,0 +1,28 @@
+en:
+  welfare_records:
+    file_name: welfare_records
+  statement_columns:
+    welfare_records:
+      empoid: ID
+      name: Name
+      company_name: Company
+      location: Location
+      department: Department
+      position: Position
+      grade: Grade
+      local_or_foreign: Local
+      welfare_begin: Date
+      annual_leave: Annual leave
+      sick_leave: sick leave
+      office_holiday: Office holiday
+      holiday_type: Holiday type
+      probation: Probation
+      notice_period: Notive
+      double_pay: Double
+      reduce_salary_for_sick: Reduce salary
+      provide_uniform: Uniform
+      salary_composition: Salary composition
+      over_time_salary: Over time salary
+      force_holiday_make_up: Force holiday make up
+
+

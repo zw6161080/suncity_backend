@@ -1,0 +1,31 @@
+zh-CN:
+  welfare_records:
+    file_name: 员工福利报表
+  statement_columns:
+    welfare_records:
+      empoid: 员工编号
+      name: 姓名
+      company_name: 公司名称
+      location: 场馆
+      department: 部门
+      position: 职位
+      grade: 职级
+      local_or_foreign: 本地/外地雇员
+      welfare_begin: 调整日期
+      annual_leave: 年假
+      sick_leave: 病假
+      office_holiday: 公休
+      holiday_type: 假期类别
+      probation: 试用期（天）
+      notice_period: 离职通知期（天）
+      double_pay: 双粮
+      reduce_salary_for_sick: 有薪病假是否扣薪
+      provide_uniform: 制服
+      salary_composition: 薪金组成
+      over_time_salary: 加班薪金
+      force_holiday_make_up: 强制假期补假
+
+
+
+
+

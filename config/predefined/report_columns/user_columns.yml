@@ -1,0 +1,50 @@
+user_empoid:
+  chinese_name: 員工編號
+  english_name: ID
+  simple_chinese_name: 员工编号
+  value_type: string_value
+  value_format: null
+  data_index: user_empoid
+  search_type: search
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: User
+  source_attribute: empoid
+  option_attribute: null
+
+user_chinese_name:
+  chinese_name: 姓名
+  english_name: Name
+  simple_chinese_name: 姓名
+  value_type: string_value
+  value_format: null
+  data_index: user_chinese_name
+  search_type: search
+  sorter: true
+  options_type:
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: User
+  source_attribute: chinese_name
+  option_attribute: null
+
+user_english_name:
+  chinese_name: 姓名
+  english_name: Name
+  simple_chinese_name: 姓名
+  value_type: string_value
+  value_format: null
+  data_index: user_english_name
+  search_type: search
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: User
+  source_attribute: english_name
+  option_attribute: null

@@ -1,0 +1,25 @@
+zh-CN:
+  statement_columns:
+    welfare_templates:
+      chinese_name:  模板名稱
+      belongs_to: 使用模板部門/職位
+      annual_leave: 年假（天）
+      sick_leave: 病假（天）
+      office_holiday: 公休（天）
+      holiday_type: 假期類別
+      probation: 試用期（天）
+      notice_period: 離職通知期（天）
+      double_pay: 雙糧
+      reduce_salary_for_sick: 有薪病假是否扣薪
+      provide_uniform: 制服
+      salary_composition: 薪金組成
+      over_time_salary: 加班薪金
+      force_holiday_make_up: 強制假期補償
+      position_type: 職位類別
+      work_days_every_week: 每週工作天數（天）
+      comment: 備註
+
+
+
+
+

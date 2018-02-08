@@ -1,0 +1,925 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 离职
+
+# Describe your paths here
+paths:
+  /dimissions:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: 获取离职记录列表
+      # This is array of GET operation parameters:
+      # Expected responses for this operation:
+      parameters:
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 列表数据页码
+      - name: sort_column
+        type: string
+        in: query
+        required: false
+        description: 列表页排序字段
+      - name: sort_direction
+        type: string
+        in: query
+        required: false
+        description: 列表页排序顺序： `asc` 或者 `desc`
+      - name: apply_date_begin
+        type: string
+        in: query
+        required: false
+        description: 离职申请筛选起始时间 `YYYY/MM/DD`
+      - name: apply_date_end
+        type: string
+        in: query
+        required: false
+        description: 离职申请筛选结束时间 `YYYY/MM/DD`
+      - name: dimission_type
+        type: string
+        in: query
+        required: false
+        description: 离职申请类型： 辞职(`resignation`)、终止(`termination`)
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号
+      - name: location_id
+        type: integer
+        in: query
+        required: false
+        description: 员工场馆
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位
+      - name: inform_date_begin
+        type: string
+        in: query
+        required: false
+        description: 通知日期筛选起始时间 `YYYY/MM/DD`
+      - name: inform_date_end
+        type: string
+        in: query
+        required: false
+        description: 通知日期筛选结束时间 `YYYY/MM/DD`
+      - name: last_work_date_begin
+        type: string
+        in: query
+        required: false
+        description: 最后工作日筛选起始时间 `YYYY/MM/DD`
+      - name: last_work_date_end
+        type: string
+        in: query
+        required: false
+        description: 最后工作日筛选结束时间 `YYYY/MM/DD`
+      - name: creator_name
+        type: string
+        in: query
+        required: false
+        description: 录入人（中/英均可）
+      - name: created_at_begin
+        type: string
+        in: query
+        required: false
+        description: 录入日期筛选起始时间 `YYYY/MM/DD`
+      - name: created_at_end
+        type: string
+        in: query
+        required: false
+        description: 录入日期筛选结束时间 `YYYY/MM/DD`
+      - name: final_work_date_begin
+        type: string
+        description: 最後工作日期筛选开始日期
+        in: query
+        required: false
+      - name: final_work_date_end
+        type: string
+        description: 最後工作日期筛选结束日期
+        in: query
+        required: false
+      - name: group_id
+        type: string
+        description: 组别id
+        in: query
+        required: false
+      - name: company_name
+        type: string
+        description: 公司名称
+        in: query
+        required: false
+      responses:
+        # Response code
+        200:
+          description: Successful response
+          # A schema describing your response object.
+          # Use JSON Schema format
+          schema:
+            $ref: '#/definitions/Dimissions'
+    post:
+      description: 创建离职记录
+      parameters:
+      - name: dimissions
+        in: body
+        required: true
+        description: 离职记录数据
+        schema:
+          $ref: '#/definitions/DimissionParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/DimissionID'
+  /dimissions/apply_options:
+    get:
+      description: 获取新建页中所有下拉输入框涉及到的选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/ApplyOptions'
+
+  /dimissions/field_options:
+    get:
+      description: 获取列表页中所有的筛选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/FieldOptions'
+  /dimissions/termination_compensation:
+    get:
+      description: 計算補償年資多少日
+      parameters:
+      - name: user_id
+        in: query
+        type: integer
+        required: true
+        description: 離職用戶的user id
+      - name: is_reasonable_termination
+        in: query
+        type: boolean
+        required: true
+        description: 是否是合理解僱（true / false）
+      - name: last_work_date
+        in: query
+        type: string
+        required: true
+        description: 最後工作日（YYYY/MM/DD）
+      responses:
+        200:
+          description: 成功響應
+          schema:
+            $ref: '#/definitions/TerminationCompensation'
+
+  /dimissions/{dimission_id}:
+    get:
+      description: 获取离职记录
+      parameters:
+      - name: dimission_id
+        in: path
+        required: true
+        type: string
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/DimissionDetail'
+
+  /dimission_follow_ups/{dimission_follow_up_id}:
+    patch:
+      description: 更新一条离职跟进事项
+      parameters:
+      - name: dimission_follow_up_id
+        in: path
+        required: true
+        type: string
+
+      responses:
+        200:
+          description: 成功响应
+
+
+definitions:
+  Location:
+    type: object
+    properties:
+      id:
+        type: integer
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+
+  Position:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      number:
+        type: integer
+      grade:
+        type: integer
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+
+  Department:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+      head_id:
+        type: integer
+
+  Dimissions:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          title: 离职条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 离职条目ID
+            user_id:
+              type: integer
+              description: 申请人 USER ID
+            user:
+              type: object
+              description: 申请人相关信息
+            apply_date:
+              type: string
+              description: 申请日期
+            inform_date:
+              type: string
+              description: 離職通知日期
+            last_work_date:
+              type: string
+              description: 最後僱用日期
+            is_in_blacklist:
+              type: boolean
+              description: 是否进黑名单（不再录用）
+            comment:
+              type: string
+              description: 备注
+            last_salary_begin_date:
+              type: string
+              description: 最后薪资开始日期
+            last_salary_end_date:
+              type: string
+              description: 最后薪资结束日期
+            remaining_annual_holidays:
+              type: integer
+              description: 剩余年假
+            apply_comment:
+              type: string
+              description: 备注
+            resignation_reason:
+              type: array
+              description: 辞职原因
+              items:
+                type: string
+                description: 辞职原因的key
+            resignation_reason_extra:
+              type: string
+              description: 辞职原因-其他
+            resignation_future_plan:
+              type: array
+              description: 辞职后去向
+              items:
+                type: string
+                description: 辞职后去向的key
+            resignation_future_plan_extra:
+              type: string
+              description: 辞职后去向-其他
+            resignation_certificate_languages:
+              type: array
+              description: 离职证明语言
+              items:
+                type: string
+                description: 离职证明语言：`english` `chinese`
+            resignation_is_inform_period_exempted:
+              type: boolean
+              description: 是否豁免离职通知期
+            resignation_inform_period_penalty:
+              type: integer
+              description: 离职豁免器扣除天数
+            resignation_is_recommanded_to_other_department:
+              type: boolean
+              description: 是否推荐到其他部门
+            termination_reason:
+              type: array
+              description: 终止雇佣原因
+              items:
+                type: string
+                description: 终止雇佣原因的key
+            termination_reason_extra:
+              type: string
+              description: 终止雇佣原因-其他
+            termination_inform_peroid_day:
+              type: integer
+              description: 预先通知期
+            termination_is_reasonable:
+              type: boolean
+              description: 是否合理解雇
+            termination_compensation:
+              type: integer
+              description: 补偿年资天数
+            termination_compensation_extra:
+              type: string
+              description: 其他项目
+            created_at:
+              type: string
+              description: 条目创建时间
+            updated_at:
+              type: string
+              description: 条目更新时间
+            dimission_type:
+              type: string
+              description: 离职类型： `resignation` `termination`
+            creator_id:
+              type: integer
+              description: 录入人
+            creator:
+              type: object
+              description: 录入人信息
+            holiday_cut_off_date:
+              type: string
+              description: 假期結餘截止日期
+            company_name:
+              type: string
+              description: 公司名称
+            group_id:
+              type: string
+              description: 组别id
+            group:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: 中文名称
+                english_name:
+                  type: string
+                  description: 英文名称
+                simple_chinese_name:
+                  type: string
+                  description: 简体名称
+            final_work_date:
+              type: string
+              description: 最後工作日期
+            is_compensation_year:
+              type: boolean
+              description: 是否补偿年资
+      meta:
+        description: 附加信息
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 总条目数量
+          current_page:
+            type: integer
+            description: 当前页码
+          total_pages:
+            type: integer
+            description: 总页数
+      state:
+        type: string
+        description: 请求状态（`success`）
+
+  DimissionFollowUpParam:
+    type: object
+    properties:
+      event_key:
+        type: string
+        description: 跟進事項的key
+      return_number:
+        type: integer
+        description: 已歸還數量
+      compensation:
+        type: string
+        description: 賠償費用（保留兩位小數）
+      is_confirmed:
+        type: boolean
+        description: 是否已經確認
+      handler_id:
+        type: integer
+        description: 經手人的user id
+      is_checked:
+        type: boolean
+        description: 是否被勾選
+
+  ApprovalItemParam:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: 審批人user id
+      datetime:
+        type: string
+        description: 審批時間（YYYY/MM/DD)
+      comment:
+        type: string
+        description: 審批意見
+
+  AttachmentItemParam:
+    type: object
+    properties:
+      file_name:
+        type: string
+        description: 文件名
+      creator_id:
+        type: integer
+        description: 上傳者user id
+      comment:
+        type: string
+        description: 備注
+      attachment_id:
+        type: string
+        description: 文件id
+
+  DimissionParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: 申请人 USER ID
+      apply_date:
+        type: string
+        description: 申请日期
+      inform_date:
+        type: string
+        description: 離職通知日期
+      last_work_date:
+        type: string
+        description: 最後僱用日期
+      is_in_blacklist:
+        type: boolean
+        description: 是否进黑名单（不再录用）
+      comment:
+        type: string
+        description: 备注
+      last_salary_begin_date:
+        type: string
+        description: 最后薪资开始日期
+      last_salary_end_date:
+        type: string
+        description: 最后薪资结束日期
+      remaining_annual_holidays:
+        type: integer
+        description: 剩余年假
+      apply_comment:
+        type: string
+        description: 备注
+      resignation_reason:
+        type: array
+        description: 辞职原因
+        items:
+          type: string
+          description: 辞职原因的key
+      resignation_reason_extra:
+        type: string
+        description: 辞职原因-其他
+      resignation_future_plan:
+        type: array
+        description: 辞职后去向
+        items:
+          type: string
+          description: 辞职后去向的key
+      resignation_future_plan_extra:
+        type: string
+        description: 辞职后去向-其他
+      resignation_certificate_languages:
+        type: array
+        description: 离职证明语言
+        items:
+          type: string
+          description: 离职证明语言：`english` `chinese`
+      resignation_is_inform_period_exempted:
+        type: boolean
+        description: 是否豁免离职通知期
+      resignation_inform_period_penalty:
+        type: integer
+        description: 离职豁免器扣除天数
+      resignation_is_recommanded_to_other_department:
+        type: boolean
+        description: 是否推荐到其他部门
+      termination_reason:
+        type: array
+        description: 终止雇佣原因
+        items:
+          type: string
+          description: 终止雇佣原因的key
+      termination_reason_extra:
+        type: string
+        description: 终止雇佣原因-其他
+      termination_inform_peroid_day:
+        type: integer
+        description: 预先通知期
+      termination_is_reasonable:
+        type: boolean
+        description: 是否合理解雇
+      termination_compensation_extra:
+        type: string
+        description: 其他项目
+      dimission_type:
+        type: string
+        description: 离职类型： `resignation` `termination`
+      holiday_cut_off_date:
+        type: string
+        description: 假期結餘截止日期（YYYY/MM/DD）
+      career_history_dimission_reason:
+        type: string
+        description: 职程信息中显示的离职类型的key
+      career_history_dimission_comment:
+        type: string
+        description: 职程信息中显示的离职备注
+      follow_ups:
+        description: 離職跟進事項
+        type: array
+        items:
+          $ref: '#/definitions/DimissionFollowUpParam'
+      approval_items:
+        description: 審批記錄
+        type: array
+        items:
+          $ref: '#/definitions/ApprovalItemParam'
+      attachment_items:
+        description: 相關文件
+        type: array
+        items:
+          $ref: '#/definitions/AttachmentItemParam'
+      final_work_date:
+        type: string
+        description:  最後工作日期
+      reason_for_resignation_for_resignation_record:
+        type: string
+        description: 离职原因用于离职信息创建
+      comment_for_resignation_record:
+        type: string
+        description: 备注用于离职信息创建
+      notice_period_compensation:
+        type: boolean
+        description: 是否豁免离职通知期
+      is_compensation_year:
+        type: boolean
+        description: 是否补偿年资
+
+    required: [
+      'user_id', 'dimission_type', 'apply_date', 'inform_date', 'last_work_date'
+    ]
+
+  FieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          locations:
+            description: 场馆筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Location'
+
+          positions:
+            description: 职位筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Position'
+          departments:
+            description: 部门筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Department'
+      state:
+        type: string
+        description: 请求状态，成功为success
+
+  ApplyOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          followups:
+            description: 所有跟进事项的条目
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: 跟进事项的key
+                only_dimission_type:
+                  type: string
+                  description: 仅在特定dimission_type下有效，该字段非必须
+                chinese_name:
+                  type: string
+                  description: 跟进事项的繁体中文
+                english_name:
+                  type: string
+                  description: 跟进事项的英文描述
+                simple_chinese_name:
+                  type: string
+                  description: 跟进事项的简体中文
+          resignation_future_plans:
+            description: 离职去向选项
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: 离职去向的key
+                chinese_name:
+                  type: string
+                  description: 离职去向的繁体中文
+                english_name:
+                  type: string
+                  description: 离职去向的英文
+                simple_chinese_name:
+                  type: string
+                  description: 离职去向的简体中文
+          resignation_certificate_languages:
+            description: 离职证明语言选项
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: 离职证明语言选项的key
+                chinese_name:
+                  type: string
+                  description: 离职证明语言选项的繁体中文描述
+                english_name:
+                  type: string
+                  description: 离职证明语言选项的英文描述
+                simple_chinese_name:
+                  type: string
+                  description: 离职证明语言选项的简体中文描述
+          termination_reasons:
+            description: 解雇的原因
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: 解雇原因的key
+                chinese_name:
+                  type: string
+                  description: 解雇原因的繁体中文描述
+                english_name:
+                  type: string
+                  description: 解雇原因的英文描述
+                simple_chinese_name:
+                  type: string
+                  description: 解雇原因的简体中文描述
+          career_history_dimission_reasons:
+            description: 职程信息中显示的离职原因
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: 离职原因的key
+                chinese_name:
+                  type: string
+                  description: 离职原因的繁体中文描述
+                english_name:
+                  type: string
+                  description: 离职原因的英文描述
+                simple_chinese_name:
+                  type: string
+                  description: 离职原因的简体中文描述
+      state:
+        type: string
+        description: 请求状态，成功为success
+
+  TerminationCompensation:
+    type: object
+    properties:
+      data:
+        type: integer
+        description: 補償年資的天數
+      state:
+        type: string
+        description: 請求狀態，成功爲success
+
+  DimissionID:
+    type: object
+    properties:
+      data:
+        type: integer
+        description: 新创建纪录的ID
+      state:
+        type: string
+        description: 创建状态，成功为success
+
+  DimissionDetail:
+    type: object
+    properties:
+      data:
+        type: object
+        description: 离职记录详情
+        properties:
+          id:
+            type: integer
+            description: 离职条目ID
+          user_id:
+            type: integer
+            description: 申请人 USER ID
+          user:
+            type: object
+            description: 申请人相关信息
+          apply_date:
+            type: string
+            description: 申请日期
+          inform_date:
+            type: string
+            description: 離職通知日期
+          last_work_date:
+            type: string
+            description: 最後僱用日期
+          is_in_blacklist:
+            type: boolean
+            description: 是否进黑名单（不再录用）
+          comment:
+            type: string
+            description: 备注
+          last_salary_begin_date:
+            type: string
+            description: 最后薪资开始日期
+          last_salary_end_date:
+            type: string
+            description: 最后薪资结束日期
+          remaining_annual_holidays:
+            type: integer
+            description: 剩余年假
+          apply_comment:
+            type: string
+            description: 备注
+          resignation_reason:
+            type: array
+            description: 辞职原因
+            items:
+              type: string
+              description: 辞职原因的key
+          resignation_reason_extra:
+            type: string
+            description: 辞职原因-其他
+          resignation_future_plan:
+            type: array
+            description: 辞职后去向
+            items:
+              type: string
+              description: 辞职后去向的key
+          resignation_future_plan_extra:
+            type: string
+            description: 辞职后去向-其他
+          resignation_certificate_languages:
+            type: array
+            description: 离职证明语言
+            items:
+              type: string
+              description: 离职证明语言：`english` `chinese`
+          resignation_is_inform_period_exempted:
+            type: boolean
+            description: 是否豁免离职通知期
+          resignation_inform_period_penalty:
+            type: integer
+            description: 离职豁免器扣除天数
+          resignation_is_recommanded_to_other_department:
+            type: boolean
+            description: 是否推荐到其他部门
+          termination_reason:
+            type: array
+            description: 终止雇佣原因
+            items:
+              type: string
+              description: 终止雇佣原因的key
+          termination_reason_extra:
+            type: string
+            description: 终止雇佣原因-其他
+          termination_inform_peroid_day:
+            type: integer
+            description: 预先通知期
+          termination_is_reasonable:
+            type: boolean
+            description: 是否合理解雇
+          termination_compensation_extra:
+            type: string
+            description: 其他项目
+          created_at:
+            type: string
+            description: 条目创建时间
+          updated_at:
+            type: string
+            description: 条目更新时间
+          dimission_type:
+            type: string
+            description: 离职类型： `resignation` `termination`
+          creator_id:
+            type: integer
+            description: 录入人
+          creator:
+            type: object
+            description: 录入人信息
+          holiday_cut_off_date:
+            type: string
+            description: 假期結餘截止日期（YYYY/MM/DD）
+          company_name:
+            type: string
+            description: 公司名称
+          group_id:
+            type: string
+            description: 组别id
+          group:
+            type: object
+            properties:
+              chinese_name:
+                type: string
+                description: 中文名称
+              english_name:
+                type: string
+                description: 英文名称
+              simple_chinese_name:
+                type: string
+                description: 简体名称
+          final_work_date:
+            type: string
+          is_compensation_year:
+            type: boolean
+            description: 是否补偿年资
+      state:
+        type: string
+        description: 请求状态，成功为success

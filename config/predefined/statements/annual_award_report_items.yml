@@ -1,0 +1,140 @@
+annual_award_report_items:
+  columns:
+    - key: empoid
+      data_index: user.empoid
+      value_type: string_value
+      sorter: true
+      search_type: search
+      search_attribute: user.empoid
+    - key: name
+      data_index: user
+      value_type: obj_value
+      sorter: true
+      search_type: search
+    - key: department_id
+      data_index: department
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: department_options
+    - key: position_id
+      data_index: position
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: position_options
+    - key: career_entry_date
+      data_index: date_of_employment
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true
+    - key: work_days_this_year
+      value_type: integer_value
+    - key: deducted_days
+      value_type: integer_value
+    - key: add_double_pay
+      value_type: bool_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: YES
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: NO
+          simple_chinese_name: 否
+    - key: double_pay_hkd
+      value_type: string_value
+
+    - key: double_pay_alter_hkd
+      value_type: string_value
+
+    - key: double_pay_final_hkd
+      value_type: string_value
+
+    - key: add_end_bonus
+      value_type: bool_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: YES
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: NO
+          simple_chinese_name: 否
+
+    - key: end_bonus_hkd
+      value_type: string_value
+
+    - key: praise_times
+      value_type: string_value
+
+    - key: end_bonus_add_hkd
+      value_type: string_value
+
+    - key: absence_times
+      value_type: string_value
+
+    - key: notice_times
+      value_type: string_value
+
+    - key: late_times
+      value_type: string_value
+
+    - key: lack_sign_card_times
+      value_type: string_value
+
+    - key: punishment_times
+      value_type: string_value
+
+    - key: de_end_bonus_for_absence_hkd
+      value_type: string_value
+
+    - key: de_bonus_for_notice_hkd
+      value_type: string_value
+
+    - key: de_end_bonus_for_late_hkd
+      value_type: string_value
+
+    - key: de_end_bonus_for_sign_card_hkd
+      value_type: string_value
+
+    - key: de_end_bonus_for_punishment_hkd
+      value_type: string_value
+
+    - key: de_bonus_total_hkd
+      value_type: string_value
+
+    - key: end_bonus_final_hkd
+      value_type: string_value
+
+    - key: present_at_duty_first_half
+      value_type: bool_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: YES
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: NO
+          simple_chinese_name: 否
+
+    - key: annual_at_duty_basic_hkd
+      value_type: string_value
+
+    - key: annual_at_duty_final_hkd
+      value_type: string_value

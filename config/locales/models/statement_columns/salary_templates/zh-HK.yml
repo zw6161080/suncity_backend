@@ -1,0 +1,29 @@
+zh-HK:
+  statement_columns:
+    salary_templates:
+      chinese_name: 模板名称
+      belongs_to: 使用模板部门/职位
+      basic_salary: 底薪
+      bonus: 津貼
+      attendance_award: 勤工
+      house_bonus: 房屋津貼
+      region_bonus: 地区津贴
+      service_award: 服務獎金
+      internship_bonus: 實習津貼
+      total_count: 總薪金
+      tea_bonus: 茶資份數
+      kill_bonus: 殺數分紅份數
+      performance_bonus: 業績分紅份數
+      charge_bonus: 刷卡獎金份數
+      commission_bonus: 佣金差額份數
+      receive_bonus: 收賬分紅份數
+      exchange_rate_bonus: 匯率分紅份數
+      guest_card_bonus: 貴賓卡消費份數
+      respect_bonus: 尊華殿份數
+      new_year_bonus: 新春利是份數
+      project_bonus: 項目分紅份數
+      product_bonus: 尚品獎金份數
+      performance_award: 績效獎金份數
+      special_tie_bonus: 特別茶資份數
+      comment: 備注
+

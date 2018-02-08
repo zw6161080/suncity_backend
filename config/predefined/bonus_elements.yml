@@ -1,0 +1,134 @@
+cover_charge:
+  chinese_name: 茶資
+  english_name: Tips
+  simple_chinese_name: 茶资
+  unit: hkd
+  order: 1
+  value_type: departmental
+
+
+kill_bonus:
+  chinese_name: 殺數分紅
+  english_name: Win/Lose
+  simple_chinese_name: 杀数分红
+  unit: hkd
+  order: 2
+  value_type: departmental
+
+performance_bonus:
+  chinese_name: 業績分紅
+  english_name: Rolling
+  simple_chinese_name: 业绩分红
+  unit: hkd
+  levels:
+    - ordinary
+    - manager
+  order: 3
+  value_type: departmental
+
+swiping_card_bonus:
+  chinese_name: 刷卡獎金
+  english_name: Credit Card Commission
+  simple_chinese_name: 刷卡奖金
+  unit: hkd
+  order: 4
+  value_type: departmental
+
+commission_margin:
+  chinese_name: 傭金差額
+  english_name: Commission
+  simple_chinese_name: 佣金差额
+  unit: hkd
+  subtypes:
+    - business_development
+    - operation
+  order: 5
+  value_type: departmental
+
+collect_accounts_bonus:
+  chinese_name: 收賬分紅
+  english_name: Debtors
+  simple_chinese_name: 收账分红
+  unit: hkd
+  order: 6
+  value_type: departmental
+
+exchange_rate_bonus:
+  chinese_name: 匯率分紅
+  english_name: Commission Difference
+  simple_chinese_name: 汇率分红
+  unit: hkd
+  order: 7
+  value_type: departmental
+
+vip_card_bonus:
+  chinese_name: 貴賓卡消費
+  english_name: Card Sales
+  simple_chinese_name: 贵宾卡消费
+  unit: hkd
+  order: 8
+  value_type: departmental
+
+zunhuadian:
+  chinese_name: 尊華殿
+  english_name: E-mall
+  simple_chinese_name: 尊华殿
+  unit: hkd
+  order: 9
+  value_type: personal
+
+xinchunlishi:
+  chinese_name: 新春利是
+  english_name: New Year lai see
+  simple_chinese_name: 新春利是
+  unit: hkd
+  order: 10
+  value_type: departmental
+
+project_bonus:
+  chinese_name: 項目分紅
+  english_name: Project distribution
+  simple_chinese_name: 项目分红
+  unit: hkd
+  order: 11
+  value_type: departmental
+
+shangpin_bonus:
+  chinese_name: 尚品獎金
+  english_name: Shangpin bonus
+  simple_chinese_name: 尚品奖金
+  unit: hkd
+  order: 12
+  value_type: personal
+
+performance_award:
+  chinese_name: 績效獎金
+  english_name: Performance award
+  simple_chinese_name: 绩效奖金
+  unit: hkd
+  order: 13
+  value_type: departmental
+
+special_cover_charge:
+  chinese_name: 特別茶資
+  english_name: Special tips
+  simple_chinese_name: 特别茶资
+  unit: hkd
+  order: 14
+  value_type: departmental
+
+dispatch_bonus:
+  chinese_name: 出車獎金
+  english_name: Dispatch bonus
+  simple_chinese_name: 出车奖金
+  unit: hkd
+  order: 15
+  value_type: personal
+
+recommend_new_guest_bonus:
+  chinese_name: 介紹新客戶轉碼分紅
+  english_name: Recommand new guest bonus
+  simple_chinese_name: 介绍新客户转码分红
+  unit: hkd
+  order: 16
+  value_type: personal

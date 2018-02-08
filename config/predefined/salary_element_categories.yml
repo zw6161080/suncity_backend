@@ -1,0 +1,23 @@
+absenteeism_reduction:
+  chinese_name: 考勤補扣薪系數
+  english_name: Absenteeism reduction
+  simple_chinese_name: 考勤补扣薪系数
+  elements:
+    - paid_maternity_leave_backpay
+    - absenteeism_reduction
+    - immediate_leave_reduction
+    - unpaid_leave_reduction
+    - unpaid_marriage_leave_reduction
+    - unpaid_compassionate_leave_reduction
+    - unpaid_maternity_leave_reduction
+    - pregnant_sick_leave_reduction
+    - occupational_injury_reduction
+    - paid_sick_leave_reduction
+
+others:
+  chinese_name: 其他系數
+  english_name: Others
+  simple_chinese_name: 其他系数
+  elements:
+    - punishment_reduction
+    - year_end_bonus

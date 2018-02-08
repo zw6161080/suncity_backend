@@ -1,0 +1,215 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 即告记录
+
+# Describe your paths here
+paths:
+  /immediate_leave:
+    post:
+      description: 创建即告接口
+      tags:
+        - 即告
+      parameters:
+        - name: immediate_leave_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/ImmediateLeaveCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+    get:
+      description: 获取即告列表
+      tags:
+        - 即告
+      parameters:
+        - name: date
+          in: query
+          required: false
+          type: string
+          description: 申请时间
+        - name: chinese_name
+          in: query
+          required: false
+          type: string
+          description: 申请人中文名
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称
+        - name: record_type
+          in: query
+          required: false
+          type: string
+          description: 申请类型
+        - name: item_count
+          in: query
+          required: false
+          type: string
+          description: 记录数目
+        - name: status
+          in: query
+          required: false
+          type: string
+          description: 申请状态
+        - name: creator_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 录入人中文姓名
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+      responses:
+        200:
+          description: 响应即告列表
+  /immediate_leave/{immediate_leave_id}:
+    get:
+      description: 获取即告信息
+      tags:
+        - 即告
+      parameters:
+        - name: immediate_leave_id
+          in: path
+          required: true
+          type: integer
+          description: 即告ID
+      responses:
+        200:
+          description: 响应即告信息
+  /immediate_leave/field_options:
+    get:
+      description: 获取记录列表可供筛选的字段
+      tags:
+        - 即告
+      responses:
+        200:
+          description: 成功响应
+
+
+  # /immediate_leave/{immediate_leave_id}/immediate_leave_items:
+  #   get:
+  #     description: 获取即告排班项目
+  #     tags:
+  #       - 即告
+  #     parameters:
+  #       - name: immediate_leave_id
+  #         in: path
+  #         required: true
+  #         type: integer
+  #         description: 即告ID
+  #     responses:
+  #       200:
+  #         description:  获取即告排班项目
+
+definitions:
+  ImmediateLeaveCreateParams:
+    type: object
+    properties:
+      user_id:
+        type: string
+        description: 员工的user_id
+      comment:
+        type: string
+        description: 备注
+      date:
+        type: string
+        description: 日期
+      immediate_leave_items:
+        type: array
+        items:
+          type: object
+          properties:
+            comment:
+              type: string
+              description: '备注'
+            date:
+              type: string
+              description: '加班日期ｅｇ:"2017/05/06" 或者　"2017-05-02"'
+            work_time:
+              type: string
+              description: '工作时间'
+            shift_info:
+              type: string
+              description: '班别信息'
+            come:
+              type: string
+              description: '上班打开时间'
+            leave:
+              type: string
+              description: '下班打开时间'
+        description: 创建即告记录数组
+      attend_approvals:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 审批人id
+            date:
+              type: string
+              description: 审批时间 2017-01-10
+            comment:
+              type: string
+              description: 审批建议
+        description: 创建即告审批记录
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+              description: 附件名称 'fn.jpg'
+            comment:
+              type: string
+              description: 附件备注 'test comment'
+            attachment_id:
+              type: integer
+              description: 附件id
+        description: 即告记录附件
+
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

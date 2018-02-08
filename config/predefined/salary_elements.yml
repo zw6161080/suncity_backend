@@ -1,0 +1,172 @@
+paid_maternity_leave_backpay:
+  chinese_name: 有薪分娩假補薪
+  english_name: Paid maternity leave compensation
+  simple_chinese_name: 有薪分娩假补薪
+  display_template: '[( 底薪 * %{paid_maternity_leave_base_salary} ) + ( 津貼 * %{paid_maternity_leave_benefits} ) + ( 勤工 * %{paid_maternity_leave_incentive} ) + ( 部門制薪金 * %{paid_maternity_leave_department_bonus} ) + (個人制薪金 * %{paid_maternity_leave_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{paid_maternity_leave_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - paid_maternity_leave_base_salary
+    - paid_maternity_leave_benefits
+    - paid_maternity_leave_incentive
+    - paid_maternity_leave_department_bonus
+    - paid_maternity_leave_personal_bonus
+    - paid_maternity_leave_days
+
+absenteeism_reduction:
+  chinese_name: 曠工扣薪
+  english_name: Absenteeism reduction
+  simple_chinese_name: 旷工扣薪
+  display_template:  '[( 底薪 * %{absenteeism_base_salary} ) + ( 津貼 * %{absenteeism_benefits} ) + ( 勤工 * %{absenteeism_incentive} ) + ( 部門制薪金 * %{absenteeism_department_bonus} ) + (個人制薪金 * %{absenteeism_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{absenteeism_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - absenteeism_base_salary
+    - absenteeism_benefits
+    - absenteeism_incentive
+    - absenteeism_department_bonus
+    - absenteeism_personal_bonus
+    - absenteeism_days
+
+immediate_leave_reduction:
+  chinese_name: 即告扣薪
+  english_name: Immediate leave reduction
+  simple_chinese_name: 即告扣薪
+  display_template:  '[( 底薪 * %{immediate_leave_base_salary} ) + ( 津貼 * %{immediate_leave_benefits} ) + ( 勤工 * %{immediate_leave_incentive} ) + ( 部門制薪金 * %{immediate_leave_department_bonus} ) + (個人制薪金 * %{immediate_leave_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{immediate_leave_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - immediate_leave_base_salary
+    - immediate_leave_benefits
+    - immediate_leave_incentive
+    - immediate_leave_department_bonus
+    - immediate_leave_personal_bonus
+    - immediate_leave_days
+
+unpaid_leave_reduction:
+  chinese_name: 無薪假扣薪
+  english_name: Unpaid leave reduction
+  simple_chinese_name: 无薪假扣薪
+  display_template:  '[( 底薪 * %{unpaid_leave_base_salary} ) + ( 津貼 * %{unpaid_leave_benefits} ) + ( 勤工 * %{unpaid_leave_incentive} ) + ( 部門制薪金 * %{unpaid_leave_department_bonus} ) + (個人制薪金 * %{unpaid_leave_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{unpaid_leave_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - unpaid_leave_base_salary
+    - unpaid_leave_benefits
+    - unpaid_leave_incentive
+    - unpaid_leave_department_bonus
+    - unpaid_leave_personal_bonus
+    - unpaid_leave_days
+
+unpaid_marriage_leave_reduction:
+  chinese_name: 無薪婚假扣薪
+  english_name: Unpaid marriage leave reduction
+  simple_chinese_name: 无薪婚假扣薪
+  display_template:  '[( 底薪 * %{unpaid_marriage_leave_base_salary} ) + ( 津貼 * %{unpaid_marriage_leave_benefits} ) + ( 勤工 * %{unpaid_marriage_leave_incentive} ) + ( 部門制薪金 * %{unpaid_marriage_leave_department_bonus} ) + (個人制薪金 * %{unpaid_marriage_leave_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{unpaid_marriage_leave_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - unpaid_marriage_leave_base_salary
+    - unpaid_marriage_leave_benefits
+    - unpaid_marriage_leave_incentive
+    - unpaid_marriage_leave_department_bonus
+    - unpaid_marriage_leave_personal_bonus
+    - unpaid_marriage_leave_days
+
+unpaid_compassionate_leave_reduction:
+  chinese_name: 無薪恩恤假扣薪
+  english_name: Unpaid compassionate leave reduction
+  simple_chinese_name: 无薪恩恤假扣薪
+  display_template:  '[( 底薪 * %{unpaid_compassionate_leave_base_salary} ) + ( 津貼 * %{unpaid_compassionate_leave_benefits} ) + ( 勤工 * %{unpaid_compassionate_leave_incentive} ) + ( 部門制薪金 * %{unpaid_compassionate_leave_department_bonus} ) + (個人制薪金 * %{unpaid_compassionate_leave_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{unpaid_compassionate_leave_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - unpaid_compassionate_leave_base_salary
+    - unpaid_compassionate_leave_benefits
+    - unpaid_compassionate_leave_incentive
+    - unpaid_compassionate_leave_department_bonus
+    - unpaid_compassionate_leave_personal_bonus
+    - unpaid_compassionate_leave_days
+
+unpaid_maternity_leave_reduction:
+  chinese_name: 無薪分娩假補薪
+  english_name: Unpaid maternity leave compensation
+  simple_chinese_name: 无薪分娩假补薪
+  display_template:  '[( 底薪 * %{unpaid_maternity_leave_base_salary} ) + ( 津貼 * %{unpaid_maternity_leave_benefits} ) + ( 勤工 * %{unpaid_maternity_leave_incentive} ) + ( 部門制薪金 * %{unpaid_maternity_leave_department_bonus} ) + (個人制薪金 * %{unpaid_maternity_leave_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{unpaid_maternity_leave_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - unpaid_maternity_leave_base_salary
+    - unpaid_maternity_leave_benefits
+    - unpaid_maternity_leave_incentive
+    - unpaid_maternity_leave_department_bonus
+    - unpaid_maternity_leave_personal_bonus
+    - unpaid_maternity_leave_days
+
+pregnant_sick_leave_reduction:
+  chinese_name: 懷孕病假扣薪
+  english_name: Pregnant sick leave reduction
+  simple_chinese_name: 怀孕病假扣薪
+  display_template:  '[( 底薪 * %{pregnant_sick_leave_base_salary} ) + ( 津貼 * %{pregnant_sick_leave_benefits} ) + ( 勤工 * %{pregnant_sick_leave_incentive} ) + ( 部門制薪金 * %{pregnant_sick_leave_department_bonus} ) + (個人制薪金 * %{pregnant_sick_leave_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{pregnant_sick_leave_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - pregnant_sick_leave_base_salary
+    - pregnant_sick_leave_benefits
+    - pregnant_sick_leave_incentive
+    - pregnant_sick_leave_department_bonus
+    - pregnant_sick_leave_personal_bonus
+    - pregnant_sick_leave_days
+
+occupational_injury_reduction:
+  chinese_name: 工傷（多於七天）扣薪
+  english_name: Occupational injury reduction
+  simple_chinese_name: 工伤（多于七天）扣薪
+  display_template:  '[( 底薪 * %{occupational_injury_base_salary} ) + ( 津貼 * %{occupational_injury_benefits} ) + ( 勤工 * %{occupational_injury_incentive} ) + ( 部門制薪金 * %{occupational_injury_department_bonus} ) + (個人制薪金 * %{occupational_injury_personal_bonus} ) ] * 假期天數 / 當月天數 + 假期天數 * HKD %{occupational_injury_days}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - occupational_injury_base_salary
+    - occupational_injury_benefits
+    - occupational_injury_incentive
+    - occupational_injury_department_bonus
+    - occupational_injury_personal_bonus
+    - occupational_injury_days
+
+paid_sick_leave_reduction:
+  chinese_name: 有薪病假扣薪
+  english_name: Paid sick leave reduction
+  simple_chinese_name: 有薪病假扣薪
+  display_template: '連公休假期天數 × HKD %{paid_sick_leave_adjoin_public_holiday} + 不連公休假期天數 × HKD %{paid_sick_leave_not_adjoin_public_holiday}'
+  comment: (HKD金額直接在勤工中扣除)
+  factors:
+    - paid_sick_leave_adjoin_public_holiday
+    - paid_sick_leave_not_adjoin_public_holiday
+
+punishment_reduction:
+  chinese_name: 紀律處分扣薪
+  english_name: Punishment reduction
+  simple_chinese_name: 纪律处分扣薪
+  display_template: '(當月茶資 × %{punishment_cover_charge}) + (當月殺數分紅 × %{punishment_kill_bonus}) + (當月業績分紅 × %{punishment_performance_bonus}) + (當月刷卡獎金 × %{punishment_swiping_card_bonus}) + (當月傭金差額 × %{punishment_commission_margin}) + (當月收賬分紅 × %{punishment_collect_accounts_bonus}) + (當月匯率分紅 × %{punishment_exchange_rate_bonus}) + (當月貴賓卡消費 × %{punishment_vip_card_bonus}) + (當月尊華殿 × %{punishment_zunhuadian}) + (當月新春利是 × %{punishment_xinchunlishi}) + (當月項目分紅 × %{punishment_project_bonus}) + (當月出車獎金 × %{punishment_dispatch_bonus}) + (當月尚品獎金 × %{punishment_shangpin_bonus}) + (當月介紹新客戶轉碼分紅 × %{punishment_recommend_new_guest_bonus})'
+  comment: null
+  factors:
+    - punishment_cover_charge
+    - punishment_kill_bonus
+    - punishment_performance_bonus
+    - punishment_swiping_card_bonus
+    - punishment_commission_margin
+    - punishment_collect_accounts_bonus
+    - punishment_exchange_rate_bonus
+    - punishment_vip_card_bonus
+    - punishment_zunhuadian
+    - punishment_xinchunlishi
+    - punishment_project_bonus
+    - punishment_shangpin_bonus
+    - punishment_dispatch_bonus
+    - punishment_recommend_new_guest_bonus
+
+year_end_bonus:
+  chinese_name: 花紅計算規則
+  english_name: Year end bonus
+  simple_chinese_name: 花红计算规则
+  display_template: '花紅金額 = 底薪 × %{year_end_bonus_base_salary_factor} 曠工扣除花紅百分比：%{year_end_bonus_absenteeism_reduction_percent} 即告扣除花紅百分比：%{year_end_bonus_immediate_leave_reduction_percent} 遲到次數累計5次或以上扣除花紅百分比：%{year_end_bonus_late_more_than_5_times_reduction_percent} 員工收到一封警告信扣除花紅百分比：%{year_end_bonus_one_punishment_reduction_percent} 員工收到兩份或以上警告信扣除花紅百分比：%{year_end_bonus_two_or_more_punishments_reduction_percent}'
+  comment: null
+  factors:
+    - year_end_bonus_base_salary_factor
+    - year_end_bonus_absenteeism_reduction_percent
+    - year_end_bonus_immediate_leave_reduction_percent
+    - year_end_bonus_late_more_than_5_times_reduction_percent
+    - year_end_bonus_one_punishment_reduction_percent
+    - year_end_bonus_two_or_more_punishments_reduction_percent
+

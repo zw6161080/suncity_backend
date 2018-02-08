@@ -1,0 +1,176 @@
+employee_fund_switching_report_items:
+  columns:
+    - key: participation_date
+      value_type: date_value
+      value_format: 'yyyy/mm/dd'
+      date_value_format: '%Y/%m/%d'
+      data_index: user.profile.provident_fund.participation_date
+      search_type: date
+      sorter: true
+      search_attribute: provident_funds.participation_date
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: chinese_name
+      value_type: string_value
+      data_index: user.chinese_name
+      search_type: search
+      sorter: true
+      search_attribute: user.chinese_name
+
+    - key: english_name
+      value_type: string_value
+      data_index: user.english_name
+      search_type: search
+      sorter: true
+      search_attribute: user.english_name
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: grade
+      value_type: string_value
+      data_index: user.grade
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: grade_options
+      search_attribute: user.grade
+
+    - key: member_retirement_fund_number
+      value_type: string_value
+      data_index: user.profile.provident_fund.member_retirement_fund_number
+      search_type: search
+      sorter: true
+      search_attribute: provident_funds.member_retirement_fund_number
+
+    - key: employer_contribution
+      children:
+        - key: pension_fund_name_in_employer_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: contribution_allocation_percentage_in_employer_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_redeemed_in_employer_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: percentage_in_employer_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_allocated_in_employer_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+    - key: employer_voluntary_contribution
+      children:
+        - key: pension_fund_name_in_employer_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: contribution_allocation_percentage_in_employer_voluntary_contri
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_redeemed_in_employer_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: Percentage_in_employer_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_allocated_in_employer_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+    - key: employee_contribution
+      children:
+        - key: pension_fund_name_in_employee_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: contribution_allocation_percentage_in_employee_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_redeemed_in_employee_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: percentage_in_employee_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_allocated_in_employee_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+    - key: employee_voluntary_contribution
+      children:
+        - key: pension_fund_name_in_employee_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: contribution_allocation_percentage_in_employee_voluntary_contri
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_redeemed_in_employee_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: percentage_in_employee_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_allocated_in_employee_voluntary_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+    - key: government_contribution
+      children:
+        - key: pension_fund_name_in_government_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: contribution_allocation_percentage_in_government_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_redeemed_in_government_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: percentage_in_government_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false
+        - key: name_of_fund_to_be_allocated_in_government_contribution
+          value_type: string_value
+          search_type: null
+          sorter: false

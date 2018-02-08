@@ -1,0 +1,32 @@
+
+first_interview_to_applicant:
+  title: 【第一次面試】
+  content: 太陽城集團人力資源部短訊：茲 通知閣下請於 %{first_interview_time} 到達皇朝中土大廈16樓人力資源部出席面試 "%{position_name}" 一職。並請帶備以下文件：相片、身份証、學歷証明及工作証明副本。閣下之求職編號為： %{applicant_no} ，切記保存此短訊作為憑證。如有任何疑問或需更改面試時間，請收到信息後兩天內於辦公時間致電回覆，太陽城人力資源部： %{contact_phone}，謝謝。
+
+second_interview_to_applicant:
+  title: 【第二次面試】
+  content: 太陽城集團人力資源部短訊：茲 通知閣下請於 %{second_interview_time} 到達皇朝中土大廈16樓人力資源部出席(第二次)面試 "%{position_name}" 一職。閣下之求職編號為： %{applicant_no} ，切記保存此短訊作為憑證。謝謝。如有任何疑問，請於辦公時間內致電太陽城人力資源部： %{contact_phone} 
+
+third_interview_to_applicant:
+  title: 【第三次面試】
+  content: 太陽城集團人力資源部短訊：茲 通知閣下請於 %{third_interview_time} 到達皇朝中土大廈16樓人力資源部出席(第三次)面試 "%{position_name}" 一職。閣下之求職編號為： %{applicant_no} ，切記保存此短訊作為憑證。謝謝。如有任何疑問，請於辦公時間內致電太陽城人力資源部： %{contact_phone} 
+
+interview_failed_to_applicant:
+  title: 【面試失敗】
+  content: 太陽城集團人力資源部短訊：是次閣下於本集團應聘之職位— %{position_name} 未獲錄取。本集團已把閣下之履歷記錄在案，若有合適之職位會再致電面試。謝謝。如有任何疑問，請於辦公時間內致電太陽城人力資源部： %{contact_phone} 
+
+contract_notice_to_applicant:
+  title: 【錄取簽約】
+  content: 太陽城集團人力資源部短訊：茲 通知閣下已被錄取，請於 %{contract_notice_time} 帶備電話提及之所缺文件前來皇朝中土大廈16樓人力資源部簽約。謝謝。如有任何疑問，請於辦公時間內致電太陽城人力資源部： %{contact_phone} 
+
+change_contract_time_to_applicant:
+  title: 【更改錄取簽約時間】
+  content: 太陽城集團人力資源部短訊：茲 通知閣下簽約時間已更改為 %{change_contract_time} 。請帶備電話提及之文件前來皇朝中土大廈16樓人力資源部簽約。謝謝。如有任何疑問，請於辦公時間內致電太陽城人力資源部： %{contact_phone} 
+
+applicant_rejected_to_introducer:
+  title: 【不獲錄取】
+  content: 太陽城集團人力資源部短訊：經閣下介紹之求職者 %{applicant_name} 是次於本集團應聘面試結果為不獲錄取。謝謝。如有任何疑問，請於辦公時間內致電太陽城人力資源部： %{contact_phone} 
+
+applicant_accepted_to_introducer:
+  title: 【獲錄取】
+  content: 太陽城集團人力資源部短訊：經閣下介紹之求職者 %{applicant_name} 是次於本集團應聘面試結果為錄取!錄取職位為 %{position_name} 。謝謝。如有任何疑問，請於辦公時間內致電太陽城人力資源部： %{contact_phone} 

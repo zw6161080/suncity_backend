@@ -1,0 +1,13 @@
+en:
+  special_schedule_remarks:
+    file_name: special_schedule_remarks
+  statement_columns:
+    special_schedule_remarks:
+      empoid: No
+      name: Name
+      department: Department
+      position: Position
+      date_of_employment: Date of employment
+      content: Special change application notes
+      date_begin: Effective date
+      date_end: End date

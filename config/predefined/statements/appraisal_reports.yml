@@ -1,0 +1,75 @@
+appraisal_reports:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: appraisal_participator.user.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: appraisal_participator.user
+      search_type: search
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: appraisal_participator.user.location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: location_options
+      search_attribute: user.location_id
+
+    - key: department
+      value_type: obj_value
+      data_index: appraisal_participator.user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: appraisal_participator.user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: grade
+      value_type: string_value
+      data_index: appraisal_participator.user.grade
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: grade
+      search_attribute: user.grade
+
+    - key: division_of_job
+      value_type: select_value
+      data_index: appraisal_participator.user.profile.data.position_information.field_values.division_of_job
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: division_of_job
+      option: division_of_job
+
+    - key: date_of_employment
+      value_type: string_value
+      data_index: appraisal_participator.user.profile.data.position_information.field_values.date_of_employment
+      search_type: date
+      sorter: true
+
+    - key: count_of_assessor
+      value_type: string_value
+      data_index: count_of_assessor
+      search_type: search
+      sorter: true
+
+    - key: overall_score
+      value_type: string_value
+      data_index: overall_score

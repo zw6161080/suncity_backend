@@ -1,0 +1,66 @@
+departure_employee_taxpayer_numbering_report_items:
+  columns:
+    - key: year_month
+      value_type: date_value
+      value_format: 'yyyy/mm'
+      date_value_format: '%m/%d'
+      data_index: year_month
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: year_month_options
+
+    - key: company_name
+      value_type: obj_value
+      data_index: user.company_name
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: company_name_options
+      search_attribute: user.company_name
+
+    - key: deployer_retirement_fund_number
+      value_type: string
+      search_type: search
+      sorter: true
+
+    - key: provident_fund_resignation_date
+      data_index: user.profile.provident_fund.provident_fund_resignation_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      date_value_format: '%Y/%m/%d'
+      search_type: date
+      sorter: true
+      search_attribute: provident_fund.provident_fund_resignation_date
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: employee_name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: member_retirement_fund_number
+      value_type: string_value
+      data_index: user.profile.provident_fund.member_retirement_fund_number
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.member_retirement_fund_number
+
+    - key: beneficiary_name
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: tax_number
+      value_type: string_value
+      data_index: user.profile.data.personal_information.field_values.tax_number
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.tax_number

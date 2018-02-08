@@ -1,0 +1,15 @@
+zh-CN:
+  pass_entry_trial_records:
+    file_name: 通过试用期报表
+  statement_columns:
+    pass_entry_trial_records:
+      empoid: 员工编号
+      name: 姓名
+      company_name: 公司名称
+      location: 场馆
+      department: 部门
+      group: 组别
+      grade: 职级
+      division_of_job: 员工归属类别
+      career_begin: 入职日期
+      trial_period_expiration_date: 试用期期满日期

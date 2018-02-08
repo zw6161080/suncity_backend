@@ -1,0 +1,1764 @@
+# fields config
+
+table_schema: &table_schema
+  required: false
+  selectable: false
+
+local_or_foreign:
+  chinese_name: '本地/外地僱員'
+  simple_chinese_name: '本地/外地雇员'
+  english_name: 'Local OR Foreign'
+  type: radio
+  required: false
+  selectable: true
+  meta:
+    select: local_or_foreign
+chinese_name:
+  chinese_name: 中文姓名
+  simple_chinese_name: 中文姓名
+  english_name: Chinese name
+  type: string
+  selectable: true
+  required: true
+  meta:
+    hooks:
+      - sync_with_user_chinese_name
+
+english_name:
+  chinese_name: 外文姓名
+  simple_chinese_name: 外文姓名
+  english_name: English name
+  selectable: true
+  type: string
+  meta:
+    hooks:
+      - sync_with_user_english_name
+
+nick_name:
+  chinese_name: 昵稱
+  simple_chinese_name: 昵称
+  english_name: Nickname
+  selectable: true
+  required: false
+  type: string
+
+last_name:
+  chinese_name: 姓氏(外文)
+  simple_chinese_name: 姓氏(外文)
+  english_name: Last name
+  selectable: true
+  type: string
+
+first_name:
+  chinese_name: 名(外文)
+  simple_chinese_name: 名(外文)
+  english_name: First name
+  type: string
+
+middle_name:
+  chinese_name: 中間名(外文)
+  simple_chinese_name: 中间名
+  english_name: Middle name
+  required: false
+
+photo:
+  chinese_name: 照片
+  simple_chinese_name: 照片
+  english_name: Photo
+  type: image
+  selectable: false
+  required: false
+
+mothers_maiden_name:
+  chinese_name: 母親婚前姓
+  simple_chinese_name: 母亲婚前姓
+  english_name: Mother's maiden name
+  type: string
+
+husbands_last_name:
+  chinese_name: 父親姓氏
+  simple_chinese_name: 父亲姓氏
+  english_name: Husband's last name
+  type: string
+  required: false
+
+gender:
+  chinese_name: 性別
+  simple_chinese_name: 性别
+  english_name: Gender
+  type: select
+  selectable: true
+  meta:
+    select: gender
+
+local:
+  chinese_name: 本地
+  simple_chinese_name: 本地
+  english_name: Local
+  type: radio
+  meta:
+    select: provident_fund
+
+national:
+  chinese_name: 國籍
+  simple_chinese_name: 国籍
+  english_name: National
+  type: select
+  selectable: true
+  meta:
+    select: nationality
+
+certificate_issued_country:
+  chinese_name: 證件發出國家
+  simple_chinese_name: 证件发出国家
+  english_name: Credentials country
+  type: select
+  selectable: true
+  meta:
+    select: nationality
+  required: false
+
+national_of_manila:
+  chinese_name: 國籍
+  simple_chinese_name: 国籍
+  english_name: National
+  type: select
+  selectable: true
+  meta:
+    select:
+      key: nationality
+      default: china
+
+place_of_birth:
+  chinese_name: 出生地點
+  simple_chinese_name: 出生地点
+  english_name: Place of birth
+  selectable: true
+  type: string
+
+date_of_birth:
+  chinese_name: 出生日期
+  simple_chinese_name: 出生日期
+  english_name: Date of birth
+  selectable: true
+  type: date
+
+tax_code:
+  chinese_name: TaxCode
+  simple_chinese_name: TaxCode
+  english_name: TaxCode
+  required: false
+  type: string
+
+solo_parent:
+  chinese_name: 單親家庭
+  simple_chinese_name: 单亲家庭
+  english_name: Solo parent
+  type: radio
+  meta:
+    select: provident_fund
+
+id_number:
+  chinese_name: 證件號碼
+  simple_chinese_name: 证件号码
+  english_name: ID number
+  selectable: true
+  required: true
+  type: string
+  meta:
+    hooks:
+      - sync_with_user_id_card_number
+
+type_of_id:
+  chinese_name: 證件類型
+  simple_chinese_name: 证件类型
+  english_name: Type of ID
+  selectable: true
+  type: select
+  meta:
+    select: type_of_id
+
+date_of_expiry:
+  chinese_name: 證件有效期
+  simple_chinese_name: 证件有效期
+  english_name: Date of expiry
+  type: date
+  required: false
+  selectable: true
+
+mobile_number:
+  chinese_name: 手提電話
+  simple_chinese_name: 手提电话
+  english_name: Cellphone
+  selectable: true
+  required: false
+
+home_number:
+  chinese_name: 電話號碼(住宅)
+  simple_chinese_name: 电话号码(住宅)
+  english_name: Home number
+  selectable: true
+  required: false
+
+other_phone_number:
+  chinese_name: 其他電話
+  simple_chinese_name: 其他电话
+  english_name: Other phone
+  selectable: true
+  required: false
+
+address:
+  chinese_name: 住宅/通訊地址
+  simple_chinese_name: 住宅/通讯地址
+  english_name: Address
+  selectable: true
+  required: false
+
+hometown_address:
+  chinese_name: 原居地地址
+  simple_chinese_name: 原居地地址
+  english_name: Hometown
+  type: string
+  required: false
+  selectable: true
+
+temporary_address_dormitory:
+  chinese_name: 宿舍住址
+  simple_chinese_name: 宿舍地址
+  english_name: Temporary address(Dormitory)
+  required: false
+  selectable: true
+
+email:
+  chinese_name: 電子郵件
+  simple_chinese_name: 电子邮件
+  english_name: E-mail
+  selectable: true
+  required: false
+  meta:
+    hooks:
+      - sync_with_user_email
+
+email_personal:
+  chinese_name: 電郵地址（個人）
+  simple_chinese_name: 电邮地址（个人）
+  english_name: Email address (personal)
+  required: false
+  selectable: true
+
+english:
+  chinese_name: 英語
+  simple_chinese_name: 英语
+  english_name: English
+  required: false
+  type: select
+  meta:
+    select: language_skill
+chinese:
+  chinese_name: 中文
+  simple_chinese_name: 中文
+  english_name: Chinese
+  required: false
+  type: select
+  meta:
+    select: language_skill
+
+janpanese:
+  chinese_name: 日文
+  simple_chinese_name: 日文
+  english_name: Janpanese
+  required: false
+  type: select
+  meta:
+    select: language_skill
+
+korean:
+  chinese_name: 韓文
+  simple_chinese_name: 韩文
+  english_name: Korean
+  required: false
+  type: select
+  meta:
+    select: language_skill
+
+thai:
+  chinese_name: 泰文
+  simple_chinese_name: 泰文
+  english_name: Thai
+  required: false
+  type: select
+  meta:
+    select: language_skill
+
+contanese:
+  chinese_name: 廣東話
+  simple_chinese_name: 广东话
+  english_name: Contanese
+  required: false
+  type: select
+  meta:
+    select: language_skill
+
+other_language:
+  chinese_name: 其他語言
+  simple_chinese_name: 其他语言
+  english_name: Other language
+  required: false
+  type: select
+  meta:
+    select: language_skill
+
+
+required_to_hold_a_working_visa_in_order_to_work_in_the_macau:
+  chinese_name: 需澳門簽證？
+  simple_chinese_name: 需澳门签证？
+  english_name: Need Macau visa
+  type: radio
+  selectable: true
+  meta:
+    select: provident_fund
+
+superior_email:
+  chinese_name: 上級電子郵件
+  simple_chinese_name: 上级电子邮件
+  english_name: Superior Email
+  selectable: true
+  required: false
+
+marital_status:
+  chinese_name: 婚姻狀況
+  simple_chinese_name: 婚姻状况
+  english_name: Marital status
+  type: select
+  selectable: true
+  required: false
+  meta:
+    select: marital_status
+
+seniority_calculation_date:
+  chinese_name: 年資計算日期
+  simple_chinese_name: 年资计算日期
+  english_name: Seniority date
+  required: true
+  selectable: true
+  type: date
+  default: Logic#Date::today.strftime("%Y/%m/%d")
+
+tax_declare_date:
+  chinese_name: 報稅日期
+  simple_chinese_name: 报税日期
+  english_name: Tax declare date
+  required: false
+  selectable: true
+  type: date
+
+tax_number:
+  chinese_name: 稅務編號
+  simple_chinese_name: 税务编号
+  english_name: Tax number
+  required: false
+  selectable: true
+
+tin_number:
+  chinese_name: 稅務號碼
+  simple_chinese_name: 税务号码
+  english_name: TIN number
+  required: false
+  selectable: true
+
+pag_ibig_number:
+  chinese_name: 房屋公積金
+  simple_chinese_name: 房屋公积金
+  english_name: PAG-IBIG Number
+  required: false
+  selectable: true
+
+phihealth_number:
+  chinese_name: 醫療保險號碼
+  simple_chinese_name: 医疗保险号码
+  english_name: PhilHealth Number
+  required: false
+  selectable: true
+
+passport_number:
+  chinese_name: 護照號碼
+  simple_chinese_name: 护照号码
+  english_name: Passport Number
+  required: false
+  selectable: true
+
+number_of_children:
+  chinese_name: 子女數
+  simple_chinese_name: 子女数
+  english_name: Number of children
+  required: false
+  selectable: true
+
+fathers_name:
+  chinese_name: 父親姓名
+  simple_chinese_name: 父亲姓名
+  english_name: Father name
+  required: false
+  selectable: true
+
+mothers_name:
+  chinese_name: 母親姓名
+  simple_chinese_name: 母亲姓名
+  english_name: Mother name
+  required: false
+  selectable: true
+
+required_to_hold_a_working_visa_in_order_to_work_in_the_philippines:
+  chinese_name: 是否需要工作簽證
+  simple_chinese_name: 是否需要工作签证
+  english_name: Required to hold a working visa in order to work in the Philippines
+  type: radio
+  meta:
+    select: provident_fund
+
+referred_by:
+  chinese_name: 申請途徑
+  simple_chinese_name: 申请途径
+  english_name: Route
+  type: select
+  meta:
+    select: referred_by
+
+position_of_govt_record:
+  chinese_name: 報政府職位
+  simple_chinese_name: 报政府职位
+  english_name: Position of Govt. Record
+  required: false
+  selectable: true
+
+salary_of_govt_record:
+  chinese_name: 報政府薪金
+  simple_chinese_name: 报政府薪金
+  english_name: Government salary
+  required: false
+  selectable: true
+
+sss_number:
+  chinese_name: 社會保障號碼
+  simple_chinese_name: 社会保障号码
+  english_name: SSS Number
+  required: false
+  selectable: true
+
+bank_of_china_account_mop:
+  chinese_name: 中國銀行帳號碼(葡幣)
+  simple_chinese_name: 中国银行帐号码(葡币)
+  english_name: Bank of China Account( MOP )
+  selectable: true
+  required: false
+  type: string
+
+bank_of_china_account_hkd:
+  chinese_name: 中國銀行帳號碼(港幣)
+  simple_chinese_name: 中国银行帐号码(港币)
+  english_name: Bank of China Account ( HKD )
+  selectable: true
+  required: false
+  type: string
+
+emergency_contact:
+  chinese_name: 緊急聯絡人
+  simple_chinese_name: 紧急联络人
+  english_name: Emerency contact
+  selectable: true
+  type: string
+
+emergency_contact_number:
+  chinese_name: 緊急聯絡人電話
+  simple_chinese_name: 紧急联络人电话
+  english_name: Emergency contact number
+  selectable: true
+  type: string
+
+blue_card_number:
+  chinese_name: 藍卡號碼
+  simple_chinese_name: 蓝卡号码
+  english_name: Blue card number
+  selectable: true
+  required: false
+
+date_of_blue_card_canceled:
+  chinese_name: 取消藍卡日期
+  simple_chinese_name: 取消蓝卡日期
+  english_name: Date of blue card canceled
+  type: date
+  selectable: true
+  required: false
+
+id_first_issue_date:
+  chinese_name: 身份證首次簽發日期
+  simple_chinese_name: 身份证首次签发日期
+  english_name: ID first issue date
+  type: date
+  required: false
+  selectable: true
+
+company_name:
+  chinese_name: 公司名稱
+  simple_chinese_name: 公司名称
+  english_name: Company name
+  readonly: true
+  type: select
+  required: true
+  selectable: true
+  meta:
+    select: company_name
+    hooks:
+      - sync_with_user_company_name
+
+group:
+  chinese_name: 組別
+  simple_chinese_name: 组别
+  english_name: Group
+  readonly: true
+  type: select
+  selectable: true
+  required: false
+  meta:
+    select: group_api_select
+    hooks:
+      - sync_with_user_group_id
+
+location:
+  chinese_name: 場館
+  simple_chinese_name: 场馆
+  english_name: Location
+  readonly: true
+  type: select
+  selectable: true
+  meta:
+    select: location_api_select
+    hooks:
+      - sync_with_user_location_id
+  required: true
+
+grade:
+  chinese_name: 職級
+  simple_chinese_name: 职级
+  english_name: Grade
+  readonly: true
+  required: false
+  selectable: true
+  type: select
+  meta:
+    select: grade
+    hooks:
+      - sync_with_user_grade
+
+department:
+  chinese_name: 部門
+  simple_chinese_name: 部门
+  english_name: Department
+  readonly: true
+  type: select
+  selectable: true
+  meta:
+    select: department_api_select
+    hooks:
+      - sync_with_user_department_id
+  required: true
+
+department_in_english:
+  chinese_name: 英文部門
+  simple_chinese_name: 英文部门
+  english_name: Department (English)
+  type: alias
+  required: false
+  alias_with: department
+  alias_rule: english_name
+  selectable: true
+
+position:
+  chinese_name: 職位
+  simple_chinese_name: 职位
+  english_name: Position
+  required: true
+  readonly: true
+  type: select
+  selectable: true
+  meta:
+    select: position_api_select
+    hooks:
+      - sync_with_user_position_id
+
+position_in_english:
+  chinese_name: 英文職位
+  simple_chinese_name: 英文职位
+  english_name: Position (English)
+  type: alias
+  required: false
+  selectable: true
+  alias_with: position
+  alias_rule: english_name
+
+empoid:
+  chinese_name: 員工編號
+  simple_chinese_name: 员工编号
+  english_name: ID
+  type: string
+  required: true
+  selectable: true
+  default: Logic#EmpoidService.get
+  meta:
+    hooks:
+      - sync_with_user_empoid
+
+division_of_job:
+  chinese_name: 員工歸屬類別
+  simple_chinese_name: 员工归属类别
+  english_name: Division of Job
+  readonly: true
+  type: select
+  required: false
+  selectable: true
+  meta:
+    select: division_of_job
+
+employment_status:
+  chinese_name: 在職類別
+  simple_chinese_name: 在职类别
+  english_name: Job category
+  readonly: true
+  type: select
+  selectable: true
+  meta:
+    select: employment_status
+    hooks:
+      - sync_with_user_employment_status
+  required: false
+
+
+date_of_employment:
+  chinese_name: 入職日期
+  simple_chinese_name: 入职日期
+  english_name: Entry date
+  type: date
+  required: true
+  readonly: true
+  selectable: true
+
+contract_terminated_date:
+  chinese_name: 合約終止日期
+  simple_chinese_name: 合约终止日期
+  english_name: Contract terminated date
+  type: date
+
+payment_method:
+  chinese_name: 支票/現金出量
+  simple_chinese_name: 支票/现金出量
+  english_name: Payment method
+  type: radio
+  required: false
+  selectable: true
+  meta:
+    select: payment_method
+
+provident_fund:
+  chinese_name: 扣公積金
+  simple_chinese_name: 扣公积金
+  english_name: Provident fund
+  type: radio
+  required: false
+  selectable: true
+  meta:
+    select:
+      key: provident_fund
+      default: false
+
+insurance:
+  chinese_name: 扣醫療基金
+  simple_chinese_name: 扣医疗基金
+  english_name: Insurance
+  type: radio
+  required: false
+  selectable: true
+  meta:
+    select:
+      key: provident_fund
+      default: false
+
+suncity_charity_fund_status:
+  chinese_name: 扣愛心基金
+  simple_chinese_name: 扣爱心基金
+  english_name: SunCity Charity Fund Status
+  type: radio
+  required: false
+  selectable: true
+  meta:
+    select:
+      key: provident_fund
+      default: true
+
+suncity_charity_join_date:
+  chinese_name: 扣愛心基金日期
+  simple_chinese_name: 扣爱心基金日期
+  english_name: SunCity Charity Fund-Join Date
+  type: date
+  required: false
+  selectable: true
+  default: Logic#Date::today.strftime("%Y/%m/%d")
+
+cancel_suncity_charity_fund_date:
+  chinese_name: 取消扣愛心基金日期
+  simple_chinese_name: 取消扣爱心基金日期
+  english_name: Cancel SunCity Charity Fund Date
+  type: date
+  required: false
+  selectable: true
+
+referrals:
+  chinese_name: 介紹人
+  simple_chinese_name: 介绍人
+  english_name: Referrer
+  type: string
+  required: false
+  selectable: true
+
+referrals_employee_id:
+  chinese_name: 介紹人員工號碼
+  simple_chinese_name: 介绍人员工号码
+  english_name: Referrer number
+  type: string
+  required: false
+  selectable: true
+
+referrals_contact_number:
+  chinese_name: 聯絡電話
+  simple_chinese_name: 联络电话
+  english_name: Contact telephone number
+  type: string
+  required: false
+  selectable: true
+
+referrals_relationship:
+  chinese_name: 介紹人關係
+  simple_chinese_name: 介绍人关系
+  english_name: Referrer relationship
+  type: string
+  required: false
+  selectable: true
+
+referrals_location:
+  chinese_name: 介紹人場館
+  simple_chinese_name: 介绍人场馆
+  english_name: Introducer location
+  type: string
+  required: false
+  selectable: true
+
+referrals_position:
+  chinese_name: 介紹人職位
+  simple_chinese_name: 介绍人职位
+  english_name: Introducer position
+  type: string
+  required: false
+  selectable: true
+
+flight_ticket_benefit:
+  chinese_name: 機票褔利
+  simple_chinese_name: 机票福利
+  english_name: Flight ticket benefit
+  type: radio
+  required: false
+  selectable: true
+  meta:
+    select: provident_fund
+
+housing_benefit:
+  chinese_name: 宿舍褔利
+  simple_chinese_name: 宿舍福利
+  english_name: Housing benefit
+  type: radio
+  required: false
+  selectable: true
+  meta:
+    select: provident_fund
+
+remark:
+  chinese_name: 備註
+  simple_chinese_name: 备注
+  english_name: Remarks
+  type: string
+  required: false
+  selectable: false
+
+bank_account_number_local:
+  chinese_name: 本地銀行帳號
+  simple_chinese_name: 本地银行帐号
+  english_name: Bank Account Number (Local)
+  type: string
+  required: true
+  selectable: true
+
+bank_account_number_local_2:
+  chinese_name: 本地銀行帳號2
+  simple_chinese_name: 本地银行帐号2
+  english_name: Bank Account Number 2 (Local)
+  type: string
+  required: false
+  selectable: true
+beneficiary:
+  chinese_name: 收款人
+  simple_chinese_name: 收款人
+  english_name: Beneficiary
+  type: string
+  required: true
+  selectable: true
+bnfs_bank_account_no:
+  chinese_name: 收款人銀行帳號
+  simple_chinese_name: 收款人银行帐号
+  english_name: Bnf's Bank Account No.
+bnfs_bank_country:
+  chinese_name: 收款銀行所屬國家
+  simple_chinese_name: 收款银行所属国家
+  english_name: Bnf's Bank Country
+bnfs_bank:
+  chinese_name: 收款銀行名稱
+  simple_chinese_name: 收款银行名称
+  english_name: Bnf's Bank
+bnfs_bank_address:
+  chinese_name: 收款銀行地址
+  simple_chinese_name: 收款银行地址
+  english_name: Bnf's Bank Address
+bnfs_bank_swift_code:
+  chinese_name: 收款銀行SWIFT地址
+  simple_chinese_name: 收款银行SWIFT地址
+  english_name: Bnf's Bank Swift Code
+cash_reserve:
+  chinese_name: 現金預存
+  simple_chinese_name: 现金预存
+  english_name: Cash Reserve
+effective_date_of_bank_account:
+  chinese_name: 銀行帳號生效日期
+  simple_chinese_name: 银行帐号生效日期
+  english_name: Effective Date of Bank Account
+
+
+remaining_annual_leave:
+  chinese_name: 當前剩餘年假
+  simple_chinese_name: 当前剩余年假
+  english_name: Remaining annual leave
+  readonly: true
+  required: false
+  type: string
+
+remaining_sick_leave:
+  chinese_name: 當前剩餘病假
+  simple_chinese_name: 当前剩余病假
+  english_name: Remaining sick leave
+  readonly: true
+  required: false
+  type: string
+
+remaining_reward_leave:
+  chinese_name: 當前獎勵假
+  simple_chinese_name: 当前奖励假
+  english_name: Remaining reward leave
+  readonly: true
+  required: false
+  type: string
+
+availbable_annual_leave:
+  chinese_name: 可申請年假
+  simple_chinese_name: 可申请年假
+  english_name: Apply for annual leave
+  required: false
+  selectable: false
+
+availbable_sick_leave:
+  chinese_name: 可申請病假
+  simple_chinese_name: 可申请病假
+  english_name: Apply for sick leave
+  required: false
+  selectable: false
+
+working_hours:
+  chinese_name: 工作時間
+  simple_chinese_name: 工作时间
+  english_name: Working time
+  required: false
+  selectable: true
+
+
+
+annual_leave:
+  chinese_name: 年假
+  simple_chinese_name: 年假
+  english_name: Annual leave
+  required: true
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: annual_leave
+
+sick_leave:
+  chinese_name: 病假
+  simple_chinese_name: 病假
+  english_name: Sick leave
+  required: true
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: sick_leave
+
+office_holiday:
+  chinese_name: 公休天數
+  simple_chinese_name: 公休天数
+  english_name: Public holiday
+  required: true
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: office_holiday
+
+holiday_type:
+  chinese_name: 假期類別
+  simple_chinese_name: 假期类别
+  english_name: Holiday type
+  required: true
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: holiday_type
+
+probation:
+  chinese_name: 試用期
+  simple_chinese_name: 试用期
+  english_name: Probation
+  required: true
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: probation
+
+notice_period:
+  chinese_name: 離職通知期
+  simple_chinese_name: 离职通知期
+  english_name: Resign notice date
+  required: true
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: notice_period
+over_time_salary:
+  chinese_name: 加班薪金
+  simple_chinese_name: 加班薪金
+  english_name: Overtime salary
+  required: true
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: over_time_salary
+
+force_holiday_make_up:
+  chinese_name: 強制假期補償
+  simple_chinese_name: 强制假期补偿
+  english_name: Force holiday make up
+  required: true
+  type: select
+  readonly: true
+  selectabe: true
+  meta:
+    select: force_holiday_make_up
+
+
+double_pay:
+ chinese_name: 雙糧
+ simple_chinese_name: 双量
+ english_name: Double pay
+ required: true
+ type: radio
+ readonly: true
+ required: true
+ selectable: true
+ meta:
+   select: provident_fund
+reduce_salary_for_sick:
+  chinese_name: 有薪病假是否扣薪
+  simple_chinese_name: 有薪病假是否扣薪
+  english_name: Paid sick leave is unpaid
+  type: radio
+  readonly: true
+  required: true
+  selectable: true
+  meta:
+   select: provident_fund
+
+provide_airfare:
+  chinese_name: 來回機票
+  simple_chinese_name: 来回机票
+  english_name: Round-trip ticket
+  type: radiofixed
+  readonly: true
+  required: true
+  selectable: true
+  meta:
+   select: provident_airfare
+
+provide_accommodation:
+  chinese_name: 宿舍
+  simple_chinese_name: 宿舍
+  english_name: Dormitory
+  type: radiofixed
+  readonly: true
+  required: true
+  selectable: true
+  meta:
+   select: provident_airfare
+
+provide_uniform:
+  chinese_name: 制服
+  simple_chinese_name: 制服
+  english_name: Uniform
+  type: radio
+  readonly: true
+  required: true
+  selectable: true
+  meta:
+   select: provident_airfare
+
+salary_composition:
+  chinese_name: 薪金組成
+  simple_chinese_name: 薪金组成
+  english_name: Salary composition
+  type: radio
+  readonly: true
+  required: true
+  selectable: true
+  meta:
+   select: salary_composition
+
+
+position_start_date:
+  chinese_name: 職位開始日期
+  simple_chinese_name: 职位开始日期
+  english_name: Start date
+  type: date
+
+position_end_date:
+  chinese_name: 職位結束日期
+  simple_chinese_name: 职位结束日期
+  english_name: End date
+  type: date
+  required: false
+
+position_resigned_date:
+  chinese_name: 離職日期
+  simple_chinese_name: 离职日期
+  english_name: Resigned date
+  readonly: true
+  required: false
+  selectable: true
+  type: date
+
+resigned_date:
+  chinese_name: 最後僱用日期
+  simple_chinese_name: 最后雇用日期
+  english_name: Last employment date
+  required: false
+  type: date
+  readonly: true
+  selectable: true
+final_work_date:
+  chinese_name: 最後工作日期
+  simple_chinese_name: 最后工作日期
+  english_name: Final work date
+  required: false
+  type: date
+  readonly: true
+  selectable: true
+notice_date:
+  chinese_name: 離職通知日期
+  simple_chinese_name: 离职通知日期
+  english_name: Resign notice date
+  required: false
+  type: date
+  readonly: true
+  selectable: true
+compensation_year:
+  chinese_name: 是否補償年資
+  simple_chinese_name: 是否补偿年资
+  english_name: Compensate for seniority
+  required: false
+  type: select
+  selectable: true
+  readonly: true
+  meta:
+    select: provident_fund
+
+notice_period_compensation:
+  chinese_name: 是否豁免通知期
+  simple_chinese_name: 是否豁免通知期
+  english_name: Exemption notice period
+  required: false
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: provident_fund
+
+is_in_whitelist:
+  chinese_name: 是否再聘用此員工
+  simple_chinese_name: 是否载聘用此员工
+  english_name: To hire this employee again?
+  required: false
+  type: select
+  readonly: true
+  selectable: true
+  meta:
+    select: provident_fund
+deployment_instructions:
+  chinese_name: 調配說明
+  simple_chinese_name: 调配说明
+  english_name: Deployment instructions
+  type: string
+  required: false
+
+transfer_reason:
+  chinese_name: 調配類型
+  simple_chinese_name: 调配类型
+  english_name: Deployment type
+  selectable: false
+  type: select
+  meta:
+    select: transfer_reason
+
+transfer_description:
+  chinese_name: 調配原因
+  simple_chinese_name: 调配原因
+  english_name: Transfer description
+  type: string
+  required: false
+  selectable: false
+
+record_date:
+  chinese_name: 記錄日期
+  simple_chinese_name: 记录日期
+  english_name: Record date
+  type: date
+
+resigned_reason:
+  chinese_name: 離職類型
+  simple_chinese_name: 离职类型
+  english_name: Type of departure
+  type: select
+  selectable: true
+  readonly: true
+  meta:
+    select: resigned_reason
+  required: false
+
+reason_for_resignation:
+  chinese_name: 離職原因
+  simple_chinese_name: 离职原因
+  english_name: Reason for leaving
+  type: select
+  selectable: true
+  meta:
+    select: reason_for_resignation
+  required: false
+  readonly: true
+type_of_employment:
+  chinese_name: 在職類別
+  simple_chinese_name: 在职类别
+  english_name: Job category
+  type: select
+  meta:
+    select: type_of_employment
+
+department_before_leave:
+  chinese_name: 離職前部門
+  simple_chinese_name: 离职前部门
+  english_name: Department before leaving
+  type: select
+  selectable: true
+  meta:
+    select: department_api_select
+    hooks:
+      - sync_with_user_department_id
+
+position_before_leave:
+  chinese_name: 離職前職位
+  simple_chinese_name: 离职前职位
+  english_name: Position before leaving
+  type: select
+  selectable: true
+  meta:
+    select: position_api_select
+    hooks:
+      - sync_with_user_position_id
+
+
+salary_suspend_date:
+  chinese_name: 薪資停發日期
+  simple_chinese_name: 薪资停发日期
+  english_name: Salary suspend date
+  type: date
+
+first_choice:
+  chinese_name: 第一選擇
+  simple_chinese_name: 第一选择
+  english_name: First choice
+  required: true
+  type: select
+  meta:
+    select: position_to_apply
+    hooks:
+      - change_first_choice
+
+second_choice:
+  chinese_name: 第二選擇
+  simple_chinese_name: 第二选择
+  english_name: Second choice
+  required: false
+  type: select
+  meta:
+    select: position_to_apply
+    hooks:
+      - change_second_choice
+
+third_choice:
+  chinese_name: 第三選擇
+  simple_chinese_name: 第三选择
+  english_name: Third choice
+  required: false
+  type: select
+  meta:
+    select: position_to_apply
+    hooks:
+      - change_thrid_choice
+salary_request:
+  chinese_name: 薪金要求
+  simple_chinese_name: 薪金要求
+  english_name: Salary requirements
+  required: false
+
+available_on:
+  chinese_name: 可上班日期
+  simple_chinese_name: 可上班日期
+  english_name: Date of work
+  required: false
+  type: date
+
+emergency_contact_name:
+  chinese_name: 姓名
+  simple_chinese_name: 姓名
+  english_name: Name
+  required: false
+  selectable: false
+
+emergency_contact_phone_number:
+  chinese_name: 電話號碼
+  simple_chinese_name: 电话号码
+  english_name: Phone number
+  required: false
+  selectable: false
+
+emergency_contact_relationship:
+  chinese_name: 關係
+  simple_chinese_name: 关系
+  english_name: Relationship
+  required: false
+  selectable: false
+
+highest:
+  chinese_name: 是否最高學歷
+  simple_chinese_name:  是否最高学历
+  english_name: Highest degree of Education
+  required: true
+  selectable: true
+  type: radio
+  meta:
+   select: provident_fund
+
+from_mm_yyyy:
+  chinese_name: 由(月/年)/入學
+  simple_chinese_name:  由(月/年)/入学
+  english_name: From(mm/yyyy)
+  required: true
+  selectable: false
+  type: date_without_day
+
+to_mm_yyyy:
+  chinese_name: 至(月/年)/畢業
+  simple_chinese_name: 至(月/年)/毕业
+  english_name: To(mm/yyyy)
+  required: true
+  selectable: false
+  type: date_without_day
+
+college_university:
+  chinese_name: 畢業學校
+  simple_chinese_name: 毕业学校
+  english_name: Graduated school
+  required: true
+  selectable: false
+
+graduated:
+  chinese_name: 是否畢業
+  simple_chinese_name: 是否毕业
+  english_name: Whether to graduate
+  required: true
+  selectable: false
+  type: radio
+  meta:
+    select:
+      key: provident_fund
+
+educational_department:
+  chinese_name: 科系
+  simple_chinese_name: 科系
+  english_name: Department
+  required: true
+  selectable: false
+
+graduate_level:
+  chinese_name: 學歷程度(如:初中/高中/大學)
+  simple_chinese_name: 学历程度(如:初中/高中/大学)
+  english_name: 'Degree of education'
+  required: true
+  selectable: false
+
+diploma_degree_attained:
+  chinese_name: 學位及專業
+  simple_chinese_name: 学位及专业
+  english_name: Degree and professional
+  <<: *table_schema
+
+certificate_issue_date:
+  chinese_name: 證書頒發日期
+  simple_chinese_name: 证书颁发日期
+  english_name: Certificate issuance date
+  type: date
+  <<: *table_schema
+
+professional_certificate:
+  chinese_name: 證書、文憑及專業機構會員資格
+  simple_chinese_name: 证书、文凭及专业机构会员资格
+  english_name: Certificate
+  required: true
+  selectable: false
+
+orgnaization:
+  chinese_name: 頒發機構
+  simple_chinese_name: 颁发机构
+  english_name: Issuing agency
+  required: true
+  selectable: false
+
+issue_date:
+  chinese_name: 頒發日期
+  simple_chinese_name: 颁发日期
+  english_name: Issue date
+  type: date
+  required: true
+  selectable: false
+
+company_organazition:
+  chinese_name: 任職公司
+  simple_chinese_name: 任职公司
+  english_name: Serving company
+  required: true
+  selectable: false
+
+work_experience_position:
+  chinese_name: 職位
+  simple_chinese_name: 职位
+  english_name: Position
+  required: true
+  selectable: false
+
+work_experience_from:
+  chinese_name: 由 (MM/YYYY)
+  simple_chinese_name: 由 (MM/YYYY)
+  english_name: From(mm/yyyy)
+  required: true
+  type: date_without_day
+  selectable: false
+
+work_experience_to:
+  chinese_name: 至(MM/YYYY)
+  simple_chinese_name: 至(MM/YYYY)
+  english_name: To(mm/yyyy)
+  required: true
+  type: date_without_day
+  selectable: false
+
+job_description:
+  chinese_name: 工作概要
+  simple_chinese_name: 工作概要
+  english_name: Work summary
+  <<: *table_schema
+
+work_experience_salary:
+  chinese_name: 現時/離職時每月薪金
+  simple_chinese_name:  现时/离职时每月薪金
+  english_name: Current / paid monthly salary
+  <<: *table_schema
+
+work_experience_reason_for_leaving:
+  chinese_name: 離職原因
+  simple_chinese_name: 离职原因
+  english_name: Reason for leaving
+  <<: *table_schema
+
+work_experience_company_phone_number:
+  chinese_name: 公司電話
+  simple_chinese_name: 公司电话
+  english_name: Company phone
+  <<: *table_schema
+
+former_head:
+  chinese_name: 前負責人/上司姓名
+  simple_chinese_name: 前负责人/上司姓名
+  english_name: Former leader/superior
+  <<: *table_schema
+
+work_experience_email:
+  chinese_name: 電郵地址
+  simple_chinese_name: 电邮地址
+  english_name: Email Address
+  <<: *table_schema
+
+have_any_relatives:
+  chinese_name: 是否有親戚在公司裡
+  simple_chinese_name: 是否有亲戚在公司里
+  english_name: Relatives in company
+  required: true
+  type: radio
+  meta:
+    select: provident_fund
+
+relative_department:
+  chinese_name: 部門
+  simple_chinese_name: 部门
+  english_name: Department
+  required: false
+
+relative_position:
+  chinese_name: 職位
+  simple_chinese_name: 职位
+  english_name: Position
+  required: false
+
+relative_department_position:
+  chinese_name: 部門/職位
+  simple_chinese_name:  部门/职位
+  english_name: Department/Position
+  required: false
+
+relative_contact_number:
+  chinese_name: 聯絡電話號碼
+  simple_chinese_name: 联络电话号码
+  english_name: Contact telephone number
+  required: false
+
+relative_relation:
+  chinese_name: 關係
+  simple_chinese_name: 关系
+  english_name: Relationship
+  required: true
+
+relative_criminal_record:
+  chinese_name: 有無犯罪記錄
+  simple_chinese_name: 有无犯罪记录
+  english_name: Criminal record
+  type: radio
+  required: true
+  selectable: true
+  meta:
+    select: provident_fund
+
+relative_criminal_record_detail:
+  chinese_name: 犯罪記錄詳情
+  simple_chinese_name: 犯罪记录详情
+  english_name: Criminal record detail
+  required: false
+
+relative_business_relationship_with_suncity:
+  chinese_name: 親屬與公司有合作
+  simple_chinese_name: 亲属与公司有合作
+  english_name: Relatives partner with company
+  type: radio
+  required: true
+  selectable: true
+  meta:
+    select: provident_fund
+
+relative_business_relationship_with_suncity_detail:
+  chinese_name: 親屬與公司合作詳情
+  simple_chinese_name: 亲属与公司合作详情
+  english_name: Relatives partner with company details
+  required: false
+
+family_fathers_name_chinese:
+  chinese_name: 父親姓名（中文）
+  simple_chinese_name: 父亲姓名（中文）
+  english_name: Father name (Chinese)
+  required: false
+  selectable: true
+
+family_fathers_name_english:
+  chinese_name: 父親姓名（英文）
+  simple_chinese_name: 父亲姓名（英文）
+  english_name: Father name (English)
+  required: false
+  selectable: true
+
+family_mothers_name_chinese:
+  chinese_name: 母親姓名（中文）
+  simple_chinese_name: 母亲姓名（中文）
+  english_name: Mother name (Chinese)
+  required: false
+  selectable: true
+
+family_mothers_name_english:
+  chinese_name: 母親姓名（英文）
+  simple_chinese_name:  母亲姓名（英文）
+  english_name: Mother name (English)
+  required: false
+  selectable: true
+
+family_partenrs_name_chinese:
+  chinese_name: 配偶姓名（中文）
+  simple_chinese_name: 配偶姓名（中文）
+  english_name: Spouse name (Chinese)
+  required: false
+  selectable: true
+
+family_partenrs_name_english:
+  chinese_name: 配偶姓名（英文）
+  simple_chinese_name: 配偶姓名（英文）
+  english_name: Spouse name (English)
+  required: false
+  selectable: true
+
+family_kids_name_chinese:
+  chinese_name: 子女姓名（中文）
+  simple_chinese_name: 子女姓名（中文）
+  english_name: Child name (Chinese)
+  required: false
+  selectable: true
+
+family_kids_name_english:
+  chinese_name: 子女姓名（英文）
+  simple_chinese_name: 子女姓名（英文）
+  english_name: Child name (English)
+  required: false
+  selectable: true
+
+family_bothers_name_chinese:
+  chinese_name: 兄弟姓名（中文）
+  simple_chinese_name: 兄弟姓名（中文）
+  english_name: Brother name (Chinese)
+  required: false
+  selectable: true
+
+family_bothers_name_english:
+  chinese_name: 兄弟姓名（英文）
+  simple_chinese_name:  兄弟姓名（英文）
+  english_name: Brother name (English)
+  required: false
+  selectable: true
+
+family_sisters_name_chinese:
+  chinese_name: 姐妹姓名（中文）
+  simple_chinese_name:  姐妹姓名（中文）
+  english_name: Sister name (Chinese)
+  required: false
+  selectable: true
+
+family_sisters_name_english:
+  chinese_name: 姐妹姓名（英文）
+  simple_chinese_name: 姐妹姓名（英文）
+  english_name: Sister name (English)
+  required: false
+  selectable: true
+
+language_chinese:
+  chinese_name: 中文
+  simple_chinese_name: 中文
+  english_name: Chinese
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_contanese:
+  chinese_name: 廣東話
+  simple_chinese_name: 广东话
+  english_name: Contanese
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_mandarin:
+  chinese_name: 普通話
+  simple_chinese_name: 普通话
+  english_name: Mandarin
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_english:
+  chinese_name: 英語
+  simple_chinese_name: 英语
+  english_name: English
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_other:
+  chinese_name: 其他
+  simple_chinese_name: 其他
+  english_name: Others
+  required: false
+
+language_skill:
+  chinese_name: 技能
+  simple_chinese_name: 技能
+  english_name: Skill
+  required: false
+  selectable: true
+
+language_chinese_writing:
+  chinese_name: 中文 （寫）
+  simple_chinese_name: 中文 （写）
+  english_name: Chinese（writing）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_contanese_speaking:
+  chinese_name: 廣東話（講）
+  simple_chinese_name: 广东话（讲）
+  english_name: Contanese（speaking）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_contanese_listening:
+  chinese_name: 廣東話（聽）
+  simple_chinese_name: 广东话（听）
+  english_name: Contanese（listening）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_mandarin_speaking:
+  chinese_name: 普通話（講）
+  simple_chinese_name: 普通话（讲）
+  english_name: Mandarin（speaking）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_mandarin_listening:
+  chinese_name: 普通話（聽）
+  simple_chinese_name:  普通话（听）
+  english_name: Mandarin（listening）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_english_speaking:
+  chinese_name: 英語（講）
+  simple_chinese_name: 英语（讲）
+  english_name: English（speaking）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_english_listening:
+  chinese_name: 英語（聽）
+  simple_chinese_name:  英语（听）
+  english_name: English（listening）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_english_writing:
+  chinese_name: 英語（寫）
+  simple_chinese_name: 英语（写）
+  english_name: English（writing）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_other_name:
+  chinese_name: 其他
+  simple_chinese_name: 其他
+  english_name: Others
+  required: false
+
+language_other_speaking:
+  chinese_name: 其他（講）
+  simple_chinese_name: 其他（讲）
+  english_name: Others（speaking）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_other_listening:
+  chinese_name: 其他（聽）
+  simple_chinese_name: 其他（听）
+  english_name: Others（listening）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+language_other_writing:
+  chinese_name: 其他（寫）
+  simple_chinese_name: 其他（写）
+  english_name: Others（writing）
+  required: false
+  selectable: true
+  type: radio
+  meta:
+    select: language_skill
+
+applicant_no:
+  chinese_name: 求職者編號
+  simple_chinese_name:  求职者编号
+  english_name: Applicant number
+  required: false
+  selectable: true

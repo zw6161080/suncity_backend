@@ -1,0 +1,17 @@
+en:
+  statement_columns:
+    goods_signings:
+      distribution_date: Distribution date
+      goods_status: Goods status
+      employee_id: ID
+      employee_name: Name
+      department: Department
+      position: Position
+      career_entry_date: Entry date
+      goods_category: Goods name
+      distribution_count_with_unit: Quantity
+      distribution_total_value: Goods amount (MOP)
+      sign_date: Sign date
+      return_date: Return date
+      distributor: Distributors
+      remarks: Remarks

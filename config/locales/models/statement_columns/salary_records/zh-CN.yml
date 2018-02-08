@@ -1,0 +1,38 @@
+zh-CN:
+  salary_records:
+    file_name: 员工薪酬报表
+  statement_columns:
+    salary_records:
+      empoid: 员工编号
+      name: 姓名
+      division_of_job: 在职类别
+      company_name: 公司名称
+      location: 场馆
+      department: 部门
+      position: 职位
+      grade: 职级
+      date_of_employment: 入职日期
+      leave_date: 离职日期
+      salary_begin: 调整日期
+      change_reason: 调整原因
+      type_of_id: 证件类型
+      basic_salary: 底薪
+      bonus: 津貼
+      attendance_award: 勤工
+      house_bonus: 房屋津貼
+      region_bonus: 地区津贴
+      tea_bonus: 茶資份數
+      kill_bonus: 殺數分紅份數
+      performance_bonus: 業績分紅份數
+      charge_bonus: 刷卡獎金份數
+      commission_bonus: 佣金差額份數
+      receive_bonus: 收賬分紅份數
+      exchange_rate_bonus: 匯率分紅份數
+      guest_card_bonus: 貴賓卡消費份數
+      respect_bonus: 尊華殿份數
+      new_year_bonus: 新春利是份數
+      project_bonus: 項目分紅份數
+      product_bonus: 尚品獎金份數
+
+
+

@@ -1,0 +1,14 @@
+en:
+  turnover_rate:
+    file_name: turnover_rate
+  statement_columns:
+    turnover_rate:
+      years: Years
+      both: Local and foreign
+      local: Local
+      foreign: Foreign
+  sub_columns:
+    turnover_rate:
+      in_service: In service
+      leave: Leave
+      rate: Rate

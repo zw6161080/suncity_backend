@@ -1,0 +1,13 @@
+zh-HK:
+  special_schedule_remarks:
+    file_name: 特別更備註報表
+  statement_columns:
+    special_schedule_remarks:
+      empoid: 員工編號
+      name: 姓名
+      department: 部門
+      position: 職位
+      date_of_employment: 入職日期
+      content: 特別更申請備註
+      date_begin: 生效日期
+      date_end: 結束日期

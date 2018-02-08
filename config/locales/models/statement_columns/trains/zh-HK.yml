@@ -1,0 +1,16 @@
+zh-HK:
+  trains:
+    train_class: 培訓課程
+  statement_columns:
+    trains:
+      status: 培訓狀態
+      train_name: 培訓名稱
+      train_number: 培訓編號
+      train_date: 培訓日期
+      registration_date: 報名日期
+      registration_method: 報名方式
+      online_or_offline_training: 線上/線下培訓
+      train_template_type: 培訓種類
+      training_credits: 培訓學分
+      entry_lists_count: 報名人數
+      final_lists_count: 出席人數

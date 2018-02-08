@@ -1,0 +1,17 @@
+zh-CN:
+  statement_columns:
+    goods_signings:
+      distribution_date: 分发日期
+      goods_status: 物品状态
+      employee_id: 员工编号
+      employee_name: 姓名
+      department: 部门
+      position: 职位
+      career_entry_date: 入职日期
+      goods_category: 物品名称
+      distribution_count_with_unit: 数量
+      distribution_total_value: 物品金额(MOP)
+      sign_date: 签收日期
+      return_date: 归还日期
+      distributor: 分发人
+      remarks: 备注

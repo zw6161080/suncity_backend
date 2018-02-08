@@ -1,0 +1,44 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 排班考勤修復補充
+
+# Describe your paths here
+paths:
+  /roster_preferences/employee_roster_model_state_settings:
+    get:
+      tags:
+        - 排班设定
+      description: 按员工设定列表页
+      parameters:
+        - name: current_week_no_for_query_date
+          in: query
+          type: string
+          required: false
+          description: 目前更模星期
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/EmployeeRosterSettingList'
+definitions:
+  EmployeeRosterSettingList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            current_state:
+              type: object
+              properties:
+                current_week_no_for_query_date:
+                  type: string
+                  description: 目前更模星期
+

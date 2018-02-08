@@ -1,0 +1,32 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 借钟还钟
+
+# Describe your paths here
+paths:
+  /contribution_report_items/year_month_options:
+    get:
+      tags:
+        - 公积金供款报表
+      description: 公积金供款报表年月筛选项
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/YearMonthOptions'
+definitions:
+  YearMonthOptions:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: string
+          description: 'datatime'
+

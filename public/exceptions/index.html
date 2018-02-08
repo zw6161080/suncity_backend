@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Exceptions</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px 0;
+      background-color: #eee;
+    }
+
+    body, textarea {
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #333;
+    }
+
+    .footer {
+      padding: 15px;
+      text-align: center;
+      color: #999;
+    }
+    .footer a:link,
+    .footer a:visited { color: #666; text-decoration: underline;}
+
+    a, a:visited, a:active {
+      color: #364cc9;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      margin-bottom: 20px;
+    }
+
+    th {
+      text-align: left;
+      border-bottom: solid 1px #ddd;
+    }
+
+    td.date { width: 150px; font-size: 12px; }
+
+    h1 {
+      margin-top: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    h1, p {
+      margin-bottom: 20px;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    table td, table th {
+      padding: 10px 15px;
+    }
+    th { background: #f5f5f5; border-bottom: 1px solid #eee; }
+    td {
+      border-top: solid 1px #ddd;
+    }
+
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      border: solid 1px #ddd;
+      padding: 10px;
+    }
+
+    hr {
+      border: none;
+      height: 0;
+      border-top: solid 1px #ddd;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.42857143;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+      padding: 8px 18px;
+      outline: 0 !important;
+      background: #FFF;
+    }
+    .btn:hover { text-decoration: none; }
+    .btn-danger { background: #E25517; color: #fff !important; border: #D44323; }
+
+    .container {
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .no-record {
+      padding: 50px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .toolbar {
+      margin-bottom: 15px;
+      height: 34px;
+      line-height: 34px;
+    }
+    .toolbar .pull-right { float: right; }
+
+    #notice {
+      padding: 8px 15px;
+      background: #3CBD46;
+      color: #fff;
+      margin-bottom: 15px;
+      border-radius: 3px;
+    }
+
+    pre {
+      background: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #eee;
+      font-size: 12px;
+      font-family: Menlo, Monaco, Consolas, monospace;
+      line-height: 20px;
+    }
+
+    h1 { font-size: 16px; }
+
+    .pagination {
+      padding-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .pagination li { display: inline; }
+
+    .pagination a {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #eee;
+    }
+    .pagination em,
+    .pagination .current {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #f0f0f0;
+      background: #f0f0f0;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div class="container">
+    <!-- <div id="notice">notice</div> -->
+    <div id="list_page">
+      <div class="toolbar">
+        <span id="total_count">0</span> Exceptions /
+        <span id="total_pages">0</span> Pages /
+        <input id="current_page" type="text" value="0" style="width: 25px; text-align: right;" onchange="getList(this.value);">
+
+        <div class="pull-right">
+          <a class="btn btn-danger" onclick="return deleteAll()">Delete All</a>
+        </div>
+      </div>
+
+<!-- 
+  <div class="no-record">No exceptions.</div> -->
+
+
+  <table class="table table-borded tabl">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Summary</th>
+        <th class="date"></th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+
+    <tbody id="log_list_table"></tbody>
+  </table>
+
+</div>
+
+<div id="show_page" style="display: none;">
+</div>
+
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+  function getList(page) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/exception_logs?page="+page, true);
+    xhr.withCredentials = true;
+    // xhr.setRequestHeader("Authorization", 'Basic ' + btoa('user:password'));
+    xhr.onload = function () {
+      logs = JSON.parse(xhr.responseText);
+      insertInto('total_count', logs.meta.total_count)
+      insertInto('total_pages', logs.meta.total_pages)
+      document.getElementById('current_page').value = logs.meta.current_page;
+      renderList();
+    };
+    xhr.send();
+    return;
+  }
+
+  function getOne(log_id) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/exception_logs/"+log_id, true);
+    xhr.withCredentials = true;
+    xhr.onload = function () {
+      log = JSON.parse(xhr.responseText);
+      renderShow(log.data);
+    };
+    xhr.send();
+    return;
+  }
+
+  function deleteLog(log_id) {
+    if ( !confirm('Are you sure want destroy the Exception logs?')) return false;
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "/exception_logs/"+log_id, true);
+    xhr.withCredentials = true;
+    xhr.onload = function () {
+      log = JSON.parse(xhr.responseText);
+      window.location.reload();
+    };
+    xhr.send();
+    return;
+  }
+
+  function deleteAll() {
+    if ( !confirm('Are you sure want destroy all Exception logs?')) return false;
+    var xhr = new XMLHttpRequest();
+    xhr.open("DELETE", "/exception_logs/all", true);
+    xhr.withCredentials = true;
+    xhr.onload = function () {
+      window.location.reload();
+    };
+    xhr.send();
+    return;
+  }
+
+  function renderList() {
+    var remark = '';
+    for (var j = 0; j < logs.data.length; j++) {
+      var the_log = logs.data[j]
+      remark += `
+      <tr>
+        <td>${the_log.id}</td>
+        <td><a href="javascript:getOne(${the_log.id});">${the_log.title}</a></td>
+        <td class="date">${the_log.created_at}</td>
+        <td><a href="javascript:deleteLog(${the_log.id});">Delete</a></td>
+      </tr>
+      `;
+    }
+    insertInto('log_list_table', remark);
+    hideId('show_page');
+    showId('list_page');
+  }
+
+  function renderShow(log) {
+    var log_body = html_encode(log.body);
+    var remark = `
+    <div class="toolbar">
+      <a href="javascript:window.location.reload();" class="btn"><< Back</a>
+      <a href="javascript:deleteLog(${log.id});" class="btn btn-danger">Delete</a>
+    </div>
+
+    <h1><b>#${log.id}</b>&nbsp;${log.title}</h1>
+    <pre class="exception-log">${log_body}</pre>
+    `;
+    insertInto('show_page', remark);
+    hideId('list_page');
+    showId('show_page');
+  }
+
+  function insertInto(id, html) {
+    document.getElementById(id).innerHTML = html;
+  }
+
+  function removeId(id) {
+    var _element = document.getElementById(id);
+    var _parentElement = _element.parentNode;
+    if(_parentElement) _parentElement.removeChild(_element);
+  }
+
+  function hideId(id) {
+    document.getElementById(id).style.display = 'none';
+  }
+
+  function showId(id) {
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function html_encode(str)   
+  {   
+    var s = "";   
+    if (str.length == 0) return "";   
+    s = str.replace(/&/g, "&amp;");   
+    s = s.replace(/</g, "&lt;");   
+    s = s.replace(/>/g, "&gt;");   
+    s = s.replace(/ /g, "&nbsp;");   
+    s = s.replace(/\'/g, "&#39;");   
+    s = s.replace(/\"/g, "&quot;");   
+    s = s.replace(/\n/g, "<br>");   
+    return s;   
+  }  
+
+  getList();
+</script>
+
+</html>

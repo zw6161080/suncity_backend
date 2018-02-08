@@ -1,0 +1,35 @@
+zh-CN:
+  annual_award_report_items:
+    file_name: 年度獎金報表
+  statement_columns:
+    annual_award_report_items:
+      empoid: 员工编号
+      name: 员工姓名
+      department_id: 部门
+      position_id: 职位
+      career_entry_date: 入职日期
+      work_days_this_year: 本年在职天数
+      deducted_days: 应扣减天数
+      add_double_pay: 是否享有双粮
+      double_pay_hkd: 双粮(HKD)
+      double_pay_alter_hkd: 双粮调整(HKD)
+      double_pay_final_hkd: 双粮实发(HKD)
+      add_end_bonus: 是否享有花红
+      end_bonus_hkd: 花红应发(HKD)
+      praise_times: 表扬信次数
+      end_bonus_add_hkd: 花红总增加(HKD)
+      absence_times: 全年旷工次数
+      notice_times: 全年即告次数
+      late_times: 全年迟到次数
+      lack_sign_card_times: 全年漏打上下班次数
+      punishment_times: 处罚通知书次数
+      de_end_bonus_for_absence_hkd: 扣减花红_旷工(HKD)
+      de_bonus_for_notice_hkd: 扣减花红_即告(HKD)
+      de_end_bonus_for_late_hkd: 扣减花红_迟到(HKD)
+      de_end_bonus_for_sign_card_hkd: 扣减花红_漏打卡上下班(HKD)
+      de_end_bonus_for_punishment_hkd: 扣减花红_处罚通知书(HKD)
+      de_bonus_total_hkd: 花红总扣减(HKD)
+      end_bonus_final_hkd: 花红实发(HKD)
+      present_at_duty_first_half: 上年度是否全勤
+      annual_at_duty_basic_hkd: 全年勤工基数(HKD)
+      annual_at_duty_final_hkd: 全年勤工实发(HKD)

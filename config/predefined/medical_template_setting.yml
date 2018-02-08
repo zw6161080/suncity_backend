@@ -1,0 +1,22 @@
+default:
+  sections:
+    - employee_grade: 1
+      current_template_id: 1
+      impending_template_id: 6
+      effective_date: '2017/09/20'
+    - employee_grade: 2
+      current_template_id: 2
+      impending_template_id: 7
+      effective_date: '2018/06/20'
+    - employee_grade: 3
+      current_template_id: 3
+      impending_template_id: 8
+      effective_date: '2019/06/20'
+    - employee_grade: 4
+      current_template_id: 4
+      impending_template_id: 9
+      effective_date: '2020/06/20'
+    - employee_grade: 5
+      current_template_id: 5
+      impending_template_id: 9
+      effective_date: '2017/12/20'

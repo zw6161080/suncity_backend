@@ -1,0 +1,15 @@
+en:
+  special_schedule_settings:
+    file_name: special schedule settings
+  statement_columns:
+    special_schedule_settings:
+      empoid: No
+      name: Name
+      location: Location
+      department: Department
+      position: Position
+      date_of_employment: Date of employment
+      target_location: Target location
+      target_department: Target department
+      schedule_date: Schedule date
+      comment: Comment

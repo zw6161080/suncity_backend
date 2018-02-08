@@ -1,0 +1,129 @@
+# profile items config
+
+#
+#
+#  Type: fields table mirror(连接到某个模版)
+#
+#
+
+personal_information:
+  chinese_name: 個人信息
+  english_name: Personal info.
+  simple_chinese_name: 个人信息
+  type: fields
+  multi_regions: true
+  regions:
+    macau:
+      fields:
+        - chinese_name
+        - english_name
+        - nick_name
+        - photo
+        - gender
+        - national
+        - bank_of_china_account_mop
+        - bank_of_china_account_hkd
+        - place_of_birth
+        - date_of_birth
+        - type_of_id
+        - id_number
+        - certificate_issued_country
+        - date_of_expiry
+        - mobile_number
+        - home_number
+        - other_phone_number
+        - address
+        - hometown_address
+        - email
+        - marital_status
+        - tax_declare_date
+        - tax_number
+        - sss_number
+        - id_first_issue_date
+    manila:
+      fields:
+        - photo
+        - last_name
+        - first_name
+        - middle_name
+        - chinese_name
+        - english_name
+        - nick_name
+        - husbands_last_name
+        - gender
+        - local
+        - national_of_manila
+        - place_of_birth
+        - date_of_birth
+        - marital_status
+        - tax_code
+        - solo_parent
+        - type_of_id
+        - id_number
+        - certificate_issued_country
+        - date_of_expiry
+        - tin_number
+        - sss_number
+        - pag_ibig_number
+        - phihealth_number
+        - passport_number
+        - address
+        - hometown_address
+        - temporary_address_dormitory
+        - email
+        - mobile_number
+        - home_number
+        - other_phone_number
+        - english
+        - chinese
+        - korean
+        - thai
+        - contanese
+        - other_language
+        - remark
+
+
+position_information:
+  chinese_name: 工作信息
+  english_name: Position info.
+  simple_chinese_name: 工作信息
+  type: fields
+  multi_regions: true
+  regions:
+    macau:
+      fields:
+        - company_name
+        - location
+        - department
+        - group
+        - position
+        - grade
+        - empoid
+        - superior_email
+        - division_of_job
+        - employment_status
+        - date_of_employment
+        - seniority_calculation_date
+        - local_or_foreign
+        - payment_method
+        - referrals
+        - referrals_employee_id
+        - referrals_relationship
+        - remark
+    manila:
+      fields:
+        - company_name
+        - location
+        - department
+        - position
+        - grade
+        - empoid
+        - division_of_job
+        - employment_status
+        - date_of_employment
+        - seniority_calculation_date
+        - payment_method
+        - referrals
+        - referrals_employee_id
+        - referrals_relationship
+        - remark

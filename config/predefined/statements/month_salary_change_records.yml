@@ -1,0 +1,212 @@
+month_salary_change_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      sorter: true
+
+    - key: company_name
+      value_type: obj_value
+      data_index: user.company_name
+      sorter: true
+
+    - key: division_of_job
+      value_type: select_value
+      data_index: user.profile.data.position_information.field_values.division_of_job
+      sorter: true
+      options_type: selects
+      options_select_key: division_of_job
+      option: division_of_job
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      sorter: true
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      sorter: true
+
+    - key: grade
+      value_type: string_value
+      data_index: user.grade
+      sorter: true
+
+    - key: date_of_employment
+      value_type: string_value
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      sorter: true
+
+    - key: leave_date
+      value_type: string_value
+      data_index: user.profile.data.position_information.field_values.resigned_date
+      sorter: true
+
+    - key: salary_begin
+      data_index: updated_salary_record.salary_begin
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      sorter: true
+
+    - key: change_reason
+      data_index: updated_salary_record.change_reason
+      value_type: select_value
+      options_type: selects
+      options_select_key: deployment_type
+      option: deployment_type
+
+
+    - key: type_of_id
+      data_index: user.profile.data.personal_information.field_values.type_of_id
+      value_type: select_value
+      options_type: selects
+      options_select_key: type_of_id
+      option: type_of_id
+
+    - key: original_basic_salary
+      data_index: original_salary_record.final_basic_salary
+      value_type: string_value
+
+    - key: original_bonus
+      data_index: original_salary_record.final_bonus
+      value_type: string_value
+
+    - key: original_attendance_award
+      data_index: original_salary_record.final_attendance_award
+      value_type: string_value
+
+    - key: original_house_bonus
+      data_index: original_salary_record.final_house_bonus
+      value_type: string_value
+
+    - key: original_region_bonus
+      data_index: original_salary_record.final_region_bonus
+      value_type: string_value
+
+    - key: original_tea_bonus
+      data_index: original_salary_record.final_tea_bonus
+      value_type: string_value
+
+    - key: original_kill_bonus
+      data_index: original_salary_record.final_kill_bonus
+      value_type: string_value
+
+    - key: original_performance_bonus
+      data_index: original_salary_record.final_performance_bonus
+      value_type: string_value
+
+    - key: original_charge_bonus
+      data_index: original_salary_record.final_charge_bonus
+      value_type: string_value
+
+    - key: original_commission_bonus
+      data_index: original_salary_record.final_commission_bonus
+      value_type: string_value
+
+    - key: original_receive_bonus
+      data_index: original_salary_record.final_receive_bonus
+      value_type: string_value
+
+    - key: original_exchange_rate_bonus
+      data_index: original_salary_record.final_exchange_rate_bonus
+      value_type: string_value
+
+    - key: original_guest_card_bonus
+      data_index: original_salary_record.final_guest_card_bonus
+      value_type: string_value
+
+    - key: original_respect_bonus
+      data_index: original_salary_record.final_respect_bonus
+      value_type: string_value
+
+    - key: original_new_year_bonus
+      data_index: original_salary_record.final_new_year_bonus
+      value_type: string
+
+    - key: original_project_bonus
+      data_index: original_salary_record.final_project_bonus
+      value_type: string_value
+
+    - key: original_product_bonus
+      data_index: original_salary_record.final_product_bonus
+      value_type: string_value
+
+    - key: updated_basic_salary
+      data_index: updated_salary_record.final_basic_salary
+      value_type: string_value
+
+    - key: updated_bonus
+      data_index: updated_salary_record.final_bonus
+      value_type: string_value
+
+    - key: updated_attendance_award
+      data_index: updated_salary_record.final_attendance_award
+      value_type: string_value
+
+    - key: updated_house_bonus
+      data_index: updated_salary_record.final_house_bonus
+      value_type: string_value
+
+    - key: updated_region_bonus
+      data_index: updated_salary_record.final_region_bonus
+      value_type: string_value
+
+    - key: updated_tea_bonus
+      data_index: updated_salary_record.final_tea_bonus
+      value_type: string_value
+
+    - key: updated_kill_bonus
+      data_index: updated_salary_record.final_kill_bonus
+      value_type: string_value
+
+    - key: updated_performance_bonus
+      data_index: updated_salary_record.final_performance_bonus
+      value_type: string_value
+
+    - key: updated_charge_bonus
+      data_index: updated_salary_record.final_charge_bonus
+      value_type: string_value
+
+    - key: updated_commission_bonus
+      data_index: updated_salary_record.final_commission_bonus
+      value_type: string_value
+
+    - key: updated_receive_bonus
+      data_index: updated_salary_record.final_receive_bonus
+      value_type: string_value
+
+    - key: updated_exchange_rate_bonus
+      data_index: updated_salary_record.final_exchange_rate_bonus
+      value_type: string_value
+
+    - key: updated_guest_card_bonus
+      data_index: updated_salary_record.final_guest_card_bonus
+      value_type: string_value
+
+    - key: updated_respect_bonus
+      data_index: updated_salary_record.final_respect_bonus
+      value_type: string_value
+
+    - key: updated_new_year_bonus
+      data_index: updated_salary_record.final_new_year_bonus
+      value_type: string
+
+    - key: updated_project_bonus
+      data_index: updated_salary_record.final_project_bonus
+      value_type: string_value
+
+    - key: updated_product_bonus
+      data_index: updated_salary_record.final_product_bonus
+      value_type: string_value
+

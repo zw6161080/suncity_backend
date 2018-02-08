@@ -1,0 +1,28 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: mdillon__postgis
+  username: postgres
+  password:
+  database: suncity_test
+  pool: 5
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['DB_ENV_POSTGRES_USER'] %>
+  password: <%= ENV['DB_ENV_POSTGRES_PASSWORD'] %>
+  database: <%= ENV['DB_ENV_POSTGRES_DB'] %>
+  host: db
+  port: 5432
+  pool: 25
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['DB_ENV_POSTGRES_USER'] %>
+  password: <%= ENV['DB_ENV_POSTGRES_PASSWORD'] %>
+  database: <%= ENV['DB_ENV_POSTGRES_DB'] %>
+  pool: 25
+  host: db
+  port: 5432

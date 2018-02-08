@@ -1,0 +1,308 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 加班记录报表
+
+# Describe your paths here
+paths:
+  /over_time_reports/index:
+    get:
+      description: 获取一页加班记录列表
+      tags:
+        - 加班
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: string
+          description: 查询的页面编号
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号
+        - name: user_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称
+        - name: position_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称
+        - name: make_up_type
+          in: query
+          required: false
+          type: string
+          description: 查询的补偿类型
+        - name: over_time_type
+          in: query
+          required: false
+          type: string
+          description: 查询的加班类型
+        - name: duration
+          in: query
+          required: false
+          type: integer
+          description: 查询的加班时数
+        - name: creator_name
+          in: query
+          required: false
+          type: string
+          description: 录入人中文姓名
+        - name: date
+          in: query
+          required: false
+          type: string
+          description: 加班开始日期
+        - name: to_date
+          in: query
+          required: false
+          type: string
+          description: 加班结束日期
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: to
+          in: query
+          required: false
+          type: string
+          description: 加班结束时间
+        - name: from
+          in: query
+          required: false
+          type: string
+          description: 加班开始时间
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/OverTimeReportsData'
+  /over_time_reports/field_options:
+    get:
+      description: 获取记录列表可供筛选的字段
+      tags:
+        - 加班
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/FieldOptionsData'
+  /over_time_reports/export:
+    get:
+      description: 导出当前页的记录列表
+      tags:
+        - 加班
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: string
+          description: 查询的页面编号
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号
+        - name: user_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称
+        - name: position_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称
+        - name: make_up_type
+          in: query
+          required: false
+          type: string
+          description: 查询的补偿类型
+        - name: over_time_type
+          in: query
+          required: false
+          type: string
+          description: 查询的加班类型
+        - name: duration
+          in: query
+          required: false
+          type: integer
+          description: 查询的加班时数
+        - name: creator_name
+          in: query
+          required: false
+          type: string
+          description: 录入人中文姓名
+        - name: date
+          in: query
+          required: false
+          type: string
+          description: 加班开始日期
+        - name: to_date
+          in: query
+          required: false
+          type: string
+          description: 加班结束日期
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: to
+          in: query
+          required: false
+          type: string
+          description: 加班结束时间
+        - name: from
+          in: query
+          required: false
+          type: string
+          description: 加班开始时间
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+      responses:
+        200:
+          description: 成功响应
+
+definitions:
+  OverTimeReportsData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 记录Id(无需使用)
+            over_time_type:
+              type: object
+              description: 加班类型
+            make_up_type:
+              type: string
+              description: 补偿类型
+            from:
+              type: string
+              description: 加班开始时间
+            to:
+              type: string
+              description: 加班结束时间
+            duration:
+              type: integer
+              description: 加班时长
+            created_at:
+              type: string
+              description: 录入日期
+            comment:
+              type: string
+              description: 备注
+            to_date:
+              type: string
+              description: 加班结束日期
+            empoid:
+              type: string
+              description: 员工编号
+            user_name:
+              type: string
+              description: 员工姓名
+            department_name:
+              type: string
+              description: 部门名称
+            position_name:
+              type: string
+              description: 职位名称
+            date:
+              type: string
+              description: 加班开始日期
+            creator_name:
+              type: string
+              description: 录入人姓名
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_page:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+  FieldOptionsData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          over_time_type:
+            type: array
+            items:
+              type: object
+          make_up_type:
+            type: array
+            items:
+              type: object
+          department_name:
+            type: array
+            items:
+              type: string
+
+          position_name:
+            type: array
+            items:
+              type: string
+
+          date:
+            type: array
+            items:
+              type: string
+          to_date:
+            type: array
+            items:
+              type: string
+          created_at:
+            type: array
+            items:
+              type: string
+

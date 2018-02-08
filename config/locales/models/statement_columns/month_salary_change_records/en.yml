@@ -1,0 +1,54 @@
+en:
+  month_salary_change_records:
+    file_name: salary_change_records
+  statement_columns:
+    month_salary_change_records:
+      empoid: ID
+      name: Name
+      division_of_job: Job type
+      company_name: Company
+      location: Location
+      department: Department
+      position: Position
+      grade: Grade
+      date_of_employment: Date of employment
+      leave_date: Leave date
+      salary_begin: Transfer date
+      change_reason: Reason
+      type_of_id: Card type
+      original_basic_salary: Original Basic
+      original_bonus: Original bonus
+      original_attendance_award: Original attendance award
+      original_house_bonus: Original house bonus
+      original_region_bonus: Original region bonus
+      original_tea_bonus: Original tea bonus
+      original_kill_bonus: Original kill bonus
+      original_performance_bonus: Original performance bonus
+      original_charge_bonus: Original charge bonus
+      original_commission_bonus: Original commission bonus
+      original_receive_bonus: Original receive bonus
+      original_exchange_rate_bonus: Original exchange rate bonus
+      original_guest_card_bonus: Original guest card bonus
+      original_respect_bonus: Original respect bonus
+      original_new_year_bonus: Original new year bonus
+      original_project_bonus: Original project bonus
+      original_product_bonus: Original product bonus
+      updated_basic_salary: Updated Basic
+      updated_bonus: Updated bonus
+      updated_attendance_award: Updated attendance award
+      updated_house_bonus: Updated house bonus
+      updated_region_bonus: Updated region bonus
+      updated_tea_bonus: Updated tea bonus
+      updated_kill_bonus: Updated kill bonus
+      updated_performance_bonus: Updated performance bonus
+      updated_charge_bonus: Updated charge bonus
+      updated_commission_bonus: Updated commission bonus
+      updated_receive_bonus: Updated receive bonus
+      updated_exchange_rate_bonus: Updated exchange rate bonus
+      updated_guest_card_bonus: Updated guest card bonus
+      updated_respect_bonus: Updated respect bonus
+      updated_new_year_bonus: Updated new year bonus
+      updated_project_bonus: Updated project bonus
+      updated_product_bonus: Updated product bonus
+
+

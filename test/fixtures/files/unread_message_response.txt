@@ -1,0 +1,26 @@
+{
+  "data": [
+    {
+      "id": 5,
+      "title": "",
+      "content": "{\"title\":\"test content3\"}",
+      "created_at": "2016-09-08 21:37:23",
+      "sender_id": "suncity-system",
+      "read_status": "unread"
+    } ,
+    {
+          "id": 6,
+          "title": "",
+          "content": "{\"title\":\"test content2\"}",
+          "created_at": "2016-09-08 21:37:23",
+          "sender_id": "suncity-system",
+          "read_status": "unread"
+    }
+  ],
+  "meta": {
+    "current_page": 1,
+    "last_page": 1,
+    "total": 2,
+    "per_page": 20
+  }
+}

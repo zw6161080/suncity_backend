@@ -1,0 +1,14 @@
+en:
+  holiday_accumulation_records:
+    file_name: HolidayAccumulationRecord
+  statement_columns:
+    holiday_accumulation_records:
+      empoid: ID
+      name: Name
+      department: Department
+      position: Position
+      date_of_employment: Date of employment
+  dynamic_columns:
+    holiday_accumulation_records:
+      holiday_accumulation_days: Days
+      holiday_accumulation_hours: Hours

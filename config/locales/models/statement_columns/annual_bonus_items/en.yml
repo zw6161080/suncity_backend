@@ -1,0 +1,14 @@
+en:
+  statement_columns:
+    annual_bonus_items:
+      employee_id: ID
+      employee_name: Name
+      department: Department
+      position: Position
+      career_entry_date: Entry date
+      has_annual_incentive_payment: Has annual incentive payment
+      annual_incentive_payment_hkd: Annual incentive payment (HKD)
+      has_double_pay: Has double
+      double_pay_mop: Double payment (MOP)
+      has_year_end_bonus: Has year end bonus
+      year_end_bonus_mop: Year end bonus (MOP)

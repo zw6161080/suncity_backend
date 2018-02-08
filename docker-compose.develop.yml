@@ -1,0 +1,110 @@
+version: '3'
+
+services:
+
+  seaweedfs_master:
+    image: chrislusf/seaweedfs
+    container_name: seaweedfs_master
+    command: "master"
+    networks:
+      - suncity
+
+  seaweedfs_volume:
+    image: chrislusf/seaweedfs
+    container_name: seaweedfs_volume
+    volumes:
+      - ../fs_data:/data
+    command: 'volume -max=5 -mserver="seaweedfs_master:9333" -port=8080'
+    depends_on:
+      - seaweedfs_master
+    networks:
+      - suncity
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - suncity
+
+  memcached:
+    image: memcached
+    container_name: memcached
+    networks:
+      - suncity
+
+  postgres:
+    image: postgres:9.6
+    container_name: postgres
+    volumes:
+      - ../db_data:/var/lib/postgres/data/pgdata
+    environment:
+      - POSTGRES_USER=suncity
+      - POSTGRES_PASSWORD=wearetheword
+      - POSTGRES_DB=suncity
+      - PGDATA=/var/lib/postgres/data/pgdata
+    networks:
+      - suncity
+
+  suncity_hrm_backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile-dev
+    container_name: suncity_hrm_backend
+    volumes:
+      - .:/home/app/webapp
+    depends_on:
+      - seaweedfs_master
+      - seaweedfs_volume
+      - redis
+      - memcached
+      - postgres
+    ports:
+      - "3000:80"
+    environment:
+      - lang=C.UTF-8
+      - FRONTEND_URL="http://localhost:8989"
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - MEMCACHED_HOST=memcached
+      - SECRET_KEY_BASE=0a267ac0cb6a86c0657f4ec29dec74734f9e58e3b18fc178ae29e479b0678f9af769a215073e7118dcba3748daccd176957000fbd733844e5c8d3068e8bada05
+      - TWILIO_ACCOUNT_SID=AC61646c4d387d8e87cece7a75ebd8e034
+      - TWILIO_AUTH_TOKEN=1ba670dfa9aa45594105f1900a703e64
+      - TWILIO_FROM=15202003022
+      - DB_ENV_POSTGRES_HOST=postgres
+      - DB_ENV_POSTGRES_PORT=5432
+      - DB_ENV_POSTGRES_USER=suncity
+      - DB_ENV_POSTGRES_PASSWORD=wearetheword
+      - DB_END_POSTGRES_DBNAME=suncity
+      - DB_ENV_SUNCITY_MSSQL_USER=sa
+      - DB_ENV_SUNCITY_MSSQL_PASSWORD=Suncity2017HRM
+      - DB_ENV_SUNCITY_MSSQL_DB=BioStar
+      - DB_ENV_SUNCITY_MSSQL_HOST="ylemon.tech"
+      - EMAIL_SMTP_ADDRESS="cloud.mysubmail.com"
+      - EMAIL_SMTP_PORT=25
+      - EMAIL_SMTP_DOMAIN="yuelemon.com"
+      - EMAIL_SMTP_USERNAME=11775
+      - EMAIL_SMTP_PASSWORD=f2530563c2289d9c6163a5a123ab6d7e
+      - SEAWEED_HOST=seaweedfs_master
+      - SEAWEED_WRITE_PORT=9333
+      - SEAWEED_READ_PORT=8080
+    networks:
+      - suncity
+
+  suncity_hrm_frontend:
+    image: visionpsn/suncity-hrm-frontend
+    container_name: suncity_hrm_frontend
+    depends_on:
+      - suncity_hrm_backend
+    ports:
+      - "8989:80"
+    environment:
+      - NODE_ENV=production
+      - BACKEND_URL=http:\/\/localhost:3000
+    networks:
+      - suncity
+
+networks:
+  suncity:
+

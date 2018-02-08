@@ -1,0 +1,22 @@
+turnover_rate:
+  columns:
+    - key: years
+      value_type: obj_value
+      data_index: years
+
+    - key: both
+      value_type: string_value
+      data_index: both
+
+    - key: local
+      value_type: string_value
+      data_index: local
+
+    - key: foreign
+      value_type: string_value
+      data_index: foreign
+
+  sub_columns:
+    - key: in_service
+    - key: leave
+    - key: rate

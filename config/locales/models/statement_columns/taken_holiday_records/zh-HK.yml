@@ -1,0 +1,12 @@
+zh-HK:
+  taken_holiday_records:
+    file_name: 已取假期報表
+  statement_columns:
+    taken_holiday_records:
+      empoid: 員工編號
+      name: 姓名
+      department: 部門
+      position: 職位
+      taken_holiday_date: 已取假期日期
+      taken_holiday_type: 已取假期類別
+      taken_roster_object: 已取更期

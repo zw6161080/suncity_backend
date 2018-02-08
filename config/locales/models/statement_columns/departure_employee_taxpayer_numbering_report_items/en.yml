@@ -1,0 +1,15 @@
+en:
+  departure_employee_taxpayer_numbering_report_items:
+    file_name: Departure employee taxpayer numbering report
+  statement_columns:
+    departure_employee_taxpayer_numbering_report_items:
+      year_month:  Year month
+      company_name: Company name
+      deployer_retirement_fund_number: Deployer retirement fund number
+      provident_fund_resignation_date: Provident fund redemption date
+      employee_id: ID
+      employee_name: Name
+      member_retirement_fund_number: Member retirement fund number
+      beneficiary_name: Beneficiary name
+      tax_number: Tax number
+

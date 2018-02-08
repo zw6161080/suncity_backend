@@ -1,0 +1,59 @@
+pass_entry_trial_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      sorter: true
+
+    - key: company_name
+      value_type: select_value
+      data_index: company_name
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: location
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: department
+      sorter: true
+
+    - key: group
+      value_type: obj_value
+      data_index: group
+      sorter: true
+
+    - key: grade
+      value_type: string_value
+      data_index: grade
+      sorter: true
+
+    - key: division_of_job
+      value_type: select_value
+      data_index: division_of_job
+      options_type: selects
+      options_select_key: division_of_job
+      option: division_of_job
+      sorter: true
+
+    - key: career_begin
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: career_begin
+      sorter: true
+
+    - key: trial_period_expiration_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: trial_period_expiration_date
+      sorter: true

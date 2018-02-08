@@ -1,0 +1,3215 @@
+#column_type: {fixed: 固定计算逻辑; function: 公式计算(to_do)}
+#add_deduct_type: {add: 增项； deduct: 负项； none: 无影响}
+#tax_type: {change: 扣税; not_change: 不扣税}
+#value_type: {decimal: 数字类型; string: 字符; integer: 整型; date: 日期; object: 对象; boolean: 布尔值}
+#category: {basic: 基本信息; attendance: 考勤； salary_column: 薪金项; annual_award: 年度奖金； salary_list: 粮单项目; others: 其他 ;
+# data_basic_salary: 数据-底薪； data_except_basic_salary}
+salary_column:
+  - id: 0
+    chinese_name: 狀態
+    english_name: status
+    simple_chinese_name: 状态
+    column_type: fixed
+    function: calc_salary_status
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: status
+
+  #category: basic
+  - id: 1
+    chinese_name: 員工編號
+    english_name: Staff ID
+    simple_chinese_name: 员工编号
+    column_type: fixed
+    function: calc_employee_number
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: basic
+  - id: 2
+    chinese_name: 員工姓名
+    english_name: Staff name
+    simple_chinese_name: 员工姓名
+    column_type: fixed
+    function: calc_employee_name
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: object
+    category: basic
+  - id: 3
+    chinese_name: 年度
+    english_name: Year
+    simple_chinese_name: 年度
+    column_type: fixed
+    function: calc_year
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: date
+    category: basic
+  - id: 4
+    chinese_name: 月份
+    english_name: Month
+    simple_chinese_name: 月份
+    column_type: fixed
+    function: calc_month
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: date
+    category: basic
+  - id: 5
+    chinese_name: 公司名稱
+    english_name: Company_name
+    simple_chinese_name: 公司名称
+    column_type: fixed
+    function: calc_company_name
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: object
+    category: basic
+  - id: 6
+    chinese_name: 場館
+    english_name: location
+    simple_chinese_name: 场馆
+    column_type: fixed
+    function: calc_location
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: object
+    category: basic
+  - id: 7
+    chinese_name: 部門
+    english_name: department
+    simple_chinese_name: 部门
+    column_type:  fixed
+    function: calc_department
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: object
+    category: basic
+  - id: 8
+    chinese_name: 職位
+    english_name: position
+    simple_chinese_name: 职位
+    column_type: fixed
+    function: calc_position
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: object
+    category: basic
+  - id: 9
+    chinese_name: 職級
+    english_name: grade
+    simple_chinese_name: 职级
+    column_type: fixed
+    function: calc_grade
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: basic
+  #category: attendance
+  - id: 10
+    chinese_name: '漏打卡上班（次）'
+    english_name: 'Unaccounted clock in (times)'
+    simple_chinese_name: '漏打卡上班（次）'
+    column_type: fixed
+    function: calc_unaccounted_clock_in_times
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 11
+    chinese_name: '漏打卡下班（次）'
+    english_name: 'Unaccounted clock out (times)'
+    simple_chinese_name: '漏打卡下班（次）'
+    column_type: fixed
+    function: calc_unaccounted_clock_out_times
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 12
+    chinese_name: 年假剩餘天數
+    english_name: Annual Leave Balance
+    simple_chinese_name: 年假剩余天数
+    column_type: fixed
+    function: calc_annual_leave_balance
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 13
+    chinese_name: 有薪病假剩餘天數
+    english_name: Sick Leave Balance
+    simple_chinese_name: 有薪病假剩余天数
+    column_type: fixed
+    function: calc_sick_leave_balance
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 14
+    chinese_name: '強制性假期天數（補薪）'
+    english_name: 'Mandatory holiday days (compensation salary)'
+    simple_chinese_name: '强制假期天数(补薪)'
+    column_type: fixed
+    function: calc_mandatory_holiday_days_compensation_salary
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 15
+    chinese_name: '強制性假期天數（補假）'
+    english_name: 'Mandatory holiday days (compensation leave)'
+    simple_chinese_name: '强制假期天数(补假)'
+    column_type: fixed
+    function: calc_mandatory_holiday_days_compensation_leave
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 16
+    chinese_name: '公眾假期天數（補薪）'
+    english_name: 'Public holiday days (compensation salary)'
+    simple_chinese_name: '公众假期天数(补薪)'
+    column_type: fixed
+    function: calc_public_holiday_days_compensation_salary
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 17
+    chinese_name: '曠工天數'
+    english_name: Absenteeism days
+    simple_chinese_name: 旷工天数
+    column_type: fixed
+    function: calc_absenteeism_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 18
+    chinese_name: '無薪假天數'
+    english_name: No pay leave days
+    simple_chinese_name: 无薪假天数
+    column_type: fixed
+    function: calc_no_pay_leave_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 19
+    chinese_name: '即告天數'
+    english_name: Same day leave days
+    simple_chinese_name: 即告天数
+    column_type: fixed
+    function: calc_same_day_leave_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 20
+    chinese_name: '無薪婚假天數'
+    english_name: Marriage leave without pay days
+    simple_chinese_name: '无薪婚假天数'
+    column_type: fixed
+    function: calc_marriage_leave_without_pay_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 21
+    chinese_name: 無薪恩恤假天數
+    english_name: Unpaid compassionate leave days
+    simple_chinese_name: 无薪恩恤假天数
+    column_type: fixed
+    function: calc_unpaid_compassionate_leave_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 22
+    chinese_name: '懷孕病假天數'
+    english_name: Pregnant sick leave days
+    simple_chinese_name: 怀孕病假天数
+    column_type: fixed
+    function: calc_pregnant_sick_leave_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 23
+    chinese_name: 有薪病假不連off天數
+    english_name: Paid discontinuous sick days
+    simple_chinese_name: 有薪病假不连off天数
+    column_type: fixed
+    function: calc_paid_discountinous_sick_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 24
+    chinese_name: 有薪病假連off天數
+    english_name: Paid continuous sick days
+    simple_chinese_name: 有薪病假连off天数
+    column_type: fixed
+    function: calc_paid_continuous_sick_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 25
+    chinese_name: 無薪分娩假天數
+    english_name: Maternity leave without pay days
+    simple_chinese_name: 无薪分娩假天数
+    column_type: fixed
+    function: calc_maternity_leave_without_pay_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 26
+    chinese_name: 有薪分娩假天數
+    english_name: Paid maternity leave days
+    simple_chinese_name: 有薪分娩假天数
+    column_type: fixed
+    function: calc_paid_maternity_leave_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 27
+    chinese_name: '工傷天數（首7天）'
+    english_name: 'Work injury days(first 7 days)'
+    simple_chinese_name: '工伤天数(首7天)'
+    column_type: fixed
+    function: calc_work_injury_days_first_7_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 28
+    chinese_name: '工傷天數（7天後）'
+    english_name: Work injury days(7 days later)
+    simple_chinese_name: 工伤天数(7天后)
+    column_type: fixed
+    function: calc_work_injury_days_7_days_later
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 29
+    chinese_name: 停薪留職天數
+    english_name: Leave without pay days
+    simple_chinese_name: 停薪留职天数
+    column_type: fixed
+    function: calc_leave_without_pay_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 30
+    chinese_name: '遲到次數（小於等於10）'
+    english_name: 'Late times (less than or equal to 10)'
+    simple_chinese_name: '迟到次数(小于等于10)'
+    column_type: fixed
+    function: calc_late_times_less_than_or_equal_to_10
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 31
+    chinese_name: '遲到次數（小於等於20）'
+    english_name: 'Late times (less than or equal to 20)'
+    simple_chinese_name: '迟到次数(小于等于20)'
+    column_type: fixed
+    function: calc_late_times_less_than_or_equal_to_20
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 32
+    chinese_name: '遲到次數（小於等於30）'
+    english_name: 'Late times (less than or equal to 30)'
+    simple_chinese_name: '迟到次数(小于等于30)'
+    column_type: fixed
+    function: calc_late_times_less_than_or_equal_to_30
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 33
+    chinese_name: '遲到次數（大於30）'
+    english_name: 'Late times (greater than 30)'
+    simple_chinese_name: '迟到次数(大于30)'
+    column_type: fixed
+    function: calc_late_times_greater_than_30
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 34
+    chinese_name: '平日加班時數'
+    english_name: 'Weekdays overtime hours'
+    simple_chinese_name: '平日加班时数'
+    column_type: fixed
+    function: calc_weekdays_overtime_hours
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 35
+    chinese_name: '假日加班時數'
+    english_name: 'Holiday overtime hours'
+    simple_chinese_name: '假日加班时数'
+    column_type: fixed
+    function: calc_holiday_overtime_hours
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  - id: 36
+    chinese_name: '颱風上班天數'
+    english_name: 'Typhoon work days'
+    simple_chinese_name: 台风上班天数
+    column_type: fixed
+    function: calc_typhoon_work_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: attendance
+  #category: salary_column
+  - id: 37
+    chinese_name: 原底薪
+    english_name: Original Basic Salary
+    simple_chinese_name: 原底薪
+    column_type: fixed
+    function: calc_original_basic_salary
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 38
+    chinese_name: 現底薪
+    english_name: Present Basic Salary
+    simple_chinese_name: 现底薪
+    column_type: fixed
+    function: calc_present_basic_salary
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 39
+    chinese_name: 底薪
+    english_name: Basic Salary
+    simple_chinese_name: 底薪
+    column_type: fixed
+    function: calc_basic_salary
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 40
+    chinese_name: 原津貼
+    english_name: Original Allowance
+    simple_chinese_name: 原津贴
+    column_type: fixed
+    function: calc_original_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 41
+    chinese_name: 現津貼
+    english_name: Present Allowance
+    simple_chinese_name: 现津贴
+    column_type: fixed
+    function: calc_present_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 42
+    chinese_name: 津貼
+    english_name: Allowance
+    simple_chinese_name: 津贴
+    column_type: fixed
+    function: calc_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 43
+    chinese_name: 原勤工
+    english_name: Original Attendance Bonus
+    simple_chinese_name: 原勤工
+    column_type: fixed
+    function: calc_original_attendance_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 44
+    chinese_name: 現勤工
+    english_name: Present Attendance Bonus
+    simple_chinese_name: 现勤工
+    column_type: fixed
+    function: calc_present_attendance_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 45
+    chinese_name: 勤工
+    english_name: Attendance Bonus
+    simple_chinese_name: 勤工
+    column_type: fixed
+    function: calc_attendance_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 46
+    chinese_name: 原房屋津貼
+    english_name: Original Housing Allowance
+    simple_chinese_name: 原房屋津贴
+    column_type: fixed
+    function: calc_original_housing_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 47
+    chinese_name: 現房屋津貼
+    english_name: Present Housing Allowance
+    simple_chinese_name: 现房屋津贴
+    column_type: fixed
+    function: calc_present_housing_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 48
+    chinese_name: 房屋津貼
+    english_name: Housing Allowance
+    simple_chinese_name: 房屋津贴
+    column_type: fixed
+    function: calc_housing_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 49
+    chinese_name: 原地區津貼
+    english_name: Original Regional Allowance
+    simple_chinese_name: 原地区津贴
+    column_type: fixed
+    function: calc_original_regional_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 50
+    chinese_name: 現地區津貼
+    english_name: Present Regional Allowance
+    simple_chinese_name: 现地区津贴
+    column_type: fixed
+    function: calc_present_regional_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 51
+    chinese_name: 地區津貼
+    english_name: Regional Allowance
+    simple_chinese_name: 地区津贴
+    column_type: fixed
+    function: calc_regional_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 52
+    chinese_name: 原服務獎金
+    english_name: Original Tips
+    simple_chinese_name: 原茶资份数
+    column_type: fixed
+    function: calc_original_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 53
+    chinese_name: 現服務獎金
+    english_name: Original Tips
+    simple_chinese_name: 原茶资份数
+    column_type: fixed
+    function: calc_original_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 54
+    chinese_name: 服務獎金
+    english_name: Original Tips
+    simple_chinese_name: 原茶资份数
+    column_type: fixed
+    function: calc_original_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 55
+    chinese_name: 原實習津貼
+    english_name: Original Tips
+    simple_chinese_name: 原茶资份数
+    column_type: fixed
+    function: calc_original_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 56
+    chinese_name: 現實習津貼
+    english_name: Original Tips
+    simple_chinese_name: 原茶资份数
+    column_type: fixed
+    function: calc_original_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 57
+    chinese_name: 實習津貼
+    english_name: Original Tips
+    simple_chinese_name: 原茶资份数
+    column_type: fixed
+    function: calc_original_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 58
+    chinese_name: 原茶資份數
+    english_name: Original Tips
+    simple_chinese_name: 原茶资份数
+    column_type: fixed
+    function: calc_original_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 59
+    chinese_name: 現茶資份數
+    english_name: Present Tips
+    simple_chinese_name: 现茶资份数
+    column_type: fixed
+    function: calc_present_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 60
+    chinese_name: 茶資份數
+    english_name: Tips
+    simple_chinese_name: 茶资份数
+    column_type: fixed
+    function: calc_tips
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 61
+    chinese_name: 每份茶資
+    english_name: Each Tips Bonus
+    simple_chinese_name: 每份茶资
+    column_type: fixed
+    function: calc_each_tips_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 62
+    chinese_name: 茶資
+    english_name: Tips Bonus
+    simple_chinese_name: 茶资
+    column_type: fixed
+    function: calc_tips_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 63
+    chinese_name: 原佣金差額份數
+    english_name: Original Commission copies
+    simple_chinese_name: 原佣金差额份数
+    column_type: fixed
+    function: calc_original_comission_copies
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 64
+    chinese_name: 現佣金差額份數
+    english_name: Present Commission copies
+    simple_chinese_name: 现佣金差额份数
+    column_type: fixed
+    function: calc_present_commission_copies
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 65
+    chinese_name: 佣金差額份數
+    english_name: Commission copies
+    simple_chinese_name: 佣金差额份数
+    column_type: fixed
+    function: calc_commission_copies
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 66
+    chinese_name: 每份市場拓展部佣金差額
+    english_name: Each Market Planning Department Commission
+    simple_chinese_name: 每份市场拓展部佣金差额
+    column_type: fixed
+    function: calc_each_market_planning_department_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 67
+    chinese_name: 市場拓展部佣金差額
+    english_name: Market Planning Department Commission
+    simple_chinese_name: 市场拓展部佣金差额
+    column_type: fixed
+    function: calc_market_planning_department_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 68
+    chinese_name: 每份營運佣金差額
+    english_name: Each Operating Commission
+    simple_chinese_name: 每份营运佣金差额
+    column_type: fixed
+    function: calc_each_operating_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 69
+    chinese_name: 營運佣金差額
+    english_name: Operating Commission
+    simple_chinese_name: 营运佣金差额
+    column_type: fixed
+    function: calc_operating_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 70
+    chinese_name: 佣金差額
+    english_name: Commission
+    simple_chinese_name: 佣金差额
+    column_type: fixed
+    function: calc_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 71
+    chinese_name: 原殺數分紅份數
+    english_name: Original Win/Lose
+    simple_chinese_name: 原杀数分红份数
+    column_type: fixed
+    function: calc_original_win_lose
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 66
+    chinese_name: 現殺數分紅份數
+    english_name: Present Win/Lose
+    simple_chinese_name: 现杀数分红份数
+    column_type: fixed
+    function: calc_present_win_lose
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 67
+    chinese_name: 殺數分紅份數
+    english_name: Win/Lose
+    simple_chinese_name: 数分红份数
+    column_type: fixed
+    function: calc_win_lose
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 68
+    chinese_name: 每份殺數分紅
+    english_name: Each Win / Lose Bonus
+    simple_chinese_name: 每份杀数分红
+    column_type: fixed
+    function: calc_each_win_lose_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 69
+    chinese_name: 殺數分紅
+    english_name: Win / Lose Bonus
+    simple_chinese_name: 杀数分红
+    column_type: fixed
+    function: calc_win_lose_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 70
+    chinese_name: 原業績分紅份數
+    english_name: Original Rolling
+    simple_chinese_name: 原业绩分红份数
+    column_type: fixed
+    function: calc_original_rolling
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 71
+    chinese_name: 現業績分紅份數
+    english_name: Present Rolling
+    simple_chinese_name: 现业绩分红份数
+    column_type: fixed
+    function: calc_present_rolling
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 72
+    chinese_name: 業績分紅份數
+    english_name: Rolling
+    simple_chinese_name: 业绩分红份数
+    column_type: fixed
+    function: calc_rolling
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 73
+    chinese_name: 業績分紅百分比
+    english_name: Percentage of Rolling Bonus
+    simple_chinese_name: 业绩分红百分比
+    column_type: fixed
+    function: calc_percentage_of_rolling_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 74
+    chinese_name: 業績分紅
+    english_name: Rolling Bonus
+    simple_chinese_name: 业绩分紅
+    column_type: fixed
+    function: calc_rolling_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 75
+    chinese_name: 原刷卡獎金份數
+    english_name: Original Credit Card Commission
+    simple_chinese_name: 原刷卡奖金份数
+    column_type: fixed
+    function: calc_original_credit_card_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 76
+    chinese_name: 現刷卡獎金份數
+    english_name: Present Credit Card Commission
+    simple_chinese_name: 现刷卡奖金份数
+    column_type: fixed
+    function: calc_present_credit_card_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 77
+    chinese_name: 刷卡獎金份數
+    english_name: Credit Card Commission
+    simple_chinese_name: 刷卡奖金份数
+    column_type: fixed
+    function: calc_credit_card_commission
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 78
+    chinese_name: 每份刷卡獎金
+    english_name: Each Union Bonus
+    simple_chinese_name: 每份刷卡奖金
+    column_type: fixed
+    function: calc_each_union_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 79
+    chinese_name: 刷卡獎金
+    english_name: Union Bonus
+    simple_chinese_name: 刷卡奖金
+    column_type: fixed
+    function: calc_union_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 80
+    chinese_name: 原貴賓卡消費份數
+    english_name: Original Card Sales
+    simple_chinese_name: 原贵宾卡消费份数
+    column_type: fixed
+    function: calc_original_card_sales
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 81
+    chinese_name: 現貴賓卡消費份數
+    english_name: Present Card Sales
+    simple_chinese_name: 现贵宾卡消费份数
+    column_type: fixed
+    function: calc_present_card_sales
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 82
+    chinese_name: 貴賓卡消費份數
+    english_name: Card Sales
+    simple_chinese_name: 贵宾卡消费份数
+    column_type: fixed
+    function: calc_card_sales
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 83
+    chinese_name: '每份貴賓卡消費（MOP）'
+    english_name: Each BTM Bonus
+    simple_chinese_name: '每份贵宾卡消费（MOP）'
+    column_type: fixed
+    function: calc_each_btm_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+
+  - id: 84
+    chinese_name: '貴賓卡消費（MOP）'
+    english_name: BTM Bonus
+    simple_chinese_name: '贵宾卡消费（MOP）'
+    column_type: fixed
+    function: calc_btm_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 85
+    chinese_name: 原收賬分紅份數
+    english_name: Original Debtors
+    simple_chinese_name: 原收账分红份数
+    column_type: fixed
+    function: calc_original_debtors
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 86
+    chinese_name: 現收賬分紅份數
+    english_name: Present Debtors
+    simple_chinese_name: 现收账分红份数
+    column_type: fixed
+    function: calc_present_debtors
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 87
+    chinese_name: 收賬分紅份數
+    english_name: Debtors
+    simple_chinese_name: 收账分红份数
+    column_type: fixed
+    function: calc_debtors
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 88
+    chinese_name: 每份收賬分紅
+    english_name: Each Receivable Bonus
+    simple_chinese_name: 每份收账分红
+    column_type: fixed
+    function: calc_each_receivavle_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 89
+    chinese_name: 收賬分紅
+    english_name: Receivable Bonus
+    simple_chinese_name: 收账分红
+    column_type: fixed
+    function: calc_receivable_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 90
+    chinese_name: 原匯率分紅份數
+    english_name: Original Commission Difference
+    simple_chinese_name: 原汇率分红份数
+    column_type: fixed
+    function: calc_original_commission_difference
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 91
+    chinese_name: 現匯率分紅份數
+    english_name: Present Commission Difference
+    simple_chinese_name: 现汇率分红份数
+    column_type: fixed
+    function: calc_present_commission_difference
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 92
+    chinese_name: 匯率分紅份數
+    english_name: Commission Difference
+    simple_chinese_name: 汇率分红份数
+    column_type: fixed
+    function: calc_commission_difference
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 93
+    chinese_name: 每份匯率分紅
+    english_name: Each Exchange Rate Bonus
+    simple_chinese_name: 每份汇率分红
+    column_type: fixed
+    function: calc_each_exchange_rate_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 94
+    chinese_name: 匯率分紅
+    english_name: Exchange Rate Bonus
+    simple_chinese_name: 汇率分红 
+    column_type: fixed
+    function: calc_exchange_rate_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 95
+    chinese_name: 原項目分紅份數
+    english_name: Original Project
+    simple_chinese_name: 原项目分红份数
+    column_type: fixed
+    function: calc_original_project
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 96
+    chinese_name: 現項目分紅份數
+    english_name: Present Project
+    simple_chinese_name: 现项目分红份数
+    column_type: fixed
+    function: calc_present_project
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 97
+    chinese_name: 项目分紅份數
+    english_name: Project copies
+    simple_chinese_name: 项目分红份数
+    column_type: fixed
+    function: calc_project_copies
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 98
+    chinese_name: 每份項目分紅
+    english_name: Each Project Bonus
+    simple_chinese_name: 每份项目分红
+    column_type: fixed
+    function: calc_each_project_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 99
+    chinese_name: 项目分紅 
+    english_name: Project Bonus
+    simple_chinese_name: 项目分红 
+    column_type: fixed
+    function: calc_project_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 100
+    chinese_name: 原尊華殿份數
+    english_name: Original E-mall
+    simple_chinese_name: 原尊华殿份数
+    column_type: fixed
+    function: calc_orignal_e_mall
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 101
+    chinese_name: 現尊華殿份數
+    english_name: Present E-mall
+    simple_chinese_name: 现尊华殿份数
+    column_type: fixed
+    function: calc_present_e_mall
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 102
+    chinese_name: 尊華殿份數
+    english_name: E-mall
+    simple_chinese_name: 尊华殿份数
+    column_type: fixed
+    function: calc_e_mall
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 103
+    chinese_name: 每份尊華殿
+    english_name: Each E-mall Bonus
+    simple_chinese_name: 每份尊华殿
+    column_type: fixed
+    function: calc_each_e_mall_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 104
+    chinese_name: 尊華殿
+    english_name: E-Mall Bonus
+    simple_chinese_name: 尊华殿
+    column_type: fixed
+    function: calc_e_mall_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 105
+    chinese_name: 原尚品獎金份數
+    english_name: Original Luxe
+    simple_chinese_name: 原尚品奖金份数
+    column_type: fixed
+    function: calc_original_luxe
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 106
+    chinese_name: 現尚品獎金份數
+    english_name: Present Luxe
+    simple_chinese_name: 现尚品奖金份数
+    column_type: fixed
+    function: calc_present_luxe
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 107
+    chinese_name: 尚品獎金份數
+    english_name: Luxe
+    simple_chinese_name: 尚品奖金份数
+    column_type: fixed
+    function: calc_luxe_copies
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 108
+    chinese_name: 每份尚品獎金
+    english_name: Each Luxe Bonus
+    simple_chinese_name: 每份尚品奖金
+    column_type: fixed
+    function: calc_each_luxe_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 109
+    chinese_name: 尚品獎金
+    english_name: Luxe
+    simple_chinese_name: 尚品奖金
+    column_type: fixed
+    function: calc_luxe
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 110
+    chinese_name: 出車獎金
+    english_name: Incentive on Driving
+    simple_chinese_name: 出车奖金
+    column_type: fixed
+    function: calc_incentive_on_driving
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 111
+    chinese_name: 介紹新客戶轉碼分紅
+    english_name: Referral Bonus on Rolling
+    simple_chinese_name: 介绍新客户转码分红
+    column_type: fixed
+    function: calc_referral_bonus_on_rolling
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 112
+    chinese_name: 原新春利是份數
+    english_name: Original New Year lai see
+    simple_chinese_name: 原新春利是份数
+    column_type: fixed
+    function: calc_orignal_new_year_lai_see
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 113
+    chinese_name: 現新春利是份數
+    english_name: Present New Year lai see
+    simple_chinese_name: 现新春利是份数
+    column_type: fixed
+    function: calc_present_new_year_lai_see
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 114
+    chinese_name: 新春利是份數
+    english_name: New Year lai see
+    simple_chinese_name: 新春利是份数
+    column_type: fixed
+    function: calc_new_year_lai_see
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 115
+    chinese_name: 每份新春利是
+    english_name: Each New Year lai see Bonus
+    simple_chinese_name: 每份新春利是
+    column_type: fixed
+    function: calc_each_new_year_lai_see_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+  - id: 116
+    chinese_name: 新春利是
+    english_name: New Year lai see Bonus
+    simple_chinese_name: 新春利是
+    column_type: fixed
+    function: calc_new_year_lai_see_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_column
+
+    #category: annual_award
+  - id: 117
+    chinese_name: 上年度12月底薪
+    english_name: December Basic salary in last year
+    simple_chinese_name: 上年度12月底薪
+    column_type: fixed
+    function: calc_december_basic_salary_in_last_year
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 118
+    chinese_name: 上年度12月津貼
+    english_name: December Allowance in last year
+    simple_chinese_name: 上年度13月津贴
+    column_type: fixed
+    function: calc_december_allowance_in_last_year
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 119
+    chinese_name: 上年度12月勤工
+    english_name: December Attendance Bonus in last year
+    simple_chinese_name: 上年度13月勤工
+    column_type: fixed
+    function: calc_december_allowance_bonus_in_last_year
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 120
+    chinese_name: 是否享有雙糧
+    english_name: Have double pay
+    simple_chinese_name: 是否享有双粮
+    column_type: fixed
+    function: calc_have_double_pay
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: annual_award
+  - id: 121
+    chinese_name: 雙糧
+    english_name: Double pay
+    simple_chinese_name: 双粮
+    column_type: fixed
+    function: calc_double_pay
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 122
+    chinese_name: 雙糧調整
+    english_name: Adjust double pay
+    simple_chinese_name: 双粮调整
+    column_type: fixed
+    function: calc_adjust_double_pay
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 123
+    chinese_name: 雙糧實發
+    english_name: Really issued double pay
+    simple_chinese_name: 双粮实发
+    column_type: fixed
+    function: calc_really_issued_double_pay
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 124
+    chinese_name: 是否享有花紅
+    english_name: Have bonus
+    simple_chinese_name: 是否享有花红
+    column_type: fixed
+    function: calc_have_bonus
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: annual_award
+  - id: 125
+    chinese_name: 花紅應發
+    english_name: Should pay bonus
+    simple_chinese_name: 花红应发
+    column_type: fixed
+    function: calc_should_pay_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 126
+    chinese_name: 表揚信次數
+    english_name: "Praise letter's number"
+    simple_chinese_name: 表扬信次数
+    column_type: fixed
+    function: calc_praise_letters_number
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: annual_award
+  - id: 127
+    chinese_name: 花紅總增加
+    english_name: Bonus total add
+    simple_chinese_name: 花红总增加
+    column_type: fixed
+    function: calc_bonus_total_add
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 128
+    chinese_name: 全年曠工次數
+    english_name: Absences without official leave times yearly
+    simple_chinese_name: 全年旷工次数
+    column_type: fixed
+    function: calc_absences_without_official_leave_times_yearly
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: annual_award
+  - id: 129
+    chinese_name: 全年即告次數
+    english_name: Same day leave times yearly
+    simple_chinese_name: 全年即告次数
+    column_type: fixed
+    function: calc_same_day_leave_times_yearly
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: annual_award
+  - id: 130
+    chinese_name: 全年遲到次數
+    english_name: Lateness times yearly
+    simple_chinese_name: 全年迟到次数
+    column_type: fixed
+    function: calc_lateness_times_yearly
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: annual_award
+  - id: 131
+    chinese_name: 全年漏打上下班次數
+    english_name: Unaccounted clock in/out  times yearly
+    simple_chinese_name: 全年漏打上下班次数
+    column_type: fixed
+    function: calc_unaccounted_clock_in_out_times_yearly
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: annual_award
+  - id: 132
+    chinese_name: 處罰通知書次數
+    english_name: Disposition notice times
+    simple_chinese_name: 处罚通知书次数
+    column_type: fixed
+    function: calc_disposition_notice_times
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: annual_award
+  - id: 133
+    chinese_name: 扣減花紅_曠工
+    english_name: Deduct bonus_absences without official leave
+    simple_chinese_name: 扣减花红_旷工
+    column_type: fixed
+    function: calc_deduct_bonus_absences_without_offical_leave
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 134
+    chinese_name: 扣減花紅_即告
+    english_name: Deduct bonus_same day leave
+    simple_chinese_name: 扣减花红_即告
+    column_type: fixed
+    function: calc_deduct_bonus_same_day_leave
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 135
+    chinese_name: 扣減花紅_遲到
+    english_name: Deduct bonus_lateness
+    simple_chinese_name: 扣减花红_迟到
+    column_type: fixed
+    function: calc_deduct_bonus_lateness
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 136
+    chinese_name: 扣減花紅_漏打卡上下班
+    english_name: Deduct bonus_unaccounted clock in/out
+    simple_chinese_name: 扣减花红_漏打卡上下班
+    column_type: fixed
+    function: calc_deduct_bonus_unaccounted_clock_in_out
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 137
+    chinese_name: 扣減花紅_處罰通知書
+    english_name: Deduct bonus_disposition notice
+    simple_chinese_name: 扣减花红_处罚通知书
+    column_type: fixed
+    function: calc_deduct_bonus_disposition_notice
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 138
+    chinese_name: 花紅總扣減
+    english_name: Total deduct bonus
+    simple_chinese_name: 花红总扣减
+    column_type: fixed
+    function: calc_total_deduct_bonus
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 139
+    chinese_name: 花紅實發
+    english_name: Really issued bonus
+    simple_chinese_name: 花红实发
+    column_type: fixed
+    function: calc_really_issued_bonus
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 140
+    chinese_name: 上年度是否全勤
+    english_name: Annual attendance last year
+    simple_chinese_name: 上年度是否全勤
+    column_type: fixed
+    function: calc_annual_attendance_last_year
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: annual_award
+  - id: 141
+    chinese_name: 全年勤工基數
+    english_name: Year-round work  base
+    simple_chinese_name: 全年勤工基数
+    column_type: fixed
+    function: calc_year_round_work_base
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 142
+    chinese_name: 全年勤工實發
+    english_name: Really issued annual attendance
+    simple_chinese_name: 全年勤工实发
+    column_type: fixed
+    function: calc_really_issued_annual_attendance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: annual_award
+  - id: 143
+    chinese_name: 薪酬月份
+    english_name: Salary month
+    simple_chinese_name: 薪酬月份
+    column_type: fixed
+    function: calc_salary_month
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: date
+    category: salary_list
+  - id: 144
+    chinese_name: 薪酬開始日期
+    english_name: Salary start date
+    simple_chinese_name: 薪酬开始日期
+    column_type: fixed
+    function: calc_salary_start_date
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: date
+    category: salary_list
+  - id: 145
+    chinese_name: 薪酬結束日期
+    english_name: Salary end date
+    simple_chinese_name: 薪酬结束日期
+    column_type: fixed
+    function: calc_salary_end_date
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: date
+    category: salary_list
+  - id: 146
+    chinese_name: '職業稅（MOP）'
+    english_name: 'Occupational tax(MOP)'
+    simple_chinese_name: '职业税(MOP)'
+    column_type: fixed
+    function: calc_occupational_tax_mop
+    add_deduct_type: deduct
+    tax_type: changed
+    value_type: decimal
+    category: salary_list
+  - id: 147
+    chinese_name: '社會保障基金(MOP)'
+    english_name: 'Social Security Fund(MOP)'
+    simple_chinese_name: '社会保障基金(MOP)'
+    column_type: fixed
+    function: calc_social_security_fund_mop
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: salary_list
+  - id: 148
+    chinese_name: 身份證件編號
+    english_name: ID card No.
+    simple_chinese_name: 身份证件编号
+    column_type: fixed
+    function: calc_id_card_no
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: salary_list
+  - id: 149
+    chinese_name: 納稅編號
+    english_name: Tax number
+    simple_chinese_name: 纳税编号
+    column_type: fixed
+    function: calc_tax_number
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: salary_list
+  - id: 150
+    chinese_name: 社會保障號碼
+    english_name: SSS Number
+    simple_chinese_name: 社会保障号码
+    column_type: fixed
+    function: calc_sss_number
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: salary_list
+  - id: 151
+    chinese_name: 報政府職位
+    english_name: Position of Govt. Record
+    simple_chinese_name: 报政府职位
+    column_type: fixed
+    function: calc_position_of_govt_record
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: salary_list
+  - id: 152
+    chinese_name: 糧單職位
+    english_name: Payroll positions
+    simple_chinese_name: 粮单职位
+    column_type: fixed
+    function: calc_payroll_positions
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: object
+    category: salary_list
+  - id: 153
+    chinese_name: 是否扣愛心基金
+    english_name: Deduct love fund
+    simple_chinese_name: 是否扣爱心基金
+    column_type: fixed
+    function: calc_is_deduct_love_fund
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: others
+  - id: 154
+    chinese_name: 是否扣醫療基金
+    english_name: Deduct medical fund
+    simple_chinese_name: 是否扣医疗基金
+    column_type: fixed
+    function: calc_is_deduct_medical_fund
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: others
+  - id: 155
+    chinese_name: 是否扣公積金
+    english_name: Deduct pension fund
+    simple_chinese_name: 是否扣公积金
+    column_type: fixed
+    function: calc_is_deduct_pension_fund
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: others
+  - id: 156
+    chinese_name: 在職天數
+    english_name: In service days
+    simple_chinese_name: 在职天数
+    column_type: fixed
+    function: calc_in_service_days
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: others
+  - id: 157
+    chinese_name: 上年度應扣減天數
+    english_name: Should be deducted days in last year
+    simple_chinese_name: 上年度应扣减天数
+    column_type: fixed
+    function: calc_should_be_deducted_days_in_last_year
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: integer
+    category: others
+  - id: 158
+    chinese_name: '支票/現金出糧'
+    english_name: Payment method
+    simple_chinese_name: '支票/现金出粮'
+    column_type: fixed
+    function: calc_payment_method
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: object
+    category: others
+  - id: 159
+    chinese_name: 是否本月入職
+    english_name: Entry in the month
+    simple_chinese_name: 是否本月入职
+    column_type: fixed
+    function: calc_entry_in_the_month
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: others
+  - id: 160
+    chinese_name: 是否本月離職
+    english_name: Turnover in the month
+    simple_chinese_name: 是否本月离职
+    column_type: fixed
+    function: calc_turnover_in_the_month
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: boolean
+    category: others
+  - id: 161
+    chinese_name: 葡幣賬戶號碼
+    english_name: MOP account number
+    simple_chinese_name: 葡币账户号码
+    column_type: fixed
+    function: calc_mop_account_number
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: others
+  - id: 162
+    chinese_name: 港幣賬戶號碼
+    english_name: HKD account number
+    simple_chinese_name: 港币账户号码
+    column_type: fixed
+    function: calc_hkd_account_number
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: others
+  - id: 163
+    chinese_name: 公司月結
+    english_name: Company's monthly statement
+    simple_chinese_name: 公司月结
+    column_type: fixed
+    function: calc_companys_monthly_statement
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: others
+  - id: 164
+    chinese_name: '扣薪(財務報表)'
+    english_name: 'Deduct salary(financial report)'
+    simple_chinese_name: '扣薪(财务报表)'
+    column_type: fixed
+    function: calc_deduct_salary_financial_report
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: others
+  - id: 165
+    chinese_name: 備註
+    english_name: Remarks
+    simple_chinese_name: 备注
+    column_type: fixed
+    function: calc_remarks
+    add_deduct_type: none
+    tax_type: not_changed
+    value_type: string
+    category: others
+  - id: 166
+    chinese_name: '底薪_強制假期補償(MOP)'
+    english_name: 'Basic salary_compensation for statutory holiday(MOP)'
+    simple_chinese_name: '底薪_强制假期补偿(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_compensation_fof_statutory_holiday
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 167
+    chinese_name: '底薪_公眾假期補償(MOP)'
+    english_name: 'Basic salary_compensation for  public  holiday(MOP)'
+    simple_chinese_name: '底薪_公众假期补偿(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_compensation_for_public_holiday
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 168
+    chinese_name: '底薪_加班費(MOP)'
+    english_name: 'Basic salary_overtime pay(MOP)'
+    simple_chinese_name: '底薪_加班费(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_overtime_pay
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 169
+    chinese_name: '底薪_有薪分娩假補假(MOP)'
+    english_name: 'Basic salary_compensation leave for paid maternity leave(MOP)'
+    simple_chinese_name: '底薪_有薪分娩假补假(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_compensation_leave_for_paid_maternity_leave
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 170
+    chinese_name: '底薪_其他加項(MOP)'
+    english_name: 'Basic salary_other additions(MOP)'
+    simple_chinese_name: '底薪_其他加项(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_other_additions
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 171
+    chinese_name: '底薪_考勤補發(MOP)'
+    english_name: 'Basic salary_attendance reissued(MOP)'
+    simple_chinese_name: '底薪_考勤补发(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_attendance_reissued
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 172
+    chinese_name: '底薪_未享受年假補償(MOP)'
+    english_name: "Basic salary_don't enjoy the annual leave compensation(MOP)"
+    simple_chinese_name: '底薪_未享受年假补偿(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_dont_enjoy_the_annual_leave_compensation
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 173
+    chinese_name: '底薪_解僱賠償(MOP)'
+    english_name: 'Basic salary_fire compensation(MOP)'
+    simple_chinese_name: '底薪_解僱赔偿(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_fire_compensation
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 174
+    chinese_name: '底薪_代通知金(MOP)'
+    english_name: 'Basic salary_notice of compensation(MOP)'
+    simple_chinese_name: '底薪_代通知金(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_notice_of_compensation
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 175
+    chinese_name: '底薪_總薪酬(MOP)'
+    english_name: 'Basic salary_gross income(MOP)'
+    simple_chinese_name: '底薪_总薪酬(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_gross_income
+    add_deduct_type: add
+    tax_type: changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 176
+    chinese_name: '底薪_曠工扣減(MOP)'
+    english_name: 'Basic salary_absences without official leave deduction(MOP)'
+    simple_chinese_name: '底薪_旷工扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_absences_without_official_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 177
+    chinese_name: '底薪_即告扣減(MOP)'
+    english_name: 'Basic salary_same day leave deduction(MOP)'
+    simple_chinese_name: '底薪_即告扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_same_day_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 178
+    chinese_name: '底薪_無薪假扣減(MOP)'
+    english_name: 'Basic salary_unpaid leave deduction(MOP)'
+    simple_chinese_name: '底薪_无薪假扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_unpaid_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 179
+    chinese_name: '底薪_無薪婚假扣減(MOP)'
+    english_name: 'Basic salary_marriage leave without pay deduction(MOP)'
+    simple_chinese_name: '底薪_无薪婚假扣减(MOP)'
+    column_type: fixed
+    function: calc_baisc_salary_marriage_leave_without_pay_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 180
+    chinese_name: '底薪_無薪恩恤假扣減(MOP)'
+    english_name: 'Basic salary_unpaid compassionate leave deduction(MOP)'
+    simple_chinese_name: '底薪_无薪恩恤假扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_unpaid_compssionate_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 181
+    chinese_name: '底薪_懷孕病假扣減(MOP)'
+    english_name: 'Basic salary_pregnant sick leave deduction(MOP)'
+    simple_chinese_name: '底薪_怀孕病假扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_pregnant_sick_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 182
+    chinese_name: '底薪_無薪分娩假扣減(MOP)'
+    english_name: 'Basic salary_maternity leave without pay deduction(MOP)'
+    simple_chinese_name: '底薪_无薪分娩假扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_maternity_leave_without_pay_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 183
+    chinese_name: '底薪_工傷(7天後)扣減(MOP)'
+    english_name: 'Basic salary_work injury(7 days later) deduction(MOP)'
+    simple_chinese_name: '底薪_工伤(8天后)扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_work_injury_7_days_later_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 184
+    chinese_name: '底薪_停薪留職扣減(MOP)'
+    english_name: 'Basic salary_leave without pay deduction(MOP)'
+    simple_chinese_name: '底薪_停薪留职扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_leave_without_pay_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 185
+    chinese_name: '底薪_其他扣減(MOP)'
+    english_name: 'Basic salary_other deduction(MOP)'
+    simple_chinese_name: '底薪_其他扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_other_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 186
+    chinese_name: '底薪_考勤補扣(MOP)'
+    english_name: 'Basic salary_attendance deduction(MOP)'
+    simple_chinese_name: '底薪_考勤补扣(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_attendance_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 187
+    chinese_name: '底薪_總扣減(MOP)'
+    english_name: 'Basic salary_total deduction(MOP)'
+    simple_chinese_name: '底薪_总扣减(MOP)'
+    column_type: fixed
+    function: calc_basic_salary_total_deduction
+    add_deduct_type: deduct
+    tax_type: changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 188
+    chinese_name: '醫療報銷(MOP)'
+    english_name: 'Medical reimbursement(MOP)'
+    simple_chinese_name: '医疗报销(MOP)'
+    column_type: fixed
+    function: calc_medical_reimbursement
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 189
+    chinese_name: '其他(不納稅)(MOP)'
+    english_name: 'Other (non-tax)(MOP)'
+    simple_chinese_name: '其他(不纳税)(MOP)'
+    column_type: fixed
+    function: calc_other_non_tax
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 190
+    chinese_name: '扣愛心基金(MOP)'
+    english_name: 'Deduct love fund(MOP)'
+    simple_chinese_name: '扣爱心基金(MOP)'
+    column_type: fixed
+    function: calc_deduct_love_fund
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 191
+    chinese_name: '扣醫療基金(MOP)'
+    english_name: 'Deduct medical fund(MOP)'
+    simple_chinese_name: '扣医疗基金(MOP)'
+    column_type: fixed
+    function: calc_deduct_medical_fund
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 192
+    chinese_name: 扣公積金百分比
+    english_name: Percentage of pension fund deduction
+    simple_chinese_name: 扣公积金百分比
+    column_type: fixed
+    function: calc_percentage_of_pension_fund_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 193
+    chinese_name: '扣公積金(MOP)'
+    english_name: 'Deduct pension fund(MOP)'
+    simple_chinese_name: '扣公积金(MOP)'
+    column_type: fixed
+    function: calc_deduct_pension_fund
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 194
+    chinese_name: '扣其他(不納稅)(MOP)'
+    english_name: 'Deduct other (non-tax)(MOP)'
+    simple_chinese_name: '扣其他(不纳税)(MOP)'
+    column_type: fixed
+    function: calc_deduct_other_non_tax
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 195
+    chinese_name: '底薪實發總數(MOP)'
+    english_name: 'Really total basic salary(MOP)'
+    simple_chinese_name: '底薪实发总数(MOP)'
+    column_type: fixed
+    function: calc_really_total_basic_salary
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_basic_salary
+  - id: 196
+    chinese_name: 除底薪外_其他加項
+    english_name: Except for basic salary_other additions
+    simple_chinese_name: 除底薪外_其他加项
+    column_type: fixed
+    function: calc_except_for_basic_salary_other_additions
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 197
+    chinese_name: 除底薪外_考勤補發
+    english_name: Except for basic salary_attendance reissued
+    simple_chinese_name: 除底薪外_考勤补发
+    column_type: fixed
+    function: calc_except_fof_basic_salary_attendance_reissued
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 198
+    chinese_name: 除底薪外_颱風津貼
+    english_name: Except for basic salary_typhoon allowance
+    simple_chinese_name: 除底薪外_台风津贴
+    column_type: fixed
+    function: calc_except_for_basic_salary_typhoon_allowance
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 199
+    chinese_name: 除底薪外_總薪酬
+    english_name: Except for basic salary_gross income 
+    simple_chinese_name: 除底薪外_总薪酬
+    column_type: fixed
+    function: calc_except_for_basic_salary_gross_income
+    add_deduct_type: add
+    tax_type: changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 200
+    chinese_name: 除底薪外_曠工扣減
+    english_name: Except for basic salary_absences without official leave deduction
+    simple_chinese_name: 除底薪外_旷工扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_absences_without_official_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 201
+    chinese_name: 除底薪外_即告扣減
+    english_name: Except for basic salary_same day leave deduction
+    simple_chinese_name: 除底薪外_即告扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_same_day_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 202
+    chinese_name: 除底薪外_無薪假扣減
+    english_name: Except for basic salary_unpaid leave deduction
+    simple_chinese_name: 除底薪外_无薪假扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_unpaid_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 203
+    chinese_name: 除底薪外_無薪婚假扣減
+    english_name: Except for basic salary_marriage leave without pay deduction
+    simple_chinese_name: 除底薪外_无薪婚假扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_marriage_leave_without_pay_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 204
+    chinese_name: 除底薪外_無薪恩恤假扣減
+    english_name: Except for basic salary_unpaid compassionate leave deduction
+    simple_chinese_name: 除底薪外_无薪恩恤假扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_unpaid_compassionate_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 205
+    chinese_name: 除底薪外_無薪分娩假扣減
+    english_name: Except for basic salary_maternity leave without pay deduction
+    simple_chinese_name: 除底薪外_无薪分娩假扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_maternity_leave_withoud_pay_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 206
+    chinese_name: 除底薪外_懷孕病假扣減
+    english_name: Except for basic salary_pregnant sick leave deduction
+    simple_chinese_name: 除底薪外_怀孕病假扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_pregnant_sick_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 207
+    chinese_name: '除底薪外_工傷(7天後)扣減'
+    english_name: 'Except for basic salary_work injury(7 days later) deduction'
+    simple_chinese_name: '除底薪外_工伤(7天后)扣减'
+    column_type: fixed
+    function: calc_except_for_basic_salary_work_injury_7_days_later_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 208
+    chinese_name: 除底薪外_停薪留職扣減
+    english_name: Except for basic salary_leave without pay deduction
+    simple_chinese_name: 除底薪外_停薪留职扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_leave_without_pay_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 209
+    chinese_name: 除底薪外_有薪病假扣減
+    english_name: Except for basic salary_sick leave deduction
+    simple_chinese_name: 除底薪外_有薪病假扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_sick_leave_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 210
+    chinese_name: 除底薪外_遲到扣減
+    english_name: Except for basic salary_lateness deduction
+    simple_chinese_name: 除底薪外_迟到扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_lateness_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 211
+    chinese_name: 除底薪外_漏打卡上下班扣減
+    english_name: Except for basic salary_unaccounted clock in/out deduction
+    simple_chinese_name: 除底薪外_漏打卡上下班扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_unaccounted_clock_in_out_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 212
+    chinese_name: 除底薪外_處罰通知書扣減
+    english_name: Except for basic salary_disposition notice times deduction
+    simple_chinese_name: 除底薪外_处罚通知书扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_disposition_notice_times_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 213
+    chinese_name: 除底薪外_其他扣減
+    english_name: Except for basic salary_other deduction
+    simple_chinese_name: 除底薪外_其他扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_other_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 214
+    chinese_name: 除底薪外_考勤補扣
+    english_name: Except for basic salary_attendance deduction
+    simple_chinese_name: 除底薪外_考勤补扣
+    column_type: fixed
+    function: calc_except_for_basic_salary_attendance_deduction
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 215
+    chinese_name: 除底薪外_總扣減
+    english_name: Except for basic salary_total deduction
+    simple_chinese_name: 除底薪外_总扣减
+    column_type: fixed
+    function: calc_except_for_basic_salary_total_deduction
+    add_deduct_type: deduct
+    tax_type: changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 216
+    chinese_name: '除底薪外_其他(不納稅)'
+    english_name: 'Except for basic salary_other (non-tax)'
+    simple_chinese_name: '除底薪外_其他(不纳税)'
+    column_type: fixed
+    function: calc_except_for_basic_salary_other_non_tax
+    add_deduct_type: add
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 217
+    chinese_name: '除底薪外_扣其他(不納稅)'
+    english_name: 'Except for basic salary_deduct other (non-tax)'
+    simple_chinese_name: '除底薪外_扣其他(不纳税)'
+    column_type: fixed
+    function: calc_except_for_basic_salary_deduct_other_non_tax
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type: decimal
+    category: data_except_basic_salary
+  - id: 218
+    chinese_name: 除底薪外_實發總數
+    english_name: Except for basic salary_real total
+    simple_chinese_name: 除底薪外_实发总数
+    column_type: fixed
+    function: calc_except_for_basic_salary_except_for_basic_salary_real_total
+    add_deduct_type: deduct
+    tax_type: not_changed
+    value_type:  decimal
+    category: data_except_basic_salary
+  #工资单-底薪-1
+  #職位
+  - id: 1001
+    column_type: fixed
+    function: calc_pay_slip_1
+    value_type: object
+    category: pay_slip
+  #工资单-底薪-2
+  #薪酬期間
+  - id: 1002
+    column_type: fixed
+    function: calc_pay_slip_2
+    value_type: string
+    category: pay_slip
+  #工资单-底薪-3
+  #底薪
+  - id: 1003
+    column_type: fixed
+    function: calc_pay_slip_3
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-4
+  #加班費
+  - id: 1004
+    column_type: fixed
+    function: calc_pay_slip_4
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-5
+  #強制假期補償
+  - id: 1005
+    column_type: fixed
+    function: calc_pay_slip_5
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-6
+  #公眾假期補償
+  - id: 1006
+    column_type: fixed
+    function: calc_pay_slip_6
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-7
+  #年假補償
+  - id: 1007
+    column_type: fixed
+    function: calc_pay_slip_7
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-8
+  #其他薪酬項目
+  - id: 1008
+    column_type: fixed
+    function: calc_pay_slip_8
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-9
+  #總薪酬
+  - id: 1009
+    column_type: fixed
+    function: calc_pay_slip_9
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-10
+  #曠工
+  - id: 1010
+    column_type: fixed
+    function: calc_pay_slip_10
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-11
+  #即告
+  - id: 1011
+    column_type: fixed
+    function: calc_pay_slip_11
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-12
+  #無薪假
+  - id: 1012
+    column_type: fixed
+    function: calc_pay_slip_12
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-13
+  #無薪婚假
+  - id: 1013
+    column_type: fixed
+    function: calc_pay_slip_13
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-14
+  #無薪帛事假
+  - id: 1014
+    column_type: fixed
+    function: calc_pay_slip_14
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-15
+  #無薪分娩假
+  - id: 1015
+    column_type: fixed
+    function: calc_pay_slip_15
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-16
+  #停職
+  - id: 1016
+    column_type: fixed
+    function: calc_pay_slip_16
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-17
+  #其他扣減項目
+  - id: 1017
+    column_type: fixed
+    function: calc_pay_slip_17
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-18
+  #總扣減
+  - id: 1018
+    column_type: fixed
+    function: calc_pay_slip_18
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-19
+  #實習津貼
+  - id: 1019
+    column_type: fixed
+    function: calc_pay_slip_19
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-20
+  #醫療報銷
+  - id: 1020
+    column_type: fixed
+    function: calc_pay_slip_20
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-21
+  #其他
+  - id: 1021
+    column_type: fixed
+    function: calc_pay_slip_21
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-22
+  #醫療福利基金
+  - id: 1022
+    column_type: fixed
+    function: calc_pay_slip_22
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-23
+  #公積金供款
+  - id: 1023
+    column_type: fixed
+    function: calc_pay_slip_23
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-24
+  #太陽城愛心基金
+  - id: 1024
+    column_type: fixed
+    function: calc_pay_slip_24
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-25
+  #其他
+  - id: 1025
+    column_type: fixed
+    function: calc_pay_slip_25
+    value_type: decimal
+    category: pay_slip
+  #工资单-底薪-26
+  #實收金額
+  - id: 1026
+    column_type: fixed
+    function: calc_pay_slip_26
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-1
+  #津貼
+  - id: 1027
+    column_type: fixed
+    function: calc_pay_slip_27
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-2
+  #勤工
+  - id: 1028
+    column_type: fixed
+    function: calc_pay_slip_28
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-3
+  #房屋津貼
+  - id: 1029
+    column_type: fixed
+    function: calc_pay_slip_29
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-4
+  #地區津貼
+  - id: 1030
+    column_type: fixed
+    function: calc_pay_slip_30
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-5
+  #服務獎金
+  - id: 1031
+    column_type: fixed
+    function: calc_pay_slip_31
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-6
+  #茶資
+  - id: 1032
+    column_type: fixed
+    function: calc_pay_slip_32
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-7
+  #殺數分紅
+  - id: 1033
+    column_type: fixed
+    function: calc_pay_slip_33
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-8
+  #業績分紅
+  - id: 1034
+    column_type: fixed
+    function: calc_pay_slip_34
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-9
+  #佣金差額
+  - id: 1035
+    column_type: fixed
+    function: calc_pay_slip_35
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-10
+  #刷卡獎金
+  - id: 1036
+    column_type: fixed
+    function: calc_pay_slip_36
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-11
+  #貴賓卡消費
+  - id: 1037
+    column_type: fixed
+    function: calc_pay_slip_37
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-12
+  #收賬分紅
+  - id: 1038
+    column_type: fixed
+    function: calc_pay_slip_38
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-13
+  #匯率分紅
+  - id: 1039
+    column_type: fixed
+    function: calc_pay_slip_39
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-14
+  #項目分紅
+  - id: 1040
+    column_type: fixed
+    function: calc_pay_slip_40
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-15
+  #績效獎金
+  - id: 1041
+    column_type: fixed
+    function: calc_pay_slip_41
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-16
+  #特別茶資
+  - id: 1042
+    column_type: fixed
+    function: calc_pay_slip_42
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-17
+  #尊華殿獎金
+  - id: 1043
+    column_type: fixed
+    function: calc_pay_slip_43
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-18
+  #尚品獎金
+  - id: 1044
+    column_type: fixed
+    function: calc_pay_slip_44
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-19
+  #出車獎金
+  - id: 1045
+    column_type: fixed
+    function: calc_pay_slip_45
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-20
+  #介紹新客戶轉碼分紅
+  - id: 1046
+    column_type: fixed
+    function: calc_pay_slip_46
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-21
+  #其他
+  - id: 1047
+    column_type: fixed
+    function: calc_pay_slip_47
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-22
+  #總薪酬
+  - id: 1048
+    column_type: fixed
+    function: calc_pay_slip_48
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-23
+  #遲到
+  - id: 1049
+    column_type: fixed
+    function: calc_pay_slip_49
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-24
+  #曠工
+  - id: 1050
+    column_type: fixed
+    function: calc_pay_slip_50
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-25
+  #即告
+  - id: 1051
+    column_type: fixed
+    function: calc_pay_slip_51
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-26
+  #無薪假
+  - id: 1052
+    column_type: fixed
+    function: calc_pay_slip_52
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-27
+  #無薪婚假
+  - id: 1053
+    column_type: fixed
+    function: calc_pay_slip_53
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-28
+  #無薪帛事假
+  - id: 1054
+    column_type: fixed
+    function: calc_pay_slip_54
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-29
+  #有薪病假
+  - id: 1055
+    column_type: fixed
+    function: calc_pay_slip_55
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-30
+  #漏打上班/下班
+  - id: 1056
+    column_type: fixed
+    function: calc_pay_slip_56
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-31
+  #收到處罰通知書
+  - id: 1057
+    column_type: fixed
+    function: calc_pay_slip_57
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-32
+  #有薪分娩假
+  - id: 1058
+    column_type: fixed
+    function: calc_pay_slip_58
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-33
+  #無薪分娩假
+  - id: 1059
+    column_type: fixed
+    function: calc_pay_slip_59
+    value_type: decimal
+    category: pay_slip
+  #工资单-津貼及獎勵項目-34
+  #停職
+  - id: 1060
+    column_type: fixed
+    function: calc_pay_slip_60
+    value_type: integer
+    category: pay_slip
+  #工资单-津貼及獎勵項目-35
+  #其他扣減項目
+  - id: 1061
+    column_type: fixed
+    function: calc_pay_slip_61
+    value_type: integer
+    category: pay_slip
+  #工资单-津貼及獎勵項目-36
+  #總扣減
+  - id: 1062
+    column_type: fixed
+    function: calc_pay_slip_62
+    value_type: string
+    category: pay_slip
+  #工资单-津貼及獎勵項目-37
+  #實收金額
+  - id: 1063
+    column_type: fixed
+    function: calc_pay_slip_63
+    value_type: string
+    category: pay_slip
+  #工资单-其他-1
+  #年假剩餘天數
+  - id: 1064
+    column_type: fixed
+    function: calc_pay_slip_64
+    value_type: string
+    category: pay_slip
+  #工资单-其他-2
+  #有薪病假剩餘天數
+  - id: 1065
+    column_type: fixed
+    function: calc_pay_slip_65
+    value_type: decimal
+    category: pay_slip
+  #工资单-其他-3
+  #考勤備註
+  - id: 1066
+    column_type: fixed
+    function: calc_pay_slip_66
+    value_type: decimal
+    category: pay_slip
+  #工资单-其他-4
+  #考勤補發備註
+  - id: 1067
+    column_type: fixed
+    function: calc_pay_slip_67
+    value_type: decimal
+    category: pay_slip
+  #工资单-其他-5
+  #其他項目備註
+  - id: 1068
+    column_type: fixed
+    function: calc_pay_slip_68
+    value_type: decimal
+    category: pay_slip
+  #工资单-其他-6
+  #職業稅
+  - id: 1069
+    column_type: fixed
+    function: calc_pay_slip_69
+    value_type: decimal
+    category: pay_slip
+  #工资单-其他-7
+  #社會保證金員工應繳
+  - id: 1070
+    column_type: fixed
+    function: calc_pay_slip_70
+    value_type: decimal
+    category: pay_slip
+
+#  - id: 219
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 220
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 221
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 222
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 223
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 224
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 225
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 226
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 227
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 228
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id: 229
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:
+#  - id:
+#    chinese_name:
+#    english_name:
+#    simple_chinese_name:
+#    column_type:
+#    function:
+#    add_deduct_type:
+#    tax_type:
+#    value_type:
+#    category:

@@ -1,0 +1,76 @@
+trains:
+  columns:
+    - key: status
+      data_index: status
+      sorter: false
+      search_type: screen
+      value_type: select_value
+      options_type: selects
+      options_select_key: train_status
+      search_attribute: status
+
+    - key: train_name
+      value_type: obj_value
+      data_index: .
+
+    - key: train_number
+      value_type: string_value
+      data_index: train_number
+
+    - key: train_date
+      value_type: date_range
+      data_index_begin: train_date_begin
+      data_index_begin_value_type: date_value
+      date_index_begin_format: '%Y/%m/%d'
+      data_index_end: train_date_end
+      data_index_end_value_type: date_value
+      date_index_end_format: '%Y/%m/%d'
+      join_format: '~'
+
+    - key: registration_date
+      value_type: date_range
+      data_index_begin: registration_date_begin
+      data_index_begin_value_type: date_value
+      date_index_begin_format: '%Y/%m/%d'
+      data_index_end: registration_date_end
+      data_index_end_value_type: date_value
+      date_index_end_format: '%Y/%m/%d'
+      join_format: '~'
+
+    - key: registration_method
+      value_type: select_value
+      data_index: registration_method
+      sorter: false
+      search_type: screen
+      options_type: selects
+      options_select_key: registration_method
+
+    - key: online_or_offline_training
+      value_type: select_value
+      data_index: online_or_offline_training
+      sorter: false
+      search_type: screen
+      options_type: selects
+      options_select_key: online_or_offline_training
+
+    - key: train_template_type
+      value_type: obj_value
+      data_index: train_template_type_id
+      sorter: false
+      search_type: screen
+      options_type: options
+      options_action: train_template_type_options
+    - key: training_credits
+      value_type: options_value
+      data_index: training_credits
+      sorter: false
+      search_type: screen
+      options_type: options
+      options_action: training_credits_options
+    - key: entry_lists_count
+      value_type: string_value
+      data_index: entry_lists_count
+    - key: final_lists_count
+      value_type: string_value
+      data_index: final_lists_count
+  array_index: data

@@ -1,0 +1,1077 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 调职申请（部门发起）
+
+# Describe your paths here
+paths:
+  /job_transfers/transfer_position_apply_by_departments:
+    post:
+      description: 创建调职申请（部门发起）
+      tags:
+        - 创建调职申请（部门发起）
+      parameters:
+        - name: transfer_position_apply_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/TransferPositionApplyCreateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /job_transfers/transfer_position_apply_by_departments/{transfer_position_apply_id}:
+    get:
+      description: 获取调职申请（部门发起）详情
+      tags:
+        - 调职申请（部门发起）记录
+      parameters:
+        - name: transfer_position_apply_id
+          in: path
+          required: true
+          type: integer
+          description: 调职申请（部门发起）ID
+      responses:
+        200:
+          description: 响应调职申请（部门发起）详情
+          schema:
+            $ref: '#/definitions/TransferPositionApplyData'
+
+definitions:
+  TransferPositionApplyCreateParams:
+    type: object
+    properties:
+      region:
+        type: string
+        description: 地区
+      user_id:
+        type: integer
+        description: 员工的user_id
+
+      apply_date:
+        type: string
+        description: 申请日期
+      comment:
+        type: string
+        description: 备注
+      apply_group_id:
+        type: integer
+        description: 申请组别 id
+      apply_serve_date:
+        type: string
+        description: 申请调任日期
+      apply_location_id:
+        type: integer
+        description: 申请场馆 id
+      apply_department_id:
+        type: integer
+        description: 申请部门 id
+      apply_position_id:
+        type: integer
+        description: 申请职位 id
+      transfer_position_reason_by_department:
+        type: string
+        description: 原部门调职原因
+      is_agreed_by_employee:
+        type: boolean
+        description: 员工是否同意调职
+      employee_opinion:
+        type: string
+        description: 员工意见
+      is_hired:
+        type: boolean
+        description: 接受部门是否录用
+      need_pass_trial:
+        type: boolean
+        description: 是否需要通过试用期
+      hire_position_id:
+        type: integer
+        description: 录用职位 id
+      effective_date:
+        type: string
+        description: 生效日期
+      department_comment:
+        type: string
+        description: 接受部门备注
+      is_transfer:
+        type: boolean
+        description: 是否调职
+      transfer_date:
+        type: string
+        description: 调动日期
+      transfer_group_id:
+        type: integer
+        description: 调职组别 id
+      transfer_location_id:
+        type: integer
+        description: 调职场馆 id
+      transfer_department_id:
+        type: integer
+        description: 调职部门 id
+      transfer_position_id:
+        type: integer
+        description: 调职职位 id
+
+      new_career_record:
+        type: object
+        properties:
+          user_id:
+            type: integer
+            description: 员工id
+          career_begin:
+            type: string
+            description: 职程开始日期
+          career_end:
+            type: string
+            description: 职程结束日期
+          deployment_type:
+            type: string
+            description: 调配类型
+          traial_period_expiration_date:
+            type: string
+            description: 试用期期满日期
+          salary_calculation:
+            type: string
+            description: 薪酬计算
+          company_name:
+            type: string
+            description: 公司名称
+          location_id:
+            type: integer
+            description: 场馆id
+          position_id:
+            type: integer
+            description: 职位id
+          department_id:
+            type: integer
+            description: 部门id
+          group_id:
+            type: integer
+            description: 组别id
+          grade:
+            type: integer
+            description: 职级
+          division_of_job:
+            type: string
+            description: 员工归属类别
+          deployment_instructions:
+            type: string
+            description: 调配说明
+          comment:
+            type: string
+            description: 备注
+        description: 职程信息
+
+
+
+      new_salary_record:
+        type: object
+        properties:
+          change_reason:
+            type: string
+            description: 变更原因
+          salary_begin:
+            type: string
+            description: 'YYYY/MM/dd'
+          salary_end:
+            type: string
+            description: 'YYYY/MM/dd'
+          salary_template_id:
+            type: integer
+            description: 薪酬模板
+          basic_salary:
+            type: string
+            description: 底薪
+          basic_salary_unit:
+            type: string
+            description: 底薪单位
+          bonus:
+            type: string
+            description:  津贴
+          bonus_unit:
+            type: string
+            description:  津贴单位
+          attendance_award:
+            type: string
+            description: 勤工奖
+          attendance_award_unit:
+            type: string
+            description: 勤工单位
+          house_bonus:
+            type: string
+            description: 房屋津贴
+          house_bonus_unit:
+            type: string
+            description: 房屋津贴单位
+          total_count_unit:
+            type: string
+            description: 总薪金单位
+          new_year_bonus:
+            type: string
+            description: 新春利是份数
+          project_bonus:
+            type: string
+            description: 项目分红份数
+          product_bonus:
+            type: string
+            description: 尚品奖金份数
+          tea_bonus:
+            type: string
+            description: 茶资份数
+          kill_bonus:
+            type: string
+            description: 杀数份数
+          performance_bonus:
+            type: string
+            description: 业绩分红份数
+          charge_bonus:
+            type: string
+            description: 刷卡奖金份数
+          commission_bonus:
+            type: string
+            description: 佣金差额份数
+          receive_bonus:
+            type: string
+            description: 收账分红份数
+          exchange_rate_bonus:
+            type: string
+            description: 汇率分红份数
+          guest_card_bonus:
+            type: string
+            description: 贵宾卡消费份数
+          respect_bonus:
+            type: string
+            description: 尊华殿份数
+          region_bonus:
+            type: string
+            description: 地区津贴份数
+          user_id:
+            type: integer
+            description: 员工id
+        description: 新薪酬信息，如果有才需要传
+
+      new_welfare_record:
+        type: object
+        properties:
+          change_reason:
+            type: string
+            description: 变更原因
+          welfare_begin:
+            type: string
+            description: 'YYYY/MM/dd'
+          welfare_end:
+            type: string
+            description: 'YYYY/MMdd'
+          annual_leave:
+            type: string
+            description: 年假
+          sick_leave:
+            type: string
+            description: 病假
+          office_holiday:
+            type: string
+            description: 公休天数
+          welfare_template_id:
+            type: integer
+            description: 培训模板id
+          holiday_type:
+            type: string
+            description: 假期类别
+          probation:
+            type: string
+            description: 试用期
+          notice_period:
+            type: string
+            description: 离职通知期
+          double_pay:
+            type: boolean
+            description: 是否双粮
+          reduce_salary_for_sick:
+            type: boolean
+            description: 有薪病假是否扣薪
+          provide_uniform:
+            type: boolean
+            description: 是否提供制服
+          salary_composition:
+            type: string
+            description: 薪金组成
+          over_time_salary:
+            type: string
+            description: 加班薪金
+          force_holiday_make_up:
+            type: string
+            description: 强制性假期补偿
+          comment:
+            type: string
+            description: 备注
+          user_id:
+            type: integer
+            description: 员工id
+      approval_items:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 审批人id
+            datetime:
+              type: string
+              description: 审批时间 yyyy-mm-dd
+            comment:
+              type: string
+              description: 审批建议
+        description: 创建审批记录
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+              description: 附件名称 '1.jpg'
+            comment:
+              type: string
+              description: 附件备注 'test comment'
+            attachment_id:
+              type: integer
+              description: 附件id
+        description: 记录附件
+
+  TransferPositionApplyData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          region:
+            type: string
+            description: 地区
+          user_id:
+            type: integer
+            description: 员工的user_id
+          creator_id:
+            type: integer
+            description: 创建者的user_id
+          apply_date:
+            type: string
+            description: 申请日期
+          comment:
+            type: string
+            description: 备注
+          apply_serve_date:
+            type: string
+            description: 申请调任日期
+          apply_location_id:
+            type: integer
+            description: 申请场馆 id
+          apply_department_id:
+            type: integer
+            description: 申请部门 id
+          apply_position_id:
+            type: integer
+            description: 申请职位 id
+          apply_group_id:
+            type: integer
+            description: 申请组别 id
+          transfer_position_reason_by_department:
+            type: string
+            description: 原部门调职原因
+          is_agreed_by_employee:
+            type: boolean
+            description: 员工是否同意调职
+          employee_opinion:
+            type: string
+            description: 员工意见
+          is_hired:
+            type: boolean
+            description: 接受部门是否录用
+          need_pass_trial:
+            type: boolean
+            description: 是否需要通过试用期
+          hire_position_id:
+            type: integer
+            description: 录用职位 id
+          effective_date:
+            type: string
+            description: 生效日期
+          department_comment:
+            type: string
+            description: 接受部门备注
+          is_transfer:
+            type: boolean
+            description: 是否调职
+          transfer_date:
+            type: string
+            description: 调动日期
+          transfer_location_id:
+            type: integer
+            description: 调职场馆 id
+          transfer_department_id:
+            type: integer
+            description: 调职部门 id
+          transfer_position_id:
+            type: integer
+            description: 调职职位 id
+          transfer_group_id:
+            type: integer
+            description: 调职组别 id
+          salary_record:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 记录id
+              change_reason:
+                type: string
+                description: 变更原因
+              salary_begin:
+                type: string
+                description: 'YYYY/MM/dd'
+              salary_end:
+                type: string
+                description: 'YYYY/MM/dd'
+              salary_template_id:
+                type: integer
+                description: 薪酬模板id
+              basic_salary:
+                type: string
+                description: 底薪(浮动值)
+              bonus:
+                type: string
+                description:  津贴(浮动值)
+              attendance_award:
+                type: string
+                description: 勤工奖(浮动值)
+              house_bonus:
+                type: string
+                description: 房屋津贴(浮动值)
+              new_year_bonus:
+                type: string
+                description: 新春利是份数(浮动值)
+              project_bonus:
+                type: string
+                description: 项目分红份数(浮动值)
+              product_bonus:
+                type: string
+                description: 尚品奖金份数(浮动值)
+              tea_bonus:
+                type: string
+                description: 茶资份数(浮动值)
+              kill_bonus:
+                type: string
+                description: 杀数份数(浮动值)
+              performance_bonus:
+                type: string
+                description: 业绩分红份数(浮动值)
+              charge_bonus:
+                type: string
+                description: 刷卡奖金份数(浮动值)
+              commission_bonus:
+                type: string
+                description: 佣金差额份数(浮动值)
+              receive_bonus:
+                type: string
+                description: 收账分红份数(浮动值)
+              exchange_rate_bonus:
+                type: string
+                description: 汇率分红份数(浮动值)
+              guest_card_bonus:
+                type: string
+                description: 贵宾卡消费份数(浮动值)
+              respect_bonus:
+                type: string
+                description: 尊华殿份数(浮动值)
+              region_bonus:
+                type: string
+                description: 地区津贴（浮动值）
+              status:
+                type: string
+                description: 记录状态
+              final_basic_salary_unit:
+                type: string
+                description: 最终基本薪酬单位
+              final_bonus_unit:
+                type: string
+                description: 最终津贴单位
+              final_attendance_award_unit:
+                type: string
+                description: 最终勤工奖单位
+              final_house_bonus_unit:
+                type: string
+                description: 最终房屋津贴单位
+              final_total_count_unit:
+                type: string
+                description: 最终总薪金单位
+              final_basic_salary:
+                type: string
+                description: 最终基本薪金
+              final_bonus:
+                type: string
+                description: 最终津贴
+              final_attendance_award:
+                type: string
+                description: 最终勤工奖
+              final_house_bonus:
+                type: string
+                description: 最终房屋津贴
+              final_tea_bonus:
+                type: string
+                description: 最终茶资份数
+              final_kill_bonus:
+                type: string
+                description: 最终杀数份数
+              final_performance_bonus:
+                type: string
+                description: 最终业绩分红份数
+              final_charge_bonus:
+                type: string
+                description: 最终刷卡奖金份数
+              final_commission_bonus:
+                type: string
+                description: 最终佣金差额份数
+              final_receive_bonus:
+                type: string
+                description: 最终收账分红份数
+              final_exchange_rate_bonus:
+                type: string
+                description: 最终汇率分红份数
+              final_guest_card_bonus:
+                type: string
+                description: 最终贵宾厅份数
+              final_respect_bonus:
+                type: string
+                description: 最终尊华殿份数
+              final_new_year_bonus:
+                type: string
+                description: 最终新春利是份数
+              final_project_bonus:
+                type: string
+                description: 最终项目分红份数
+              final_product_bonus:
+                type: string
+                description: 最终新春利是份数
+              final_region_bonus:
+                type: string
+                description: 最终地区津贴份数
+            description: 薪酬信息
+
+          new_salary_record:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 记录id
+              change_reason:
+                type: string
+                description: 变更原因
+              salary_begin:
+                type: string
+                description: 'YYYY/MM/dd'
+              salary_end:
+                type: string
+                description: 'YYYY/MM/dd'
+              salary_template_id:
+                type: integer
+                description: 薪酬模板id
+              basic_salary:
+                type: string
+                description: 底薪(浮动值)
+              bonus:
+                type: string
+                description:  津贴(浮动值)
+              attendance_award:
+                type: string
+                description: 勤工奖(浮动值)
+              house_bonus:
+                type: string
+                description: 房屋津贴(浮动值)
+              new_year_bonus:
+                type: string
+                description: 新春利是份数(浮动值)
+              project_bonus:
+                type: string
+                description: 项目分红份数(浮动值)
+              product_bonus:
+                type: string
+                description: 尚品奖金份数(浮动值)
+              tea_bonus:
+                type: string
+                description: 茶资份数(浮动值)
+              kill_bonus:
+                type: string
+                description: 杀数份数(浮动值)
+              performance_bonus:
+                type: string
+                description: 业绩分红份数(浮动值)
+              charge_bonus:
+                type: string
+                description: 刷卡奖金份数(浮动值)
+              commission_bonus:
+                type: string
+                description: 佣金差额份数(浮动值)
+              receive_bonus:
+                type: string
+                description: 收账分红份数(浮动值)
+              exchange_rate_bonus:
+                type: string
+                description: 汇率分红份数(浮动值)
+              guest_card_bonus:
+                type: string
+                description: 贵宾卡消费份数(浮动值)
+              respect_bonus:
+                type: string
+                description: 尊华殿份数(浮动值)
+              region_bonus:
+                type: string
+                description: 地区津贴（浮动值）
+              status:
+                type: string
+                description: 记录状态
+              final_basic_salary_unit:
+                type: string
+                description: 最终基本薪酬单位
+              final_bonus_unit:
+                type: string
+                description: 最终津贴单位
+              final_attendance_award_unit:
+                type: string
+                description: 最终勤工奖单位
+              final_house_bonus_unit:
+                type: string
+                description: 最终房屋津贴单位
+              final_total_count_unit:
+                type: string
+                description: 最终总薪金单位
+              final_basic_salary:
+                type: string
+                description: 最终基本薪金
+              final_bonus:
+                type: string
+                description: 最终津贴
+              final_attendance_award:
+                type: string
+                description: 最终勤工奖
+              final_house_bonus:
+                type: string
+                description: 最终房屋津贴
+              final_tea_bonus:
+                type: string
+                description: 最终茶资份数
+              final_kill_bonus:
+                type: string
+                description: 最终杀数份数
+              final_performance_bonus:
+                type: string
+                description: 最终业绩分红份数
+              final_charge_bonus:
+                type: string
+                description: 最终刷卡奖金份数
+              final_commission_bonus:
+                type: string
+                description: 最终佣金差额份数
+              final_receive_bonus:
+                type: string
+                description: 最终收账分红份数
+              final_exchange_rate_bonus:
+                type: string
+                description: 最终汇率分红份数
+              final_guest_card_bonus:
+                type: string
+                description: 最终贵宾厅份数
+              final_respect_bonus:
+                type: string
+                description: 最终尊华殿份数
+              final_new_year_bonus:
+                type: string
+                description: 最终新春利是份数
+              final_project_bonus:
+                type: string
+                description: 最终项目分红份数
+              final_product_bonus:
+                type: string
+                description: 最终新春利是份数
+              final_region_bonus:
+                type: string
+                description: 最终地区津贴份数
+            description: 新薪酬信息，如果有才需要传
+
+          welfare_record:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 记录id
+              change_reason:
+                type: string
+                description: 变更原因
+              welfare_begin:
+                type: string
+                description: 'YYYY/MM/dd'
+              welfare_end:
+                type: string
+                description: 'YYYY/MMdd'
+              annual_leave:
+                type: string
+                description: 年假
+              sick_leave:
+                type: string
+                description: 病假
+              office_holiday:
+                type: string
+                description: 公休天数
+              welfare_template_id:
+                type: integer
+                description: 培训模板id
+              holiday_type:
+                type: string
+                description: 假期类别
+              probation:
+                type: string
+                description: 试用期
+              notice_period:
+                type: string
+                description: 离职通知期
+              double_pay:
+                type: boolean
+                description: 是否双粮
+              reduce_salary_for_sick:
+                type: boolean
+                description: 有薪病假是否扣薪
+              provide_airfare:
+                type: boolean
+                description: 是否提供机票
+              salary_composition:
+                type: string
+                description: 薪金组成
+              over_time_salary:
+                type: string
+                description: 加班薪金
+              force_holiday_make_up:
+                type: string
+                description: 强制性假期补偿
+              comment:
+                type: string
+                description: 备注
+              user_id:
+                type: integer
+                description: 员工id
+              status:
+                type: string
+                description: 记录状态
+            description: 福利信息
+
+          new_welfare_record:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 记录id
+              change_reason:
+                type: string
+                description: 变更原因
+              welfare_begin:
+                type: string
+                description: 'YYYY/MM/dd'
+              welfare_end:
+                type: string
+                description: 'YYYY/MMdd'
+              annual_leave:
+                type: string
+                description: 年假
+              sick_leave:
+                type: string
+                description: 病假
+              office_holiday:
+                type: string
+                description: 公休天数
+              welfare_template_id:
+                type: integer
+                description: 培训模板id
+              holiday_type:
+                type: string
+                description: 假期类别
+              probation:
+                type: string
+                description: 试用期
+              notice_period:
+                type: string
+                description: 离职通知期
+              double_pay:
+                type: boolean
+                description: 是否双粮
+              reduce_salary_for_sick:
+                type: boolean
+                description: 有薪病假是否扣薪
+              provide_airfare:
+                type: boolean
+                description: 是否提供机票
+              salary_composition:
+                type: string
+                description: 薪金组成
+              over_time_salary:
+                type: string
+                description: 加班薪金
+              force_holiday_make_up:
+                type: string
+                description: 强制性假期补偿
+              comment:
+                type: string
+                description: 备注
+              user_id:
+                type: integer
+                description: 员工id
+              status:
+                type: string
+                description: 记录状态
+            description: 新福利信息
+          approval_items:
+            type: array
+            items:
+              type: object
+              properties:
+                user_id:
+                  type: integer
+                  description: 审批人id
+                datetime:
+                  type: string
+                  description: 审批时间
+                comment:
+                  type: string
+                  description: 审批建议
+            description: 创建加班审批记录
+          attend_attachments:
+            type: array
+            items:
+              type: object
+              properties:
+                file_name:
+                  type: string
+                  description: 附件名称 '1.jpg'
+                comment:
+                  type: string
+                  description: 附件备注 'test comment'
+                attachment_id:
+                  type: integer
+                  description: 附件id
+            description: 加班记录附件
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 用户 id
+              chinese_name:
+                type: string
+                description: 姓名
+              english_name:
+                type: string
+                description: 姓名
+              simple_chinese_name:
+                type: string
+                description: 姓名
+              grade:
+                type: string
+                description: 职级
+              location:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: location id
+                  chinese_name:
+                    type: string
+                    description: 名称
+                  english_name:
+                    type: string
+                    description: 名称
+                  simple_chinese_name:
+                    type: string
+                    description: 名称
+                description: 场馆信息（此处文档仅列出主要信息）
+              department:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: department id
+                  chinese_name:
+                    type: string
+                    description: 名称
+                  english_name:
+                    type: string
+                    description: 名称
+                  simple_chinese_name:
+                    type: string
+                    description: 名称
+                description: 部门信息（此处文档仅列出主要信息）
+
+              position:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: position id
+                  chinese_name:
+                    type: string
+                    description: 名称
+                  english_name:
+                    type: string
+                    description: 名称
+                  simple_chinese_name:
+                    type: string
+                    description: 名称
+                description: 职位信息（此处文档仅列出主要信息）
+            description: 用户信息（此处文档仅列出主要信息）
+
+
+          apply_location:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 场馆 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+            description: 申请场馆信息（此处文档仅列出主要信息）
+          apply_department:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 部门 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+            description: 申请部门信息（此处文档仅列出主要信息）
+          apply_position:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 职位 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+            description: 申请职位信息（此处文档仅列出主要信息）
+
+          hire_position:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 职位 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+            description: 录用职位信息（此处文档仅列出主要信息）
+
+          transfer_location:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 场馆 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+            description: 调职场馆信息（此处文档仅列出主要信息）
+          transfer_department:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 部门 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+            description: 调职部门信息（此处文档仅列出主要信息）
+          transfer_position:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 职位 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+            description: 调职职位信息（此处文档仅列出主要信息）
+          apply_group:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 组别 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称
+          transfer_group:
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 组别 id
+              chinese_name:
+                type: string
+                description: 名称
+              english_name:
+                type: string
+                description: 名称
+              simple_chinese_name:
+                type: string
+                description: 名称

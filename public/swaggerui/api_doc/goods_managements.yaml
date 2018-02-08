@@ -1,0 +1,890 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 物品管理
+
+# Describe your paths here
+paths:
+  /goods_categories.json:
+    get:
+      description: 获取物品类别管理列表
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 页面编号
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: goods_name
+        in: query
+        required: false
+        type: string
+        description: 物品名称 中英文均可
+      - name: unit
+        in: query
+        required: false
+        type: string
+        description: 物品单位
+      - name: price_mop
+        in: query
+        required: false
+        type: string
+        description: 物品单价
+      - name: distributed_count
+        in: query
+        required: false
+        type: integer
+        description: 已分发数量
+      - name: returned_count
+        in: query
+        required: false
+        type: integer
+        description: 已归还数量
+      - name: unreturned_count
+        in: query
+        required: false
+        type: integer
+        description: 未归还数量
+      - name: user
+        in: query
+        required: false
+        type: integer
+        description: 创建人ID user_id
+      - name: created_at
+        in: query
+        required: false
+        type: string
+        description: 创建日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/GoodsCategories'
+
+  /goods_categories:
+    post:
+      description: 新增一条物品类别管理记录
+      parameters:
+      - name: goods_category_params
+        in: body
+        required: true
+        description: 新增一条物品类别管理记录所需参数
+        schema:
+          $ref: '#/definitions/GoodsCategoryParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /goods_categories/{goods_category_id}:
+    get:
+      description: 显示一条物品类别管理记录
+      parameters:
+      - name: goods_category_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/GoodsCategory'
+    patch:
+      description: 修改一条物品类别管理记录
+      parameters:
+      - name: goods_category_id
+        in: path
+        required: true
+        type: integer
+      - name: goods_category_params
+        in: body
+        required: true
+        description: 新增一条物品类别管理记录所需参数
+        schema:
+          $ref: '#/definitions/GoodsCategoryParams'
+      responses:
+        200:
+          description: 成功响应
+    delete:
+      description: 删除一条物品类别管理记录
+      parameters:
+      - name: goods_category_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+
+  /goods_categories/columns:
+    get:
+      description: 获取表头
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/Columns'
+
+  /goods_categories/options:
+    get:
+      description: 获取筛选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/Options'
+
+  /goods_signings.json:
+    get:
+      description: 获取列表页
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 页面编号
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: distribution_date
+        in: query
+        required: false
+        type: string
+        description: 分发日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: goods_status
+        in: query
+        required: false
+        type: string
+        description: 物品状态 enum { 'not_sign', 'employee_sign', 'automatic_sign', 'returned', 'no_return_required' }
+      - name: employee_id
+        in: query
+        required: false
+        type: integer
+        description: 员工编号
+      - name: employee_name
+        in: query
+        required: false
+        type: string
+        description: 员工姓名 中英均可
+      - name: department
+        in: query
+        required: false
+        type: integer
+        description: 部门ID department_id
+      - name: position
+        in: query
+        required: false
+        type: integer
+        description: 职位ID position_id
+      - name: career_entry_date
+        in: query
+        required: false
+        type: string
+        description: 入职日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: goods_category
+        in: query
+        required: false
+        type: integer
+        description: 物品类别ID goods_category_id
+      - name: distribution_count_with_unit
+        in: query
+        required: false
+        type: integer
+        description: 数量
+      - name: distribution_total_value
+        in: query
+        required: false
+        type: string
+        description: 物品金额
+      - name: sign_date
+        in: query
+        required: false
+        type: string
+        description: 签收日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: return_date
+        in: query
+        required: false
+        type: string
+        description: 归还日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: distributor
+        in: query
+        required: false
+        type: integer
+        description: 分发人ID distributor_id
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/GoodsSignings'
+
+  /goods_signings.xlsx:
+    get:
+      description: 获取列表页
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: distribution_date
+        in: query
+        required: false
+        type: string
+        description: 分发日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: goods_status
+        in: query
+        required: false
+        type: string
+        description: 物品状态 enum { 'not_sign', 'employee_sign', 'automatic_sign', 'returned', 'no_return_required' }
+      - name: employee_id
+        in: query
+        required: false
+        type: integer
+        description: 员工编号
+      - name: employee_name
+        in: query
+        required: false
+        type: string
+        description: 员工姓名 中英均可
+      - name: department
+        in: query
+        required: false
+        type: integer
+        description: 部门ID department_id
+      - name: position
+        in: query
+        required: false
+        type: integer
+        description: 职位ID position_id
+      - name: career_entry_date
+        in: query
+        required: false
+        type: string
+        description: 入职日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: goods_category
+        in: query
+        required: false
+        type: integer
+        description: 物品类别ID goods_category_id
+      - name: distribution_count_with_unit
+        in: query
+        required: false
+        type: integer
+        description: 数量
+      - name: distribution_total_value
+        in: query
+        required: false
+        type: string
+        description: 物品金额
+      - name: sign_date
+        in: query
+        required: false
+        type: string
+        description: 签收日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: return_date
+        in: query
+        required: false
+        type: string
+        description: 归还日期 `YYYY/MM/DD`，实际为 obj { begin:string, end:string }
+      - name: distributor
+        in: query
+        required: false
+        type: integer
+        description: 分发人ID distributor_id
+      responses:
+        200:
+          description: 成功响应
+
+  /goods_signings:
+    post:
+      description: 创建多条物品签收记录
+      parameters:
+      - name: goods_signings_params
+        in: body
+        required: true
+        description: 新增多条物品签收记录所需参数
+        schema:
+          $ref: '#/definitions/GoodsSigningsParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /goods_signings/{goods_signing_id}:
+    get:
+      description: 获取一条物品签收记录
+      parameters:
+      - name: goods_signing_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/GoodsSigning'
+    patch:
+      description: 修改一条物品签收记录
+      parameters:
+      - name: goods_signing_id
+        in: path
+        required: true
+        type: integer
+      - name: goods_signing_params
+        in: body
+        required: true
+        description: 新增一条物品签收记录所需参数
+        schema:
+          $ref: '#/definitions/GoodsSigningParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /goods_signings/columns:
+    get:
+      description: 获取表头
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/GoodsSigningsColumns'
+
+  /goods_signings/options:
+    get:
+      description: 获取筛选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/GoodsSigningsOptions'
+
+  /goods_signings/{goods_signing_id}/signing:
+    get:
+      description: 我的物品列表页 签收
+      parameters:
+      - name: goods_signing_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+
+  /goods_categories/get_list:
+    get:
+      description: 物品签收列表页-分发物品-下拉列表
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/GetList'
+
+definitions:
+  GoodsCategories:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          description: 条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: id，即goods_category_id
+            chinese_name:
+              type: string
+              description: 物品繁体中文名
+            english_name:
+              type: string
+              description: 物品英文名
+            simple_chinese_name:
+              type: string
+              description: 物品简体中文名
+            unit:
+              type: string
+              description: 物品单位
+            price_mop:
+              type: string
+              description: 物品单价
+            distributed_count:
+              type: integer
+              description: 已分发数量
+            returned_count:
+              type: integer
+              description: 已归还数量
+            unreturned_count:
+              type: integer
+              description: 未归还数量
+            created_at:
+              type: string
+              description: 创建日期
+            user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 创建人ID
+                chinese_name:
+                  type: string
+                  description: 创建人繁体中文名
+                english_name:
+                  type: string
+                  description: 创建人英文名
+                simple_chinese_name:
+                  type: string
+                  description: 创建人简体中文名
+
+  GoodsCategoryParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 物品繁体中文名
+      english_name:
+        type: string
+        description: 物品英文名
+      simple_chinese_name:
+        type: string
+        description: 物品简体中文名
+      unit:
+        type: string
+        description: 物品单位
+      price_mop:
+        type: string
+        description: 物品单价
+
+  GoodsCategory:
+    type: object
+    properties:
+      goods_category:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: id，即goods_category_id
+          chinese_name:
+            type: string
+            description: 物品繁体中文名
+          english_name:
+            type: string
+            description: 物品英文名
+          simple_chinese_name:
+            type: string
+            description: 物品简体中文名
+          unit:
+            type: string
+            description: 物品单位
+          price_mop:
+            type: string
+            description: 物品单价
+          distributed_count:
+            type: integer
+            description: 已分发数量
+          returned_count:
+            type: integer
+            description: 已归还数量
+          unreturned_count:
+            type: integer
+            description: 未归还数量
+          created_at:
+            type: string
+            description: 创建日期
+
+  Columns:
+    description: 各个表头的信息
+    type: array
+    items:
+      description: 一个表头的信息
+      type: object
+      properties:
+        key:
+          type: string
+        chinese_name:
+          type: string
+        english_name:
+          type: string
+        simple_chinese_name:
+          type: string
+        value_type:
+          type: string
+        data_index:
+          type: string
+        search_type:
+          type: string
+        sorter:
+          type: boolean
+        options_type:
+          type: string
+        value_format:
+          type: string
+
+  Options:
+    type: object
+    properties:
+      unit:
+        type: object
+        properties:
+          options_type:
+            type: string
+          options:
+            type: array
+            items:
+              type: string
+
+  GoodsSignings:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          description: 条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: id，即goods_signing_id
+            distribution_date:
+              type: string
+              description: 分发日期
+            goods_status:
+              type: string
+              description: 物品状态
+            distribution_count_with_unit:
+              type: string
+              description: 数量
+            distribution_total_value:
+              type: string
+              description: 物品金额
+            sign_date:
+              type: string
+              description: 签收日期
+            return_date:
+              type: string
+              description: 归还日期
+            remarks:
+              type: string
+              description: 备注
+            career_entry_date:
+              type: string
+              description: 入职日期
+            goods_category_id:
+              type: integer
+              description: goods_category_id
+            user:
+              description: 员工信息
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: user_id
+                empoid:
+                  type: string
+                  description: 员工编号
+                chinese_name:
+                  type: string
+                  description: 员工繁体中文名
+                english_name:
+                  type: string
+                  description: 员工英文名
+                simple_chinese_name:
+                  type: string
+                  description: 员工简体中文名
+                department:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    chinese_name:
+                      type: string
+                    english_name:
+                      type: string
+                    simple_chinese_name:
+                      type: string
+                position:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    chinese_name:
+                      type: string
+                    english_name:
+                      type: string
+                    simple_chinese_name:
+                      type: string
+            goods_category:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+                unit:
+                  type: string
+                  description: 物品单位
+            distributor:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+
+  GoodsSigningsParams:
+    type: object
+    properties:
+      user_ids:
+        description: user_id 组成的数组
+        type: array
+        items:
+          type: integer
+          description: user_id
+      distributions:
+        type: array
+        items:
+          type: object
+          properties:
+            goods_category_id:
+              type: integer
+              description: goods_category_id
+            distribution_count:
+              type: integer
+              description: 数量
+      remarks:
+        type: string
+        description: 备注
+
+  GoodsSigning:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: id，即goods_signing_id
+          goods_status:
+            type: string
+            description: 物品状态
+          distribution_count:
+            type: integer
+            description: 数量
+          sign_date:
+            type: string
+            description: 签收日期
+          return_date:
+            type: string
+            description: 归还日期
+          remarks:
+            type: string
+            description: 备注
+          goods_category_id:
+            type: integer
+            description: goods_category_id
+          goods_category:
+            type: object
+            properties:
+              id:
+                type: integer
+              chinese_name:
+                type: string
+              english_name:
+                type: string
+              simple_chinese_name:
+                type: string
+
+  GoodsSigningParams:
+    type: object
+    properties:
+      goods_category_id:
+        type: integer
+        description: goods_category_id
+      goods_status:
+        type: string
+        description: 物品状态
+      distribution_count:
+        type: integer
+        description: 数量
+      sign_date:
+        type: string
+        description: 签收日期
+      return_date:
+        type: string
+        description: 归还日期
+      remarks:
+        type: string
+        description: 备注
+
+  GoodsSigningsColumns:
+    description: 各个表头的信息
+    type: array
+    items:
+      description: 一个表头的信息
+      type: object
+      properties:
+        key:
+          type: string
+        chinese_name:
+          type: string
+        english_name:
+          type: string
+        simple_chinese_name:
+          type: string
+        value_type:
+          type: string
+        data_index:
+          type: string
+        search_type:
+          type: string
+        sorter:
+          type: boolean
+        options_type:
+          type: string
+        value_format:
+          type: string
+
+  GoodsSigningsOptions:
+    type: object
+    properties:
+      goods_status:
+        type: object
+        properties:
+          options_type:
+            type: string
+          options_predefined:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+      department:
+        type: object
+        properties:
+          options_type:
+            type: string
+          options:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+      position:
+        type: object
+        properties:
+          options_type:
+            type: string
+          options:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+      goods_category:
+        type: object
+        properties:
+          options_type:
+            type: string
+          options:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+
+  GetList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: id，即goods_category_id
+            chinese_name:
+              type: string
+              description: 物品繁体中文名
+            english_name:
+              type: string
+              description: 物品英文名
+            simple_chinese_name:
+              type: string
+              description: 物品简体中文名

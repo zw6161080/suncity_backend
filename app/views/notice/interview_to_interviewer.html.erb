@@ -1,0 +1,9 @@
+面試時間: <%= @interview.time %>
+求職編號: <%= @applicant_profile.applicant_no %>
+求職人姓名(中): <%= @applicant_profile.chinese_name %>
+求職人姓名(英): <%= @applicant_profile.english_name %>
+性別: <%= @applicant_profile.gender_chinese_name %>
+應徵部門: <%= @interview.applicant_position.department.chinese_name rescue '待定' %>
+應徵職位: <%= @interview.applicant_position.position.chinese_name rescue '待定' %>
+接見狀態: 同意
+備註: <%= @applicant_position.audiences.last.try(:comment) %>

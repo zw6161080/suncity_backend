@@ -1,0 +1,15 @@
+en:
+  entry_and_leave_statistics:
+    file_name: entry_and_leave_statistics
+  statement_columns:
+    entry_and_leave_statistics:
+      date_begin: Begin
+      date_end: End
+      location: Location
+      department: Department
+      original: Original
+      entry: Entry
+      leave: Leave
+      lent_in: In
+      lent_out: Out
+      current: Current

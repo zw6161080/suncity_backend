@@ -1,0 +1,2 @@
+class HumanAffairsRecordController < ApplicationController
+end

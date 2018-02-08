@@ -1,0 +1,235 @@
+personal_information:
+  chinese_name: 個人信息
+  english_name: Personal info.
+  simple_chinese_name: 个人信息
+  type: fields
+  multi_regions: true
+  regions:
+    macau:
+      fields:
+        - applicant_no
+        - photo
+        - chinese_name
+        - english_name
+        - nick_name
+        - gender
+        - marital_status
+        - date_of_birth
+        - place_of_birth
+        - national
+        - type_of_id
+        - id_number
+        - address
+        - home_number
+        - mobile_number
+        - other_phone_number
+        - email_personal
+        - required_to_hold_a_working_visa_in_order_to_work_in_the_macau
+    manila:
+      fields:
+        - applicant_no
+        - photo
+        - last_name
+        - first_name
+        - middle_name
+        - nick_name
+        - mothers_maiden_name
+        - husbands_last_name
+        - gender
+        - national
+        - place_of_birth
+        - date_of_birth
+        - email_personal
+        - mobile_number
+        - address
+        - id_number
+        - sss_number
+        - tin_number
+        - pag_ibig_number
+        - phihealth_number
+        - passport_number
+        - marital_status
+        - number_of_children
+        - fathers_name
+        - mothers_name
+        - required_to_hold_a_working_visa_in_order_to_work_in_the_philippines
+        - referred_by
+
+lanuage:
+  chinese_name: 語言能力
+  english_name: Language skill
+  simple_chinese_name: 语言能力
+  type: fields
+  region: manila
+  fields:
+    - english
+    - chinese
+    - janpanese
+    - korean
+    - thai
+    - contanese
+    - other_language
+
+position_to_apply:
+  chinese_name: 申請職位
+  english_name: Position to apply
+  simple_chinese_name: 申请职位
+  type: fields
+  fields:
+    - first_choice
+    - second_choice
+    - third_choice
+    - salary_request
+    - available_on
+
+referrals_information:
+  chinese_name: 介紹人資料
+  english_name: Referrer info.
+  simple_chinese_name: 介绍人资料
+  type: fields
+  region: macau
+  fields:
+    - referrals
+    - referrals_employee_id
+    - referrals_contact_number
+    - referrals_relationship
+    - referrals_location
+    - referrals_position
+
+emergency_contact:
+  chinese_name: 緊急聯絡人
+  english_name: Emergency contact
+  simple_chinese_name: 紧急联络人
+  type: table
+  table:
+    schema:
+      - emergency_contact_name
+      - emergency_contact_phone_number
+      - emergency_contact_relationship
+
+educational:
+  chinese_name: 學歷信息
+  english_name: Education info.
+  simple_chinese_name: 学历信息
+  type: table
+  table:
+    schema:
+      - highest
+      - from_mm_yyyy
+      - to_mm_yyyy
+      - college_university
+      - educational_department
+      - graduate_level
+      - diploma_degree_attained
+      - certificate_issue_date
+      - graduated
+
+professional_qualification:
+  chinese_name: 專業資格
+  english_name: Qualifications
+  simple_chinese_name: 专业资格
+  type: table
+  table:
+    schema:
+      - professional_certificate
+      - orgnaization
+      - issue_date
+
+work_history:
+  chinese_name: 工作經驗
+  english_name: Work experience
+  simple_chinese_name: 工作经验
+  type: table
+  region: manila
+  table:
+    schema:
+      - company_organazition
+      - work_experience_position
+      - work_experience_from
+      - work_experience_to
+      - work_experience_salary
+      - work_experience_reason_for_leaving
+
+work_experience:
+  chinese_name: 工作經驗
+  english_name: Work experience
+  simple_chinese_name: 工作经验
+  type: table
+  region: macau
+  table:
+    schema:
+      - company_organazition
+      - work_experience_position
+      - work_experience_from
+      - work_experience_to
+      - job_description
+      - work_experience_salary
+      - work_experience_reason_for_leaving
+      - work_experience_company_phone_number
+      - former_head
+      - work_experience_email
+
+family_members:
+  chinese_name: 家庭成員信息
+  english_name: Family member
+  simple_chinese_name: 家庭成员信息
+  type: fields
+  region: macau
+  fields:
+    - family_fathers_name_chinese
+    - family_fathers_name_english
+    - family_mothers_name_chinese
+    - family_mothers_name_english
+    - family_partenrs_name_chinese
+    - family_partenrs_name_english
+    - family_kids_name_chinese
+    - family_kids_name_english
+    - family_bothers_name_chinese
+    - family_bothers_name_english
+    - family_sisters_name_chinese
+    - family_sisters_name_english
+
+language_and_skill:
+  chinese_name: 語言能力及技能
+  english_name: Language skill
+  simple_chinese_name: 语言能力及技能
+  type: fields
+  region: macau
+  fields:
+    - language_chinese_writing
+    - language_contanese_speaking
+    - language_contanese_listening
+    - language_mandarin_speaking
+    - language_mandarin_listening
+    - language_english_speaking
+    - language_english_listening
+    - language_english_writing
+    - language_other_name
+    - language_other_speaking
+    - language_other_listening
+    - language_other_writing
+    - language_skill
+
+background_declaration:
+  chinese_name: 背景申報
+  english_name: Background
+  simple_chinese_name: 背景申报
+  type: fields
+  fields:
+    - have_any_relatives
+    - relative_criminal_record
+    - relative_criminal_record_detail
+    - relative_business_relationship_with_suncity
+    - relative_business_relationship_with_suncity_detail
+
+background_declaration_item:
+  chinese_name: 背景申報
+  english_name: Background
+  simple_chinese_name: 背景申报
+  type: table
+  table:
+    schema:
+    - chinese_name
+    - empoid
+    - relative_relation
+

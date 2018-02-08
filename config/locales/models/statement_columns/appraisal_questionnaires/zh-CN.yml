@@ -1,0 +1,25 @@
+zh-CN:
+  appraisal_questionnaires:
+    file_name: 评核问卷数据
+  statement_columns:
+    appraisal_questionnaires:
+      questionnaire_status: 问卷状态
+      submit_date: 提交日期
+      assessor_empoid: 评核员工编号
+      assessor_name: 评核者姓名
+      assessor_department: 评核者部门
+      assessor_position: 评核者职位
+      assessor_grade: 评核者职级
+      assessor_country: 评核者国籍
+      participator_empoid: 被评核者员工编号
+      participator_name: 被评核者姓名
+      participator_department: 被评核者部门
+      participator_position: 被评核者职位
+      participator_grade: 被评核者职级
+      departmental_appraisal_group: 被评核者组别
+      assess_type: 评核类别
+      release_user: 最新修订人
+      release_date: 最新修订日期
+
+
+

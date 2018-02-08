@@ -1,0 +1,591 @@
+paid_maternity_leave_base_salary:
+  chinese_name: 底薪×假期天數/當月天數
+  english_name: Base Salary * Leave days / Month days
+  simple_chinese_name: 底薪×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+paid_maternity_leave_benefits:
+  chinese_name: 津貼×假期天數/當月天數
+  english_name: Allowance * Leave days / Month days
+  simple_chinese_name: 津贴×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+paid_maternity_leave_incentive:
+  chinese_name: 勤工×假期天數/當月天數
+  english_name: Attendance Bonus * Leave days / Month days
+  simple_chinese_name: 勤工×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+paid_maternity_leave_department_bonus:
+  chinese_name: 部門制薪金×假期天數/當月天數
+  english_name: Department bonus * Leave days / Month days
+  simple_chinese_name: 部門制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+paid_maternity_leave_personal_bonus:
+  chinese_name: 個人制薪金×假期天數/當月天數
+  english_name: Personal bonus * Leave days / Month days
+  simple_chinese_name: 个人制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+paid_maternity_leave_days:
+  chinese_name: 假期天數×HKD
+  english_name: Leave days × HKD
+  simple_chinese_name: 假期天数×HKD
+  factor_type: value
+  value: 0
+
+absenteeism_base_salary:
+  chinese_name: 底薪×曠工天數/當月天數
+  english_name: Base Salary * Absenteeism days / Month days
+  simple_chinese_name: 底薪×旷工天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+absenteeism_benefits:
+  chinese_name: 津貼×曠工天數/當月天數
+  english_name: Allowance * Absenteeism days / Month days
+  simple_chinese_name: 津贴×旷工天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+absenteeism_incentive:
+  chinese_name: 勤工×曠工天數/當月天數
+  english_name: Attendance Bonus * Absenteeism days / Month days
+  simple_chinese_name: 勤工×旷工天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+absenteeism_department_bonus:
+  chinese_name: 部門制薪金×曠工天數/當月天數
+  english_name: Department bonus * Absenteeism days / Month days
+  simple_chinese_name: 部門制薪金×旷工天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+absenteeism_personal_bonus:
+  chinese_name: 個人制薪金×曠工天數/當月天數
+  english_name: Personal bonus * Absenteeism days / Month days
+  simple_chinese_name: 个人制薪金×旷工天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+absenteeism_days:
+  chinese_name: 曠工天數×HKD
+  english_name: Absenteeism days × HKD
+  simple_chinese_name: 旷工天数×HKD
+  factor_type: value
+  value: 1500
+
+immediate_leave_base_salary:
+  chinese_name: 底薪×即告天數/當月天數
+  english_name: Base Salary * Immediate leave days / Month days
+  simple_chinese_name: 底薪×即告天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+immediate_leave_benefits:
+  chinese_name: 津貼×即告天數/當月天數
+  english_name: Allowance * Immediate leave days / Month days
+  simple_chinese_name: 津貼×即告天數/當月天數
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+immediate_leave_incentive:
+  chinese_name: 勤工×即告天數/當月天數
+  english_name: Attendance Bonus * Immediate leave days / Month days
+  simple_chinese_name: 勤工×即告天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+immediate_leave_department_bonus:
+  chinese_name: 部門制薪金×即告天數/當月天數
+  english_name: Department bonus * Immediate leave days / Month days
+  simple_chinese_name: 部門制薪金×即告天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+immediate_leave_personal_bonus:
+  chinese_name: 個人制薪金×即告天數/當月天數
+  english_name: Personal bonus * Immediate leave days / Month days
+  simple_chinese_name: 个人制薪金×即告天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+immediate_leave_days:
+  chinese_name: 即告天數×HKD
+  english_name: Immediate leave days × HKD
+  simple_chinese_name: 即告天數×HKD
+  factor_type: value
+  value: 1000
+
+unpaid_leave_base_salary:
+  chinese_name: 底薪×假期天數/當月天數
+  english_name: Base Salary * Leave days / Month days
+  simple_chinese_name: 底薪×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_leave_benefits:
+  chinese_name: 津貼×假期天數/當月天數
+  english_name: Allowance * Leave days / Month days
+  simple_chinese_name: 津贴×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_leave_incentive:
+  chinese_name: 勤工×假期天數/當月天數
+  english_name: Attendance Bonus * Leave days / Month days
+  simple_chinese_name: 勤工×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_leave_department_bonus:
+  chinese_name: 部門制薪金×假期天數/當月天數
+  english_name: Department bonus * Leave days / Month days
+  simple_chinese_name: 部門制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_leave_personal_bonus:
+  chinese_name: 個人制薪金×假期天數/當月天數
+  english_name: Personal bonus * Leave days / Month days
+  simple_chinese_name: 个人制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_leave_days:
+  chinese_name: 假期天數×HKD
+  english_name: Leave days × HKD
+  simple_chinese_name: 假期天数×HKD
+  factor_type: value
+  value: 500
+
+unpaid_marriage_leave_base_salary:
+  chinese_name: 底薪×假期天數/當月天數
+  english_name: Base Salary * Leave days / Month days
+  simple_chinese_name: 底薪×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_marriage_leave_benefits:
+  chinese_name: 津貼×假期天數/當月天數
+  english_name: Allowance * Leave days / Month days
+  simple_chinese_name: 津贴×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_marriage_leave_incentive:
+  chinese_name: 勤工×假期天數/當月天數
+  english_name: Attendance Bonus * Leave days / Month days
+  simple_chinese_name: 勤工×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_marriage_leave_department_bonus:
+  chinese_name: 部門制薪金×假期天數/當月天數
+  english_name: Department bonus * Leave days / Month days
+  simple_chinese_name: 部門制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_marriage_leave_personal_bonus:
+  chinese_name: 個人制薪金×假期天數/當月天數
+  english_name: Personal bonus * Leave days / Month days
+  simple_chinese_name: 个人制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_marriage_leave_days:
+  chinese_name: 假期天數×HKD
+  english_name: Leave days × HKD
+  simple_chinese_name: 假期天数×HKD
+  factor_type: value
+  value: 250
+
+unpaid_compassionate_leave_base_salary:
+  chinese_name: 底薪×假期天數/當月天數
+  english_name: Base Salary * Leave days / Month days
+  simple_chinese_name: 底薪×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_compassionate_leave_benefits:
+  chinese_name: 津貼×假期天數/當月天數
+  english_name: Allowance * Leave days / Month days
+  simple_chinese_name: 津贴×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_compassionate_leave_incentive:
+  chinese_name: 勤工×假期天數/當月天數
+  english_name: Attendance Bonus * Leave days / Month days
+  simple_chinese_name: 勤工×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_compassionate_leave_department_bonus:
+  chinese_name: 部門制薪金×假期天數/當月天數
+  english_name: Department bonus * Leave days / Month days
+  simple_chinese_name: 部門制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_compassionate_leave_personal_bonus:
+  chinese_name: 個人制薪金×假期天數/當月天數
+  english_name: Personal bonus * Leave days / Month days
+  simple_chinese_name: 个人制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_compassionate_leave_days:
+  chinese_name: 假期天數×HKD
+  english_name: Leave days × HKD
+  simple_chinese_name: 假期天数×HKD
+  factor_type: value
+  value: 250
+
+unpaid_maternity_leave_base_salary:
+  chinese_name: 底薪×假期天數/當月天數
+  english_name: Base Salary * Leave days / Month days
+  simple_chinese_name: 底薪×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_maternity_leave_benefits:
+  chinese_name: 津貼×假期天數/當月天數
+  english_name: Allowance * Leave days / Month days
+  simple_chinese_name: 津贴×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_maternity_leave_incentive:
+  chinese_name: 勤工×假期天數/當月天數
+  english_name: Attendance Bonus * Leave days / Month days
+  simple_chinese_name: 勤工×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_maternity_leave_department_bonus:
+  chinese_name: 部門制薪金×假期天數/當月天數
+  english_name: Department bonus * Leave days / Month days
+  simple_chinese_name: 部門制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+unpaid_maternity_leave_personal_bonus:
+  chinese_name: 個人制薪金×假期天數/當月天數
+  english_name: Personal bonus * Leave days / Month days
+  simple_chinese_name: 个人制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+unpaid_maternity_leave_days:
+  chinese_name: 假期天數×HKD
+  english_name: Leave days × HKD
+  simple_chinese_name: 假期天数×HKD
+  factor_type: value
+  value: 0
+
+pregnant_sick_leave_base_salary:
+  chinese_name: 底薪×假期天數/當月天數
+  english_name: Base Salary * Leave days / Month days
+  simple_chinese_name: 底薪×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+pregnant_sick_leave_benefits:
+  chinese_name: 津貼×假期天數/當月天數
+  english_name: Allowance * Leave days / Month days
+  simple_chinese_name: 津贴×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+pregnant_sick_leave_incentive:
+  chinese_name: 勤工×假期天數/當月天數
+  english_name: Attendance Bonus * Leave days / Month days
+  simple_chinese_name: 勤工×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+pregnant_sick_leave_department_bonus:
+  chinese_name: 部門制薪金×假期天數/當月天數
+  english_name: Department bonus * Leave days / Month days
+  simple_chinese_name: 部門制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+pregnant_sick_leave_personal_bonus:
+  chinese_name: 個人制薪金×假期天數/當月天數
+  english_name: Personal bonus * Leave days / Month days
+  simple_chinese_name: 个人制薪金×假期天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+pregnant_sick_leave_days:
+  chinese_name: 假期天數×HKD
+  english_name: Leave days × HKD
+  simple_chinese_name: 假期天数×HKD
+  factor_type: value
+  value: 0
+
+occupational_injury_base_salary:
+  chinese_name: 底薪×工傷天數/當月天數
+  english_name: Base Salary * Occupational injury days / Month days
+  simple_chinese_name: 底薪×工伤天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 3
+
+occupational_injury_benefits:
+  chinese_name: 津貼×工傷天數/當月天數
+  english_name: Allowance * Occupational injury days / Month days
+  simple_chinese_name: 津贴×工伤天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 3
+
+occupational_injury_incentive:
+  chinese_name: 勤工×工傷天數/當月天數
+  english_name: Attendance Bonus * Occupational injury days / Month days
+  simple_chinese_name: 勤工×工伤天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 3
+
+occupational_injury_department_bonus:
+  chinese_name: 部門制薪金×工傷天數/當月天數
+  english_name: Department bonus * Occupational injury days / Month days
+  simple_chinese_name: 部門制薪金×工伤天数/当月天数
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+occupational_injury_personal_bonus:
+  chinese_name: 個人制薪金×工傷天數/當月天數
+  english_name: Personal bonus * Occupatinal injury days / Month days
+  simple_chinese_name: 个人制薪金×工伤天数/当月天数
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+occupational_injury_days:
+  chinese_name: 工傷天數×HKD
+  english_name: Occupational injury days × HKD
+  simple_chinese_name: 工伤天数×HKD
+  factor_type: value
+  value: 0
+
+paid_sick_leave_adjoin_public_holiday:
+  chinese_name: 連公休假期天數×HKD
+  english_name: Leave days adjoined public holiday × HKD
+  simple_chinese_name: 连公休假期天数×HKD
+  factor_type: value
+  value: 500
+
+paid_sick_leave_not_adjoin_public_holiday:
+  chinese_name: 不連公休假期天數×HKD
+  english_name: Leave days not adjoined public holiday × HKD
+  simple_chinese_name: 不连公休假期天数×HKD
+  factor_type: value
+  value: 250
+
+punishment_cover_charge:
+  chinese_name: 當月茶資
+  english_name: Cover Charge
+  simple_chinese_name: 当月茶资
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+punishment_kill_bonus:
+  chinese_name: 當月殺數分紅
+  english_name: Kill Bonus
+  simple_chinese_name: 当月杀数分红
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+punishment_performance_bonus:
+  chinese_name: 當月業績分紅
+  english_name: Performance Bonus
+  simple_chinese_name: 当月业绩分红
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+punishment_swiping_card_bonus:
+  chinese_name: 當月刷卡獎金
+  english_name: Performance Bonus
+  simple_chinese_name: 当月刷卡奖金
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+
+punishment_commission_margin:
+  chinese_name: 當月傭金差額
+  english_name: Performance Bonus
+  simple_chinese_name: 当月佣金差额
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+punishment_collect_accounts_bonus:
+  chinese_name: 當月收賬分紅
+  english_name: Performance Bonus
+  simple_chinese_name: 当月收账分红
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+punishment_exchange_rate_bonus:
+  chinese_name: 當月匯率分紅
+  english_name: Performance Bonus
+  simple_chinese_name: 当月汇率分红
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+punishment_vip_card_bonus:
+  chinese_name: 當月貴賓卡消費
+  english_name: Performance Bonus
+  simple_chinese_name: 当月贵宾卡消费
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+punishment_zunhuadian:
+  chinese_name: 當月尊華殿
+  english_name: Performance Bonus
+  simple_chinese_name: 当月尊华殿
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+punishment_xinchunlishi:
+  chinese_name: 當月新春利是
+  english_name: Performance Bonus
+  simple_chinese_name: 当月新春利是
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+punishment_project_bonus:
+  chinese_name: 當月項目分紅
+  english_name: Performance Bonus
+  simple_chinese_name: 当月项目分红
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+punishment_shangpin_bonus:
+  chinese_name: 當月尚品獎金
+  english_name: Performance Bonus
+  simple_chinese_name: 当月尚品奖金
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+punishment_dispatch_bonus:
+  chinese_name: 當月出車獎金
+  english_name: Performance Bonus
+  simple_chinese_name: 当月出车奖金
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+punishment_recommend_new_guest_bonus:
+  chinese_name: 當月介紹新客戶轉碼分紅
+  english_name: Performance Bonus
+  simple_chinese_name: 当月介绍新客户转码分红
+  factor_type: fraction
+  numerator: 0
+  denominator: 1
+
+year_end_bonus_base_salary_factor:
+  chinese_name: 底薪
+  english_name: Base Salary
+  simple_chinese_name: 底薪
+  factor_type: fraction
+  numerator: 1
+  denominator: 1
+
+year_end_bonus_absenteeism_reduction_percent:
+  chinese_name: 曠工扣除花紅百分比
+  english_name: Absenteeism Reduction Percent
+  simple_chinese_name: 旷工扣除花红百分比
+  factor_type: value
+  value: 5
+
+year_end_bonus_immediate_leave_reduction_percent:
+  chinese_name: 即告扣除花紅百分比
+  english_name: Immediate Leave Reduction Percent
+  simple_chinese_name: 即告扣除花红百分比
+  factor_type: value
+  value: 5
+
+year_end_bonus_late_more_than_5_times_reduction_percent:
+  chinese_name: 遲到次數累計5次或以上扣除花紅百分比
+  english_name: Late 5 times or more reduction percent
+  simple_chinese_name: 迟到次数累计5次或以上扣除花红百分比
+  factor_type: value
+
+year_end_bonus_one_punishment_reduction_percent:
+  chinese_name: 員工收到一封警告信扣除花紅百分比
+  english_name: One Punishment Reduction Percent
+  simple_chinese_name: 员工收到一封警告信扣除花红百分比
+  factor_type: value
+  value: 5
+
+year_end_bonus_two_or_more_punishments_reduction_percent:
+  chinese_name: 員工收到兩封或以上警告信扣除花紅百分比
+  english_name: Two or More Punishments Reduction Percent
+  simple_chinese_name: 员工收到两封或以上警告信扣除花红百分比
+  factor_type: value
+

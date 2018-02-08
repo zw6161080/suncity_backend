@@ -1,0 +1,32 @@
+default:
+  deduct_percent: '25.00'
+  favorable_percent: '30.00'
+  ranges:
+    - limit: '144000.00'
+      season_limit: '36000.00'
+      month_limit: '12000.00'
+      tax_rate: '0.00'
+    - limit: '164000.00'
+      season_limit: '41000.00'
+      month_limit: '13667.00'
+      tax_rate: '7.00'
+    - limit: '184000.00'
+      season_limit: '46000.00'
+      month_limit: '15333.00'
+      tax_rate: '8.00'
+    - limit: '224000.00'
+      season_limit: '56000.00'
+      month_limit: '18667.00'
+      tax_rate: '9.00'
+    - limit: '304000.00'
+      season_limit: '76000.00'
+      month_limit: '25333.00'
+      tax_rate: '10.00'
+    - limit: '424000.00'
+      season_limit: '106000.00'
+      month_limit: '35333.00'
+      tax_rate: '11.00'
+    - limit: null
+      season: null
+      month_limit: null
+      tax_rate: '12.00'

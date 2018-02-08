@@ -1,0 +1,44 @@
+holiday_accumulation_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+
+    - key: date_of_employment
+      value_type: date_value
+      search_type: date
+      value_format: yyyy/mm/dd
+      sorter: true
+
+  dynamic_columns:
+    - key: holiday_accumulation_days
+      value_type: string_value
+      data_index: holiday_accumulation_count
+
+    - key: holiday_accumulation_hours
+      value_type: string_value
+      data_index: holiday_accumulation_count

@@ -1,0 +1,621 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 福利模板
+
+# Describe your paths here
+paths:
+  /can_create:
+    post:
+      description: 判断是否创建成功
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/IsCanCreate'
+  /welfare_templates/export:
+    get:
+      description: 汇出
+      parameters:
+        - name: template_name
+          in: query
+          required: false
+          type: integer
+          description: 福利模板名
+        - name: department_id
+          in: query
+          required: false
+          type: string
+          description: 类型为字符串组成的数组
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: 类型为字符串组成的数组
+      responses:
+        200:
+          description: 获取福利模板列表
+
+  /welfare_templates:
+    get:
+      description: 获取模板信息列表
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: template_name
+          in: query
+          required: false
+          type: integer
+          description: 福利模板名
+        - name: annual_leave
+          in: query
+          required: false
+          type: integer
+          description: 年假
+        - name: sick_leave
+          in: query
+          required: false
+          type: integer
+          description: 病假
+        - name: office_holiday
+          in: query
+          required: false
+          type: number
+          description: 公休
+        - name: holiday_type
+          in: query
+          required: false
+          type: integer
+          description: 假期类别
+        - name: probation
+          in: query
+          required: false
+          type: integer
+          description: 试用期
+        - name: notice_period
+          in: query
+          required: false
+          type: integer
+          description: 离职通知期
+        - name: double_pay
+          in: query
+          required: false
+          type: boolean
+          description: 双粮
+        - name: reduce_salary_for_sick
+          in: query
+          required: false
+          type: boolean
+          description: 有薪病假是否扣薪
+        - name: provide_uniform
+          in: query
+          required: false
+          type: boolean
+          description: 制服
+        - name: over_time_salary
+          in: query
+          required: false
+          type: integer
+          description: 加班薪金
+        - name: salary_composition
+          in: query
+          required: false
+          type: boolean
+          description: 薪金组成
+        - name: location_id
+          in: query
+          required: false
+          type: string
+          description: 类型为字符串组成的数组
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: 类型为字符串组成的数组
+      responses:
+        200:
+          description: 获取福利模板列表
+          schema:
+            $ref: '#/definitions/WelfareTemplateListData'
+
+    post:
+      description: 创建模板
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+
+
+      responses:
+        200:
+          description: 创建成功
+  /welfare_templates/field_options:
+    get:
+      description: 获取筛选项
+      responses:
+        200:
+          description: 获取模板名称筛选项
+          schema:
+            $ref: '#/definitions/WelfareTemplateOptionsData'
+  /welfare_templates/like_field_options:
+    get:
+      description: 获取筛选项(模糊匹配)
+      parameters:
+        - name: template_chinese_name
+          type: string
+          required: false
+          in: query
+          description: 模板中文名筛选参数
+        - name: department_id
+          type: string
+          required: false
+          in: query
+          description: '部门id'
+        - name: position_id
+          type: string
+          required: false
+          in: query
+          description: '职位id'
+      responses:
+        200:
+          description: 获取匹配参数的，模板名称筛选项
+          schema:
+            $ref: '#/definitions/WelfareTemplateOptionsSimpleData'
+
+  /welfare_templates/find_template_for_department_and_position:
+    get:
+      description: 获某部门职位模版
+      parameters:
+        - name: department_id
+          type: string
+          required: false
+          in: query
+          description: '部门id'
+        - name: position_id
+          type: string
+          required: false
+          in: query
+          description: '职位id'
+      responses:
+        200:
+          description: 获某部门职位模板详情
+          schema:
+            $ref: '#/definitions/WelfareTemplateDataForDepartmentAndPosition'
+  /welfare_templates/department_and_position_options:
+    get:
+      description: 获取部门职位筛选项
+      responses:
+        200:
+          description: 获取匹配参数的，模板名称筛选项
+          schema:
+            $ref: '#/definitions/WelfareTemplateDepartmentAndPositionData'
+
+
+  /welfare_templates/{id}:
+    get:
+      description: 获取单个模板信息
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 取得模板信息
+          schema:
+            $ref: '#/definitions/WelfareTemplateEditData'
+
+    patch:
+      description: 更新模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 更新成功
+
+
+    delete:
+      description: 删除模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 成功删除
+  /welfare_templates/{id}/can_be_destroy:
+    get:
+      description: '判断这个模板是否能被删除'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 给出判断结果
+          schema:
+            $ref: '#/definitions/BooleanResult'
+
+
+definitions:
+  BooleanResult:
+    type: object
+    properties:
+      data:
+        type: boolean
+        description: 判断结果
+
+  WelfareTemplateDepartmentAndPositionData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            department:
+              type: object
+              description: 使用模板的一个部门
+            positions:
+              type: array
+              items:
+                type: object
+                description: 使用模板的部门下的职位
+          description: 使用的一个部门和职位的集合
+        description: 使用的部门和职位集合
+  CreateParams:
+    type: object
+    properties:
+      template_chinese_name:
+        type: string
+        description: 模板中文名
+      template_english_name:
+        type: string
+        description: 模板英文名
+      annual_leave:
+        type: integer
+        description: 年假
+      sick_leave:
+        type: integer
+        description: 病假
+      office_holiday:
+        type: number
+        description: 公休
+      holiday_type:
+        type: string
+        description: '假期类别(也可以是integer)(none_holiday: 0, force_holiday: 1, force_public_holiday: 2)'
+      probation:
+        type: integer
+        description: 试用期
+      notice_period:
+        type: integer
+        description: 离职通知期
+      double_pay:
+        type: boolean
+        description: 双粮
+      reduce_salary_for_sick:
+        type: boolean
+        description: 有薪病假是否扣薪
+      provide_uniform:
+        type: boolean
+        description: 制服
+      salary_composition:
+        type: boolean
+        description: 薪金组成
+      over_time_salary:
+        type: string
+        description: '加班薪金 (也可以是integer)(one_times: 0, one_point_two_times: 1, two_times: 2, one_point_two_and_two_times: 3)'
+      comment:
+        type: string
+        description: 备注
+      belongs_to:
+        type: object
+        description: '值为一json 键是部门id , 值为职位id组成的数组 eg: {"1" => ["1","2"] }'
+
+
+
+  WelfareTemplateListData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 福利模板ID，用于删除更新
+            template_chinese_name:
+              type: integer
+              description: 福利模板名称
+            annual_leave:
+              type: integer
+              description: 年假
+            sick_leave:
+              type: integer
+              description: 病假
+            office_holiday:
+              type: integer
+              description: 公休
+            holiday_type:
+              type: string
+              description: 假期类别
+            probation:
+              type: integer
+              description: 试用期
+            notice_period:
+              type: integer
+              description: 离职通知期
+            double_pay:
+              type: boolean
+              description: 双粮
+            reduce_salary_for_sick:
+              type: boolean
+              description: 有薪病假是否扣薪
+            provide_uniform:
+              type: boolean
+              description: 制服
+            salary_compostion:
+              type: boolean
+              description: 薪金组成
+            over_time_salary:
+              type: string
+              description: 加班薪金
+            comment:
+              type: string
+              description: 备注
+            department&position:
+              type: array
+              items:
+                type: object
+                properties:
+                  department:
+                    type: object
+                    description: 使用模板的一个部门
+                  positions:
+                    type: array
+                    items:
+                      type: object
+                      description: 使用模板的部门下的职位
+                description: 使用的一个部门和职位的集合
+              description: 使用的部门和职位集合
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_page:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+
+  WelfareTemplateEditData:
+    type: object
+    properties:
+      template_chinese_name:
+        type: string
+        description: 福利模板中文名
+      template_english_name:
+        type: string
+        description: 福利模板英文名
+      annual_leave:
+        type: integer
+        description: 年假
+      sick_leave:
+        type: integer
+        description: 病假
+      office_holiday:
+        type: number
+        description: 公休
+      holiday_type:
+        type: string
+        description: 假期类别
+      probation:
+        type: integer
+        description: 试用期
+      notice_period:
+        type: integer
+        description: 离职通知期
+      double_pay:
+        type: boolean
+        description: 双粮
+      reduce_salary_for_sick:
+        type: boolean
+        description: 有薪病假是否扣薪
+      provide_airfare:
+        type: boolean
+        description: 来回机票
+      provide_accommodation:
+        type: boolean
+        description: 宿舍
+      provide_uniform:
+        type: boolean
+        description: 制服
+      salary_composition:
+        type: boolean
+        description: 薪金组成
+      over_time_salary:
+        type: string
+        description: 加班薪金
+      comment:
+        type: string
+        description: 备注
+  WelfareTemplateOptionsData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+         type: string
+
+  WelfareTemplateOptionsSimpleData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '模板id'
+            template_name:
+              description: '模板名称'
+
+  WelfareTemplateDataForDepartmentAndPosition:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+             template_chinese_name:
+               type: string
+               description: 福利模板中文名
+             template_english_name:
+               type: string
+               description: 福利模板英文名
+             annual_leave:
+               type: integer
+               description: 年假
+             sick_leave:
+               type: integer
+               description: 病假
+             office_holiday:
+               type: number
+               description: 公休
+             holiday_type:
+               type: string
+               description: 假期类别
+             probation:
+               type: integer
+               description: 试用期
+             notice_period:
+               type: integer
+               description: 离职通知期
+             variant:
+               type: boolean
+               description: 变种
+             reduce_salary_for_sick:
+               type: boolean
+               description: 有薪病假是否扣薪
+             provide_airfare:
+               type: boolean
+               description: 来回机票
+             provide_accommodation:
+               type: boolean
+               description: 宿舍
+             provide_uniform:
+               type: boolean
+               description: 制服
+             salary_composition:
+               type: boolean
+               description: 薪金组成
+             over_time_salary:
+               type: string
+               description: 加班薪金
+             comment:
+               type: string
+               description: 备注
+  IsCanCreate:
+    type: object
+    properties:
+      template_name:
+        type: boolean
+        description: 模板名称
+      belongs_to:
+        type: boolean
+        description: 所属部门场馆
+      annual_leave:
+        type: boolean
+        description: 年资
+      sick_leave:
+        type: boolean
+        description: 病假
+      office_holiday:
+        type: boolean
+        description: 公休
+      holiday_type:
+        type: boolean
+        description: 假期类别
+      probation:
+        type: boolean
+        description: 试用期
+      notice_period:
+        type: boolean
+        description: 离职通知期
+      double_pay:
+        type: boolean
+        description: 双粮
+      reduce_salary_for_sick:
+        type: boolean
+        description: 病假是否扣薪
+      provide_uniform:
+        type: boolean
+        description: 是否提供制服
+      over_time_salary:
+        type: boolean
+        description: 加班薪金
+      comment:
+        type: boolean
+        description: 备注
+      force_holiday_make_up:
+        type: boolean
+        description: 强制假期补偿
+      salary_composition:
+        type: boolean
+        description: 薪金组成
+      position_type:
+        type: boolean
+        description: 职位类别
+      work_days_every_week:
+        type: boolean
+        description: 每周工作小时数

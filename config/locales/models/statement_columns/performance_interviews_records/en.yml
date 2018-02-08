@@ -1,0 +1,23 @@
+en:
+  performance_interviews_records:
+    file_name: Appraisal Reports
+  statement_columns:
+    performance_interviews_records:
+      appraisal_name: 360 appraisal
+      appraisal_date: 360 appraisal date
+      performance_interview_status: Status
+      empoid: ID
+      name: Name
+      location: Location
+      department: Department
+      position: Position
+      grade: Grade
+      division_of_job: Division of job
+      date_of_employment: Date of employeement
+      performance_moderator: Moderator
+      interview_date: Date
+      interview_time: Time
+      attachment: Files
+      operator: Operator
+      operator_at: Operate at
+

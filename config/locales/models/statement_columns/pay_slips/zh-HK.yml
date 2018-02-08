@@ -1,0 +1,15 @@
+zh-HK:
+  statement_columns:
+    pay_slips:
+      year_month: 薪酬月份
+      salary_begin: 薪酬開始日期
+      salary_end: 薪酬結束日期
+      name: 姓名
+      empoid: 員工編號
+      company_name: 公司名稱
+      location_id: 場館
+      department_id: 部門
+      position_id: 職位
+      entry_on_this_month: 是否本月入職
+      leave_on_this_month: 是否本月離職
+      comment: 備注

@@ -1,0 +1,294 @@
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 全年勤工將報表
+
+# Describe your paths here
+paths:
+  /annual_work_award_reports:
+    get:
+      description: 获取符合正式员工的信息
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: annual_work_award_id
+          in: query
+          required: false
+          type: integer
+          description: 奖励id
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 员工编号(多個參數裝在数组里传入,作为筛选的参数同理)
+        - name: chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工中文名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工部门中文名
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工职位中文名
+        - name: data_of_employment
+          in: query
+          required: false
+          type: string
+          description: 入职日期
+        - name: up_to_standard
+          in: query
+          required: false
+          type: string
+          description: 是否符合
+        - name: money_of_award
+          in: query
+          required: false
+          type: number
+          description: 获取的奖金额
+      responses:
+        200:
+          description: 获取正式员工全勤奖情况
+          schema:
+            $ref: '#/definitions/IndexData'
+    post:
+      description: 创建奖励
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 创建成功
+  /annual_work_award_reports/{id}/pay:
+    patch:
+      description: 标记发放并通知
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 奖励ID
+      responses:
+        200:
+          description: 取得模板信息
+  /annual_work_award_reports/{id}:
+    delete:
+      description: 删除奖励
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID奖励
+      responses:
+        200:
+          description: 成功删除
+  /annual_work_award_reports/export:
+    get:
+      description: 获取符合正式员工的信息
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: annual_work_award_id
+          in: query
+          required: false
+          type: integer
+          description: 奖励id
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 员工编号
+        - name: chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工中文名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工部门中文名
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工职位中文名
+        - name: data_of_employment
+          in: query
+          required: false
+          type: string
+          description: 入职日期
+        - name: up_to_standard
+          in: query
+          required: false
+          type: string
+          description: 是否符合
+        - name: money_of_award
+          in: query
+          required: false
+          type: number
+          description: 获取的奖金额
+      responses:
+        200:
+          description: 导出成功
+  /annual_work_award_reports/field_options:
+    get:
+      description: 获取列表筛选项
+      responses:
+        200:
+          description: '获取列表筛选项'
+          schema:
+            $ref: '#/definitions/FieldOptionData'
+  /annual_work_award_reports/psla_options:
+    get:
+      description: 获取奖励筛选项
+      responses:
+        200:
+          description: '获取奖励筛选项'
+          schema:
+            $ref: '#/definitions/PslaData'
+
+definitions:
+  IndexData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            empoid:
+              type: string
+            chinese_name:
+              type: string
+            department_chinese_name:
+              type: string
+            position_chinese_name:
+              type: string
+            date_of_employment:
+              type: string
+            up_to_standard:
+              type: string
+              description: 是否符合
+            money_of_award:
+              type: number
+              description: 奖励金额
+
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_pages:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+          report_chinese_name:
+            type: string
+            description: 当前奖励名称
+          begin_date:
+            type: string
+            description: 开始日期
+          end_date:
+            type: string
+            description: 结束日期
+          sum_of_award:
+            type: integer
+            description: 标准奖励额
+          status:
+            type: integer
+            description: 发放及显示状态
+  CreateParams:
+    type: object
+    properties:
+      award_chinese_name:
+        type: string
+      award_english_name:
+        type: string
+      begin_date:
+        type: string
+      end_date:
+        type: string
+      num_of_award:
+        type: string
+  FieldOptionData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          department_chinese_name:
+            type: array
+            items:
+              type: string
+          position_chinese_name:
+            type: array
+            items:
+              type: string
+          date_of_employment:
+            type: array
+            items:
+              type: string
+          up_to_standard:
+            type: array
+            items:
+              type: string
+          money_of_award:
+            type: array
+            items:
+              type: string
+      state:
+        type: string
+  PslaData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            award_chinese_name:
+              type: string

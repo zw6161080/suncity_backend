@@ -1,0 +1,173 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 班别设定排班
+
+# Describe your paths here
+paths:
+  /rosters/{roster_id}/shift_employee_count_settings:
+    get:
+      description: 获取班别设定列表
+      tags:
+        - 班别设定排班
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+      responses:
+        200:
+          description:  班别设定
+
+    patch:
+      description: 创建／更新班别设定
+      tags:
+        - 班别设定排班
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: grade_tag
+          in: body
+          require: true
+          type: integer
+          description: 級別
+        - name: date
+          in: body
+          type: string
+          description: 日期
+        - name: max_number_(grade)
+          in: body
+          type: integer
+          description: max_number_級別  最大人數
+        - name: min_number_(grade)
+          in: body
+          type: integer
+          description: min_number_級別  最少人數
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /shift_employee_count_settings/grade_tags:
+    get:
+      description: 获取等級列表
+      tags:
+        - 班别设定排班
+      responses:
+        200:
+          description:  获取更组排班项目
+    
+  /rosters/{roster_id}/shift_employee_count_settings/set_by_wday:
+    patch:
+      description: 按周几设定
+      tags:
+        - 更组添加用户
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: wday
+          in: body
+          require: true
+          type: integer
+          description: 周几
+        - name: settings
+          schema:
+            $ref: '#/definitions/SettingParams'
+        # - name: grade_tag
+        #   in: body
+        #   require: true
+        #   type: integer
+        #   description: 級別
+        # - name: max_number_(grade)
+        #   in: body
+        #   type: integer
+        #   description: max_number_級別  最大人數
+        # - name: min_number_(grade)
+        #   in: body
+        #   type: integer
+        #   description: min_number_級別  最少人數
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_employee_count_settings/set_by_daterange:
+    patch:
+      description: 按时间范围设定
+      tags:
+        - 更组添加用户
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: start
+          in: body
+          require: true
+          type: string
+          description: 开始日期
+        - name: end
+          in: body
+          require: true
+          type: string
+          description: 结束日期
+        - name: settings
+          description: 多个max_number_(grade) min_number_(grade) 参数
+          schema:
+            $ref: '#/definitions/SettingParams'
+        # - name: grade_tag
+        #   in: body
+        #   require: true
+        #   type: integer
+        #   description: 級別
+        # - name: max_number_(grade)
+        #   in: body
+        #   type: integer
+        #   description: max_number_級別  最大人數
+        # - name: min_number_(grade)
+        #   in: body
+        #   type: integer
+        #   description: min_number_級別  最少人數
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+definitions:
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组
+
+  SettingParams:
+    type: object
+    properties:
+      max_number_(grade):
+        type: integer
+      min_number_(grade):
+        type: integer
+      shift_id:
+        type: integer

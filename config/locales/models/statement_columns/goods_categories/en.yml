@@ -1,0 +1,11 @@
+en:
+  statement_columns:
+    goods_categories:
+      goods_name: Goods name
+      unit: Goods unit
+      price_mop: Unit price (MOP)
+      distributed_count: Assigned quantity
+      returned_count: Returned quantity
+      unreturned_count: Quantity not returned
+      employee_name: Creater
+      created_at: Creation date

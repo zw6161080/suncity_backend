@@ -1,0 +1,46 @@
+department_setting:
+  can_across_appraisal_grade: false
+  appraisal_mode_superior: assessed_by_all_superiors
+  appraisal_times_superior:
+  appraisal_mode_collegue: whole_department
+  appraisal_times_collegue:
+  appraisal_mode_subordinate: all_superiors
+  appraisal_times_subordinate:
+  appraisal_grade_quantity_inside: 3
+  whether_group_inside: false
+  group_A_appraisal_template_id:
+  group_B_appraisal_template_id:
+  group_C_appraisal_template_id:
+  group_D_appraisal_template_id:
+  group_E_appraisal_template_id:
+
+fields_options:
+  appraisal_mode_superior:
+    - key: assessed_by_part_of_the_superiors
+      chinese_name: 被部分上司評核
+      english_name: Assessed by part of the superiors
+      simple_chinese_name: 被部分上司评核
+    - key: assessed_by_all_superiors
+      chinese_name: 被全部上司評核
+      english_name: Assessed by all superiors
+      simple_chinese_name: 被全部上司评核
+
+  appraisal_mode_subordinate:
+    - key: group_only
+      chinese_name: 僅在組內評核
+      english_name: Group only
+      simple_chinese_name: 仅在组内评核
+    - key: whole_department
+      chinese_name: 全部門內評核
+      english_name: Whole department
+      simple_chinese_name: 全部门内评核
+
+  appraisal_mode_subordinate:
+    - key: part_of_the_superiors
+      chinese_name: 下属评核部分上司
+      english_name: Part of the superiors
+      simple_chinese_name: 下属评核部分上司
+    - key: all_superiors
+      chinese_name: 下屬評核全部上司
+      english_name: All superiors
+      simple_chinese_name: 下属评核全部上司

@@ -1,0 +1,15 @@
+en:
+  statement_columns:
+    training_absentees:
+      employee_id: ID
+      employee_name: Name
+      department: Department
+      position: Position
+      train_name: Training name
+      train_number: Training number
+      train_date: Training date
+      has_submitted_reason: Whether the reason has been submitted
+      has_been_exempted: Whether to exempt absence
+      train_class_time: Absent time
+      absence_reason: Reason
+      submit_date: Submission date

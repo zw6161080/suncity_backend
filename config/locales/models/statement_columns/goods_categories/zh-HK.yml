@@ -1,0 +1,11 @@
+zh-HK:
+  statement_columns:
+    goods_categories:
+      goods_name: 物品名稱
+      unit: 物品單位
+      price_mop: 物品單價(MOP)
+      distributed_count: 已分發數量
+      returned_count: 已歸還數量
+      unreturned_count: 未歸還數量
+      employee_name: 創建人
+      created_at: 創建日期

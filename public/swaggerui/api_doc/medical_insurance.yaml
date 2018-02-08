@@ -1,0 +1,1746 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 医疗
+
+# Describe your paths here
+paths:
+  /medical_item_templates:
+    get:
+      description: 获取管理醫療項類別列表
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalItemTemplates'
+    post:
+      description: 创建一个管理医疗项
+      parameters:
+      - name: medical_item_template_params
+        in: body
+        required: true
+        description: 创建一个管理医疗项所需参数
+        schema:
+          $ref: '#/definitions/MedicalItemTemplateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_items:
+    get:
+      description: 医疗报销列表页-新增-获取报销项下拉列表
+      parameters:
+      - name: medical_template_id
+        in: query
+        required: true
+        type: integer
+        description: 一个医疗模板的ID，medical_template_id
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalItems'
+
+  /medical_templates:
+    get:
+      description: 获取所有医疗模板的所有信息
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalTemplates'
+    post:
+      description: 创建一个医疗模板
+      parameters:
+      - name: medical_template_params
+        in: body
+        required: true
+        description: 创建一个医疗模板所需参数
+        schema:
+          $ref: '#/definitions/MedicalTemplateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_templates/{medical_template_id}:
+    get:
+      description: 显示一个医疗模板的数据
+      parameters:
+      - name: medical_template_id
+        in: path
+        required: true
+        type: integer
+        description: 一个医疗模板的ID，medical_template_id
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalTemplate'
+    patch:
+      description: 修改一个医疗模板的数据
+      parameters:
+      - name: medical_template_id
+        in: path
+        required: true
+        type: integer
+        description: 一个医疗模板的ID，medical_template_id
+      - name: medical_template_params
+        in: body
+        required: true
+        description: 修改使用的参数
+        schema:
+          $ref: '#/definitions/MedicalTemplateParams'
+      responses:
+        200:
+          description: 成功响应
+    delete:
+      description: 删除一个医疗模板
+      parameters:
+      - name: medical_template_id
+        in: path
+        required: true
+        type: integer
+        description: 医疗模板的ID  medical_template_id
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_templates/create_permission:
+    get:
+      description: 判断所传参数是否可以用于新增/修改医疗模板
+      parameters:
+      - name: medical_template_new_names
+        in: body
+        required: true
+        description: 医疗模板的繁体中文名、英文名、简体中文名
+        schema:
+          $ref: '#/definitions/MedicalTemplateNewNames'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/Permission'
+
+  /medical_template_settings:
+    get:
+      description: 获取医疗模板设置信息
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalTemplateSettings'
+    patch:
+      description: 修改医疗模板设置信息
+      parameters:
+      - name: medical_template_setting_params
+        in: body
+        required: true
+        description: 医疗模板设置所需参数
+        schema:
+          $ref: '#/definitions/MedicalTemplateSettingParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_insurance_participators:
+    get:
+      description: 获取医疗保险计划参加成员列表
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 页面编号
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号 empoid
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门ID
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位ID
+      - name: employee_grade
+        in: query
+        required: false
+        type: string
+        description: 员工职级
+      - name: date_of_employment
+        in: query
+        required: false
+        type: string
+        description: 入职日期 `YYYY/MM/DD`，传一个range
+      - name: participate
+        in: query
+        required: false
+        type: string
+        description: 是否参加医保计划，两类值 { 'medical_insurance_paticipator.enum_participate.participated', 'medical_insurance_paticipator.enum_participate.not_participated' }
+      - name: effective_date
+        in: query
+        required: false
+        type: string
+        description: 生效日期　
+      - name: participate_date
+        in: query
+        required: false
+        type: string
+        description: 参加日期 `YYYY/MM/DD`，传一个range
+      - name: cancel_date
+        in: query
+        required: false
+        type: string
+        description: 取消日期 `YYYY/MM/DD`，传一个range
+      - name: medical_template_id
+        in: query
+        required: false
+        type: integer
+        description: 医疗模板ID
+      - name: monthly_deduction
+        in: query
+        required: false
+        type: string
+        description: 每月扣除金额
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalInsuranceParticipators'
+
+  /profiles/{profile_id}/medical_insurance_participator/update_from_profile:
+    patch:
+      description: 编辑一个员工参加医保情况的信息(档案中)
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: update_prarams
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#/definitions/MedicalInsuranceParticipatorParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /profiles/{profile_id}/medical_insurance_participator:
+    get:
+      description: 获取一个员工参加医保情况的信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalInsuranceParticipator'
+    patch:
+      description: 编辑一个员工参加医保情况的信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: update_prarams
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#/definitions/MedicalInsuranceParticipatorParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_insurance_participators/batch_update:
+    patch:
+      description: 批量编辑一个员工参加医保情况的信息
+      parameters:
+      - name: medical_insurance_participators
+        in: body
+        required: true
+        description: 修改用到的参数
+        schema:
+          $ref: '#/definitions/MedicalInsuranceParticipatorsUpdateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_insurance_participators/field_options:
+    get:
+      description: 获取筛选项内容
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/FieldOptions'
+
+  /medical_insurance_participators/export:
+    get:
+      description: 汇出
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号 empoid
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门ID
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位ID
+      - name: employee_grade
+        in: query
+        required: false
+        type: string
+        description: 员工职级
+      - name: date_of_employment
+        in: query
+        required: false
+        type: string
+        description: 入职日期 `YYYY/MM/DD`，传一个range
+      - name: participate
+        in: query
+        required: false
+        type: string
+        description: 是否参加医保计划，两类值 { 'medical_insurance_paticipator.enum_participate.participated', 'medical_insurance_paticipator.enum_participate.not_participated' }
+      - name: participate_date
+        in: query
+        required: false
+        type: string
+        description: 参加日期 `YYYY/MM/DD`，传一个range
+      - name: cancel_date
+        in: query
+        required: false
+        type: string
+        description: 取消日期 `YYYY/MM/DD`，传一个range
+      - name: medical_template_id
+        in: query
+        required: false
+        type: integer
+        description: 医疗模板ID
+      - name: monthly_deduction
+        in: query
+        required: false
+        type: string
+        description: 每月扣除金额
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_reimbursements:
+    get:
+      description: 获取列表页
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 页面编号
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: reimbursement_year
+        type: integer
+        in: query
+        required: false
+        description: 年度
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号 empoid
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门ID
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位ID
+      - name: apply_date
+        type: string
+        in: query
+        required: false
+        description: 申请日期 `YYYY/MM/DD`，传一个range
+      - name: insurance_type
+        type: string
+        in: query
+        required: false
+        description: 保险类别，值取 {'medical_template.enum_insurance_type.suncity_insurance', 'medical_template.enum_insurance_type.commercial_insurance'}
+      - name: medical_item
+        type: integer
+        in: query
+        required: false
+        description: 医疗项的ID，medical_item_id
+      - name: document_number
+        type: string
+        in: query
+        required: false
+        description: 单据编号
+      - name: document_amount
+        type: string
+        in: query
+        required: false
+        description: 单据金额
+      - name: reimbursement_amount
+        type: string
+        in: query
+        required: false
+        description: 报销金额
+      - name: tracker_id
+        type: integer
+        in: query
+        required: false
+        description: 录入人ID
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalReimbursements'
+    post:
+      description: 新增报销记录
+      parameters:
+      - name: medical_reimbursement_params
+        in: body
+        required: true
+        description: 新增报销记录所需参数
+        schema:
+          $ref: '#/definitions/MedicalReimbursementParams'
+      responses:
+        200:
+          description: 成功响应
+        202:
+          description: 报销金额超过上线
+          schema:
+            $ref: '#/definitions/NewReimbursementAmount'
+  /medical_reimbursements/create_from_profile:
+    post:
+      description: 新增报销记录(档案中)
+      parameters:
+      - name: medical_reimbursement_params
+        in: body
+        required: true
+        description: 新增报销记录所需参数
+        schema:
+          $ref: '#/definitions/MedicalReimbursementParams'
+      responses:
+        200:
+          description: 成功响应
+        202:
+          description: 报销金额超过上线
+          schema:
+            $ref: '#/definitions/NewReimbursementAmount'
+  /medical_reimbursements/{medical_reimbursement_id}/update_from_profile:
+    patch:
+      description: 修改一条报销记录(档案中)
+      parameters:
+      - name: medical_reimbursement_id
+        in: path
+        required: true
+        type: integer
+      - name: medical_reimbursement_params
+        in: body
+        required: true
+        description: 员工回应信息和纪律处分结果
+        schema:
+          $ref: '#/definitions/MedicalReimbursementParams'
+      responses:
+        200:
+          description: 成功响应
+  /medical_reimbursements/{medical_reimbursement_id}/destroy_from_profile:
+    delete:
+      description: 删除一条报销记录
+      parameters:
+      - name: medical_reimbursement_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+  /medical_reimbursements/download:
+    get:
+      description: 下载相关文件
+      parameters:
+      - name: id
+        type: integer
+        description: 相关文件id
+        required: true
+        in: query
+      responses:
+        200:
+          description: ok
+  /medical_reimbursements/download_from_profile:
+    get:
+      description: 下载相关文件(档案中)
+      parameters:
+      - name: id
+        type: integer
+        description: 相关文件id
+        required: true
+        in: query
+      responses:
+        200:
+          description: ok
+  /medical_reimbursements/{medical_reimbursement_id}:
+    get:
+      description: 获取一条报销记录
+      parameters:
+      - name: medical_reimbursement_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalReimbursement'
+    patch:
+      description: 修改一条报销记录
+      parameters:
+      - name: medical_reimbursement_id
+        in: path
+        required: true
+        type: integer
+      - name: medical_reimbursement_params
+        in: body
+        required: true
+        description: 员工回应信息和纪律处分结果
+        schema:
+          $ref: '#/definitions/MedicalReimbursementParams'
+      responses:
+        200:
+          description: 成功响应
+    delete:
+      description: 删除一条报销记录
+      parameters:
+      - name: medical_reimbursement_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_reimbursements/export:
+    get:
+      description: 汇出
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: reimbursement_year
+        type: integer
+        in: query
+        required: false
+        description: 年度
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号 empoid
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门ID
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位ID
+      - name: apply_date
+        type: string
+        in: query
+        required: false
+        description: 申请日期 `YYYY/MM/DD`，传一个range
+      - name: insurance_type
+        type: string
+        in: query
+        required: false
+        description: 保险类别，值取 {'medical_template.enum_insurance_type.suncity_insurance', 'medical_template.enum_insurance_type.commercial_insurance'}
+      - name: medical_item_id
+        type: integer
+        in: query
+        required: false
+        description: 医疗项的ID，medical_item_id
+      - name: document_number
+        type: string
+        in: query
+        required: false
+        description: 单据编号
+      - name: document_amount
+        type: string
+        in: query
+        required: false
+        description: 单据金额
+      - name: reimbursement_amount
+        type: string
+        in: query
+        required: false
+        description: 报销金额
+      - name: tracker_id
+        type: integer
+        in: query
+        required: false
+        description: 录入人ID
+      responses:
+        200:
+          description: 成功响应
+
+  /medical_reimbursements/field_options:
+    get:
+      description: 获取筛选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/MedicalReimbursementFieldOptions'
+
+  /medical_reimbursements/{user_id}/show_medical_items:
+    get:
+      description: 新增医疗报销时，获取"报销项"的备选项
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/ShowMedicalItemsInMedicalReimbursement'
+
+  /medical_reimbursements/{medical_reimbursement_id}/send_message:
+    get:
+      description: 获取 SMS/E-mail 的发送内容
+      parameters:
+      - name: medical_reimbursement_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/SMSAndEmailContent'
+  /query_medical_conditions:
+    get:
+      tags:
+        - 医疗报销校验
+      description: 获取医疗报销校验条件
+      parameters:
+        - name: year
+          in: query
+          type: string
+          required: true
+          description: 年度（ＹＹＹＹ）
+        - name: id
+          in: query
+          type: string
+          required: true
+          description: 医疗报销项id
+        - name: user_id
+          in: query
+          type: string
+          required: true
+          description: user_id
+
+      responses:
+        200:
+          description: 获取医疗报销校验条件
+          schema:
+            $ref: '#/definitions/medicalConditions'
+
+definitions:
+  medicalConditions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          left_reimbursement_times:
+            type: number
+            description: 剩余报销次数
+          left_reimbursement_amount:
+            type: number
+            description: 剩餘報銷金額
+          reimbursement_amount_limit:
+            type: number
+            description: 报销金额上限
+  NewReimbursementAmount:
+    type: object
+    properties:
+      reimbursement_amount:
+        type: string
+        description: 报销上限
+  MedicalItemTemplates:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            chinese_name:
+              type: string
+            english_name:
+              type: string
+            simple_chinese_name:
+              type: string
+            can_be_delete:
+              type: boolean
+
+  MedicalItemTemplateParams:
+    type: object
+    properties:
+      medical_item_template:
+        type: object
+        properties:
+          templates:
+            type: array
+            items:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+          delete_ids:
+            type: array
+            items:
+              type: integer
+              description: medical_item_template_id
+
+  MedicalItems:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            medical_item_template:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+
+  MedicalTemplates:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          description: 条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: medical_template_id
+            chinese_name:
+              type: string
+              description: 繁体中文名
+            english_name:
+              type: string
+              description: 英文名
+            simple_chinese_name:
+              type: string
+              description: 简体中文名
+            insurance_type:
+              type: string
+              description: 保险类型，允许的值只有2种 { "suncity_insurance"，"commercial_insurance" }
+            balance_date:
+              type: string
+              description: 结算日期 `YYYY/MM/DD`，只需取用`MM/DD`部分
+            in_effect:
+              type: boolean
+              description: 该医疗模板是否生效中
+            user_grades:
+              description: 该医疗模板适用员工的职级
+              type: array
+              items:
+                type: integer
+            medical_items:
+              type: array
+              description: 管理医疗项数组
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: medical_item_id
+                  reimbursement_times:
+                    type: integer
+                    description: 報銷次數/年
+                  reimbursement_amount_limit:
+                    type: string
+                    description: 報銷金額上限（MOP）/次
+                  reimbursement_amount:
+                    type: string
+                    description: 總報銷金額（MOP）
+                  medical_item_template_id:
+                    type: integer
+                    description: medical_item_template_id
+                  medical_template_id:
+                    type: integer
+                    description: medical_template_id
+                  medical_item_template:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: medical_item_template_id
+                      can_be_delete:
+                        type: boolean
+                        description: 可否被删除
+                      chinese_name:
+                        type: string
+                        description: 繁体中文名
+                      english_name:
+                        type: string
+                        description: 英文名
+                      simple_chinese_name:
+                        type: string
+                        description: 简体中文名
+
+  MedicalTemplate:
+    description: 一个医疗模板的数据
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: medical_item_id
+          chinese_name:
+            type: string
+            description: 繁体中文名
+          english_name:
+            type: string
+            description: 英文名
+          simple_chinese_name:
+            type: string
+            description: 简体中文名
+          insurance_type:
+            type: string
+            description: 保险类型，允许的值只有2种 { "suncity_insurance"，"commercial_insurance" }
+          balance_date:
+            type: string
+            description: 结算日期 `YYYY/MM/DD`，只需取用`MM/DD`部分
+          medical_items:
+            type: array
+            description: 管理医疗项数组
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: medical_item_id
+                reimbursement_times:
+                  type: integer
+                  description: 報銷次數/年
+                reimbursement_amount_limit:
+                  type: string
+                  description: 報銷金額上限（MOP）/次
+                reimbursement_amount:
+                  type: string
+                  description: 總報銷金額（MOP）
+                medical_item_template:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    chinese_name:
+                      type: string
+                    english_name:
+                      type: string
+                    simple_chinese_name:
+                      type: string
+                    can_be_delete:
+                      type: boolean
+
+  MedicalTemplateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 繁体中文名
+      english_name:
+        type: string
+        description: 英文名
+      simple_chinese_name:
+        type: string
+        description: 简体中文名
+      insurance_type:
+        type: string
+        description: 保险类型，允许的值只有2种 { "medical_template.enum_insurance_type.suncity_insurance"，"medical_template.enum_insurance_type.commercial_insurance" }
+      balance_date:
+        type: string
+        description: 结算日期 `YYYY/MM/DD`。结算日期作为一个整体传输，`MM/DD`需传正确的值，而年份则随便给一个四位整数即可。
+      medical_items:
+        type: array
+        description: 管理医疗项数组
+        items:
+          type: object
+          properties:
+            medical_item_template_id:
+              type: integer
+            reimbursement_times:
+              type: integer
+              description: 報銷次數/年
+            reimbursement_amount_limit:
+              type: string
+              description: 報銷金額上限（MOP）/次
+            reimbursement_amount:
+              type: string
+              description: 總報銷金額（MOP）
+
+  MedicalTemplateSettings:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            effective_date:
+              type: string
+              description: 某级员工 即将生效的 医疗保险计划的 生效日期 `YYYY/MM/DD`
+            employee_grade:
+              type: integer
+              description: 员工职级
+            current_template_id:
+              type: integer
+              description: 某级员工 当前使用的 医疗保险计划的ID
+            impending_template_id:
+              type: integer
+              description: 某级员工 即将生效的 医疗保险计划的ID
+            current_template:
+              type: object
+              description: 当前生效医疗模板的信息
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+            impending_template:
+              type: object
+              description: 下一阶段生效医疗模板的信息
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+
+  MedicalTemplateSettingParams:
+    type: object
+    properties:
+      medical_template_setting:
+        type: object
+        properties:
+          sections:
+            type: array
+            description: 1-5级員工使用醫療模板的设置信息 组成的数组。数组长度必须与员工职级数相等，即如果员工分5级，则必须给5条设置信息。
+            items:
+              type: object
+              properties:
+                employee_grade:
+                  type: integer
+                  description: 员工职级
+                current_template_id:
+                  type: integer
+                  description: 某级员工 当前使用的 医疗保险计划的ID
+                impending_template_id:
+                  type: integer
+                  description: 某级员工 即将生效的 医疗保险计划的ID
+                effective_date:
+                  type: string
+                  description: 某级员工 即将生效的 医疗保险计划的 生效日期 `YYYY/MM/DD`
+
+  MedicalInsuranceParticipators:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          description: 条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 条目数据ID，medical_insurance_participator_id
+            user_id:
+              type: integer
+              description: 员工ID，user_id
+            participate:
+              type: string
+              description: 参加/不参加
+            participate_date:
+              type: string
+              description: 参加日期 `YYYY/MM/DD`
+            cancel_date:
+              type: string
+              description: 取消日期 `YYYY/MM/DD`
+            medical_template_id:
+              type: integer
+              description: medical_template_id。若有值，则为一个数；若无值，则为空值nil。
+            medical_template:
+              description: 当且仅当 medical_template_id 非空，才有这一项。
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: medical_template_id
+                chinese_name:
+                  type: string
+                  description: 繁体中文名
+                english_name:
+                  type: string
+                  description: 英文名
+                simple_chinese_name:
+                  type: string
+                  description: 简体中文名
+                insurance_type:
+                  type: string
+                  description: 保险类型
+                balance_date:
+                  type: string
+                  description: 结算日期 `YYYY/MM/DD`，只需取用`MM/DD`部分
+            monthly_deduction:
+              type: string
+              description: 每月扣除金额
+            date_of_employment:
+              type: string
+              description: 入职日期 `YYYY/MM/DD`
+            user:
+              description: 员工详细信息
+              type: object
+              properties:
+                empoid:
+                  type: string
+                  description: empoid
+                chinese_name:
+                  type: string
+                  description: 繁体中文名
+                english_name:
+                  type: string
+                  description: 英文名
+                simple_chinese_name:
+                  type: string
+                  description: 简体中文名
+                grade:
+                  type: string
+                  description: 职级
+                department:
+                  type: object
+                  description: 部门详细信息
+                position:
+                  type: object
+                  description: 职位详细信息
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+          current_page:
+            type: integer
+          total_pages:
+            type: integer
+          sort_column:
+            type: string
+          sort_direction:
+            type: string
+
+  MedicalInsuranceParticipator:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          medical_insurance_participator:
+            type: object
+            description: 参加情况
+          medical_template:
+            type: object
+            description: 医疗模板
+          now_year_medical_information:
+            description: 当年医疗信息
+            type: array
+            items:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: 项目中文名
+                english_name:
+                  type: string
+                  description: 项目英文名
+                simple_chinese_name:
+                  type: string
+                  description: 项目简体中文名
+                reimbursement_times:
+                  type: string
+                  description: 报销总次数
+                reimbursement_amount_limit:
+                  type:  string
+                  description: 单次报销限额
+                reimbursement_amount:
+                  type: string
+                  description: 报销总限额
+                has_used_reimbursement_times:
+                  type: string
+                  description: 已用报销次数
+                has_used_reimbursement_amount:
+                  type: string
+                  description: 已用报销金额
+                left_reimbursement_times:
+                  type: string
+                  description: 剩余报销次数
+                left_reimbursement_amount:
+                  type: string
+                  description: 剩余报销限额
+          medical_reimbursements:
+            type: array
+            items:
+              type: object
+
+  MedicalInsuranceParticipatorParams:
+    type: object
+    properties:
+
+      to_status:
+        type: string
+        description: 'participated_in_the_future/not_participated_in_the_future'
+      valid_date:
+        type: string
+        description: 生效日期
+
+  MedicalInsuranceParticipatorsUpdateParams:
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+          description: 'user_id'
+      medical_insurance_participator:
+        type: object
+        properties:
+          to_status:
+            type: string
+            description: 是否参加爱心基金，两类值 {'love_fund.enum_participate.participated', 'love_fund.enum_participate.not_participated'}
+          valid_date:
+            type: string
+            description: 参加日期 `YYYY/MM/DD`
+
+  FieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          positions:
+            type: array
+            items:
+              description: 一个职位的详细信息
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+          departments:
+            type: array
+            items:
+              description: 一个部门的详细信息
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+          grades:
+            type: array
+            items:
+              type: object
+              properties:
+                grade:
+                  type: string
+                  description: 职级
+          participate:
+            type: array
+            items:
+              type: string
+              description: 明确地有且仅有2个值 ["medical_insurance_paticipator.enum_participate.participated", "medical_insurance_paticipator.enum_participate.not_participated"]
+          medical_templates:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+
+  MedicalReimbursements:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          description: 条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 报销记录ID
+            reimbursement_year:
+              type: integer
+              description: 年度
+            user_id:
+              type: integer
+              description: 员工ID
+            apply_date:
+              type: string
+              description: 申请日期
+            insurance_type:
+              type: string
+              description: 保险类别
+            medical_template_id:
+              type: integer
+              description: 医疗模板ID
+            medical_item_id:
+              type: integer
+              description: 报销项ID
+            document_number:
+              type: string
+              description: 单据编号
+            document_amount:
+              type: string
+              description: 单据金额
+            reimbursement_amount:
+              type: string
+              description: 报销金额
+            tracker_id:
+              type: integer
+              description: 录入人ID
+            track_date:
+              type: string
+              description: 录入日期
+            user:
+              description: 员工信息
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: user_id
+                empoid:
+                  type: string
+                  description: empoid
+                chinese_name:
+                  type: string
+                  description: 员工繁体中文名
+                english_name:
+                  type: string
+                  description: 员工英文名
+                simple_chinese_name:
+                  type: string
+                  description: 员工简体中文名
+                department:
+                  description: 部门信息
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: 部门ID
+                    chinese_name:
+                      type: string
+                      description: 部门繁体中文名
+                    english_name:
+                      type: string
+                      description: 部门英文名
+                    simple_chinese_name:
+                      type: string
+                      description: 部门简体中文名
+                position:
+                  description: 职位信息
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: 职位ID
+                    chinese_name:
+                      type: string
+                      description: 职位繁体中文名
+                    english_name:
+                      type: string
+                      description: 职位英文名
+                    simple_chinese_name:
+                      type: string
+                      description: 职位简体中文名
+            medical_item_template:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                  description: 报销项繁体中文名
+                english_name:
+                  type: string
+                  description: 报销项英文名
+                simple_chinese_name:
+                  type: string
+                  description: 报销项简体中文名
+                can_be_delete:
+                  type: boolean
+            tracker:
+              description: 录入人信息
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 录入人ID
+                chinese_name:
+                  type: string
+                  description: 录入人繁体中文名
+                english_name:
+                  type: string
+                  description: 录入人英文名
+                simple_chinese_name:
+                  type: string
+                  description: 录入人简体中文名
+            attachment_items:
+              description: 相关文件 数组
+              type: array
+              items:
+                description: 相关文件
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  file_name:
+                    type: string
+                  attachment_id:
+                    type: integer
+                  attachable_id:
+                    type: integer
+                  attachable_type:
+                    type: string
+
+  MedicalReimbursement:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: 报销记录ID
+          reimbursement_year:
+            type: integer
+            description: 年度
+          user_id:
+            type: integer
+            description: 员工ID
+          apply_date:
+            type: string
+            description: 申请日期
+          medical_template_id:
+            type: integer
+            description: 医疗模板ID
+          medical_item_id:
+            type: integer
+            description: 报销项ID
+          document_number:
+            type: string
+            description: 单据编号
+          document_amount:
+            type: string
+            description: 单据金额
+          reimbursement_amount:
+            type: string
+            description: 报销金额
+          tracker_id:
+            type: integer
+            description: 录入人ID
+          track_date:
+            type: string
+            description: 录入日期
+          user:
+            description: 员工信息
+            type: object
+            properties:
+              id:
+                type: integer
+                description: user_id
+              empoid:
+                type: string
+                description: empoid
+              chinese_name:
+                type: string
+                description: 员工繁体中文名
+              english_name:
+                type: string
+                description: 员工英文名
+              simple_chinese_name:
+                type: string
+                description: 员工简体中文名
+          medical_item:
+            description: 医疗项（报销项）信息
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 报销项ID
+          medical_item_template:
+            type: object
+            properties:
+              id:
+                type: integer
+              chinese_name:
+                type: string
+              english_name:
+                type: string
+              simple_chinese_name:
+                type: string
+              can_be_delete:
+                type: boolean
+          attachment_items:
+            description: 相关文件 数组
+            type: array
+            items:
+              description: 相关文件
+              type: object
+              properties:
+                id:
+                  type: integer
+                file_name:
+                  type: string
+                attachment_id:
+                  type: integer
+                attachable_id:
+                  type: integer
+                attachable_type:
+                  type: string
+
+  MedicalReimbursementParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: user_id
+      apply_date:
+        type: string
+        description: 申请日期
+      medical_item_id:
+        type: integer
+        description: 报销项ID
+      document_number:
+        type: string
+        description: 单据编号
+      document_amount:
+        type: string
+        description: 单据金额
+      reimbursement_amount:
+        type: string
+        description: 报销金额
+      attachment_items:
+        type: array
+        items:
+          type: object
+          description: 一个相关文件的信息
+
+  MedicalReimbursementFieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          medical_templates:
+            type: array
+            items:
+              type: object
+              description: 医疗模板
+          reimbursement_years:
+            type: array
+            items:
+              type: integer
+              description: 年度筛选项
+          positions:
+            description: 职位筛选项数组
+            type: array
+            items:
+              description: 一个职位
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+          departments:
+            description: 部门筛选项数组
+            type: array
+            items:
+              description: 一个部门
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+          insurance_types:
+            type: array
+            items:
+              type: string
+              description: 保险类别筛选项 {'medical_template.enum_insurance_type.suncity_insurance', 'medical_template.enum_insurance_type.commercial_insurance'}
+          medical_items:
+            description: 报销项筛选项数组
+            type: array
+            items:
+              description: 一个报销项
+              type: object
+              properties:
+                id:
+                  type: integer
+                medical_item_template:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    chinese_name:
+                      type: string
+                    english_name:
+                      type: string
+                    simple_chinese_name:
+                      type: string
+                    can_be_delete:
+                      type: boolean
+          trackers:
+            description: 录入人筛选项数组
+            type: array
+            items:
+              description: 一个录入人
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+
+  ShowMedicalItemsInMedicalReimbursement:
+    type: object
+    properties:
+      data:
+        description: 可选报销项的信息组成的数组
+        type: array
+        items:
+          description: 可选报销项的信息
+          type: object
+          properties:
+            id:
+              type: integer
+            medical_item_template_id:
+              type: integer
+            medical_template_id:
+              type: integer
+            medical_item_template:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+                can_be_delete:
+                  type: boolean
+
+  SMSAndEmailContent:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          document_number:
+            type: string
+            description: 单据编号
+          reimbursement_amount:
+            type: string
+            description: 报销金额
+          user:
+            type: object
+            properties:
+              id:
+                type: integer
+              chinese_name:
+                type: string
+              english_name:
+                type: string
+              simple_chinese_name:
+                type: string
+
+  MedicalTemplateNewNames:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+
+  Permission:
+    type: object
+    properties:
+      data:
+        type: boolean

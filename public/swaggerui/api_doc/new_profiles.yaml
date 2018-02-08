@@ -1,0 +1,803 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 新增档案接口
+
+# Describe your paths here
+paths:
+#  /profiles/select_welfare_template:
+#    get:
+#      description: 选择新的福利模板
+#      parameters:
+#        - name: profile_id
+#          in: query
+#          type: integer
+#          required: true
+#          description: 档案id
+#        - name: welfare_template_id
+#          in: query
+#          type: integer
+#          required: true
+#          description: 福利模板id
+#        - name: effective_date
+#          in: query
+#          type: string
+#          required: true
+#          description:
+#      responses:
+#        200:
+#          description: 更新成功
+  /profiles:
+    post:
+      description: 创建档案
+      tags:
+        - 修改后创建档案接口
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: '创建参数[
+            current_template_type(是否选者模板):
+                {none_template: 0, has_template: 1},
+            current_welfare_template_id(模板ID，只在选者根据模板创建后有效):
+                integer]'
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 创建成功
+  /profiles/autocomplete_employees:
+    get:
+      description: 返回面试官信息
+      parameters:
+      - name: empoid
+        in: query
+        required: false
+        type: string
+        description: 员工编号(多个编号可以以数组形式传入)
+      - name: chinese_name
+        in: query
+        required: false
+        type: string
+        description: 员工中文名(多个中文名可以以数组形式传入)
+      - name: english_name
+        in: query
+        required: false
+        type: string
+        description: 员工英文名(多个英文文名可以以数组形式传入)
+      - name: id_card_number
+        in: query
+        required: false
+        type: string
+        description: 证件号码(多个证件号可以以数组形式传入)
+      responses:
+        200:
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/InterviewData'
+
+  /profiles/{id}/head_title:
+    get:
+      description: 获取档案头部信息
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 档案头信息
+          schema:
+            $ref: '#/definitions/HeadTitle'
+  /profiles/{id}:
+    get:
+      description: 获取单个档案信息
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 取得模板信息
+          schema:
+            $ref: '#/definitions/SingleProfileDate'
+#    post:
+#      description: 更新档案
+#      parameters:
+#        - name: id
+#          in: path
+#          required: true
+#          type: integer
+#          description: ID
+#        - name: update_params
+#          in: body
+#          required: true
+#          description: 创建参数
+#          schema:
+#            $ref: '#/definitions/UpdateParams'
+#      responses:
+#        200:
+#          description: 更新成功
+  /roster_instructions/{id}:
+    patch:
+      tags:
+        - 考勤備注
+      description: 更新考勤備注
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 考勤記錄id
+      responses:
+        200:
+          description: 取得模板信息
+          schema:
+            $ref: '#/definitions/RosterInstructionDetail'
+
+definitions:
+  RosterInstructionDetail:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 記錄id
+      comment:
+        type: string
+        description: 考勤備注
+  HeadTitle:
+    type: object
+    properties:
+      nick_name:
+        type: string
+        description: 昵称
+      photo:
+        type: string
+        description: 图片地址
+      chinese_name:
+        type: string
+        description: 中文姓名
+      english_name:
+        type: string
+        description: 英文姓名
+      empoid:
+        type: string
+        description: 员工编号
+      mobile_number:
+        type: string
+        description: 移动电话
+      department:
+        type: object
+        description: 部门
+      locdation:
+        type: object
+        description: 场馆
+      position:
+        type: object
+        description: 职位
+      date_of_employment:
+        type: string
+        description: 入职日期
+      position_resigned_date:
+        type: string
+        description: 离职日期
+      division_of_job:
+        type: string
+        description: 在职类别
+      resignation_record:
+        type: object
+        properties:
+          status:
+            type: string
+            description: '记录状态(to_be_valid being_valid invalid)'
+          time_arrive:
+            type: string
+            description: '失效时间是否到达(arrived coming)'
+      welfare_templates:
+        type: array
+        items:
+          type: object
+      salary_templates:
+        type: array
+        items:
+          type: object
+      is_suspension_investigation:
+        type: boolean
+        description: 是否停职调查
+      options:
+        type: object
+        properties:
+          division_of_job:
+            type: array
+            items:
+              type: object
+
+
+
+
+#  UpdateParams:
+#    type: object
+#    properties:
+#      edit_action_type:
+#        type: string
+#        description: '新增选项：add_row_and_update_fields;edit_row_and_update_fields;必填项'
+#      section_key:
+#        type: string
+#        description: '档案section 的key;必填项'
+#      new_value:
+#        type: object
+#        description: '在edit_action_type = "edit_row_and_update_fields" 和 section_key = "salary_history" 下　为　更新　薪酬浮动项 的键值;在edit_action_type = "add_row_and_update_fields" 和 section_key = "salary_history" 下　为　更新　薪酬浮动项 的键值'
+#      row_id:
+#        type: string
+#        description: '在edit_action_type = "edit_row_and_update_fields" 和 section_key = "salary_history" 下　为　更新　row 的　id;'
+#      fields:
+#        type: object
+#        description: '在edit_action_type = "edit_row_and_update_fields" 和 section_key = "salary_history" 下　为　更新　row 的　键值'
+#      new_row:
+#        type: object
+#        description: '在edit_action_type = "add_row_and_update_fields" 和 section_key = "salary_history" 下　为　新增　row 的　键值'
+  SingleProfileDate:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: '档案id'
+          user_id:
+            type: integer
+            description: '员工id'
+          region:
+            type: string
+            description: '地区'
+          is_stash:
+            type: string
+          sections:
+            type: array
+            items:
+              type: object
+              description: 档案sesctions
+              properties:
+                field_values:
+                  type: array
+                  items:
+                    type: object
+                  description: '非表单section,用于档案显示 '
+                key:
+                  type: string
+                  description: 'section的　name'
+                chinese_name:
+                  type: string
+                  description: section的中文名
+                english_name:
+                  type: string
+                  description: section的英文名
+                'type':
+                  type: string
+                  description: 'section的类型'
+                fields:
+                  type: array
+                  items:
+                    type: object
+                  description: '非表单section,用于档案显示 字段的　相关信息'
+                show_outside:
+                  type: object
+                  description: '用于section 头部显示'
+                rows:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: '用於描述記錄狀態'
+                  description: '表单section 的　每行记录'
+                schema:
+                  type: array
+                  items:
+                    type: object
+                  description: '表单section 的 表头字段相关信息'
+                hide_column:
+                  type: object
+          roster_model_state:
+            type: object
+            properties:
+              current_state:
+                type: object
+                properties:
+                  roster_model:
+                    type: object
+                    properties:
+                      chinese_name:
+                        type: string
+                        description: 使用更模
+                  start_week_no:
+                    type: integer
+                    description: 更模开始星期
+                  current_week_no:
+                    type: integer
+                    description: 目前更模星期
+          roster_object_info:
+            type: object
+            properties:
+              roster_objects:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    roster_date:
+                      type: string
+                      description: 一周排班某天排班日期
+                    class_setting_id:
+                      type: string
+                      description: 排班设定id
+
+          punch_card_state:
+            type: object
+            properties:
+              current_state:
+                type: object
+                properties:
+                  is_need:
+                    type: boolean
+                    description: 是否需要打卡
+
+          shift_status:
+            type: object
+            properties:
+              is_shift:
+                type: boolean
+                description: 是否轮班
+
+          roster_instruction:
+            type: object
+            properties:
+              comment:
+                type: string
+                description: 考勤備注
+              id:
+                type: integer
+                description: 考勤說明id
+
+
+
+      state:
+        type: string
+
+
+
+  CreateParams:
+    type: object
+    properties:
+      sections:
+        type: array
+        items:
+          type: object
+          properties:
+            key:
+              type: string
+              description: 'section的key'
+            field_values:
+              type: object
+              description: '显示的字段集合,非表单section 具有'
+            rows:
+              type: array
+              items:
+                type: object
+              description: '表单行信息集合,　表单section 具有'
+            hide_column:
+              type: object
+              description: '用于‘薪酬历史’ 记录档案　对薪酬模板增加或减少的数值，　表单section(salary_history) 目前独有'
+              properties:
+                profile_basic_salary:
+                  type: integer
+                  description: 对基础薪酬的修改
+                profile_bonus:
+                  type: integer
+                  description: 对津贴的修改
+                profile_attendance_award:
+                  type: integer
+                  description: 勤工的修改
+                profile_house_bonus:
+                  type: integer
+                  description: 房屋津贴的修改
+                profile_tea_bonus:
+                  type: integer
+                  description: 茶资的修改
+                profile_kill_bonus:
+                  type: integer
+                  description: 杀数的修改
+                profile_performance_bonus:
+                  type: integer
+                  description: 业绩的修改
+                profile_charge_bonus:
+                  type: integer
+                  description: 刷卡的修改
+                profile_commission_bonus:
+                  type: integer
+                  description: 佣金的修改
+                profile_receive_bonus:
+                  type: integer
+                  description: 收账的修改
+                profile_exchange_rate_bonus:
+                  type: integer
+                  description: 汇率分红的修改
+                profile_guest_card_bonus:
+                  type: integer
+                  description: 刷卡的修改
+                profile_respect_bonus:
+                  type: integer
+                  description: 尊华殿的修改
+        description: 表单数据
+      region:
+        type: string
+        description: 地区
+      attachments:
+        type: array
+        items:
+          type: object
+      contract_information:
+        type: array
+        items:
+          type: object
+      welfare_record:
+        type: object
+        properties:
+          annual_leave:
+            type: string
+            description: 年假
+          sick_leave:
+            type: string
+            description: 病假
+          office_holiday:
+            type: string
+            description: 公休
+          holiday_type:
+            type: string
+            description: 假期類別
+          probation:
+            type: string
+            description: 試用期
+          notice_period:
+            type: string
+            description: 離職通知期
+          double_pay:
+            type: boolean
+            description: 雙糧
+          reduce_salary_for_sick:
+            type: boolean
+            description: 有薪病假是否扣薪
+          provide_uniform:
+            type: boolean
+            description: 是否提供制服
+          salary_composition:
+            type: string
+            description: 薪金組成
+          over_time_salary:
+            type: string
+            description: 加班薪金
+          force_holiday_make_up:
+            type: string
+            description: 強制假期補償
+          change_reason:
+            type: string
+            description: 變更原因
+      salary_record:
+        type: object
+        properties:
+          change_reason:
+            type: string
+            description: 變更原因
+          basic_salary:
+            type: string
+            description: 基本薪金
+          bonus:
+            type: string
+            description: 津貼
+          attendance_award:
+            type: string
+            description: 勤工獎
+          house_bonus:
+            type: string
+            description: 房屋津貼
+          new_year_bonus:
+            type: string
+            description: 新春利是
+          project_bonus:
+            type: string
+            description: 項目分紅
+          product_bonus:
+            type: string
+            description: 尚品
+          tea_bonus:
+            type: string
+            description: 茶資
+          kill_bonus:
+            type: string
+            description: 殺數
+          performance_bonus:
+            type: string
+            description: 業績分紅
+          charge_bonus:
+            type: string
+            description: 刷卡
+          commission_bonus:
+            type: string
+            description: 傭金差額
+          receive_bonus:
+            type: string
+            description: 收賬
+          exchange_rate_bonus:
+            type: string
+            description: 汇率分红
+          guest_card_bonus:
+            type: string
+            description: 贵宾厅
+          respect_bonus:
+            type: string
+            description: 尊华殿
+          region_bonus:
+            type: string
+            description: 地区津贴
+      work_experence:
+        type: object
+        properties:
+          company_organazition:
+            type: string
+            description: 任職公司
+          work_experience_position:
+            type: string
+            description: 職位
+          work_experience_from:
+            type: string
+            description: 由（MM/YYYY）
+          work_experience_to:
+            type: string
+            description: 至（MM/YYYY）
+          job_description:
+            type: string
+            description: 工作概要
+          work_experience_salary:
+            type: integer
+            description: 現時/離職時每月薪金
+          work_experience_reason_for_leaving:
+            type: string
+            description: 離職原因
+          work_experience_company_phone_number:
+            type: integer
+            description: 公司電話
+          former_head:
+            type: string
+            description: 前負責人/上司姓名
+          work_experience_email:
+            type: string
+            description: 電郵地址
+      education_information:
+        type: object
+        properties:
+          from_mm_yyyy:
+            type: string
+            description: 由（月/年）入學
+          to_mm_yyyy:
+            type: string
+            description: 由（月/年）畢業
+          college_university:
+            type: string
+            description: 畢業學校
+          educational_department:
+            type: string
+            description: 科系
+          graduate_level:
+            type: string
+            description: 學歷程度（如：初中/高中/大學）
+          diploma_degree_attained:
+            type: string
+            description: 學位及專業
+          certificate_issue_date:
+            type: string
+            description: 證書頒發日期
+          graduated:
+            type: boolean
+            description: 是否畢業
+      language_skill:
+        type: object
+        properties:
+          language_chinese_writing:
+            type: integer
+            description: 中文（寫）
+          language_contanese_speaking:
+            type: integer
+            description: 廣東話（講）
+          language_contanese_listening:
+            type: integer
+            description: 廣東話（聽）
+          language_mandarin_speaking:
+            type: integer
+            description: 普通話（講）
+          language_mandarin_listening:
+            type: integer
+            description: 普通話（聽）
+          language_english_speaking:
+            type: integer
+            description: 英語（講）
+          language_english_listening:
+            type: integer
+            description: 英語（聽）
+          language_english_writing:
+            type: integer
+            description: 英語（寫）
+          language_other_name:
+            type: string
+            description: 其他
+          language_other_speaking:
+            type: integer
+            description: 其他（講）
+          language_other_listening:
+            type: integer
+            description: 其他（聽）
+          language_other_writing:
+            type: integer
+            description: 其他（寫）
+          language_skill:
+            type: string
+            description: 技能
+      family_member_information:
+        type: object
+        properties:
+          family_fathers_name_chinese:
+            type: string
+            description: 父親姓名（中文）
+          family_fathers_name_english:
+            type: string
+            description: 父親姓名（英文）
+          family_mothers_name_chinese:
+            type: string
+            description: 母親姓名（中文）
+          family_mothers_name_english:
+            type: string
+            description: 母親姓名（英文）
+          family_partenrs_name_chinese:
+            type: string
+            description: 配偶姓名（中文）
+          family_partenrs_name_english:
+            type: string
+            description: 配偶姓名（英文）
+          family_kids_name_chinese:
+            type: string
+            description: 子女姓名（中文）
+          family_kids_name_english:
+            type: string
+            description: 子女姓名（英文）
+          family_bothers_name_chinese:
+            type: string
+            description: 兄弟姓名（中文）
+          family_bothers_name_english:
+            type: string
+            description: 兄弟姓名（英文）
+          family_sisters_name_chinese:
+            type: string
+            description: 姐妹姓名（中文）
+          family_sisters_name_english:
+            type: string
+            description: 姐妹姓名（英文）
+      background_declaration:
+        type: object
+        properties:
+          have_any_relatives:
+            type: integer
+            description: 是否有親戚在公司裡
+          relative_criminal_record:
+            type: integer
+            description: 有無犯罪記錄
+          relative_criminal_record_detail:
+            type: string
+            description: 犯罪記錄詳情
+          relative_business_relationship_with_suncity:
+            type: integer
+            description: 親屬與公司有合作
+          relative_business_relationship_with_suncity_detail:
+            type: string
+            description: 親屬與公司合作詳情
+      family_declaration_item:
+        type: object
+        properties:
+          relative_relation:
+            type: string
+            description: 關係
+      profit_conflict_information:
+        type: object
+        properties:
+          have_or_no:
+            type: boolean
+            description: 是否有利益衝突
+          number:
+            type: integer
+            description: 編號
+
+
+      wrwt:
+        type: object
+        properties:
+          provide_airfare:
+            type: boolean
+            description: 是否提供机票
+          provide_accommodation:
+            type: boolean
+            description: 是否提供住宿
+          airfare_type:
+            type: string
+            description: 'round:来回; one_way:单程; count:次数'
+          airfare_count:
+            type: integer
+            description: 次数
+      love_fund:
+        type: object
+        properties:
+          valid_date:
+            type: string
+            description: '生效日期'
+          to_status:
+            type: string
+            description: '參加狀態'
+      medical_insurance_participator:
+        type: object
+        properties:
+          valid_date:
+            type: string
+            description: '生效日期'
+          to_status:
+            type: string
+            description: '參加狀態'
+      roster_instruction:
+        type: object
+        properties:
+          comment:
+            type: string
+            description: 考勤備注
+
+  InterviewData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          users:
+            type: array
+            items:
+              type: object
+              properties:
+                empoid:
+                  type: string
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                position_id:
+                  type: integer
+                department_id:
+                  type: integer
+                email:
+                  type: string
+                departmen_chinese_name:
+                  type: string
+                position_chinese_name:
+                  type: string
+                field_join:
+                  type: string
+                can_canched_in_frontend:
+                  type: boolean
+          not_found_values:
+            type: array
+            items:
+              type: string
+      state:
+        type: string

@@ -1,0 +1,32 @@
+entry_waited_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: empoid_for_create_profile
+      search_type: search
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: name
+      search_type: search
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: applicant_position.department
+      search_type: screen
+      sorter: true
+
+    - key: position
+      value_type: obj_value
+      data_index: applicant_position.position
+      search_type: screen
+      sorter: true
+
+    - key: date_of_employment
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: data.position_to_apply.field_values.available_on
+      search_type: date
+      sorter: true

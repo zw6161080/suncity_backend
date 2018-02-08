@@ -1,0 +1,411 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 愛心基金參加成員
+
+# Describe your paths here
+paths:
+  /love_funds:
+    get:
+      description: 获取纪律处分申请列表
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 页面编号
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门ID
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位ID
+      - name: employee_grade
+        in: query
+        required: false
+        type: string
+        description: 员工职级
+      - name: date_of_employment
+        in: query
+        required: false
+        type: string
+        description: 入职日期 `YYYY/MM/DD`，传一个range
+      - name: participate
+        in: query
+        required: false
+        type: string
+        description: 是否参加爱心基金，两类值 {'participated', 'not_participated'}
+      - name: participate_date
+        in: query
+        required: false
+        type: string
+        description: 参加日期 `YYYY/MM/DD`，传一个range
+      - name: cancel_date
+        in: query
+        required: false
+        type: string
+        description: 取消日期 `YYYY/MM/DD`，传一个range
+      - name: monthly_deduction
+        in: query
+        required: false
+        type: string
+        description: 每月扣除金额
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/LoveFunds'
+
+  /profiles/{profile_id}/love_fund:
+    get:
+      description: 获取一条爱心基金记录
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/LoveFundRecord'
+    patch:
+      description: 修改一条爱心基金记录
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: update_prarams
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#definitions/UpdateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /love_funds/batch_update:
+    patch:
+      description: 修改多条爱心基金记录
+      parameters:
+      - name: love_fund_params
+        in: body
+        required: true
+        description: 修改用到的参数
+        schema:
+          $ref: '#/definitions/LoveFundParams'
+      responses:
+        200:
+          description: 成功响应
+  /profiles/{profile_id}/love_fund/update_from_profile:
+    patch:
+      description: 修改一条爱心基金记录(档案中)
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: update_prarams
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#definitions/UpdateParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /love_funds/export:
+    get:
+      description: 以Excel文件的形式 汇出愛心基金參加成員列表
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门ID
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位ID
+      - name: employee_grade
+        in: query
+        required: false
+        type: string
+        description: 员工职级
+      - name: date_of_employment
+        in: query
+        required: false
+        type: string
+        description: 入职日期 `YYYY/MM/DD`，传一个range
+      - name: participate
+        in: query
+        required: false
+        type: string
+        description: 是否参加爱心基金，两类值 {'love_fund.enum_participate.participated', 'love_fund.enum_participate.not_participated'}
+      - name: participate_date
+        in: query
+        required: false
+        type: string
+        description: 参加日期 `YYYY/MM/DD`，传一个range
+      - name: cancel_date
+        in: query
+        required: false
+        type: string
+        description: 取消日期 `YYYY/MM/DD`，传一个range
+      - name: monthly_deductio
+        in: query
+        required: false
+        type: string
+        description: 每月扣除金额
+      responses:
+        200:
+          description: 成功响应
+
+  /love_funds/field_options:
+    get:
+      description: 获取列表页中所有的筛选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/FieldOptions'
+
+
+definitions:
+  UpdateParams:
+    type: object
+    properties:
+      to_status:
+        type: string
+        description: 'participated_in_the_future/not_participated_in_the_future'
+      valid_data:
+        type: string
+        description: '生效日期'
+  LoveFunds:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          title: 爱心基金参加成员条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 爱心基金记录ID
+            user_id:
+              type: integer
+              description: 员工ID
+            user:
+              type: object
+              description: 员工相关信息
+            participate:
+              type: string
+              description: 是否参加
+            participate_date:
+              type: string
+              description: 参加日期 `YYYY/MM/DD`
+            cancel_date:
+              type: string
+              description: 取消日期 `YYYY/MM/DD`
+            monthly_deduction:
+              type: string
+              description: 每月扣除金额
+            date_of_employment:
+              type: string
+              description: 入職日期 `YYYY/MM/DD`
+            is_participate:
+              type: boolean
+              description:  是否参加
+            valid_date:
+              type: string
+              description: 生效日期
+
+  LoveFundParams:
+    type: object
+    properties:
+      ids:
+        type: array
+        items:
+          type: integer
+          description: 'user_id'
+      love_fund:
+        type: object
+        properties:
+          to_status:
+            type: string
+            description: 是否参加爱心基金，两类值 {'love_fund.enum_participate.participated', 'love_fund.enum_participate.not_participated'}
+          valid_date:
+            type: string
+            description: 参加日期 `YYYY/MM/DD`
+
+  LoveFundRecord:
+    type: object
+    properties:
+      data:
+        type: object
+        description: 一条爱心基金记录
+        properties:
+          user_id:
+            type: integer
+            description: 员工ID
+          user:
+            type: object
+            description: 员工相关信息
+          participate:
+            type: string
+            description: 是否参加
+          participate_date:
+            type: string
+            description: 参加日期
+          cancel_date:
+            type: string
+            description: 取消日期
+
+  FieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          positions:
+            description: 职位筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Position'
+          departments:
+            description: 部门筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Department'
+          grades:
+            description: 职级筛选项
+            type: array
+            items:
+              type: string
+          participate:
+            description: 是否参加 筛选项
+            type: array
+            items:
+              type: string
+
+  Position:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      number:
+        type: integer
+      grade:
+        type: integer
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+
+  Department:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+      head_id:
+        type: integer

@@ -1,0 +1,16 @@
+zh-CN:
+  reserved_holiday_settings:
+    file_name: Appraisal Reports
+  statement_columns:
+    reserved_holiday_settings:
+      name: 预留假期名称
+      date_begin: 开始时间
+      date_end: 结束时间
+      days_count: 假期天数
+      member_count: 符合人数
+      comment: 备注
+      creator: 录入人
+      update_date: 录入日期
+      update_time: 录入时间
+
+

@@ -1,0 +1,7 @@
+generate_attendance_list:
+  description: "Generate Attendance list at the beginning of every month"
+  # cron: "*/1 * * * *"
+  cron: "1 0 1 * *"
+  class: "GenerateAttendanceListJob"
+  queue: default
+  active_job: true

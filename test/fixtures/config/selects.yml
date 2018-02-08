@@ -1,0 +1,179 @@
+# form selects config
+
+gender:
+  options:
+    - key: male
+      chinese_name: 男
+      english_name: male
+    - key: female
+      chinese_name: 女
+      english_name: female
+
+nationality:
+  options:
+    - key: china
+      chinese_name: 中國
+      english_name: China
+    - key: macau
+      chinese_name: 澳門
+      english_name: Macau
+
+type_of_id:
+  options:
+    - key: macau_permanent_identity_card
+      chinese_name: 澳門永久居民身份證
+      english_name: Macau Permanent Identity Card
+    - key: macau_and_africa_permanent_identity_card
+      chinese_name: 澳門非永久居民身份證
+      english_name: Macau and Africa Permanent Identity Card
+    - key: hong_kong_identity_card
+      chinese_name: 香港居民身份證
+      english_name: Hong Kong Identity Card
+    - key: valid_exit_entry_permit_eep_to_hk_macau
+      chinese_name: 港澳通行證
+      english_name: Valid Exit-Entry Permit (EEP) to HK / Macau
+    - key: passport
+      chinese_name: 護照
+      english_name: Passport
+    - key: blue_card
+      chinese_name: 藍卡
+      english_name: Blue Card
+
+marital_status:
+  options:
+    - key: unmarried
+      chinese_name: 未婚
+      english_name: Unmarried
+    - key: married
+      chinese_name: 已婚
+      english_name: Married
+    - key: windowed
+      chinese_name: 喪偶
+      english_name: Widowed
+    - key: divorced
+      chinese_name: 離婚
+      english_name: Divorced
+    - key: others
+      chinese_name: 其他
+      english_name: Others
+
+employment_status:
+  options:
+    - key: informal_employees
+      chinese_name: 非正式員工
+      english_name: Informal Employees
+    - key: formal_employees
+      chinese_name: 正式員工
+      english_name: Formal Employees
+    - key: director
+      chinese_name: 總監員工
+      english_name: Director
+    - key: president
+      chinese_name: 總裁員工
+      english_name: President
+    - key: part_time
+      chinese_name: 兼職
+      english_name: Part Time
+    - key: trainee
+      chinese_name: 實習生
+      english_name: Trainee
+  default: informal_employees
+
+payment_method:
+  options:
+    - key: check
+      chinese_name: 支票
+      english_name: check
+    - key: cash
+      chinese_name: 現金
+      english_name: cash
+
+provident_fund:
+  options:
+    - key: true
+      chinese_name: 扣除
+      english_name: yes
+    - key: false
+      chinese_name: 不扣除
+      english_name: no
+
+transfer_reason:
+  options:
+    - key: entry
+      chinese_name: 入職
+      english_name: Entry
+    - key: probaton_passed
+      chinese_name: 通過試用期
+      english_name: Probation Passed
+    - key: promotion
+      chinese_name: 晉升
+      english_name: Promotion
+    - key: department_transfer_personal_request
+      chinese_name: 跨部門調職(個人申請)
+      english_name: Department Transfer (Personal Request)
+    - key: department_transfer_department_request
+      chinese_name: 跨部門調職(部門申請)
+      english_name: Department Transfer (Department Request)
+    - key: location_transfer
+      chinese_name: 調館
+      english_name: Location Transfer
+    - key: transfer_within_same_department_personal_request
+      chinese_name: 同部門調職(個人申請)
+      english_name: Transfer within Same Department (Personal Request)
+    - key: transfer_within_same_department_department_request
+      chinese_name: 同部門調職(部門申請)
+      english_name: Transfer within Same Department (Department Request)
+    - key: company_transfer_personal_request
+      chinese_name: 跨公司調職(個人申請)
+      english_name: Company Transfer (Personal Request)
+    - key: company_transfer_department_request
+      chinese_name: 跨公司調職(部門申請)
+      english_name: Company Transfer (Department Request)
+
+resigned_reason:
+  options:
+    - key: resignation
+      chinese_name: 辭職
+      english_name: Resignation
+    - key: termination
+      chinese_name: 解僱
+      english_name: Termination
+    - key: company_transfer_personal_request
+      chinese_name: 跨公司調職(個人申請)
+      english_name: Company Transfer (Personal Request)
+    - key: company_transfer_department_request
+      chinese_name: 跨公司調職(部門申請)
+      english_name: Company Transfer (Department Request)
+    - key: retirement
+      chinese_name: 退休
+      english_name: Retirement
+    - key: others
+      chinese_name: 其他
+      english_name: Others
+
+reason_for_resignation:
+  options:
+    - key: job_description
+      chinese_name: 工作職能
+      english_name: Job Description
+    - key: family_or_other_external_reason
+      chinese_name: 家庭或其他外在因素
+      english_name: Family or Other External Reason
+    - key: employee_benefits
+      chinese_name: 員工福利待遇
+      english_name: Employee Benefits
+    - key: career_development
+      chinese_name: 職業發展
+      english_name: Career Development
+    - key: personal_career_development
+      chinese_name: 個人生涯發展
+      english_name: Personal Career Development
+    - key: personal_reason
+      chinese_name: 個人因素
+      english_name: Personal reason
+    - key: relationship
+      chinese_name: 人際關係
+      english_name: Relationships
+    - key: others
+      chinese_name: 其他
+      english_name: Others

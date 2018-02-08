@@ -1,0 +1,22 @@
+zh-CN:
+  appraisal_questionnaires_records:
+    file_name: 360评核记录(全部评核问卷)
+  statement_columns:
+    appraisal_questionnaires_records:
+      appraisal_name: 360评核名称
+      appraisal_date: 360评核日期
+      participator_empoid: 被评核者员工编号
+      participator_name: 被评核者姓名
+      participator_location: 被评核者场馆
+      participator_department: 被评核者部门
+      participator_position: 被评核者职位
+      assess_type: 评核类别
+      assessment_score: 评核分数
+      assessor_empoid: 评核者员工编号
+      assessor_name: 评核者姓名
+      assessor_department: 评核者部门
+      assessor_position: 评核者职位
+      submit_date: 提交日期
+      release_user: 最新修订人
+      release_date: 最新修订日期
+

@@ -1,0 +1,24 @@
+attributes:
+  - key
+  - chinese_name
+  - english_name
+  - simple_chinese_name
+  - value_type
+  - value_format
+  - data_index
+  - data_index_begin
+  - data_index_end
+  - data_index_begin_value_type
+  - data_index_end_value_type
+  - date_index_begin_format
+  - date_index_end_format
+  - join_format
+  - search_type
+  - sorter
+  - options_type
+  - options_predefined
+  - options_endpoint
+  - children
+  - option
+  - item_type
+  - item_index

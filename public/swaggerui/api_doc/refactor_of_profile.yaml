@@ -1,0 +1,2296 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 档案重构
+
+# Describe your paths here
+paths:
+  /profiles/{profile_id}/provident_fund/can_create:
+    get:
+      tags:
+        - 公积金
+      parameters:
+        - name: profile_id
+          type:  integer
+          description: 档案id
+          required: true
+          in: path
+        - name: join_date
+          type: string
+          description: 参加日期
+          required: true
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/can_create'
+  /profiles/{profile_id}/love_fund/can_create:
+    get:
+      tags:
+        - 爱心基金
+      parameters:
+        - name: profile_id
+          type:  integer
+          description: 档案id
+          required: true
+          in: path
+        - name: join_date
+          type: string
+          description: 参加日期
+          required: true
+          in: query
+
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/can_create'
+  /profiles/{profile_id}/medical_insurance_participator/can_create:
+    get:
+      tags:
+        - 医疗计划参加成员
+      parameters:
+        - name: profile_id
+          type:  integer
+          description: 档案id
+          required: true
+          in: path
+        - name: join_date
+          type: string
+          description: 参加日期
+          required: true
+          in: query
+
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/can_create'
+  /groups/options_for_profile_create:
+    get:
+      tags:
+        - 组别
+      description: '员工档案组别筛选项（档案创建）'
+      parameters:
+        - name: department_id
+          type: string
+          description: 部门id(支持数组)
+          required: false
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/GroupList'
+
+
+  /profiles:
+    get:
+      tags:
+        - 员工档案列表
+      description: 获取员工档案列表信息
+      parameters:
+        - name: company_name
+          type: string
+          description: 公司名称
+          in: query
+          required: true
+        - name: department_id
+          type: string
+          description: 部门id
+          in: query
+          required: true
+        - name: position_id
+          type: string
+          description: 职位id
+          in: query
+          required: true
+        - name: location_id
+          type: string
+          description: 场馆id
+          in: query
+          required: false
+        - name: grade
+          type: string
+          description: 职级
+          in: query
+          required: false
+        - name: employment_status
+          type: string
+          description: 在职类别
+          in: query
+          required: false
+        - name: working_status
+          type: string
+          description: '在职/离职'
+          in: query
+          required: false
+        - name: status_start_date
+          type: string
+          description: '入职/或离职日期开始'
+          in: query
+          required: false
+        - name: status_end_date
+          type: string
+          description: '入职/或离职日期结束'
+          in: query
+          required: false
+        - name: select_columns
+          type: string
+          description: '所选表头字段'
+          in: query
+          required: false
+      responses:
+        200:
+          description: ok
+  /profile_attachment_types:
+    get:
+      tags:
+        - 相关文件
+      description: 获取相关文件类型信息
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ProfileAttachmentTypeInfo'
+  /users/{id}/holiday_info:
+    get:
+      tags:
+        - 假期信息
+      description: 获取员工当前假期信息
+      parameters:
+        - name: id
+          type: integer
+          description: 员工id
+          required: true
+          in: path
+        - name: now
+          type: string
+          description: 日期
+          required: false
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/HolidayInfo'
+
+
+  /award_records/index_by_user:
+    get:
+      tags:
+        - 奖励情况
+      description: 获取奖励情况变更记录
+      parameters:
+        - name: user_id
+          type: integer
+          description: 员工id
+          required: true
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/AwardRecordByUser'
+  /award_records/{id}:
+    get:
+      tags:
+        - 奖励情况
+      description: 获取奖励记录信息
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 奖励记录id
+      responses:
+        200:
+          description: ok
+    delete:
+      tags:
+        - 奖励情况
+      description: 删除奖励记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 奖励记录id
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 奖励情况
+      description: 更新奖励记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 奖励记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateAwardRecordParams'
+      responses:
+        200:
+          description: ok
+  /award_records:
+    post:
+      tags:
+        - 奖励情况
+      description: 创建奖励记录
+      parameters:
+        - name: create_params
+          required: true
+          in: body
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/AwardCreateParams'
+      responses:
+        200:
+          description: ok
+  /medical_records/index_by_user:
+    get:
+      tags:
+        - 医疗信息
+      description: 获取医疗信息变更记录
+      parameters:
+        - name: user_id
+          type: integer
+          description: 员工id
+          required: true
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/MedicalRecords'
+
+  /love_fund_records/index_by_user:
+    get:
+      tags:
+        - 愛心基金
+      description: 获取爱心基金变更记录
+      parameters:
+        - name: user_id
+          type: integer
+          description: 员工id
+          required: true
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/LoveFundRecords'
+  /wrwts/current_wrwt_by_user:
+    get:
+      tags:
+        - 福利信息非模板部分
+      description: 获取当期信息
+      parameters:
+        - name: user_id
+          type: integer
+          description: 员工id
+          required: true
+          in: query
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CurrentWrwt'
+  /wrwts/{id}:
+    patch:
+      tags:
+        - 福利信息非模板部分
+      description: 更新
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 记录ID
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WrwtUpdateParams'
+      responses:
+        200:
+          description: ok
+  /wrwts:
+    post:
+      tags:
+        - 福利信息非模板部分
+      description: 新增福利信息非模板部分信息
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/WrwtCreateParams'
+      responses:
+        200:
+          description: ok
+  /resignation_records/resignation_information_options:
+    get:
+      tags:
+        - 离职历史
+      description: 获取离职历史筛选型
+      responses:
+        200:
+          description: ok
+  /resignation_records/index_by_user:
+    get:
+      tags:
+        - 离职历史
+      description: 获取离职历史列表
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ResignationInformationByUser'
+  /museum_records/museum_information_options:
+    get:
+      tags:
+        - 调馆历史
+      description: 获取调馆历史筛选型
+      responses:
+        200:
+          description: ok
+  /museum_records/index_by_user:
+    get:
+      tags:
+        - 调馆历史
+      description: 获取调馆历史列表
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/MuseumInformationByUser'
+  /lent_records/lent_information_options:
+    get:
+      tags:
+        - 暂借历史
+      description: 获取暂借历史筛选型
+      responses:
+        200:
+          description: ok
+  /lent_records/index_by_user:
+    get:
+      tags:
+        - 暂借历史
+      description: 获取暂借历史列表
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/LentInformationByUser'
+  /resignation_records/{id}/month_salary_report_item_has_granted:
+    get:
+      tags:
+        - 离职历史
+      description: 是否因有已完成的离职每月薪酬而不能被删除
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 离职记录id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ResignationRecordCanBeDestroyForSalaryValue'
+  /museum_records/location_is_ok:
+    get:
+      tags:
+        - 调馆历史
+      description: 判断是否可以调馆
+      parameters:
+        - name: id
+          in: query
+          required: true
+          type: integer
+          description: user_id
+        - name: date_of_employment
+          in: query
+          required: true
+          type: string
+          description: 调馆开始日期
+        - name: location_id
+          in: query
+          required: true
+          type: integer
+          description: 调馆场馆
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TemporaryStadiumIsOK'
+
+  /lent_records/temporary_stadium_is_ok:
+    get:
+      tags:
+        - 暂借历史
+      description: 判断是否可以暂借
+      parameters:
+        - name: id
+          in: query
+          required: true
+          type: integer
+          description: user_id
+        - name: lent_begin
+          in: query
+          required: true
+          type: string
+          description: 暂借开始日期
+        - name: temporary_stadium_id
+          in: query
+          required: true
+          type: integer
+          description: 暂借场馆
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TemporaryStadiumIsOK'
+  /lent_records/{id}:
+    delete:
+      tags:
+        - 暂借历史
+      description: 删除暂借记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 暂借记录id
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 暂借历史
+      description: 更新暂借记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 暂借记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateLentRecordParams'
+      responses:
+        200:
+          description: ok
+  /resignation_records/{id}:
+    delete:
+      tags:
+        - 离职历史
+      description: 删除离职记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 离职记录id
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 离职历史
+      description: 更新离职记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 离职记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateResignationRecordParams'
+      responses:
+        200:
+          description: ok
+  /museum_records/{id}:
+    delete:
+      tags:
+        - 调馆历史
+      description: 删除调馆记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 调馆记录id
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 调馆历史
+      description: 更新调馆记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 调馆记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateMuseumRecordParams'
+      responses:
+        200:
+          description: ok
+  /museum_records:
+    post:
+      tags:
+        - 调馆历史
+      description: 创建调馆历史
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          schema:
+           $ref: '#/definitions/CreateMuseumParams'
+      responses:
+        200:
+          description: ok
+  /lent_records:
+    post:
+      tags:
+        - 暂借历史
+      description: 创建暂借历史
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          schema:
+           $ref: '#/definitions/CreateLentParams'
+      responses:
+        200:
+          description: ok
+  /resignation_records:
+    post:
+      tags:
+        - 离职历史
+      description: 创建离职历史
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          schema:
+           $ref: '#/definitions/CreateResignationParams'
+      responses:
+        200:
+          description: ok
+
+  /career_records/career_information_options:
+    get:
+      tags:
+        - 职程历史
+      description: 获取职程历史筛选型
+      responses:
+        200:
+          description: ok
+  /career_records/index_by_user:
+    get:
+      tags:
+        - 职程历史
+      description: 获取职程历史列表
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CareerInformationByUser'
+  /career_records/{id}:
+    delete:
+      tags:
+        - 职程历史
+      description: 删除职程记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 职程记录id
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 职程历史
+      description: 更新职程记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 职程记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateCareerRecordParams'
+      responses:
+        200:
+          description: ok
+  /career_records:
+    post:
+      tags:
+        - 职程历史
+      description: 创建职程历史
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          schema:
+           $ref: '#/definitions/CreateCareerParams'
+      responses:
+        200:
+          description: ok
+  /welfare_records/current_welfare_record_and_coming_welfare_record:
+    get:
+      tags:
+        - 福利信息
+      description: 获取当前生效的福利信息和即将生效的福利信息(从档案详情页中获取)
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CurrentWelfareRecordAndWelfareRecord'
+  /welfare_records/current_welfare_record_by_user_from_job_transfer:
+    get:
+      tags:
+        - 福利信息
+      description: 获取当前生效的福利信息(从职位变动中获取)
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CurrentWelfareRecord'
+  /welfare_records/current_welfare_record_by_user:
+    get:
+      tags:
+        - 福利信息
+      description: 获取当前生效的福利信息
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CurrentWelfareRecord'
+  /salary_records/current_salary_record_and_coming_salary_record:
+    get:
+      tags:
+        - 薪酬信息
+      description: 获取当前生效的薪酬信息和将要生效的薪酬信息(从档案详情页中获取)
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CurrentSalaryRecordAndComingSalaryRecord'
+
+  /salary_records/current_salary_record_by_user_from_job_transfer:
+    get:
+      tags:
+        - 薪酬信息
+      description: 获取当前生效的薪酬信息(从职位变动中获取)
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CurrentSalaryRecord'
+
+  /salary_records/current_salary_record_by_user:
+    get:
+      tags:
+        - 薪酬信息
+      description: 获取当前生效的薪酬信息
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CurrentSalaryRecord'
+
+  /welfare_records/{id}:
+    delete:
+      tags:
+        - 福利信息
+      description: 删除福利记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 福利记录id
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 福利信息
+      description: 更新福利记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 福利记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateWelfareRecordParams'
+      responses:
+        200:
+          description: ok
+  /salary_records/{id}:
+    delete:
+      tags:
+        - 薪酬信息
+      description: 删除薪酬记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 薪酬记录id
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 薪酬信息
+      description: 更新薪酬记录
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 薪酬记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateSalaryRecordParams'
+      responses:
+        200:
+          description: ok
+  /salary_records:
+    post:
+      tags:
+        - 薪酬信息
+      description: 创建薪酬信息
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          schema:
+           $ref: '#/definitions/CreateSalaryParams'
+      responses:
+        200:
+          description: ok
+  /welfare_records:
+    post:
+      tags:
+        - 福利信息
+      description: 创建福利信息
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          schema:
+           $ref: '#/definitions/CreateWelfareParams'
+      responses:
+        200:
+          description: ok
+  /salary_records/salary_information_options:
+    get:
+      tags:
+        - 薪酬信息
+      description: 薪酬信息筛选项
+      responses:
+        200:
+          description: ok
+  /salary_records/index_by_user:
+    get:
+      tags:
+        - 薪酬信息
+      description: 薪酬历史
+      parameters:
+        - name: user_id
+          in: query
+          type: integer
+          required: true
+          description: '员工id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/SalaryInformationByUser'
+  /welfare_records/welfare_information_options:
+    get:
+      tags:
+        - 福利信息
+      description: 福利信息筛选项
+      responses:
+        200:
+          description: ok
+  /welfare_records/index_by_user:
+    get:
+      tags:
+        - 福利信息
+      description: 福利历史
+      parameters:
+        - name: user_id
+          in: query
+          type: integer
+          required: true
+          description: '员工id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/WelfareInformationByUser'
+definitions:
+  ResignationRecordCanBeDestroyForSalaryValue:
+    type: object
+    properties:
+      can_destroy:
+        type: boolean
+        description: '是否因为，有已近完成的离职每月薪酬记录，而不能被删除'
+  ProfileAttachmentTypeInfo:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              description: 档案文件类型id
+            chinese_name:
+              type: string
+              description: 繁体名
+            english_name:
+              type: string
+              description: 英文名
+            description:
+              type: string
+              description: 简介
+            'can_be_delete?':
+              type: boolean
+              description: 能否删除
+            total_count:
+              type: integer
+              description: 该类文件总数
+  HolidayInfo:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          annual_leave:
+            type: integer
+            description: 年级
+          sick_leave:
+            type: integer
+            description: 病假
+          paid_leave:
+            type: integer
+            description: 奖励假
+  AwardRecordByUser:
+    type: array
+    items:
+      type: object
+      properties:
+        year:
+          type: string
+          description: 年度
+        content:
+          type: string
+          description: 奖励内容
+        award_date:
+          type: string
+          description: 奖励日期
+        comment:
+          type: string
+          description: 备注
+        creator_id:
+          type: integer
+          description: 录入人id
+  UpdateAwardRecordParams:
+    type: object
+    properties:
+      content:
+        type: string
+        description: 内容
+      award_date:
+        type: string
+        description: 奖励日期
+      comment:
+        type: string
+        description: 备注
+
+  AwardCreateParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: 员工id
+      content:
+        type: string
+        description: 内容
+      award_date:
+        type: string
+        description: 奖励日期
+      comment:
+        type: string
+        description: 备注
+      creator_id:
+        type: integer
+        description: 录入人id
+  MedicalRecords:
+    type: object
+    properties:
+      medical_records:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 变更记录id
+            user_id:
+              type: integer
+              description: 员工id
+            participate:
+              type: boolean
+              description: 是否参加爱心基金
+            participate_begin:
+              type: string
+              description: 参加开始日期
+            participate_end:
+              type: string
+              description: 参加结束日期
+            creator_id:
+              type: string
+              description: 创建人id
+            creator:
+              type: object
+              description: 创建人信息
+  LoveFundRecords:
+    type: object
+    properties:
+      love_fund_records:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 变更记录id
+            user_id:
+              type: integer
+              description: 员工id
+            participate:
+              type: boolean
+              description: 是否参加爱心基金
+            participate_begin:
+              type: string
+              description: 参加开始日期
+            participate_end:
+              type: string
+              description: 参加结束日期
+            creator_id:
+              type: string
+              description: 创建人id
+            creator:
+              type: object
+              description: 创建人信息
+  CurrentWrwt:
+    type: object
+    properties:
+      wrwt:
+        type: object
+        properties:
+          user_id:
+            type: integer
+            description: 员工id
+          provide_airfare:
+            type: boolean
+            description: 是否提供机票
+          provide_accommodation:
+            type: boolean
+            description: 是否提供住宿
+          airfare_type:
+            type: string
+            description: 'round:来回; one_way:单程; count:次数'
+          airfare_count:
+            type: integer
+            description: 次数
+  WrwtUpdateParams:
+
+    type: object
+    properties:
+      provide_airfare:
+        type: boolean
+        description: 是否提供机票
+      provide_accommodation:
+        type: boolean
+        description: 是否提供住宿
+      airfare_type:
+        type: string
+        description: 'round:来回; one_way:单程; count:次数'
+      airfare_count:
+        type: integer
+        description: 次数
+  WrwtCreateParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: 员工id
+      provide_airfare:
+        type: boolean
+        description: 是否提供机票
+      provide_accommodation:
+        type: boolean
+        description: 是否提供住宿
+      airfare_type:
+        type: string
+        description: 'round:来回; one_way:单程; count:次数'
+      airfare_count:
+        type: integer
+        description: 次数
+  MuseumInformationByUser:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 记录id
+        user_id:
+          type: integer
+          description: 员工id
+        status:
+          type: integer
+          description: '记录状态（beging_valid: 生效;to_be_valida: 将要生效; invalid: 失效）'
+        date_of_employment:
+          type: string
+          description: 入职日期
+        deployment_type:
+          type: string
+          description: 调配类型
+        salary_calculation:
+          type: string
+          description: 薪酬计算
+        locaction_id:
+          type: integer
+          description: 场馆id
+        comment:
+          type: string
+          description: 备注
+  ResignationInformationByUser:
+    type: array
+    items:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          description: 员工id
+        status:
+          type: integer
+          description: '记录状态（beging_valid: 生效;to_be_valida: 将要生效; invalid: 失效）'
+        time_arrive:
+          type: string
+          description: 'arrived: 离职日期已到;coming: 未到'
+        resigned_date:
+          type: string
+          description: 最後僱用日期
+        resigned_reason:
+          type: string
+          description: 离职类型
+        reason_for_resignation:
+          type: string
+          description: 离职原因
+        employment_status:
+          type: string
+          description: 在职状态
+        department_id:
+          type: string
+          description: 离职前部门
+        position_id:
+          type: string
+          description: 离职前职位
+        compensation_year:
+          type: boolean
+          description: 是否补偿年资
+        notice_period_compensation:
+          type: boolean
+          description: 是否按通知期賠償
+        comment:
+          type: string
+          description: 备注
+        notice_date:
+          type: string
+          description: 离职通知日期
+        final_work_date:
+          type: string
+          description: 最後工作日期
+        is_in_whitelist:
+          type: boolean
+          description: 是否再聘用此員工
+  LentInformationByUser:
+    type: object
+    properties:
+      lent_begin:
+        type: string
+        description: '暂借开始时间'
+      lent_end:
+        type: string
+        description: '暂借结束时间'
+      deployment_type:
+        type: string
+        description: 调配类型
+      original_hall_id:
+        type: string
+        description: 原场馆id
+      temporary_stadium_id:
+        type: string
+        description: 临时场馆id
+      calculation_of_borrowing:
+        type: string
+        description: 借出薪酬计算
+      return_compensation_calculation:
+        type: string
+        description: 归还薪酬计算
+      comment:
+        type: string
+        description: 备注
+
+  UpdateResignationRecordParams:
+    type: object
+    properties:
+      resigned_date:
+        type: string
+        description: 最後僱用日期
+      resigned_reason:
+        type: string
+        description: 离职类型
+      reason_for_resignation:
+        type: string
+        description: 离职原因
+      employment_status:
+        type: string
+        description: 在职状态
+      department_id:
+        type: string
+        description: 离职前部门
+      position_id:
+        type: string
+        description: 离职前职位
+      compensation_year:
+        type: boolean
+        description: 是否补偿年资
+      notice_period_compensation:
+        type: boolean
+        description: 是否按通知期賠償
+      comment:
+        type: string
+        description: 备注
+      notice_date:
+        type: string
+        description: 离职通知日期
+      final_work_date:
+        type: string
+        description: 最後工作日期
+      is_in_whitelist:
+        type: boolean
+        description: 是否再聘用此員工
+  UpdateMuseumRecordParams:
+    type: object
+    properties:
+      date_of_employment:
+        type: string
+        description: 入职日期
+      deployment_type:
+        type: string
+        description: 调配类型
+      salary_calculation:
+        type: string
+        description: 薪酬计算
+      location_id:
+        type: string
+        description: 调往场馆的id
+      comment:
+        type: string
+        description: 评论
+  TemporaryStadiumIsOK:
+    type: object
+    properties:
+      can_create_or_update:
+        type: boolean
+        description: 是否可以删除或更新
+  UpdateLentRecordParams:
+    type: object
+    properties:
+      lent_begin:
+        type: string
+        description: '暂借开始时间'
+      lent_end:
+        type: string
+        description: '暂借结束时间'
+      deployment_type:
+        type: string
+        description: 调配类型
+      original_hall_id:
+        type: string
+        description: 原场馆id
+      temporary_stadium_id:
+        type: string
+        description: 临时场馆id
+      calculation_of_borrowing:
+        type: string
+        description: 借出薪酬计算
+      return_compensation_calculation:
+        type: string
+        description: 归还薪酬计算
+      comment:
+        type: string
+        description: 备注
+  CreateMuseumParams:
+    type: object
+    properties:
+      date_of_employment:
+        type: string
+        description: 入职日期
+      deployment_type:
+        type: string
+        description: 调配类型
+      salary_calculation:
+        type: string
+        description: 薪酬计算
+      location_id:
+        type: string
+        description: 调往场馆的id
+      comment:
+        type: string
+        description: 评论
+  CreateLentParams:
+    properties:
+      lent_begin:
+        type: string
+        description: '暂借开始时间'
+      lent_end:
+        type: string
+        description: '暂借结束时间'
+      deployment_type:
+        type: string
+        description: 调配类型
+      original_hall_id:
+        type: string
+        description: 原场馆id
+      temporary_stadium_id:
+        type: string
+        description: 临时场馆id
+      calculation_of_borrowing:
+        type: string
+        description: 借出薪酬计算
+      return_compensation_calculation:
+        type: string
+        description: 归还薪酬计算
+      comment:
+        type: string
+        description: 备注
+  CreateResignationParams:
+    properties:
+      user_id:
+        type: integer
+        description: 员工ID
+      resigned_date:
+        type: string
+        description: 最後僱用日期
+      resigned_reason:
+        type: string
+        description: 离职类型
+      reason_for_resignation:
+        type: string
+        description: 离职原因
+      employment_status:
+        type: string
+        description: 在职状态
+      department_id:
+        type: string
+        description: 离职前部门
+      position_id:
+        type: string
+        description: 离职前职位
+      compensation_year:
+        type: boolean
+        description: 是否补偿年资
+      notice_period_compensation:
+        type: boolean
+        description: 是否按通知期賠償
+      notice_date:
+        type: string
+        description: 离职通知期
+      final_work_date:
+        type: string
+        description: 最後工作日期
+      is_in_whitelist:
+        type: boolean
+        description: 是否再僱傭此員工
+  UpdateCareerRecordParams:
+    type: object
+    properties:
+      career_begin:
+        type: string
+        description: 职程开始日期
+      career_end:
+        type: string
+        description: 职程结束日期
+      deployment_type:
+        type: string
+        description: 调配类型
+      traial_period_expiration_date:
+        type: string
+        description: 试用期期满日期
+      salary_calculation:
+        type: string
+        description: 薪酬计算
+      company_name:
+        type: string
+        description: 公司名称
+      location_id:
+        type: integer
+        description: 场馆id
+      position_id:
+        type: integer
+        description: 职位id
+      department_id:
+        type: integer
+        description: 部门id
+      grade:
+        type: integer
+        description: 职级
+      division_of_job:
+        type: string
+        description: 员工归属类别
+      deployment_instructions:
+        type: string
+        description: 调配说明
+      comment:
+        type: string
+        description: 备注
+  CreateCareerParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: 员工id
+      career_begin:
+        type: string
+        description: 职程开始日期
+      career_end:
+        type: string
+        description: 职程结束日期
+      deployment_type:
+        type: string
+        description: 调配类型
+      traial_period_expiration_date:
+        type: string
+        description: 试用期期满日期
+      salary_calculation:
+        type: string
+        description: 薪酬计算
+      company_name:
+        type: string
+        description: 公司名称
+      location_id:
+        type: integer
+        description: 场馆id
+      position_id:
+        type: integer
+        description: 职位id
+      department_id:
+        type: integer
+        description: 部门id
+      grade:
+        type: integer
+        description: 职级
+      division_of_job:
+        type: string
+        description: 员工归属类别
+      deployment_instructions:
+        type: string
+        description: 调配说明
+      comment:
+        type: string
+        description: 备注
+  CurrentSalaryRecordAndComingSalaryRecord:
+    type: object
+    properties:
+      current_salary_record:
+        $ref: '#/definitions/CurrentSalaryRecord'
+      coming_salary_record:
+        $ref: '#/definitions/CurrentSalaryRecord'
+  CurrentSalaryRecord:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 记录id
+      change_reason:
+        type: string
+        description: 变更原因
+      salary_begin:
+        type: string
+        description: 'YYYY/MM/dd'
+      salary_end:
+        type: string
+        description: 'YYYY/MM/dd'
+      salary_template_id:
+        type: integer
+        description: 薪酬模板id
+      basic_salary:
+        type: string
+        description: 底薪(浮动值)
+      bonus:
+        type: string
+        description:  津贴(浮动值)
+      attendance_award:
+        type: string
+        description: 勤工奖(浮动值)
+      house_bonus:
+        type: string
+        description: 房屋津贴(浮动值)
+      new_year_bonus:
+        type: string
+        description: 新春利是份数(浮动值)
+      project_bonus:
+        type: string
+        description: 项目分红份数(浮动值)
+      product_bonus:
+        type: string
+        description: 尚品奖金份数(浮动值)
+      tea_bonus:
+        type: string
+        description: 茶资份数(浮动值)
+      kill_bonus:
+        type: string
+        description: 杀数份数(浮动值)
+      performance_bonus:
+        type: string
+        description: 业绩分红份数(浮动值)
+      charge_bonus:
+        type: string
+        description: 刷卡奖金份数(浮动值)
+      commission_bonus:
+        type: string
+        description: 佣金差额份数(浮动值)
+      receive_bonus:
+        type: string
+        description: 收账分红份数(浮动值)
+      exchange_rate_bonus:
+        type: string
+        description: 汇率分红份数(浮动值)
+      guest_card_bonus:
+        type: string
+        description: 贵宾卡消费份数(浮动值)
+      respect_bonus:
+        type: string
+        description: 尊华殿份数(浮动值)
+      region_bonus:
+        type: string
+        description: 地区津贴（浮动值）
+      service_award:
+        type: string
+        description: 服務獎金（浮动值）
+      internship_bonus:
+        type: string
+        description: 實習津貼（浮动值）
+      performance_award:
+        type: string
+        description: 績效獎金（浮动值）
+      special_tie_bonus:
+        type: string
+        description: 特別茶資（浮动值）
+
+      status:
+        type: string
+        description: 记录状态
+      final_basic_salary_unit:
+        type: string
+        description: 最终基本薪酬单位
+      final_bonus_unit:
+        type: string
+        description: 最终津贴单位
+      final_attendance_award_unit:
+        type: string
+        description: 最终勤工奖单位
+      final_house_bonus_unit:
+        type: string
+        description: 最终房屋津贴单位
+      final_total_count_unit:
+        type: string
+        description: 最终总薪金单位
+      final_basic_salary:
+        type: string
+        description: 最终基本薪金
+      final_bonus:
+        type: string
+        description: 最终津贴
+      final_attendance_award:
+        type: string
+        description: 最终勤工奖
+      final_house_bonus:
+        type: string
+        description: 最终房屋津贴
+      final_tea_bonus:
+        type: string
+        description: 最终茶资份数
+      final_kill_bonus:
+        type: string
+        description: 最终杀数份数
+      final_performance_bonus:
+        type: string
+        description: 最终业绩分红份数
+      final_charge_bonus:
+        type: string
+        description: 最终刷卡奖金份数
+      final_commission_bonus:
+        type: string
+        description: 最终佣金差额份数
+      final_receive_bonus:
+        type: string
+        description: 最终收账分红份数
+      final_exchange_rate_bonus:
+        type: string
+        description: 最终汇率分红份数
+      final_guest_card_bonus:
+        type: string
+        description: 最终贵宾厅份数
+      final_respect_bonus:
+        type: string
+        description: 最终尊华殿份数
+      final_new_year_bonus:
+        type: string
+        description: 最终新春利是份数
+      final_project_bonus:
+        type: string
+        description: 最终项目分红份数
+      final_product_bonus:
+        type: string
+        description: 最终新春利是份数
+      final_region_bonus:
+        type: string
+        description: 最终地区津贴份数
+      final_service_award:
+        type: string
+        description: 最终服務獎金
+      final_internship_bonus:
+        type: string
+        description: 最终實習津貼
+      final_performance_award:
+        type: string
+        description: 最终績效獎金
+      final_special_tie_bonus:
+        type: string
+        description: 最终特別茶資
+
+  CurrentWelfareRecordAndWelfareRecord:
+    type: object
+    properties:
+      current_welfaare_record:
+        $ref: '#/definitions/CurrentWelfareRecord'
+      coming_welfare_record:
+        $ref: '#/definitions/CurrentWelfareRecord'
+  CurrentWelfareRecord:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 记录id
+      change_reason:
+        type: string
+        description: 变更原因
+      welfare_begin:
+        type: string
+        description: 'YYYY/MM/dd'
+      welfare_end:
+        type: string
+        description: 'YYYY/MMdd'
+      annual_leave:
+        type: string
+        description: 年假
+      sick_leave:
+        type: string
+        description: 病假
+      office_holiday:
+        type: string
+        description: 公休天数
+      welfare_template_id:
+        type: integer
+        description: 培训模板id
+      holiday_type:
+        type: string
+        description: 假期类别
+      probation:
+        type: string
+        description: 试用期
+      notice_period:
+        type: string
+        description: 离职通知期
+      double_pay:
+        type: boolean
+        description: 是否双粮
+      reduce_salary_for_sick:
+        type: boolean
+        description: 有薪病假是否扣薪
+      provide_airfare:
+        type: boolean
+        description: 是否提供机票
+      provide_accommodation:
+        type: boolean
+        description: 是否提供住宿
+      provide_uniform:
+        type: boolean
+        description: 是否提供制服
+      salary_composition:
+        type: string
+        description: 薪金组成
+      over_time_salary:
+        type: string
+        description: 加班薪金
+      force_holiday_make_up:
+        type: string
+        description: 强制性假期补偿
+      position_type:
+        type: string
+        description: 在职类别
+      work_days_every_week:
+        type: string
+        description: 每周工作天数
+      comment:
+        type: string
+        description: 备注
+      user_id:
+        type: integer
+        description: 员工id
+      status:
+        type: string
+        description: 记录状态
+  UpdateWelfareRecordParams:
+    type: object
+    properties:
+      change_reason:
+        type: string
+        description: 变更原因
+      welfare_begin:
+        type: string
+        description: 'YYYY/MM/dd'
+      welfare_end:
+        type: string
+        description: 'YYYY/MMdd'
+      annual_leave:
+        type: string
+        description: 年假
+      sick_leave:
+        type: string
+        description: 病假
+      office_holiday:
+        type: string
+        description: 公休天数
+      welfare_template_id:
+        type: integer
+        description: 培训模板id
+      holiday_type:
+        type: string
+        description: 假期类别
+      probation:
+        type: string
+        description: 试用期
+      notice_period:
+        type: string
+        description: 离职通知期
+      double_pay:
+        type: boolean
+        description: 是否双粮
+      reduce_salary_for_sick:
+        type: boolean
+        description: 有薪病假是否扣薪
+      provide_airfare:
+        type: boolean
+        description: 是否提供机票
+      provide_accommodation:
+        type: boolean
+        description: 是否提供住宿
+      provide_uniform:
+        type: boolean
+        description: 是否提供制服
+      salary_composition:
+        type: string
+        description: 薪金组成
+      over_time_salary:
+        type: string
+        description: 加班薪金
+      force_holiday_make_up:
+        type: string
+        description: 强制性假期补偿
+      comment:
+        type: string
+        description: 备注
+      user_id:
+        type: integer
+        description: 员工id
+  UpdateSalaryRecordParams:
+    type: object
+    properties:
+      change_reason:
+        type: string
+        description: 变更原因
+      salary_begin:
+        type: string
+        description: 'YYYY/MM/dd'
+      salary_end:
+        type: string
+        description: 'YYYY/MM/dd'
+      salary_template_id:
+        type: integer
+        description: 薪酬模板
+      basic_salary:
+        type: string
+        description: 底薪
+      basic_salary_unit:
+        type: string
+        description: 底薪单位
+      bonus:
+        type: string
+        description:  津贴
+      bonus_unit:
+        type: string
+        description:  津贴单位
+      attendance_award:
+        type: string
+        description: 勤工奖
+      attendance_award_unit:
+        type: string
+        description: 勤工单位
+      house_bonus:
+        type: string
+        description: 房屋津贴
+      house_bonus_unit:
+        type: string
+        description: 房屋津贴单位
+      total_count_unit:
+        type: string
+        description: 总薪金单位
+      new_year_bonus:
+        type: string
+        description: 新春利是份数
+      project_bonus:
+        type: string
+        description: 项目分红份数
+      product_bonus:
+        type: string
+        description: 尚品奖金份数
+      tea_bonus:
+        type: string
+        description: 茶资份数
+      kill_bonus:
+        type: string
+        description: 杀数份数
+      performance_bonus:
+        type: string
+        description: 业绩分红份数
+      charge_bonus:
+        type: string
+        description: 刷卡奖金份数
+      commission_bonus:
+        type: string
+        description: 佣金差额份数
+      receive_bonus:
+        type: string
+        description: 收账分红份数
+      exchange_rate_bonus:
+        type: string
+        description: 汇率分红份数
+      guest_card_bonus:
+        type: string
+        description: 贵宾卡消费份数
+      respect_bonus:
+        type: string
+        description: 尊华殿份数
+      region_bonus:
+        type: string
+        description: 地区津贴份数
+  CareerInformationByUser:
+    type: array
+    items:
+      type: object
+      properties:
+        user_id:
+          type: integer
+          description: 员工id
+        career_begin:
+          type: string
+          description: 职程开始日期
+        career_end:
+          type: string
+          description: 职程结束日期
+        deployment_type:
+          type: string
+          description: 调配类型
+        traial_period_expiration_date:
+          type: string
+          description: 试用期期满日期
+        salary_calculation:
+          type: string
+          description: 薪酬计算
+        company_name:
+          type: string
+          description: 公司名称
+        location_id:
+          type: integer
+          description: 场馆id
+        position_id:
+          type: integer
+          description: 职位id
+        department_id:
+          type: integer
+          description: 部门id
+        grade:
+          type: integer
+          description: 职级
+        division_of_job:
+          type: string
+          description: 员工归属类别
+        deployment_instructions:
+          type: string
+          description: 调配说明
+        comment:
+          type: string
+          description: 备注
+        status:
+          type: string
+          description: 状态
+  SalaryInformationByUser:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+          description: '记录状态{to_be_valid: 将要生效; being_valid: 正在生效; invalid: 失效}'
+        change_reason:
+          type: string
+          description: 变更原因
+        salary_begin:
+          type: string
+          description: 'YYYY/MM/dd'
+        salary_end:
+          type: string
+          description: 'YYYY/MM/dd'
+        salary_template_id:
+          type: integer
+          description: 薪酬模板
+        basic_salary:
+          type: string
+          description: 底薪
+        basic_salary_unit:
+          type: string
+          description: 底薪单位
+        bonus:
+          type: string
+          description:  津贴
+        bonus_unit:
+          type: string
+          description:  津贴单位
+        attendance_award:
+          type: string
+          description: 勤工奖
+        attendance_award_unit:
+          type: string
+          description: 勤工单位
+        house_bonus:
+          type: string
+          description: 房屋津贴
+        house_bonus_unit:
+          type: string
+          description: 房屋津贴单位
+        total_count_unit:
+          type: string
+          description: 总薪金单位
+        new_year_bonus:
+          type: string
+          description: 新春利是份数
+        project_bonus:
+          type: string
+          description: 项目分红份数
+        product_bonus:
+          type: string
+          description: 尚品奖金份数
+        tea_bonus:
+          type: string
+          description: 茶资份数
+        kill_bonus:
+          type: string
+          description: 杀数份数
+        performance_bonus:
+          type: string
+          description: 业绩分红份数
+        charge_bonus:
+          type: string
+          description: 刷卡奖金份数
+        commission_bonus:
+          type: string
+          description: 佣金差额份数
+        receive_bonus:
+          type: string
+          description: 收账分红份数
+        exchange_rate_bonus:
+          type: string
+          description: 汇率分红份数
+        guest_card_bonus:
+          type: string
+          description: 贵宾卡消费份数
+        respect_bonus:
+          type: string
+          description: 尊华殿份数
+        region_bonus:
+          type: string
+          description: 地区津贴份数
+  WelfareInformationByUser:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: 记录id
+        change_reason:
+          type: string
+          description: 变更原因
+        welfare_begin:
+          type: string
+          description: 'YYYY/MM/dd'
+        welfare_end:
+          type: string
+          description: 'YYYY/MMdd'
+        annual_leave:
+          type: string
+          description: 年假
+        sick_leave:
+          type: string
+          description: 病假
+        office_holiday:
+          type: string
+          description: 公休天数
+        welfare_template_id:
+          type: integer
+          description: 培训模板id
+        holiday_type:
+          type: string
+          description: 假期类别
+        probation:
+          type: string
+          description: 试用期
+        notice_period:
+          type: string
+          description: 离职通知期
+        double_pay:
+          type: boolean
+          description: 是否双粮
+        reduce_salary_for_sick:
+          type: boolean
+          description: 有薪病假是否扣薪
+        provide_airfare:
+          type: boolean
+          description: 是否提供机票
+        provide_accommodation:
+          type: boolean
+          description: 是否提供住宿
+        provide_uniform:
+          type: boolean
+          description: 是否提供制服
+        salary_composition:
+          type: string
+          description: 薪金组成
+        over_time_salary:
+          type: string
+          description: 加班薪金
+        force_holiday_make_up:
+          type: string
+          description: 强制性假期补偿
+        comment:
+          type: string
+          description: 备注
+        user_id:
+          type: integer
+          description: 员工id
+        status:
+          type: string
+          description: '记录状态{to_be_valid: 将要生效; being_valid: 正在生效; invalid: 失效}'
+  CreateSalaryParams:
+    type: object
+    properties:
+      change_reason:
+        type: string
+        description: 变更原因
+      salary_begin:
+        type: string
+        description: 'YYYY/MM/dd'
+      salary_end:
+        type: string
+        description: 'YYYY/MM/dd'
+      salary_template_id:
+        type: integer
+        description: 薪酬模板
+      basic_salary:
+        type: string
+        description: 底薪
+      basic_salary_unit:
+        type: string
+        description: 底薪单位
+      bonus:
+        type: string
+        description:  津贴
+      bonus_unit:
+        type: string
+        description:  津贴单位
+      attendance_award:
+        type: string
+        description: 勤工奖
+      attendance_award_unit:
+        type: string
+        description: 勤工单位
+      house_bonus:
+        type: string
+        description: 房屋津贴
+      house_bonus_unit:
+        type: string
+        description: 房屋津贴单位
+      total_count_unit:
+        type: string
+        description: 总薪金单位
+      new_year_bonus:
+        type: string
+        description: 新春利是份数
+      project_bonus:
+        type: string
+        description: 项目分红份数
+      product_bonus:
+        type: string
+        description: 尚品奖金份数
+      tea_bonus:
+        type: string
+        description: 茶资份数
+      kill_bonus:
+        type: string
+        description: 杀数份数
+      performance_bonus:
+        type: string
+        description: 业绩分红份数
+      charge_bonus:
+        type: string
+        description: 刷卡奖金份数
+      commission_bonus:
+        type: string
+        description: 佣金差额份数
+      receive_bonus:
+        type: string
+        description: 收账分红份数
+      exchange_rate_bonus:
+        type: string
+        description: 汇率分红份数
+      guest_card_bonus:
+        type: string
+        description: 贵宾卡消费份数
+      respect_bonus:
+        type: string
+        description: 尊华殿份数
+      region_bonus:
+        type: string
+        description: 地区津贴份数
+      service_award:
+        type: string
+        description: 服務獎金
+      internship_bonus:
+        type: string
+        description: 實習津貼
+      performance_award:
+        type: string
+        description: 績效獎金
+      special_tie_bonus:
+        type: string
+        description: 特別茶資
+
+
+  CreateWelfareParams:
+    type: object
+    properties:
+      change_reason:
+        type: string
+        description: 变更原因
+      welfare_begin:
+        type: string
+        description: 'YYYY/MM/dd'
+      welfare_end:
+        type: string
+        description: 'YYYY/MMdd'
+      annual_leave:
+        type: string
+        description: 年假
+      sick_leave:
+        type: string
+        description: 病假
+      office_holiday:
+        type: string
+        description: 公休天数
+      welfare_template_id:
+        type: integer
+        description: 培训模板id
+      holiday_type:
+        type: string
+        description: 假期类别
+      probation:
+        type: string
+        description: 试用期
+      notice_period:
+        type: string
+        description: 离职通知期
+      double_pay:
+        type: boolean
+        description: 是否双粮
+      reduce_salary_for_sick:
+        type: boolean
+        description: 有薪病假是否扣薪
+      provide_airfare:
+        type: boolean
+        description: 是否提供机票
+      provide_accommodation:
+        type: boolean
+        description: 是否提供住宿
+      provide_uniform:
+        type: boolean
+        description: 是否提供制服
+      salary_composition:
+        type: string
+        description: 薪金组成
+      over_time_salary:
+        type: string
+        description: 加班薪金
+      force_holiday_make_up:
+        type: string
+        description: 强制性假期补偿
+      comment:
+        type: string
+        description: 备注
+      user_id:
+        type: integer
+        description: 员工id
+      position_type:
+        type: string
+        description: 在职类别
+      work_days_every_week:
+        type: string
+        description: 每周工作天数
+
+  GroupList:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+        chines_name:
+          type: string
+        english_name:
+          type: string
+        simple_chinese_name:
+          type: string
+  can_create:
+    type: string
+    description: 'true or false'

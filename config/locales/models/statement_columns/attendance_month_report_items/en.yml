@@ -1,0 +1,27 @@
+en:
+  statement_columns:
+    attendance_month_report_items:
+      year_month: Attendance Year/Month
+      employee_id: ID
+      employee_name: Name
+      department: Department
+      position: Position
+      normal_overtime_hours: Normal overtime hours
+      holiday_overtime_hours: Holiday overtime hours
+      compulsion_holiday_compensation_days: Compulsion holiday compensation days
+      public_holiday_compensation_days: Public holiday compensation days
+      absenteeism_days: Absenteeism days
+      immediate_leave_days: Immediate leave days
+      unpaid_leave_days: Unpaid leave days
+      paid_sick_leave_days: Paid sick leave days
+      unpaid_marriage_leave_days: Unpaid marriage leave days
+      unpaid_compassionate_leave_days: Unpaid compassionate leave days
+      unpaid_maternity_leave_days: Unpaid maternity leave days
+      paid_maternity_leave_days: Paid maternity leave days
+      pregnant_sick_leave_days: Pregnant sick leave days
+      occupational_injury_days: Occupational injury days
+      late_0_10_min_times: Late times (less than 10 min)
+      late_10_20_min_times: Late times (10~20 min)
+      late_20_30_min_times: Late times (20~30 min)
+      late_30_120_min_times: Late times (30~120 min)
+      missing_punch_times: Missing punch times

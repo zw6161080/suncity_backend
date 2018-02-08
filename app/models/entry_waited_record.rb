@@ -1,0 +1,2 @@
+class EntryWaitedRecord < ApplicationRecord
+end

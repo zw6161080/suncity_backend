@@ -1,0 +1,201 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 台风津贴报表
+
+# Describe your paths here
+paths:
+  /welfare_for_typhoon_reports:
+    get:
+      description: 获取一页台风津贴记录列表
+      tags:
+        - 台风津贴
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称(装入数组传入)
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称(装入数组传入)
+        - name: clock_date
+          in: query
+          required: false
+          type: string
+          description: 查询的签卡日期(装入数组传入)
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/SignCardReportsData'
+  /welfare_for_typhoon_reports/export:
+    get:
+      description: 台风津贴记录列表
+      tags:
+        - 台风津贴
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称(装入数组传入)
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称(装入数组传入)
+        - name: clock_date
+          in: query
+          required: false
+          type: string
+          description: 查询的签卡日期(装入数组传入)
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+      responses:
+        200:
+          description: 成功响应
+  /welfare_for_typhoon_reports/field_options:
+    get:
+      description: 获取排序筛选项
+      tags:
+        - 台风津贴
+      responses:
+        200:
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/FieldOptionsData'
+definitions:
+  SignCardReportsData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            empoid:
+              type: string
+            user_chinese_name:
+              type: string
+            department_chinese_name:
+              type: string
+            position_chinese_name:
+              type: string
+            clock_date:
+              type: string
+            money:
+              type: string
+            creator_chinese_name:
+              type: string
+            created_at:
+              type: string
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_pages:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+  FieldOptionsData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          department_chinese_name:
+            type: array
+            items:
+              type: string
+          position_chinese_name:
+            type: array
+            items:
+              type: string
+          clock_date:
+            type: array
+            items:
+              type: string
+          created_at:
+            type: array
+            items:
+              type: string

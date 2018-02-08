@@ -1,0 +1,22 @@
+zh-CN:
+  work_experences:
+    file_name: 工作經驗報表
+  statement_columns:
+    work_experences:
+      empoid: 员工编号
+      name: 姓名
+      location: 场馆
+      department: 部门
+      position: 职位
+      date_of_employment: 入职日期
+      leave_date: 离职日期
+      company_organazition: 任职公司
+      work_experience_position: 职位
+      work_experience_from: 由（MM/YYYY）
+      work_experience_to: 至（MM/YYYY）
+      job_description: 工作概要
+      work_experience_salary: 现时/离职时每月薪金
+      work_experience_reason_for_leaving: 离职原因
+      work_experience_company_phone_number: 公司电话
+      former_head: 前负责人/上司名称
+      work_experience_email: 电邮地址

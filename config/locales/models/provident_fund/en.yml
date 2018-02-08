@@ -1,0 +1,55 @@
+en:
+  provident_fund:
+    file_name: Provident fund member report
+    xlsx_title:
+      participation_date: Date of join
+      empoid: ID
+      chinese_name: Chinese name
+      english_name: English name
+      department: Department
+      position: Position
+      grade: Grade
+      date_of_employment: Entry date
+      date_of_birth: Date of birth
+      gender: Gender
+      national: National
+      place_of_birth: Place of birth
+      mobile_number: Cellphone
+      email: E-mail
+      address: Address
+      type_of_id: Type of ID
+      certificate_issued_country: Credentials country
+      id_number: ID number
+      member_retirement_fund_number: Member Retirement Fund Number
+      tax_registration: Taxation
+      tax_number: Tax number
+      icbc_account_number_mop: ICBC account number - MOP
+      icbc_account_number_rmb: ICBC account number - RMB
+      is_an_american: Whether it is a US citizen
+      has_permanent_resident_certificate: Whether to hold a US permanent resident certificate
+      supplier: Supplier
+      steady_growth_fund_percentage: Steady growth fund percentage
+      steady_fund_percentage: Stable fund percentage
+      a_fund_percentage: A fund percentage
+      b_fund_percentage: B fund percentage
+      is_leave: In service/resigned
+      provident_fund_resignation_date: Provident fund resignation date
+      provident_fund_resignation_reason: Provident fund resignation reason
+      first_beneficiary_name: First beneficiary name
+      first_beneficiary_certificate_type: First beneficiary ID type
+      first_beneficiary_id_number: First beneficiary ID number
+      first_beneficiary_relation: First beneficiary relation
+      first_beneficiary_percentage: Percentage of first beneficiaries
+      first_beneficiary_address: First beneficiary address
+      second_beneficiary_name: Second beneaficiary name
+      second_beneficiary_certificate_type: Second beneficiary ID type
+      second_beneficiary_id_number: Second beneficiary ID number
+      second_beneficiary_relation: Second beneficiary relation
+      second_beneficiary_percentage: Percentage of second beneficiaries
+      second_beneficiary_address: Second beneficiary address
+      third_beneficiary_name: Third beneficiary name
+      third_beneficiary_certificate_type: Third beneficiary ID type
+      third_beneficiary_id_number: Third beneficiary ID number
+      third_beneficiary_relation: Third beneficiary relation
+      third_beneficiary_percentage: Percentage of third beneficiaries
+      third_beneficiary_address: Third beneficiary address

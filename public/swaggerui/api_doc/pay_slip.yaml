@@ -1,0 +1,401 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 工资单
+
+# Describe your paths here
+paths:
+  /pay_slips/index_by_mine:
+    get:
+      tags:
+        - 个人工资单
+      description: 获取工资单列表
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工id
+        - name: year_month
+          in: query
+          required: false
+          description: 薪酬月份
+          type: string
+        - name: salary_begin
+          in: query
+          required: false
+          description: 薪酬开始日期
+          type: string
+        - name: salary_end
+          in: query
+          required: false
+          description: 薪酬结束日期
+          type: string
+        - name: name
+          in: query
+          required: false
+          description: 姓名
+          type: string
+        - name: empoid
+          in: query
+          required: false
+          description: 员工编号
+          type: string
+        - name: company_name
+          in: query
+          required: false
+          description: 公司名称
+          type: string
+        - name: location_id
+          in: query
+          required: false
+          description: 场馆id
+          type: integer
+        - name: department_id
+          in: query
+          required: false
+          description: 部门id
+          type: integer
+        - name: position_id
+          in: query
+          required: false
+          description: 职位id
+          type: integer
+        - name: entry_on_this_month
+          in: query
+          required: false
+          description: 是否本月入职
+          type: string
+        - name: leave_on_this_month
+          in: query
+          required: false
+          description: 是否本月离职
+          type: string
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/PaySlipsIndex'
+  /pay_slips/index_by_department:
+    get:
+      tags:
+        - 部门工资单
+      description: 获取工资单列表
+      parameters:
+        - name: department_id_index
+          in: query
+          required: true
+          type: integer
+          description: 部门ID
+        - name: year_month
+          in: query
+          required: false
+          description: 薪酬月份
+          type: string
+        - name: salary_begin
+          in: query
+          required: false
+          description: 薪酬开始日期
+          type: string
+        - name: salary_end
+          in: query
+          required: false
+          description: 薪酬结束日期
+          type: string
+        - name: name
+          in: query
+          required: false
+          description: 姓名
+          type: string
+        - name: empoid
+          in: query
+          required: false
+          description: 员工编号
+          type: string
+        - name: company_name
+          in: query
+          required: false
+          description: 公司名称
+          type: string
+        - name: location_id
+          in: query
+          required: false
+          description: 场馆id
+          type: integer
+        - name: department_id
+          in: query
+          required: false
+          description: 部门id
+          type: integer
+        - name: position_id
+          in: query
+          required: false
+          description: 职位id
+          type: integer
+        - name: entry_on_this_month
+          in: query
+          required: false
+          description: 是否本月入职
+          type: string
+        - name: leave_on_this_month
+          in: query
+          required: false
+          description: 是否本月离职
+          type: string
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/PaySlipsIndex'
+  /pay_slips:
+    get:
+      tags:
+        - 工资单
+      description: 获取工资单列表
+      parameters:
+        - name: year_month
+          in: query
+          required: false
+          description: 薪酬月份
+          type: string
+        - name: salary_begin
+          in: query
+          required: false
+          description: 薪酬开始日期
+          type: string
+        - name: salary_end
+          in: query
+          required: false
+          description: 薪酬结束日期
+          type: string
+        - name: name
+          in: query
+          required: false
+          description: 姓名
+          type: string
+        - name: empoid
+          in: query
+          required: false
+          description: 员工编号
+          type: string
+        - name: company_name
+          in: query
+          required: false
+          description: 公司名称
+          type: string
+        - name: location_id
+          in: query
+          required: false
+          description: 场馆id
+          type: integer
+        - name: department_id
+          in: query
+          required: false
+          description: 部门id
+          type: integer
+        - name: position_id
+          in: query
+          required: false
+          description: 职位id
+          type: integer
+        - name: entry_on_this_month
+          in: query
+          required: false
+          description: 是否本月入职
+          type: string
+        - name: leave_on_this_month
+          in: query
+          required: false
+          description: 是否本月离职
+          type: string
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/PaySlipsIndex'
+  /pay_slips/options:
+    get:
+      tags:
+        - 工资单
+      description: 工资单列表筛选项
+      responses:
+        200:
+          description: ok
+  /pay_slips/columns:
+    get:
+      tags:
+        - 工资单
+      description: 工资单列表表头字段
+      responses:
+        200:
+          description: ok
+  /pay_slips/{id}:
+    get:
+      tags:
+        - 工资单
+      description: 工资单详情页
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+          description: 工资单id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/DetailPaySlip'
+definitions:
+  DetailPaySlip:
+    type: object
+    properties:
+      pay_slip:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: 工资单id
+          year_month:
+            type: string
+            description: 年月
+          salary_begin:
+            type: string
+            description: 薪酬开始日期
+          salary_end:
+            type: string
+            description: 薪酬结束日期
+          salary_value:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 薪酬值id
+                salary_column_id:
+                  type: integer
+                  description: 薪酬字段id
+                value:
+                  type: object
+                  description: 字段值
+          user:
+            type: object
+            properties:
+              chinese_name:
+                type: string
+                description: 繁体名
+              empoid:
+                type: integer
+                description: 员工编号
+              location:
+                type: object
+                description: 场馆
+              position:
+                type: object
+                description: 职位
+              department:
+                type: object
+                description: 部门
+
+
+  PaySlipsIndex:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 工资单记录id
+            year_month:
+              type: string
+              description: 薪酬月份
+            salary_begin:
+              type: string
+              description: 薪酬开始日期
+            salary_end:
+              type: string
+              description: 薪酬结束日期
+            user_id:
+              type: integer
+              description: 员工id
+            entry_on_this_month:
+              type: boolean
+              description: 是否本月入职
+            leave_on_this_month:
+              type: boolean
+              description: 是否本月离职
+            comment:
+              type: string
+              description: 备注
+            user:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 员工id
+                chinese_name:
+                  type: string
+                  description: 员工繁体名
+                english_name:
+                  type: string
+                  description: 员工英文名
+                simple_chinese_name:
+                  type: string
+                  description: 员工简体名
+                empoid:
+                  type: string
+                  description: 员工编号
+                company_name:
+                  type: string
+                  description: 公司名称
+                location:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: 场馆简体名
+                    english_name:
+                      type: string
+                      description: 场馆英文名
+                    simple_chinese_name:
+                      type: string
+                      description: 场馆简体名
+                department:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: 场馆简体名
+                    english_name:
+                      type: string
+                      description: 场馆英文名
+                    simple_chinese_name:
+                      type: string
+                      description: 场馆简体名
+                position:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: 场馆简体名
+                    english_name:
+                      type: string
+                      description: 场馆英文名
+                    simple_chinese_name:
+                      type: string
+                      description: 场馆简体名
+      meta:
+        type: object
+        properties:
+          department:
+            type: object
+
+

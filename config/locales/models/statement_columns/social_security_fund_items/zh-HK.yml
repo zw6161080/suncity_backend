@@ -1,0 +1,27 @@
+zh-HK:
+  social_security_fund_items:
+    file_name: 社會保障基金報表
+  statement_columns:
+    social_security_fund_items:
+      employee_id: 員工編號
+      employment_status: 在職類別
+      department: 部門
+      position: 職位
+      chinese_name: 中文姓名
+      english_name: 外文姓名
+      career_entry_date: 入職日期
+      resigned_date: 離職日期
+      date_to_submit_fingermold: 打指模日期
+      cancel_date: 取消藍卡日期
+      company_name: 公司名稱
+      id_number: 身份證號碼
+      sss_number: 社會保障號碼
+      gender: 性別
+      date_of_birth: 出生日期
+      tax_declare_date: 報稅日期
+      type_of_id: 證件類型
+      tax_number: 稅務編號
+      year: 供款年份
+      month: 供款月份
+      employee_payment_mop: 員工供款(MOP)
+      company_payment_mop: 公司供款(MOP)

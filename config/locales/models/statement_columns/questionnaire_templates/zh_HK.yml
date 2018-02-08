@@ -1,0 +1,14 @@
+zh-HK:
+  questionnaire_templates:
+    file_name: 問卷模板
+  statement_columns:
+    questionnaire_templates:
+      empoid: 員工編號
+      name: 員工姓名
+      department: 部門
+      position: 職位
+      is_filled_in: 問卷狀態
+      release_user: 發放人
+      release_date: 發放日期
+      comment: 備註
+      submit_date: 提交日期

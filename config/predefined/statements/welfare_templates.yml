@@ -1,0 +1,80 @@
+welfare_templates:
+  columns:
+    - key: chinese_name
+      value_type: string_value
+      data_index: template_chinese_name
+
+    - key: belongs_to
+      value_type: string
+      data_index: belongs_to_string
+
+    - key: annual_leave
+      value_type: string_value
+
+    - key: sick_leave
+      value_type: string_value
+
+    - key: office_holiday
+      value_type: string_value
+      options_type: selects
+      options_select_key: office_holiday
+
+    - key: holiday_type
+      value_type: select_value
+      options_type: selects
+      options_select_key: holiday_type
+
+    - key: probation
+      value_type: string_value
+
+    - key: notice_period
+      value_type: string_value
+
+
+
+    - key: double_pay
+      value_type: bool_value
+      options_type: selects
+      options_select_key: double_pay
+
+    - key: reduce_salary_for_sick
+      value_type: string_value
+      options_type: selects
+      options_select_key: reduce_salary_for_sick
+
+    - key: provide_uniform
+      value_type: string_value
+      options_type: selects
+      options_select_key: provide_uniform
+
+    - key: salary_composition
+      value_type: string_value
+      options_type: selects
+      options_select_key: salary_composition
+
+    - key: over_time_salary
+      value_type: string_value
+      options_type: selects
+      options_select_key: over_time_salary
+
+
+    - key: force_holiday_make_up
+      value_type: string_value
+      options_type: selects
+      options_select_key: force_holiday_make_up
+
+
+
+    - key: position_type
+      value_type: string_value
+      options_type: selects
+      options_select_key: position_type
+
+    - key: work_days_every_week
+      value_type: integer_value
+
+    - key: comment
+      value_type: string_value
+
+
+

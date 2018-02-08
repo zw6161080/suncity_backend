@@ -1,0 +1,852 @@
+permissions:
+  #1-2
+  - action: view
+    resource: department_profile
+    child: [Profile]
+    chinese_name: 部門主管﹣部門員工檔案
+    english_name:
+    simple_chinese_name:
+  #1-3
+  - action: view_from_department
+    resource: RosterList
+    child: []
+    chinese_name: 部門主管﹣部門排班
+    english_name:
+    simple_chinese_name:
+  #1-4
+  - action: view_from_department
+    resource: attend
+    child: [Attend, AttendLog]
+    chinese_name: 部門主管﹣部門考勤表
+    english_name:
+    simple_chinese_name:
+  #1-5
+  - action: view_from_department
+    resource: train
+    child: [Train, EntryList, TrainingPaper, StudentEvaluation, SupervisorAssessment]
+    chinese_name: 部門主管﹣部門的培訓
+    english_name:
+    simple_chinese_name:
+  #1-7
+  - action: view_from_department
+    resource: vip_hall
+    child: [VipHallsTrain, VipHallsTrainer]
+    chinese_name: 部門主管﹣貴賓廳培訓記錄
+    english_name:
+    simple_chinese_name:
+  #1-8
+  - action: view_from_department
+    resource: TrainingAbsentee
+    child: []
+    chinese_name: 部門主管﹣部門的培訓缺席記錄
+    english_name:
+    simple_chinese_name:
+  #1-9
+  - action: view_from_department
+    resource: appraisal
+    child: [Appraisal]
+    chinese_name: 部門主管﹣部門的360評核
+    english_name:
+    simple_chinese_name:
+  #5-1
+  - action: view
+    resource: job_transfer
+    child: [JobTransfer, PassEntryTrial, PassTrial, SpecialAssessment, TransferPositionApplyByDepartment,
+     TransferPositionApplyByEmployee, LentTemporarilyApply, TransferLocationApply]
+    chinese_name: 職位變動﹣職位調配記錄
+    english_name:
+    simple_chinese_name:
+  #5-2
+  - action: view
+    resource: Dimission
+    child: []
+    chinese_name: 職位變動﹣離職記錄
+    english_name:
+    simple_chinese_name:
+  #6-1
+  - action: manage
+    resource: QuestionnaireTemplate
+    child: []
+    chinese_name: 員工關係﹣問卷模板管理
+    english_name:
+    simple_chinese_name:
+  #6-2
+  - action: manage
+    resource: Questionnaire
+    child: []
+    chinese_name: 員工關係﹣全部問卷
+    english_name:
+    simple_chinese_name:
+  #6-3
+  - action: manage
+    resource: EntryAppointment
+    child: []
+    chinese_name: 員工關係﹣入職面談
+    english_name:
+    simple_chinese_name:
+  #6-4
+  - action: manage
+    resource: DimissionAppointment
+    child: []
+    chinese_name: 員工關係﹣離職面談
+    english_name:
+    simple_chinese_name:
+  #6-5
+  - action: manage
+    resource: Punishment
+    child: []
+    chinese_name: 員工關係﹣紀律處分
+    english_name:
+    simple_chinese_name:
+  #6-6
+  - action: manage
+    resource: staff_feedback
+    child: [StaffFeedback, StaffFeedbackTrack]
+    chinese_name: 員工關係﹣員工意見及投訴
+    english_name:
+    simple_chinese_name:
+  #8-1
+  - action: manage
+    resource: train_template
+    child: [TrainTemplate]
+    chinese_name: 培訓﹣培訓課程模板
+    english_name:
+    simple_chinese_name:
+  #8-2
+  - action: manage
+    resource: train
+    child: [Train]
+    chinese_name: 培訓﹣培訓管理
+    english_name:
+    simple_chinese_name:
+  #8-3
+  - action: manage
+    resource: TrainingAbsentee
+    child: []
+    chinese_name: 培訓﹣培訓缺席記錄
+    english_name:
+    simple_chinese_name:
+  #8-4
+  - action: view_record
+    resource: train_record
+    child: [Train, TrainRecordByTrain]
+    chinese_name: 培訓﹣培訓記錄
+    english_name:
+    simple_chinese_name:
+  #8-5
+  - action: view
+    resource: vip_hall
+    child: [VipHallsTrain, VipHallsTrainer]
+    chinese_name: 培訓﹣貴賓廳場館內培訓記錄
+    english_name:
+    simple_chinese_name:
+  #8-6
+  - action: view
+    resource: client_comment
+    child: [ClientComment, ClientCommentTrack]
+    chinese_name: 培訓-客戶意見
+    english_name:
+    simple_chinese_name:
+  #9-1
+  - action: appraisal_setting
+    resource: appraisal
+    child: [AppraisalBasicSetting, AppraisalEmployeeSetting, AppraisalDepartmentSetting]
+    chinese_name: 績效﹣360評核設置
+    english_name:
+    simple_chinese_name:
+  #9-2
+  - action: view
+    resource: appraisal
+    child: [Appraisal]
+    chinese_name: 績效﹣360評核管理
+    english_name:
+    simple_chinese_name:
+  #9-3
+  - action: view
+    resource: AppraisalReport
+    child: []
+    chinese_name: 績效﹣360評核記錄
+    english_name:
+    simple_chinese_name:
+
+  #10-1
+  - action: view
+    resource: CardProfile
+    child: []
+    chinese_name: 藍卡﹣藍卡檔案
+    english_name:
+    simple_chinese_name:
+  #10-2
+  - action: view
+    resource: ApprovedJob
+    child: []
+    chinese_name: 藍卡﹣配額管理
+    english_name:
+    simple_chinese_name:
+
+  #4-1
+  - action: view
+    resource: attend
+    child: [Attend, AttendLog]
+    chinese_name: 考勤﹣考勤表
+    english_name:
+    simple_chinese_name:
+  #4-2
+  - action: view
+    resource: AttendMonthApproval
+    child: []
+    chinese_name: 考勤﹣考勤月份審批
+    english_name:
+    simple_chinese_name:
+  #4-3
+  - action: view
+    resource: SignCardRecord
+    child: []
+    chinese_name: 考勤-籤卡記錄
+    english_name:
+    simple_chinese_name:
+  #4-4
+  - action: view
+    resource: OvertimeRecord
+    child: []
+    chinese_name: 考勤﹣加班記錄
+    english_name:
+    simple_chinese_name:
+  #4-5
+  - action: view
+    resource: AdjustRosterRecord
+    child: []
+    chinese_name: 考勤﹣調更調假記錄
+    english_name:
+    simple_chinese_name:
+  #4-6
+  - action: view
+    resource: WorkingHoursTransactionRecord
+    child: []
+    chinese_name: 考勤﹣借鐘還鐘記錄
+    english_name:
+    simple_chinese_name:
+  #4-7
+  - action: view
+    resource: HolidayRecord
+    child: []
+    chinese_name: 考勤﹣假期記錄
+    english_name:
+    simple_chinese_name:
+  #4-8
+  - action: view_for_approve
+    resource: HolidayRecord
+    child: []
+    chinese_name: 考勤﹣假期審批
+    english_name:
+    simple_chinese_name:
+  #4-9
+  - action: view_for_surplus
+    resource: HolidayRecord
+    child: []
+    chinese_name: 考勤﹣假期結餘
+    english_name:
+    simple_chinese_name:
+  #4-10
+  - action: view
+    resource: shift
+    child: [RosterList, RosterPreference]
+    chinese_name: 考勤﹣排班表
+    english_name:
+    simple_chinese_name:
+  #4-11
+  - action: view_for_search
+    resource: RosterList
+    child: []
+    chinese_name: 考勤﹣排班查詢
+    english_name:
+    simple_chinese_name:
+  #4-12
+  - action: manage
+    resource: RosterModel
+    child: []
+    chinese_name: 考勤﹣更模管理
+    english_name:
+    simple_chinese_name:
+  #4-13
+  - action: setting
+    resource: RosterPreference
+    child: []
+    chinese_name: 考勤﹣排班設定
+    english_name:
+    simple_chinese_name:
+  #4-14
+  - action: setting
+    resource: sign_card
+    child: [SignCardSetting, SignCardReason]
+    chinese_name: 考勤﹣簽卡設置
+    english_name:
+    simple_chinese_name:
+  #4-15
+  - action: setting
+    resource: HolidaySetting
+    child: []
+    chinese_name: 考勤﹣假日設置
+    english_name:
+    simple_chinese_name:
+  #4-16
+  - action: setting
+    resource: ClassSetting
+    child: []
+    chinese_name: 考勤﹣班別設置
+    english_name:
+    simple_chinese_name:
+  #4-17
+  - action: setting
+    resource: TyphoonSetting
+    child: []
+    chinese_name: 考勤﹣颱風設置
+    english_name:
+    simple_chinese_name:
+  #4-18
+  - action: view_for_report
+    resource: HolidayRecord
+    child: []
+    chinese_name: 考勤﹣假期報表
+    english_name:
+    simple_chinese_name:
+  #4-19
+  - action: view_for_report
+    resource: SignCardRecord
+    child: []
+    chinese_name: 考勤﹣簽卡報表
+    english_name:
+    simple_chinese_name:
+  #4-20
+  - action: view_for_report
+    resource: OvertimeRecord
+    child: []
+    chinese_name: 考勤﹣加班報表
+    english_name:
+    simple_chinese_name:
+  #4-21
+  - action: view_for_report
+    resource: AdjustRosterRecord
+    child: []
+    chinese_name: 考勤﹣調更調假報表
+    english_name:
+    simple_chinese_name:
+  #4-22
+  - action: view_for_report
+    resource: AttendMonthlyReport
+    child: []
+    chinese_name: 考勤﹣考勤月報報表
+    english_name:
+    simple_chinese_name:
+  #4-23
+  - action: view_for_report
+    resource: AttendAnnualReport
+    child: []
+    chinese_name: 考勤﹣考勤年報報表
+    english_name:
+    simple_chinese_name:
+  #4-24
+  - action: view_for_report
+    resource: CompensateReport
+    child: []
+    chinese_name: 考勤﹣補薪報表
+    english_name:
+    simple_chinese_name:
+  #4-25
+  - action: view_for_report
+    resource: PunchCardState
+    child: []
+    chinese_name: 考勤﹣打卡設置報表
+    english_name:
+    simple_chinese_name:
+  #4-26
+  - action: view_for_report
+    resource: TyphoonQualifiedRecord
+    child: []
+    chinese_name: 考勤﹣颱風津貼報表
+    english_name:
+    simple_chinese_name:
+  #4-27
+  - action: view_for_report
+    resource: AnnualAttendReport
+    child: []
+    chinese_name: 考勤﹣全年勤工報表
+    english_name:
+    simple_chinese_name:
+  #4-28
+  - action: view_for_report
+    resource: PaidSickLeaveReportItem
+    child: []
+    chinese_name: 考勤﹣有薪病假獎勵假報表
+    english_name:
+    simple_chinese_name:
+  - action: export
+    resource: Profile
+    child: []
+    chinese_name: 員工檔案﹣匯出
+    english_name:
+    simple_chinese_name:
+  - action: update_personal_information
+    resource: Profile
+    child: []
+    chinese_name: 員工檔案﹣個人信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: update_position_information
+    resource: Profile
+    child: []
+    chinese_name: 員工檔案﹣工作信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: roster_instruction
+    resource: Profile
+    child: []
+    chinese_name: 員工檔案﹣考勤信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update
+    resource: RosterInstruction
+    child: [ShiftStatus, PunchCardState, RosterModelState, RosterInstruction]
+    chinese_name: 員工檔案﹣考勤信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: position_information
+    resource: Profile
+    child: []
+    chinese_name: 員工檔案﹣工作信息查看
+    english_name:
+    simple_chinese_name:
+  - action: personal_information
+    resource: Profile
+    child: []
+    chinese_name: 員工檔案﹣个人信息查看
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: vp
+    child: [ MonthSalaryReport, PaySlip, BankAutoPayReportItem]
+    chinese_name: VP級數據權限
+    english_name: 
+    simple_chinese_name:
+  - action: information
+    resource: welfare_info
+    child: [WelfareRecord, Wrwt, LoveFund]
+    chinese_name: 員工檔案﹣福利信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: welfare_info
+    child: [ Wrwt, LoveFund]
+    chinese_name: 員工檔案﹣福利信息編輯
+    english_name:
+    simple_chinese_name:
+
+  - action: information
+    resource: SalaryRecord
+    child: []
+    chinese_name: 員工檔案﹣薪酬信息查看
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: CareerRecord
+    child: []
+    chinese_name: 員工檔案﹣職程信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: CareerRecord
+    child: []
+    chinese_name: 員工檔案﹣職程信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: SalaryRecord
+    child: []
+    chinese_name: 員工檔案﹣薪酬歷史查看
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: WelfareRecord
+    child: []
+    chinese_name: 員工檔案﹣福利歷史查看
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: SalaryRecord
+    child: []
+    chinese_name: 員工檔案﹣薪酬歷史編輯
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: WelfareRecord
+    child: []
+    chinese_name: 員工檔案﹣福利歷史編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: MedicalInsuranceParticipator
+    child: []
+    chinese_name: 員工檔案﹣醫療信息查看
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: Punishment
+    child: []
+    chinese_name: 員工檔案﹣處分記錄查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: Punishment
+    child: []
+    chinese_name: 員工檔案﹣處分記錄編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: Train
+    child: []
+    chinese_name: 員工檔案﹣培訓信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: MuseumRecord
+    child: []
+    chinese_name: 員工檔案﹣調館信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: LentRecord
+    child: []
+    chinese_name: 員工檔案﹣暫借信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: MuseumRecord
+    child: []
+    chinese_name: 員工檔案﹣調館信息查看
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: LentRecord
+    child: []
+    chinese_name: 員工檔案﹣暫借信息查看
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: ResignationRecord
+    child: []
+    chinese_name: 員工檔案﹣離職信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: ResignationRecord
+    child: []
+    chinese_name: 員工檔案﹣離職信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: CardProfile
+    child: []
+    chinese_name: 員工檔案﹣工作簽證信息查看
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: ProvidentFund
+    child: []
+    chinese_name: 員工檔案﹣公積金信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information_from_profile
+    resource: ProvidentFund
+    child: []
+    chinese_name: 員工檔案﹣公積金信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: update_information_from_profile
+    resource: medical_info
+    child: [MedicalParticipator, MedicalReimbursement]
+    chinese_name: 員工檔案﹣醫療信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: AirTicketReimbursement
+    child: []
+    chinese_name: 員工檔案﹣機票報銷信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: AirTicketReimbursement
+    child: []
+    chinese_name: 員工檔案﹣機票報銷信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: WorkExperence
+    child: []
+    chinese_name: 員工檔案﹣工作經驗查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: WorkExperence
+    child: []
+    chinese_name: 員工檔案﹣工作經驗編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: EducationInformation
+    child: []
+    chinese_name: 員工檔案﹣學歷信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: EducationInformation
+    child: []
+    chinese_name: 員工檔案﹣學歷信息编辑
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: LanguageSkill
+    child: []
+    chinese_name: 員工檔案﹣語言能力查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: LanguageSkill
+    child: []
+    chinese_name: 員工檔案﹣語言能力編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: FamilyMemberInformation
+    child: []
+    chinese_name: 員工檔案﹣家庭成員信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: FamilyMemberInformation
+    child: []
+    chinese_name: 員工檔案﹣家庭成員信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: FamilyDeclarationItem
+    child: []
+    chinese_name: 員工檔案﹣家屬成員申報信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: FamilyDeclarationItem
+    child: []
+    chinese_name: 員工檔案﹣家屬成員申報信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: ProfitConflictInformation
+    child: []
+    chinese_name: 員工檔案﹣利益衝突申報信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: ProfitConflictInformation
+    child: []
+    chinese_name: 員工檔案﹣利益衝突申報信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: ContractInformation
+    child: []
+    chinese_name: 員工檔案﹣合同信息查看
+    english_name:
+    simple_chinese_name:
+  - action: update_information
+    resource: ContractInformation
+    child: []
+    chinese_name: 員工檔案﹣合同信息編輯
+    english_name:
+    simple_chinese_name:
+  - action: information
+    resource: ContractInformationType
+    child: []
+    chinese_name: 員工檔案﹣合同信息類別管理
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: AwardRecord
+    child: []
+    chinese_name: 員工檔案﹣獎勵情況查看
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: AwardRecord
+    child: []
+    chinese_name: 員工檔案﹣獎勵情況編輯
+    english_name:
+    simple_chinese_name:
+  - action: history
+    resource: ProfileAttachment
+    child: []
+    chinese_name: 員工檔案﹣相關文件查看
+    english_name:
+    simple_chinese_name:
+  - action: update_history
+    resource: ProfileAttachment
+    child: []
+    chinese_name: 員工檔案﹣相關文件編輯
+    english_name:
+    simple_chinese_name:
+  - action: update
+    resource: attachment_type
+    child: [ProfileAttachmentType, ApplicantProfileAttachmentType]
+    chinese_name: 員工檔案/求職者檔案﹣相關文件類別管理
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: SalaryTemplate
+    child: []
+    chinese_name: 薪酬﹣薪酬模板
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: WelfareTemplate
+    child: []
+    chinese_name: 薪酬﹣福利模板
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: salary_calculate_setting
+    child: [OccupationTaxSetting, BonusElementSetting]
+    chinese_name: 薪酬﹣薪金計算規則
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: medical_template_setting
+    child: [MedicalTemplate, MedicalTemplateSetting, MedicalItem, MedicalItemTemplate]
+    chinese_name: 薪酬﹣醫療模板
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: MedicalReimbursement
+    child: []
+    chinese_name: 薪酬﹣醫療報銷
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: MedicalInsuranceParticipator
+    child: []
+    chinese_name: 薪酬﹣參加醫療基金
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: LoveFund
+    child: []
+    chinese_name: 薪酬﹣參加愛心基金
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: float_salary
+    child: [FloatSalaryMonthEntry, BonusElementMonthShare, BonusElementMonthAmount, BonusElementItem, BonusElementItemValue]
+    chinese_name: 薪酬﹣浮動薪金
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: provident_fund
+    child: [ProvidentFund, EmployeeFundSwitchingReportItem, EmployeeRedemptionReportItem, DepartureEmployeeTaxpayerNumberingReportItem, ContributionReportItem]
+    chinese_name: 薪酬﹣公积金
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: SocialSecurityFundItem
+    child: []
+    chinese_name: 薪酬﹣社会保障基金
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: annual_award
+    child: [AnnualAwardReport, AnnualAwardReportItem]
+    chinese_name: 薪酬﹣年度獎金
+    english_name:
+    simple_chinese_name:
+  - action: data_on_each_month_salary
+    resource: MonthSalaryReport
+    child: []
+    chinese_name: 薪酬﹣員工每月薪酬
+    english_name:
+    simple_chinese_name:
+  - action: data_on_all_month_salary
+    resource: MonthSalaryReport
+    child: []
+    chinese_name: 薪酬﹣全部薪酬
+    english_name:
+    simple_chinese_name:
+  - action: data_on_pay_slip_by_hr
+    resource: PaySlip
+    child: []
+    chinese_name: 薪酬﹣工資單
+    english_name:
+    simple_chinese_name:
+  - action: data_on_pay_slip_by_department
+    resource: PaySlip
+    child: []
+    chinese_name: 部門主管﹣部門工資單
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: OccupationTaxItem
+    child: []
+    chinese_name: 薪酬﹣職業稅
+    english_name:
+    simple_chinese_name:
+  - action: data_on_bank_auto_pay_report_item
+    resource: BankAutoPayReportItem
+    child: []
+    chinese_name: 薪酬﹣銀行自動轉賬報表
+    english_name:
+    simple_chinese_name:
+  - action: data
+    resource: goods_signing
+    child: [GoodsSigning, GoodsCategory]
+    chinese_name: 薪酬﹣物品簽收管理
+    english_name:
+    simple_chinese_name:
+  - action: index
+    resource: Job
+    child: []
+    chinese_name: 招聘職位管理﹣查看
+    english_name:
+    simple_chinese_name:
+  - action: update
+    resource: Job
+    child: []
+    chinese_name: 招聘職位管理﹣編輯
+    english_name:
+    simple_chinese_name:
+  - action: index
+    resource: ApplicantProfile
+    child: []
+    chinese_name: 求職者檔案﹣查看
+    english_name:
+    simple_chinese_name:
+  - action: update
+    resource: ApplicantProfile
+    child: []
+    chinese_name: 求職者檔案﹣編輯
+    english_name:
+    simple_chinese_name:
+  - action: show
+    resource: ApplicantPosition
+    child: []
+    chinese_name: 職位申請﹣查看
+    english_name:
+    simple_chinese_name:
+  - action: update_status
+    resource: ApplicantPosition
+    child: []
+    chinese_name: 職位申請﹣進度
+    english_name:
+    simple_chinese_name:
+
+
+
+
+
+
+

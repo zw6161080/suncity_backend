@@ -1,0 +1,17 @@
+zh-CN:
+  appraisal_reports:
+    file_name: 评核报告表
+  statement_columns:
+    appraisal_reports:
+      empoid: 员工编号
+      name: 姓名
+      location: 场馆
+      department: 部门
+      position: 职位
+      grade: 职级
+      division_of_job: 员工归属类别
+      date_of_employment: 入职日期
+      count_of_assessor: 评核总数量
+      overall_score: 评核总分数
+
+

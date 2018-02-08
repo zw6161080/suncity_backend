@@ -1,0 +1,15 @@
+zh-CN:
+  final_lists_by_train:
+    final_list: 培訓名單
+  statement_columns:
+    final_lists_by_train:
+      empoid: 員工編號
+      name: 員工姓名
+      department: 部門
+      position: 職位
+      working_status: 培訓期間狀態
+      cost: 培訓費用
+      train_result: 培訓結果
+      attendance_percentage: 出席率
+      test_score: 考試分數
+      comment: 備注

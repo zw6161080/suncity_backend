@@ -1,0 +1,66 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 职业税报表
+
+# Describe your paths here
+paths:
+  /occupation_tax_items/import:
+    patch:
+      description: 汇入
+      consumes:
+        - multipart/form-data
+      parameters:
+        - in: formData
+          name: file
+          type: file
+          description: The file to upload
+          required: true
+        - in: query
+          name: year
+          type: string
+          required: true
+          description: '年度（YYYY/mm）'
+      responses:
+        200:
+          description: ok
+  /occupation_tax_items/{id}/update_comment:
+    patch:
+      description: 更新记录
+      tags:
+        - 职业税
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 记录id
+        - name: update_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateParams'
+      responses:
+        200:
+          description: 成功响应
+definitions:
+  UpdateParams:
+    type: object
+    properties:
+      comment:
+        type: string
+        description: 备注
+      quarter_1_tax_mop_after_adjust:
+        type: string
+        description: '第一季调整后税（mop）'
+      quarter_2_tax_mop_after_adjust:
+        type: string
+        description: '第二季调整后税（mop）'
+      quarter_3_tax_mop_after_adjust:
+        type: string
+        description: '第三季调整后税（mop）'

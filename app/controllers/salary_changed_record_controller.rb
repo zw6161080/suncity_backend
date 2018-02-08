@@ -1,0 +1,2 @@
+class SalaryChangedRecordController < ApplicationController
+end

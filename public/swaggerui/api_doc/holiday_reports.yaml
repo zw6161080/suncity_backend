@@ -1,0 +1,103 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 休假記錄报表
+
+# Describe your paths here
+paths:
+  /holiday_reports/index:
+    get:
+      description: 获取一页休假記錄列表
+      tags:
+        - 休假記錄
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: string
+          description: 查询的页面编号
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称
+        - name: holiday_type
+          in: query
+          required: false
+          type: string
+          description: 查询的休假类型
+        - name: duration
+          in: query
+          required: false
+          type: integer
+          description: 查询的休假天数
+        - name: creator_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 录入人中文姓名
+        - name: start_time
+          in: query
+          required: false
+          type: string
+          description: 休假开始日期
+        - name: end_time
+          in: query
+          required: false
+          type: string
+          description: 休假结束日期
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+      responses:
+        200:
+          description: 成功响应
+  /holiday_reports/field_options:
+    get:
+      description: 获取记录列表可供筛选的字段
+      tags:
+        - 休假記錄
+      responses:
+        200:
+          description: 成功响应
+  /holiday_reports/export:
+    get:
+      description: 导出当前页的记录列表
+      tags:
+        - 休假記錄
+      responses:
+        200:
+          description: 成功响应
+

@@ -1,0 +1,759 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 培训模板
+
+# Describe your paths here
+paths:
+  /train_templates:
+    get:
+      description: 获取模板列表页
+      tags:
+        - 培训模板
+      parameters:
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 页数
+      - name: sort_column
+        type: string
+        in: query
+        required: false
+        description: '排序字段，如果對日期排序，字段名为去掉_end或_begin后剩余的字段。例：录入日期的排序字段为updated_at'
+      - name: course_number
+        type: string
+        in: query
+        required: false
+        description: 课程编号
+      - name: course_name
+        type: string
+        in: query
+        required: false
+        description: 课程模板名称
+      - name: train_template_type_id
+        type: integer
+        in: query
+        required: false
+        description: 培训种类的id
+      - name: training_credits
+        type: string
+        in: query
+        required: false
+        description: 培训学分
+      - name: exam_format
+        type: string
+        in: query
+        required: false
+        description: '考试形式（by_attendance_rate/by_test_scores/by_both'
+      - name: creator_name
+        type: string
+        in: query
+        required: false
+        description: 录入人姓名
+      - name: updated_at_begin
+        type: string
+        in: query
+        required: false
+        description: 录入开始日期（YYYY/mm/dd）
+      - name: updated_at_end
+        type: string
+        in: query
+        required: false
+        description: 录入结束日期（YYYY/mm/dd）
+      responses:
+        200:
+          description:  获取成功
+          schema:
+            $ref: '#/definitions/TrainTemplateLists'
+    post:
+      tags:
+        - '培训模板'
+      description: '创建培训模板'
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: ok
+  /train_template_types:
+    get:
+      tags:
+        - '培训模板类别'
+      description: '获取培训模板列表'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainTemplateTypeList'
+  /train_templates/{id}:
+    patch:
+      description: '更新培训模板'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训模板id'
+          type: integer
+        - name: update_params
+          in: body
+          required: false
+          description: '更新培训模板参数'
+          schema:
+            $ref: '#/definitions/UpdateParams'
+      tags:
+        - 培训模板
+      responses:
+        200:
+          description: '创建成功'
+    get:
+      tags:
+        - 培训模板
+      description: '显示培训模板'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训模板id'
+          type: integer
+      responses:
+        200:
+          description: '请求成功'
+          schema:
+            $ref: '#/definitions/ShowSingleTrainTemplate'
+
+  /train_templates/field_options:
+    get:
+      description: 列表页筛选项
+      tags:
+        - 培训模板
+      responses:
+        200:
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/TrainTemplateFilesOptions'
+  /train_template_types/{id}/can_be_delete:
+    get:
+      tags:
+        - 培训模板类别
+      summary: 删除该模板判断
+      description: 删除模板类别判断
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: 培训模板类别的id
+      responses:
+        200:
+          description: 请求成功
+          schema:
+            $ref: '#/definitions/DeleteResponses'
+
+  /train_template_types/batch_update:
+    patch:
+      tags:
+        - 培训模板类别
+      summary: 批量更新培训模板类别
+      description: 批量更新培训模版类别
+      parameters:
+        - name: batch_update_params
+          in: body
+          description: 批量更新参数
+          required: true
+          schema:
+            $ref: '#/definitions/BatchUpdateParams'
+      responses:
+        200:
+          description: OK
+        422:
+          description: 参数错误
+
+definitions:
+  TrainTemplateTypeList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '模板类别id'
+            chinese_name:
+              type: string
+              description: '类别繁体名'
+            english_name:
+              type: string
+              description: '类别英文名'
+            simple_chinese_name:
+              type: string
+              description: '类别简体名'
+
+  ShowSingleTrainTemplate:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: 模板记录的id
+          course_number:
+            type: string
+            description: 课程编号
+          chinese_name:
+            type:  string
+            description: 模板繁体名称
+          english_name:
+            type: string
+            description: 模板英文名称
+          simple_chinese_name:
+            type: string
+            description: 模板简体名称
+          questionnaire_template_chinese_name:
+            type: string
+            description: 选择问卷模板的中文名
+          questionnaire_template_english_name:
+            type: string
+            description: 选择问卷模板的英文名
+          questionnaire_template_simple_chinese_name:
+            type: string
+            description: 选择问卷模板的简体名
+          train_template_type_id:
+            type: string
+            description: 培训种类id
+          train_template_type:
+            type: object
+            description: 培训种类对象
+            properties:
+              chiese_name:
+                type: string
+                description: 繁体名称
+              english_name:
+                type: string
+                description: 英文名称
+              simple_chinese_name:
+                type: string
+                description: 简体名称
+          teaching_form:
+            type: string
+            description: 授课形式
+          training_credits:
+            type: string
+            description: 培训学分
+          exam_format:
+            type: string
+            description: '考试形式（by_attendance_rate/by_test_scores/by_both)'
+          creator_id:
+            type: integer
+            description: 录入人id
+          updated_at:
+            type: string
+            description: 录入日期（YYYY/mm/dd HH:MM）
+          comment:
+            type: string
+            description: '备注'
+          attend_attachments:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '附件id'
+                file_name:
+                  type: string
+                  description: '文件名'
+                creator_id:
+                  type: integer
+                  description: '经受人'
+                comment:
+                  type: string
+                  description: '备注'
+                creator:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: '经手人繁体名'
+                    english_name:
+                      type: string
+                      description: '经手人英文名'
+                    simple_chinese_name:
+                      type: string
+                      description: '经受人简体名'
+          online_materials:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '附件id'
+                name:
+                  type: string
+                  description: '文件名'
+                file_name:
+                  type: string
+                  description: '文件名'
+                creator_id:
+                  type: integer
+                  description: '经受人'
+                comment:
+                  type: string
+                  description: '备注'
+                creator:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: '经手人繁体名'
+                    english_name:
+                      type: string
+                      description: '经手人英文名'
+                    simple_chinese_name:
+                      type: string
+                      description: '经受人简体名'
+
+
+  UpdateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: '培训课程繁体名'
+      english_name:
+        type: string
+        description: '培训课程英文名'
+      simple_chinese_name:
+        type: string
+        description: '培训课程简体名'
+      course_number:
+        type: string
+        description: '课程编号'
+      teaching_form:
+        type: string
+        description: '授课形式'
+
+      train_template_type_id:
+        type: integer
+        description: '培训种类id'
+      training_credits:
+        type: string
+        description: '培训学分'
+
+      online_or_offline_training:
+        type: string
+        description: '{online_training: 0, offline_training: 1}'
+      limit_number:
+        type: integer
+        description: '培训人数上限'
+      course_total_time:
+        type: string
+        description: '课程总时数'
+      course_total_count:
+        type: string
+        description: '课程总花费'
+      trainer:
+        type: string
+        description: '培训者对象'
+      language_of_training:
+        type: string
+        description: '培训语言'
+
+      place_of_training:
+        type: string
+        description: '培训地点'
+      contact_person_of_training:
+        type: string
+        description: '培训联络人'
+      course_series:
+        type: string
+        description: '课程系列'
+      course_certificate:
+        type: string
+        description: '课程证书'
+      introduction_of_trainee:
+        type: string
+        description: '授课对象'
+      introduction_of_course:
+        type: string
+        description: '课程简介'
+      goal_of_learning:
+        type: string
+        description: '学习目标'
+      content_of_course:
+        type: string
+        description: '课程内容'
+
+      goal_of_course:
+        type: string
+        description: '课程目的'
+      assessment_method:
+        type: string
+        description: '考核方式{by_attendance_rate: 0, by_test_scores:1, by_both: 2}'
+      comprehensive_attendance_not_less_than:
+        type: string
+        description: '出席率不低于'
+      test_scores_not_less_than:
+        type: string
+        description: '考试分数不低于'
+      exam_format:
+        type: string
+        description: '考试形式{online: 0, offline: 1}'
+
+
+      exam_template_id:
+        type: integer
+        description: '试卷模板id'
+      comprehensive_attendance_and_test_scores_not_less_than:
+        type: string
+        description: '综合出席率与考试分数不低于'
+      test_scores_percentage:
+        type: string
+        description: '考试分数占比'
+      notice:
+        type: string
+        description: '注意事项'
+      comment:
+        type: string
+        description: '备注'
+      online_materials:
+        type: array
+        items:
+          type: object
+          properties:
+            attachment_id:
+              type: integer
+              description: '附件id'
+            name:
+              type: string
+              description: '培训资料名称'
+            file_name:
+              type: string
+              description: '文件名称'
+            instruction:
+              type: string
+              description: '培训资料说明'
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '相关文件id'
+            file_name:
+              type: string
+              description: '文件名'
+            comment:
+              type: string
+              description: '备注'
+  CreateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: '培训课程繁体名'
+      english_name:
+        type: string
+        description: '培训课程英文名'
+      simple_chinese_name:
+        type: string
+        description: '培训课程简体名'
+      course_number:
+        type: string
+        description: '课程编号'
+      teaching_form:
+        type: string
+        description: '授课形式'
+      train_template_type_id:
+        type: integer
+        description: '培训种类id'
+      training_credits:
+        type: string
+        description: '培训学分'
+      online_or_offline_training:
+        type: string
+        description: '{online_training: 0, offline_training: 1}'
+      limit_number:
+        type: integer
+        description: '培训人数上限'
+      course_total_time:
+        type: string
+        description: '课程总时数'
+      course_total_count:
+        type: string
+        description: '课程总花费'
+      trainer:
+        type: string
+        description: '培训者对象'
+      language_of_training:
+        type: string
+        description: '培训语言'
+      place_of_training:
+        type: string
+        description: '培训地点'
+      contact_person_of_training:
+        type: string
+        description: '培训联络人'
+      course_series:
+        type: string
+        description: '课程系列'
+      course_certificate:
+        type: string
+        description: '课程证书'
+      introduction_of_trainee:
+        type: string
+        description: '授课对象'
+      introduction_of_course:
+        type: string
+        description: '课程简介'
+      goal_of_learning:
+        type: string
+        description: '学习目标'
+      content_of_course:
+        type: string
+        description: '课程内容'
+      goal_of_course:
+        type: string
+        description: '课程目的'
+      assessment_method:
+        type: string
+        description: '考核方式{by_attendance_rate: 0, by_test_scores:1, by_both: 2}'
+      comprehensive_attendance_not_less_than:
+        type: string
+        description: '出席率不低于'
+      test_scores_not_less_than:
+        type: string
+        description: '考试分数不低于'
+      exam_format:
+        type: string
+        description: '考试形式{online: 0, offline: 1}'
+      exam_template_id:
+        type: integer
+        description: '试卷模板id'
+      comprehensive_attendance_and_test_scores_not_less_than:
+        type: string
+        description: '综合出席率与考试分数不低于'
+      test_scores_percentage:
+        type: string
+        description: '考试分数占比'
+      notice:
+        type: string
+        description: '注意事项'
+      comment:
+        type: string
+        description: '备注'
+      online_materials:
+        type: array
+        items:
+          type: object
+          properties:
+            attachment_id:
+              type: integer
+              description: '附件id'
+            name:
+              type: string
+              description: '培训资料名称'
+            file_name:
+              type: string
+              description: '文件名称'
+            instruction:
+              type: string
+              description: '培训资料说明'
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            attachment_id:
+              type: integer
+              description: '附件id'
+            file_name:
+              type: string
+              description: '文件名'
+            comment:
+              type: string
+              description: '备注'
+  BatchUpdateParams:
+    type: object
+    properties:
+      create:
+        type: array
+        items:
+          type: object
+          properties:
+            chinese_name:
+              type: string
+              description: '培训类别繁体名'
+            englihs_name:
+              type: string
+              description: '培训类别英文名'
+            simple_chinese_name:
+              type: string
+              description: '培训类别简体名'
+          description: 新增培训模板类别参数
+      update:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '培训类别id'
+            chinese_name:
+              type: string
+              description: '培训类别繁体名'
+            englihs_name:
+              type: string
+              description: '培训类别英文名'
+            simple_chinese_name:
+              type: string
+              description: '培训类别简体名'
+          description: 更新培训模板类别参数
+      delete:
+        type: array
+        items:
+          type: integer
+          description: '删除培训模板类别id'
+
+  DeleteResponses:
+    properties:
+      data:
+        type: object
+        properties:
+          result:
+            type: boolean
+            description: 'true:可以删除／false:不可以删除'
+  TrainTemplateFilesOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          train_template_type:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 培训种类id
+                chinese_name:
+                  type: string
+                  description: 培训种类繁体名
+                english_name:
+                  type: string
+                  description: 培训种类英文名
+                simple_chinese_name:
+                  type: string
+                  description: 培训种类简体名
+          assessment_method:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: 考核方式
+                chinese_name:
+                  type: string
+                  description: 考核方式繁体名
+                english_name:
+                  type: string
+                  description: 考核方式英文名
+                simple_chinese_name:
+                  type: string
+                  description: 考核方式简体名
+
+  TrainTemplateLists:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          description: 一条模板记录
+          properties:
+            id:
+              type: integer
+              description: 模板记录的id
+            course_number:
+              type: string
+              description: 课程编号
+            chinese_name:
+              type:  string
+              description: 模板繁体名称
+            english_name:
+              type: string
+              description: 模板英文名称
+            simple_chinese_name:
+              type: string
+              description: 模板简体名称
+            questionnaire_template_chinese_name:
+              type: string
+              description: 选择问卷模板的中文名
+            questionnaire_template_english_name:
+              type: string
+              description: 选择问卷模板的英文名
+            questionnaire_template_simple_chinese_name:
+              type: string
+              description: 选择问卷模板的简体名
+            train_template_type_id:
+              type: string
+              description: 培训种类id
+            train_template_type:
+              type: object
+              description: 培训种类对象
+              properties:
+                chiese_name:
+                  type: string
+                  description: 繁体名称
+                english_name:
+                  type: string
+                  description: 英文名称
+                simple_chinese_name:
+                  type: string
+                  description: 简体名称
+            teaching_form:
+              type: string
+              description: 授课形式
+            training_credits:
+              type: string
+              description: 培训学分
+            exam_format:
+              type: string
+              description: '考试形式（by_attendance_rate/by_test_scores/by_both)'
+            creator_id:
+              type: integer
+              description: 录入人id
+            creator:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: 繁体姓名
+                english_name:
+                  type: string
+                  description: 英文姓名
+                simple_chinese_name:
+                  type: string
+                  description: 简体姓名
+              description: 录入人
+            updated_at:
+              type: string
+              description: 录入日期（YYYY/mm/dd HH:MM）
+            comment:
+              type: string

@@ -1,0 +1,95 @@
+sign_lists_by_train:
+  columns:
+    - key: empoid
+      data_index: user.empoid
+      value_type: string_value
+      sorter: true
+      search_type: search
+
+    - key: name
+      data_index: user
+      value_type: obj_value
+      sorter: true
+      search_type: search
+
+    - key: department_id
+      data_index: user.department
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position_id
+      data_index: user.position
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: title
+      data_index: train_class.title.name
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: title_options
+      search_attribute: train_class.title_id
+
+    - key: train_class_time
+      value_type: date_range
+      data_index_begin: train_class.time_begin
+      data_index_begin_value_type: date_value
+      date_index_begin_format: '%Y/%m/%d %A %H:%M'
+      data_index_end: train_class.time_end
+      data_index_end_value_type: date_value
+      date_index_end_format: '%H:%M'
+      join_format: '-'
+      search_type: screen
+      options_type: options
+      options_action: train_class_options
+      search_attribute: train_class_id
+
+    - key: working_status
+      data_index: working_status
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: on_duty
+          chinese_name: 在職
+          english_name: on_duty
+          simple_chinese_name: 在职
+        - key: leave
+          chinese_name: 離職
+          english_name: leave
+          simple_chinese_name: 离职
+
+    - key: sign_status
+      data_index: sign_status
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: attend
+          chinese_name: 出席
+          english_name: attend
+          simple_chinese_name: 出席在职
+        - key: absence
+          chinese_name: 缺席
+          english_name: absence
+          simple_chinese_name: 缺席
+        - key: has_leave
+          chinese_name: 離職
+          english_name: leave
+          simple_chinese_name: 离职
+
+    - key: comment
+      data_index: comment
+      value_type: string_value
+      sorter: false

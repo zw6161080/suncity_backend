@@ -1,0 +1,29 @@
+en:
+  social_security_fund_items:
+    file_name: social_security_fund_report
+  statement_columns:
+    social_security_fund_items:
+      employee_id: ID
+      employment_status: Job category
+      department: Department
+      position: Position
+      chinese_name: Chinese Name
+      english_name: English Name
+      career_entry_date: Entry Date
+      resigned_date: Date of departure
+      date_to_submit_fingermold: Finger mold date
+      cancel_date: Cancel the blue card date
+      company_name: Company Name
+      id_number: ID card No.
+      sss_number: SSS Number
+      gender: Gender
+      date_of_birth: Date of birth
+      tax_declare_date: Tax declare date
+      type_of_id: Type of ID
+      tax_number: Tax ID
+      year: Contribution year
+      month: Contribution month
+      employee_payment_mop: Employee contribution(MOP)
+      company_payment_mop: Company contribution(MOP)
+
+

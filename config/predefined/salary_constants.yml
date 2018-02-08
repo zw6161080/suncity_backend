@@ -1,0 +1,13 @@
+HKD_to_MOP_exchange_rate: '1.03'
+
+seniority_compensation_table:
+  1: 7
+  3: 10
+  5: 13
+  7: 15
+  8: 16
+  9: 17
+  10: 18
+  100: 20
+
+love_fund_reduction_mop: 20

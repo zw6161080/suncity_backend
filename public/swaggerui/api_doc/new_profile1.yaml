@@ -1,0 +1,112 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 新增档案接口-培训
+
+# Describe your paths here
+paths:
+
+  /users/{id}/trains:
+    get:
+      tags:
+        - '培训信息'
+      description: '档案中显示培训信息'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 'user_id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainInformation'
+definitions:
+  TrainInformation:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          get_training_credits:
+            type: string
+            description: '获得培训学分'
+          attendance_percentage:
+            type: string
+            description: '培训出席率'
+          pass_percentage:
+            type: string
+            description: '培训通过率'
+          is_can_be_absent:
+            type: boolean
+            description: '是否豁免缺席'
+          trains:
+            type: array
+            items:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '培训名称中文名'
+                english_name:
+                  type: string
+                  description: '培训名称英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '培训名称简体名'
+                train_number:
+                  type: string
+                  description: '培训编号'
+                train_begin_date:
+                  type: string
+                  description: '培训开始日期'
+                train_end_date:
+                  type: string
+                  description: '培训结束日期'
+                # Todo: 考试分数从考试model中读取
+                final_list:
+                  type: object
+                  properties:
+                    attendance_percentage:
+                      type: string
+                      description: '出席率'
+                    train_result:
+                      type: string
+                      description: '考试结果'
+                train_template:
+                  type: object
+                  properties:
+                    training_credits:
+                      type: string
+                      description: '课程学分'
+                    course_total_count:
+                      type: string
+                      description: '培训总费用'
+                    train_template_type:
+                      type: object
+                      properties:
+                        chinese_name:
+                          type: string
+                          description: '培训种类中文名'
+                        english_name:
+                          type: string
+                          description: '培训种类英文名'
+                        simple_chinese_name:
+                          type: string
+                          description: '培训种类简体名'
+
+
+#    post:
+#      description: 创建档案
+#      tags:
+#        - 修改后创建档案接口
+#      parameters:
+#        - name: create_params
+#          in: body
+#          required: true

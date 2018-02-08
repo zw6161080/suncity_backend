@@ -1,0 +1,50 @@
+taken_holiday_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: taken_holiday_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: taken_holiday_date
+      search_type: date
+      sorter: true
+      search_attribute: taken_holiday_date
+
+    - key: taken_holiday_type
+      value_type: obj_value
+      data_index: holiday_record.holiday_name
+      search_type: screen
+      sorter: true
+
+    - key: taken_roster_object
+      value_type: string_value
+      data_index: taken_roster_object

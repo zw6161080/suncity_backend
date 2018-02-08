@@ -1,0 +1,10 @@
+en:
+  entry_waited_records:
+    file_name: entry_waited_report
+  statement_columns:
+    entry_waited_records:
+      empoid: ID
+      name: Name
+      department: Department
+      position: Position
+      date_of_employment: Date

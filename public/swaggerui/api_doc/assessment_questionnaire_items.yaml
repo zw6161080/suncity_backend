@@ -1,0 +1,63 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 通过试用期问卷
+
+# Describe your paths here
+paths:
+
+  /job_transfers/get_questionnaire_template:
+    get:
+      description: 获取问卷模版
+      tags:
+        - 问卷模版
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工ID
+      responses:
+        200:
+          description: 返回员工所要做的问卷模版
+          schema:
+            $ref: '#/definitions/QuestionnaireTemplateData'
+
+definitions:
+
+  QuestionnaireTemplateData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            order_no:
+              type: integer
+              description: 第几条问卷条目
+            chinese_name:
+              type: string
+              description: 评估项目
+            english_name:
+              type: string
+              description: 评估项目
+            simple_chinese_name:
+              type: string
+              description: 评估项目
+            group_chinese_name:
+              type: string
+              description: 评估项目分组
+            group_english_name:
+              type: string
+              description: 评估项目分组
+            group_simple_chinese_name:
+              type: string
+              description: 评估项目分组
+
+        description: 问卷条目内容

@@ -1,0 +1,15 @@
+zh-HK:
+  statement_columns:
+    training_absentees:
+      employee_id: 員工編號
+      employee_name: 員工姓名
+      department: 部門
+      position: 職位
+      train_name: 培訓名稱
+      train_number: 培訓編號
+      train_date: 培訓日期
+      has_submitted_reason: 是否提交缺席原因
+      has_been_exempted: 是否豁免缺席
+      train_class_time: 缺席培訓時間
+      absence_reason: 缺席原因
+      submit_date: 提交日期

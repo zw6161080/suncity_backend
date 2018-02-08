@@ -1,0 +1,313 @@
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 有薪病假奖励假
+
+# Describe your paths here
+paths:
+  /paid_sick_leave_award_reports:
+    get:
+      description: 获取符合条件员工信息
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: paid_sick_leave_award_id
+          in: query
+          required: false
+          type: integer
+          description: 奖励id
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 员工编号
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工中文名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工部门中文名
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工职位中文名
+        - name: data_of_employment
+          in: query
+          required: false
+          type: string
+          description: 入职日期
+        - name: days_in_office
+          in: query
+          required: false
+          type: integer
+          description: 在值天数
+        - name: has_used_days
+          in: query
+          required: false
+          type: string
+          description: 申请有薪病假天数
+        - name: days_of_award
+          in: query
+          required: false
+          type: integer
+          description: 获得天数
+      responses:
+        200:
+          description: 获取员工奖励情况
+          schema:
+            $ref: '#/definitions/IndexData'
+    post:
+      description: 创建奖励
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+
+
+      responses:
+        200:
+          description: 创建成功
+
+  /paid_sick_leave_award_reports/{id}/offer:
+    patch:
+      description: 标记发放并通知
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 奖励ID
+      responses:
+        200:
+          description: 取得模板信息
+  /paid_sick_leave_award_reports/{id}:
+    delete:
+      description: 删除奖励
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID奖励
+      responses:
+        200:
+          description: 成功删除
+  /paid_sick_leave_award_reports/export:
+    get:
+      description: 导出报表
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: paid_sick_leave_awards_id
+          in: query
+          required: false
+          type: integer
+          description: 奖励id
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 员工编号
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工中文名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工部门中文名
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 员工职位中文名
+        - name: data_of_employment
+          in: query
+          required: false
+          type: string
+          description: 入职日期
+        - name: days_in_office
+          in: query
+          required: false
+          type: integer
+          description: 在值天数
+        - name: has_used_days
+          in: query
+          required: false
+          type: string
+          description: 申请有薪病假天数
+        - name: days_of_award
+          in: query
+          required: false
+          type: integer
+          description: 获得天数
+      responses:
+        200:
+          description: 导出成功
+  /paid_sick_leave_award_reports/field_options:
+    get:
+      description: 获取排序筛选项
+      responses:
+        200:
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/FieldOptionData'
+  /paid_sick_leave_award_reports/psla_options:
+    get:
+      description: 获取奖励筛选项
+      responses:
+        200:
+          description: 获取成功
+          schema:
+            $ref: '#/definitions/PslaData'
+
+definitions:
+  IndexData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            empoid:
+              type: string
+            user_chinese_name:
+              type: string
+            department_chinese_name:
+              type: string
+            position_chinese_name:
+              type: string
+            date_of_employment:
+              type: string
+            days_in_office:
+              type: integer
+              description: 在职天数
+            has_used_days:
+              type: integer
+              description: 申請有薪病假天數
+            days_of_award:
+              type: integer
+              description: 奖励天数
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_pages:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+          report_chinese_name:
+            type: string
+            description: 当前奖励名称
+          begin_date:
+            type: string
+            description: 开始日期
+          end_date:
+            type: string
+            description: 结束日期
+          due_date:
+            type: string
+            description: 生效日期
+          status:
+            type: integer
+            description: 发放及显示状态
+  CreateParams:
+    type: object
+    properties:
+      award_chinese_name:
+        type: string
+      award_english_name:
+        type: string
+      begin_date:
+        type: string
+      end_date:
+        type: string
+      due_date:
+        type: string
+  PslaData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            award_chinese_name:
+              type: string
+  FieldOptionData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          department_chinese_name:
+            type: array
+            items:
+              type: string
+          position_chinese_name:
+            type: array
+            items:
+              type: string
+          date_of_employment:
+            type: array
+            items:
+              type: string
+          days_in_office:
+            type: array
+            items:
+              type: string
+          has_used_days:
+            type: array
+            items:
+              type: string
+          days_of_award:
+            type: array
+            items:
+              type: string
+      state:
+        type: string

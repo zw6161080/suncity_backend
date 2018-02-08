@@ -1,0 +1,79 @@
+WelfareForTyphoonReports:
+  - empoid
+  - name
+  - department_id
+  - position_id
+  - clock_date
+  - creator_name
+  - created_at
+TrainTemplate:
+  - course_number
+  - course_name
+  - train_template_type_id
+  - teaching_form
+  - training_credits
+  - exam_format
+  - assessment_method
+  - creator_name
+  - updated_at
+Train:
+  - status
+  - train_date
+  - registration_method
+  - train_template_type_id
+  - train_cost
+  - registration_date
+  - online_of_offline_training
+  - training_credits
+  - by_invited_count
+  - train_attendance_percentage
+  - train_completed_percentage
+  - train_approved_percentage
+EntryListsByTrain:
+  - registration_time
+  - empoid
+  - name
+  - department_id
+  - position_id
+  - is_can_be_absent
+  - working_status
+  - title_id
+  - is_in_working_time
+  - registration_status
+  - creator_name
+  - creator_department_id
+  - creator_position_id
+  - creator_location_id
+FinalListsByTrain:
+  - empoid
+  - name
+  - department_id
+  - position_id
+  - working_status
+  - cost
+  - train_result
+  - attendance_percentage
+  - test_score
+SignListsByTrain:
+  - empoid
+  - name
+  - department_id
+  - position_id
+  - title_id
+  - train_class_id
+  - working_status
+  - sign_status
+PaySlip:
+  - year_month
+  - salary_begin
+  - salary_end
+  - name
+  - empoid
+  - company_name
+  - location_id
+  - position_id
+  - department_id
+  - salary_begin
+  - salary_end
+  - entry_on_this_month
+  - leave_on_this_month

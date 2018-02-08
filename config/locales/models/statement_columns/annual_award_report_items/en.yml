@@ -1,0 +1,35 @@
+en:
+  annual_award_report_items:
+    file_name: Annual award report
+  statement_columns:
+    annual_award_report_items:
+      empoid: Staff ID
+      name: Name
+      department_id: Department
+      position_id: Position
+      career_entry_date: Entry date
+      work_days_this_year: Number of days in office
+      deducted_days: Number of days to be deducted
+      add_double_pay: Have double pay
+      double_pay_hkd: Double pay(HKD)
+      double_pay_alter_hkd: Adjust double pay(HKD)
+      double_pay_final_hkd: Really issued double pay (HKD)
+      add_end_bonus: Have bonus
+      end_bonus_hkd: Should pay bonus(HKD)
+      praise_times: Praise letter's number
+      end_bonus_add_hkd: Bonus total add(HKD)
+      absence_times: Absences without official leave times yearly
+      notice_times: Same day leave times yearly
+      late_times: Lateness times yearly
+      lack_sign_card_times: Unaccounted clock in/out  times yearly
+      punishment_times: Disposition notice times
+      de_end_bonus_for_absence_hkd: Deduct bonus_absences without official leave(HKD)
+      de_bonus_for_notice_hkd: Deduct bonus_same day leave(HKD)
+      de_end_bonus_for_late_hkd: Deduct bonus_lateness(HKD)
+      de_end_bonus_for_sign_card_hkd: Deduct bonus_unaccounted clock in/out(HKD)
+      de_end_bonus_for_punishment_hkd: Deduct bonus_disposition notice(HKD)
+      de_bonus_total_hkd: Total deduct bonus(HKD)
+      end_bonus_final_hkd: Really issued bonus(HKD)
+      present_at_duty_first_half: Annual attendance last year
+      annual_at_duty_basic_hkd: Year-round work  base(HKD)
+      annual_at_duty_final_hkd: Really issued annual attendance(HKD)

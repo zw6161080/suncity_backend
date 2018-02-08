@@ -1,0 +1,57 @@
+zh-HK:
+  employee_fund_switching_report_items:
+    file_name: 成員基金投資調配表
+  statement_columns:
+    employee_fund_switching_report_items:
+      participation_date: Trade Date 參加公積金日期
+      employee_id: Employee ID 員工編號
+      chinese_name: Employee Chinese Name 中文姓名
+      english_name: Employee English/Portuguese Name 外文姓名
+      department: Deparment　部門
+      position: Position　職位
+      grade: Grade　職級
+      member_retirement_fund_number: Employee Pension Fund No 成員退休基金編號
+
+      employer_contribution: Employer Contribution 僱主供款
+      employer_voluntary_contribution: Employer Voluntary Contribution  僱主自願性供款
+      employee_contribution: Employee Contribution 成員供款
+      employee_voluntary_contribution: EMPLOYEE VOLUNTARY CONTRIBUTION 成員自願性供款
+      government_contribution: GOVERNMENT CONTRIBUTION 政府供款
+
+      pension_fund_name_in_employer_contribution: Pension Fund Name 退休基金名稱
+      contribution_allocation_percentage_in_employer_contribution: Contribution Allocation Percentage %供款百分比
+
+      name_of_fund_to_be_redeemed_in_employer_contribution: Name of Fund to be Redeemed贖回基金名稱
+      percentage_in_employer_contribution: Percentage %/Units轉換百分比/單位
+      name_of_fund_to_be_allocated_in_employer_contribution: Name of Fund to be Allocated投資基金名稱
+
+      pension_fund_name_in_employer_voluntary_contribution: Pension Fund Name退休基金名稱
+      contribution_allocation_percentage_in_employer_voluntary_contri: Contribution Allocation Percentage %供款百分比
+      name_of_fund_to_be_redeemed_in_employer_voluntary_contribution: Name of Fund to be Redeemed贖回基金名稱
+      percentage_in_employer_voluntary_contribution: Percentage %/Units轉換百分比/單位
+
+      name_of_fund_to_be_allocated_in_employer_voluntary_contribution: Name of Fund to be Allocated投資基金名稱
+
+
+      pension_fund_name_in_employee_contribution: Pension Fund Name退休基金名稱
+
+      contribution_allocation_percentage_in_employee_contribution: Contribution Allocation Percentage %供款百分比
+      name_of_fund_to_be_redeemed_in_employee_contribution: Name of Fund to be Redeemed贖回基金名稱
+
+      percentage_in_employee_contribution: Percentage %/Units轉換百分比/單位
+      name_of_fund_to_be_allocated_in_employee_contribution: Name of Fund to be Allocated投資基金名稱
+
+      pension_fund_name_in_employee_voluntary_contribution: Pension Fund Name退休基金名稱
+      contribution_allocation_percentage_in_employee_voluntary_contri: Contribution Allocation Percentage %供款百分比
+      name_of_fund_to_be_redeemed_in_employee_voluntary_contribution: Name of Fund to be Redeemed贖回基金名稱
+      percentage_in_employee_voluntary_contribution: Percentage %/Units轉換百分比/單位
+      name_of_fund_to_be_allocated_in_employee_voluntary_contribution: Name of Fund to be Allocated投資基金名稱
+
+
+      pension_fund_name_in_government_contribution: Pension Fund Name退休基金名稱
+
+      contribution_allocation_percentage_in_government_contribution: Contribution Allocation Percentage %供款百分比
+      name_of_fund_to_be_redeemed_in_government_contribution: Name of Fund to be Redeemed贖回基金名稱
+      percentage_in_government_contribution: Percentage %/Units轉換百分比/單位
+
+      name_of_fund_to_be_allocated_in_government_contribution: Name of Fund to be Allocated投資基金名稱

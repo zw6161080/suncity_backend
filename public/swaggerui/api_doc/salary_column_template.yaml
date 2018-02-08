@@ -1,0 +1,250 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 薪酬表头模板
+
+# Describe your paths here
+paths:
+  /salary_column_templates/get_default_template:
+    get:
+      description:  获取薪酬表头模板信息
+      tags:
+        - 薪酬表头模板
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/SingleSalaryColumnTemplate'
+  /salary_column_templates/{id}/set_default:
+    patch:
+      description:  设置默认模板
+      tags:
+        - 薪酬表头模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description:  模板记录id
+          type: integer
+      responses:
+        200:
+          description: ok
+  /salary_column_templates/all_columns:
+    get:
+      description: 获取所有可用表头字段信息
+      tags:
+        - 薪酬表头模板
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/AllColumns'
+  /salary_column_templates:
+    get:
+      tags:
+        - 薪酬表头模板
+      description: 获取薪酬表头列表
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TemplateList'
+    post:
+      description: 创建薪酬表头模板
+      tags:
+        - 薪酬表头模板
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: ok
+  /salary_column_templates/{id}:
+    get:
+      description:  获取薪酬表头模板信息
+      tags:
+        - 薪酬表头模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description:  模板记录id
+          type: integer
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/SingleSalaryColumnTemplate'
+    patch:
+      description:  更新薪酬表头模板信息
+      tags:
+        - 薪酬表头模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description:  模板记录id
+          type: integer
+        - name: update_params
+          in: body
+          required: true
+          description: 模板记录ID
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: ok
+
+
+    delete:
+      description:  删除薪酬表头模板信息
+      tags:
+        - 薪酬表头模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description:  模板记录id
+          type: integer
+      responses:
+        200:
+          description: ok
+
+definitions:
+  TemplateList:
+    type: object
+    properties:
+      salary_column_templates:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 模板id
+            name:
+              type: string
+              description: 模板名称
+            original_column_order:
+              type: array
+              items:
+                type: integer
+              description: 默认column排序
+            default:
+              type: boolean
+              description: 是否默认模板
+            salary_columns:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: 薪酬字段id
+                  chinese_name:
+                    type: string
+                    description: 薪酬字段繁体名
+                  english_name:
+                    type: string
+                    description: 薪酬字段英文名
+                  simple_chinese_name:
+                    type: string
+                    description: 薪酬字段简体名
+  AllColumns:
+    type: object
+    properties:
+      salary_columns:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 表头字段id
+            chinese_name:
+              type: string
+              description: 中文名称
+            english_name:
+              type: string
+              description: 英文名称
+            simple_chinese_name:
+              type: string
+              description: 简体名称
+            column_type:
+              type: string
+              description: '字段计算逻辑类型{fixed;function}'
+            add_deduct_type:
+              type: string
+              description: '增量还是负项{add; deduct; none}'
+            tax_type:
+              type: string
+              description: '是否扣税{changed: 扣税; not_changed: 不扣税}'
+            value_type:
+              type: string
+              description: '字段值类型{decimal;string;integer;date}'
+  SingleSalaryColumnTemplate:
+    type: object
+    properties:
+      salary_column_template:
+        type: object
+        properties:
+          name:
+            type: string
+          salary_columns:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 表头字段id
+                chinese_name:
+                  type: string
+                  description: 中文名称
+                english_name:
+                  type: string
+                  description: 英文名称
+                simple_chinese_name:
+                  type: string
+                  description: 简体名称
+                column_type:
+                  type: string
+                  description: '字段计算逻辑类型{fixed;function}'
+                add_deduct_type:
+                  type: string
+                  description: '增量还是负项{add; deduct; none}'
+                tax_type:
+                  type: string
+                  description: '是否扣税{changed: 扣税; not_changed: 不扣税}'
+                value_type:
+                  type: string
+                  description: '字段值类型{decimal;string;integer;date}'
+          original_column_order:
+            type: array
+            items:
+              type: integer
+            description: 默认column排序
+
+  CreateParams:
+    type: object
+    properties:
+      salary_column_template:
+        type: object
+        properties:
+          name:
+            type: string
+            description: 名称
+          column_array:
+            type: array
+            items:
+              type: integer
+              description: 表头字段id

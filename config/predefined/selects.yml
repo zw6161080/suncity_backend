@@ -1,0 +1,1187 @@
+# form selects config
+turnover_rate_years:
+  options:
+    - key: all
+      chinese_name: 全部
+      english_name: All
+      simple_chinese_name: 全部
+    - key: in_probation
+      chinese_name: 試用期內
+      english_name: In probation
+      simple_chinese_name: 試用期內
+    - key: probation_to_one_year
+      chinese_name: ≥試用期；<1年
+      english_name: ≥試用期；<1年
+      simple_chinese_name: ≥試用期；<1年
+    - key: one_to_three_year
+      chinese_name: ≥1年；<3年
+      english_name: ≥1年；<3年
+      simple_chinese_name: ≥1年；<3年
+    - key: three_to_five_year
+      chinese_name: ≥3年；<5年
+      english_name: ≥3年；<5年
+      simple_chinese_name: ≥3年；<5年
+    - key: more_than_five_year
+      chinese_name: ≥5年
+      english_name: ≥5年
+      simple_chinese_name: ≥5年
+local_or_foreign:
+  options:
+    - key: local
+      chinese_name: 本地
+      english_name: local
+      simple_chinese_name: 本地
+    - key: profession
+      chinese_name: 專業
+      english_name: Profession
+      simple_chinese_name: 专业
+    - key: non-profession
+      chinese_name: 非專業
+      english_name: Non-profession
+      simple_chinese_name: 非专业
+  default: local
+force_holiday_make_up:
+  options:
+    - key: one_money_and_one_holiday
+      chinese_name: 一錢一假
+      english_name: A money and a holiday
+      simple_chinese_name: 一钱一假
+    - key: two_money
+      chinese_name: 兩錢
+      english_name: Double money
+      simple_chinese_name: 两钱
+    - key: two_holiday
+      chinese_name: 兩假
+      english_name: Double holiday
+      simple_chinese_name: 两假
+salary_calculation:
+  options:
+    - key: do_not_adjust_the_salary
+      chinese_name: 不調整薪酬
+      english_name: Donot adjust
+      simple_chinese_name: 不调整薪酬
+    - key: adjust_the_salary_to_adjust_the_proportion_of_the_month
+      chinese_name: 調配當月按比例調整薪酬
+      english_name: Adjust in proportion in the month
+      simple_chinese_name: 调配当月按比例调整薪酬
+    - key: adjustments_are_not_adjusted_in_proportion_to_the_remuneration_of_the_month
+      chinese_name: 調配當月不按比例調整薪酬
+      english_name: Not adjusted in proportion in the mouth
+      simple_chinese_name: 调配当月不按比例调整薪酬
+deployment_type: &deployment_type
+  options:
+    - key: entry
+      chinese_name: 入職
+      english_name: Entry
+      simple_chinese_name: 入职
+    - key: through_the_probationary_period
+      chinese_name: 通過入職試用期
+      english_name: Through entry  probation
+      simple_chinese_name: 通过入职试用期
+    - key: transfer_by_employee_initiated
+      chinese_name: 調職（員工發起）
+      english_name: Transfer (staff initiated)
+      simple_chinese_name: 调职（员工发起）
+    - key: transfer_by_department_initiated
+      chinese_name: 調職（部門發起）
+      english_name: Transfer (department initiated)
+      simple_chinese_name: 调职（部门发起）
+    - key: through_the_transfer_probation_period
+      chinese_name: 通過調職試用期
+      english_name: Through  transfer probation
+      simple_chinese_name: 通过调职试用期
+    - key: promotion
+      chinese_name: 晉升
+      english_name: Promotion
+      simple_chinese_name: 晋升
+    - key: special_assessment
+      chinese_name: 特別評估
+      english_name: Special-assess
+      simple_chinese_name: 特别评估
+    - key: museum
+      chinese_name: 調館
+      english_name: Transfer the location
+      simple_chinese_name: 调馆
+    - key: lent
+      chinese_name: 暫借
+      english_name: Lent
+      simple_chinese_name: 暂借
+    - key: suspension_investigation
+      chinese_name: 停職調查
+      english_name: Suspension investigation
+      simple_chinese_name: 停职调查
+    - key: other
+      chinese_name: 其他
+      english_name: others
+      simple_chinese_name: 其他
+  default: entry
+salary_unit:
+  options:
+    - key: mop
+      chinese_name: 澳門幣
+      english_name: MOP
+      simple_chinese_name: 澳门币
+    - key: hkd
+      chinese_name: 港幣
+      english_name: HKD
+      simple_chinese_name: 港币
+  default: mop
+
+work_days_every_week:
+  options:
+    - key: 5
+      chinese_name: 5
+      english_name: 5
+      simple_chinese_name: 0
+    - key: 6
+      chinese_name: 6
+      english_name: 6
+      simple_chinese_name: 6
+
+annual_leave:
+  options:
+    - key: 0
+      chinese_name: 0
+      english_name: 0
+      simple_chinese_name: 0
+    - key: 7
+      chinese_name: 7
+      english_name: 7
+      simple_chinese_name: 7
+    - key: 12
+      chinese_name: 12
+      english_name: 12
+      simple_chinese_name: 12
+    - key: 14
+      chinese_name: 14
+      english_name: 14
+      simple_chinese_name: 14
+    - key: 15
+      chinese_name: 15
+      english_name: 15
+      simple_chinese_name: 15
+    - key: 16
+      chinese_name: 16
+      english_name: 16
+      simple_chinese_name: 16
+    - key: 18
+      chinese_name: 18
+      english_name: 18
+      simple_chinese_name: 18
+    - key: 21
+      chinese_name: 21
+      english_name: 21
+      simple_chinese_name: 21
+
+sick_leave:
+  options:
+    - key: 0
+      chinese_name: 0
+      english_name: 0
+      simple_chinese_name: 0
+    - key: 6
+      chinese_name: 6
+      english_name: 6
+      simple_chinese_name: 6
+office_holiday:
+  options:
+    - key: '0'
+      chinese_name: 0
+      english_name: 0
+      simple_chinese_name: 0
+    - key: '1'
+      chinese_name: 1
+      english_name: 1
+      simple_chinese_name: 1
+    - key: '1.5'
+      chinese_name: 1.5
+      english_name: 1.5
+      simple_chinese_name: 1.5
+    - key: '2'
+      chinese_name: 2
+      english_name: 2
+      simple_chinese_name: 2
+holiday_type:
+  options:
+    - key: none_holiday
+      chinese_name: 无
+      english_name: No
+      simple_chinese_name: 无
+    - key: force_holiday
+      chinese_name: 強制性假期
+      english_name: Force holiday
+      simple_chinese_name: 强制性假期
+    - key: force_public_holiday
+      chinese_name: 強制性公眾假期
+      english_name: Force public holiday
+      simple_chinese_name: 强制性公众假期
+probation:
+  options:
+    - key: 0
+      chinese_name: 0
+      english_name: 0
+      simple_chinese_name: 0
+    - key: 30
+      chinese_name: 30
+      english_name: 30
+      simple_chinese_name: 30
+    - key: 60
+      chinese_name: 60
+      english_name: 60
+      simple_chinese_name: 60
+    - key: 90
+      chinese_name: 90
+      english_name: 90
+      simple_chinese_name: 90
+    - key: 180
+      chinese_name: 180
+      english_name: 180
+      simple_chinese_name: 180
+notice_period:
+  options:
+    - key: 0
+      chinese_name: 0
+      english_name: 0
+      simple_chinese_name: 0
+    - key: 7
+      chinese_name: 7
+      english_name: 7
+      simple_chinese_name: 7
+    - key: 30
+      chinese_name: 30
+      english_name: 30
+      simple_chinese_name: 30
+    - key: 60
+      chinese_name: 60
+      english_name: 60
+      simple_chinese_name: 60
+over_time_salary:
+  options:
+#    - key: one_times
+#      chinese_name: 1倍
+#      english_name: one_times
+    - key: one_point_two_times
+      chinese_name: 1.2倍
+      english_name: 1.2 times
+      simple_chinese_name: 1.2倍
+#    - key: two_times
+#      chinese_name: 2倍
+#      english_name: two_times
+    - key: one_point_two_and_two_times
+      chinese_name: 1.2倍及2倍
+      english_name: 1.2 times and double
+      simple_chinese_name: 1.2倍及2倍
+gender:
+  options:
+    - key: male
+      chinese_name: 男
+      english_name: Male
+      simple_chinese_name: 男
+    - key: female
+      chinese_name: 女
+      english_name: Female
+      simple_chinese_name: 女
+
+nationality:
+  options:
+    - key: macau
+      chinese_name: 中國澳門
+      simple_chinese_name: 中国澳门
+      english_name: Macau
+    - key: hong_kong
+      chinese_name: 中國香港
+      simple_chinese_name: 中国香港
+      english_name: Hong Kong
+    - key: china
+      chinese_name: 中國
+      simple_chinese_name: 中国
+      english_name: People's Republic of China
+    - key: republic_of_china
+      chinese_name: 中華民國
+      simple_chinese_name: 中华民国
+      english_name: Republic of China
+    - key: vietnam
+      chinese_name: 越南
+      simple_chinese_name: 越南
+      english_name: Vietnam
+    - key: korea
+      chinese_name: 韓國
+      simple_chinese_name: 韩国
+      english_name: Korea
+    - key: japan
+      chinese_name: 日本
+      simple_chinese_name: 日本
+      english_name: Japan
+    - key: thailand
+      chinese_name: 泰國
+      simple_chinese_name: 泰国
+      english_name: Thailand
+    - key: malaysia
+      chinese_name: 馬來西亞
+      simple_chinese_name: 马来西亚
+      english_name: Malaysia
+    - key: philippines
+      chinese_name: 菲律賓
+      simple_chinese_name: 菲律宾
+      english_name: Philippines
+    - key: india
+      chinese_name: 印度
+      simple_chinese_name: 印度
+      english_name: India
+    - key: indonesia
+      chinese_name: 印尼
+      simple_chinese_name: 印尼
+      english_name: Indonesia
+    - key: kuwait
+      chinese_name: 科威特
+      simple_chinese_name: 科威特
+      english_name: Kuwait
+    - key: pakistan
+      chinese_name: 巴基斯坦
+      simple_chinese_name: 巴基斯坦
+      english_name: Pakistan
+    - key: maldives
+      chinese_name: 馬爾地夫
+      simple_chinese_name: 马尔地夫
+      english_name: Maldives
+    - key: iran
+      chinese_name: 伊朗
+      simple_chinese_name: 伊朗
+      english_name: Iran
+    - key: iraq
+      chinese_name: 伊拉克
+      simple_chinese_name: 伊拉克
+      english_name: Iraq
+    - key: israel
+      chinese_name: 以色列
+      simple_chinese_name: 以色列
+      english_name: Israel
+    - key: saudi-arabia
+      chinese_name: 沙烏地阿拉伯
+      simple_chinese_name: 沙乌地阿拉伯
+      english_name: Saudi-Arabia
+    - key: singapore
+      chinese_name: 新加坡
+      simple_chinese_name: 新加坡
+      english_name: Singapore
+    - key: papua_new_guinea
+      chinese_name: 巴布亞 新幾內亞
+      simple_chinese_name: 巴布亚 新几内亚
+      english_name: Papua New Guinea
+    - key: nepal
+      chinese_name: 尼泊爾
+      simple_chinese_name: 尼泊尔
+      english_name: Nepal
+    - key: yemen
+      chinese_name: 葉門
+      simple_chinese_name: 也门
+      english_name: Yemen
+    - key: turkey
+      chinese_name: 土耳其
+      simple_chinese_name: 土耳其
+      english_name: Turkey
+    - key: solomon_islands
+      chinese_name: 所羅門群島
+      simple_chinese_name: 所罗门群岛
+      english_name: Solomon Islands
+    - key: sri_lanka
+      chinese_name: 斯里蘭卡
+      simple_chinese_name: 斯里兰卡
+      english_name: Sri Lanka
+    - key: united_states
+      chinese_name: 美國
+      simple_chinese_name: 美国
+      english_name: United States
+    - key: canada
+      chinese_name: 加拿大
+      simple_chinese_name: 加拿大
+      english_name: Canada
+    - key: brazil
+      chinese_name: 巴西
+      simple_chinese_name: 巴西
+      english_name: Brazil
+    - key: argentina
+      chinese_name: 阿根廷
+      simple_chinese_name: 阿根廷
+      english_name: Argentina
+    - key: chile
+      chinese_name: 智利
+      simple_chinese_name: 智利
+      english_name: Chile
+    - key: colombia
+      chinese_name: 哥倫比亞
+      simple_chinese_name: 哥伦比亚
+      english_name: Colombia
+    - key: dominican
+      chinese_name: 多明尼亞
+      simple_chinese_name: 多明尼亚
+      english_name: Dominican
+    - key: panama
+      chinese_name: 巴拿馬
+      simple_chinese_name: 巴拿马
+      english_name: Panama
+    - key: honduras
+      chinese_name: 宏都拉斯
+      simple_chinese_name: 洪都拉斯
+      english_name: Honduras
+    - key: nicaragua
+      chinese_name: 尼加拉瓜
+      simple_chinese_name: 尼加拉瓜
+      english_name: Nicaragua
+    - key: ecuador
+      chinese_name: 厄瓜多爾
+      simple_chinese_name: 厄瓜多尔
+      english_name: Ecuador
+    - key: mexico
+      chinese_name: 墨西哥
+      simple_chinese_name: 墨西哥
+      english_name: Mexico
+    - key: uruguay
+      chinese_name: 烏拉圭
+      simple_chinese_name: 乌拉圭
+      english_name: Uruguay
+    - key: peru
+      chinese_name: 祕魯
+      simple_chinese_name: 秘鲁
+      english_name: Peru
+    - key: guatemala
+      chinese_name: 瓜地馬拉
+      simple_chinese_name: 瓜地马拉
+      english_name: Guatemala
+    - key: costa_rica
+      chinese_name: 哥斯大黎加
+      simple_chinese_name: 哥斯大黎加
+      english_name: Costa Rica
+    - key: el_salvador
+      chinese_name: 薩爾瓦多
+      simple_chinese_name: 萨尔瓦多
+      english_name: El Salvador
+    - key: australia
+      chinese_name: 澳洲
+      simple_chinese_name: 澳洲
+      english_name: Australia
+    - key: palau
+      chinese_name: 帛琉
+      simple_chinese_name: 帛琉
+      english_name: Palau
+    - key: fiji
+      chinese_name: 斐濟
+      simple_chinese_name: 斐济
+      english_name: Fiji
+    - key: guam
+      chinese_name: 關島
+      simple_chinese_name: 关岛
+      english_name: Guam
+    - key: new_zealand
+      chinese_name: 紐西蘭
+      simple_chinese_name: 纽西兰
+      english_name: New Zealand
+    - key: portugal
+      chinese_name: 葡萄牙
+      simple_chinese_name: 葡萄牙
+      english_name: Portugal
+    - key: spain
+      chinese_name: 西班牙
+      simple_chinese_name: 西班牙
+      english_name: Spain
+    - key: sweden
+      chinese_name: 瑞典
+      simple_chinese_name: 瑞典
+      english_name: Sweden
+    - key: switzerland
+      chinese_name: 瑞士
+      simple_chinese_name: 瑞士
+      english_name: Switzerland
+    - key: united_kingdom
+      chinese_name: 英國
+      simple_chinese_name: 英国
+      english_name: United Kingdom
+    - key: germany
+      chinese_name: 德國
+      simple_chinese_name: 德国
+      english_name: Germany
+    - key: france
+      chinese_name: 法國
+      simple_chinese_name: 法国
+      english_name: France
+    - key: russia
+      chinese_name: 俄羅斯
+      simple_chinese_name: 俄罗斯
+      english_name: Russia
+    - key: hungary
+      chinese_name: 匈牙利
+      simple_chinese_name: 匈牙利
+      english_name: Hungary
+    - key: iceland
+      chinese_name: 冰島
+      simple_chinese_name: 冰岛
+      english_name: Iceland
+    - key: ireland
+      chinese_name: 愛爾蘭
+      simple_chinese_name: 爱尔兰
+      english_name: Ireland
+    - key: malta
+      chinese_name: 馬爾他
+      simple_chinese_name: 马耳他
+      english_name: Malta
+    - key: greece
+      chinese_name: 希臘
+      simple_chinese_name: 希腊
+      english_name: Greece
+    - key: italy
+      chinese_name: 義大利
+      simple_chinese_name: 意大利
+      english_name: Italy
+    - key: luxembourg
+      chinese_name: 盧森堡
+      simple_chinese_name: 卢森堡
+      english_name: Luxembourg
+    - key: morocco
+      chinese_name: 摩洛哥
+      simple_chinese_name: 摩洛哥
+      english_name: Morocco
+    - key: netherlands
+      chinese_name: 荷蘭
+      simple_chinese_name: 荷兰
+      english_name: Netherlands
+    - key: norway
+      chinese_name: 挪威
+      simple_chinese_name: 挪威
+      english_name: Norway
+    - key: poland
+      chinese_name: 波蘭
+      simple_chinese_name: 波兰
+      english_name: Poland
+    - key: romania
+      chinese_name: 羅馬尼亞
+      simple_chinese_name: 罗马尼亚
+      english_name: Romania
+    - key: austria
+      chinese_name: 奧地利
+      simple_chinese_name: 奥地利
+      english_name: Austria
+    - key: belgium
+      chinese_name: 比利時
+      simple_chinese_name: 比利时
+      english_name: Belgium
+    - key: denmark
+      chinese_name: 丹麥
+      simple_chinese_name: 丹麦
+      english_name: Denmark
+    - key: finland
+      chinese_name: 芬蘭
+      simple_chinese_name: 芬兰
+      english_name: Finland
+    - key: nigeria
+      chinese_name: 奈及利亞
+      simple_chinese_name: 奈及利亚
+      english_name: Nigeria
+    - key: south_africa
+      chinese_name: 南非
+      simple_chinese_name: 南非
+      english_name: South Africa
+    - key: kenya
+      chinese_name: 肯亞
+      simple_chinese_name: 肯亚
+      english_name: Kenya
+    - key: tansaniya
+      chinese_name: 坦薩尼亞
+      simple_chinese_name: 坦桑尼亚
+      english_name: Tansaniya
+    - key: algeria
+      chinese_name: 阿爾及利亞
+      simple_chinese_name: 阿尔及利亚
+      english_name: Algeria
+    - key: egypt
+      chinese_name: 埃及
+      simple_chinese_name: 埃及
+      english_name: Egypt
+  default: macau
+type_of_id:
+  options:
+    - key: macau_permanent_identity_card
+      chinese_name: 澳門永久居民身份證
+      english_name: Macau permanent ID
+      simple_chinese_name: 澳门永久居民身份证
+    - key: macau_and_africa_permanent_identity_card
+      chinese_name: 澳門非永久居民身份證
+      english_name: Macau non-permanent ID
+      simple_chinese_name: 澳门非永久居民身份证
+    - key: hong_kong_identity_card
+      chinese_name: 香港居民身份證
+      english_name: HKID
+      simple_chinese_name: 香港居民身份证
+    - key: valid_exit_entry_permit_eep_to_hk_macau
+      chinese_name: 港澳通行證
+      english_name: HK/Macau pass
+      simple_chinese_name: 港澳通行证
+    - key: passport
+      chinese_name: 護照
+      english_name: Passport
+      simple_chinese_name: 护照
+    - key: blue_card
+      chinese_name: 藍卡
+      english_name: Blue card
+      simple_chinese_name: 蓝卡
+  default: macau_permanent_identity_card
+
+marital_status:
+  options:
+    - key: unmarried
+      chinese_name: 未婚
+      english_name: Unmarried
+      simple_chinese_name: 未婚
+    - key: married
+      chinese_name: 已婚
+      english_name: Married
+      simple_chinese_name: 已婚
+    - key: windowed
+      chinese_name: 喪偶
+      english_name: Widowed
+      simple_chinese_name: 丧偶
+    - key: divorced
+      chinese_name: 離婚
+      english_name: Divorced
+      simple_chinese_name: 离婚
+    - key: others
+      chinese_name: 其他
+      english_name: Others
+      simple_chinese_name: 其他
+
+employment_status:
+  options:
+    - key: informal_employees
+      chinese_name: 非正式員工
+      english_name: Informal staff
+      simple_chinese_name: 非正式员工
+    - key: formal_employees
+      chinese_name: 正式員工
+      english_name: Formal staff
+      simple_chinese_name: 正式员工
+    - key: director
+      chinese_name: 總監員工
+      english_name: Director staff
+      simple_chinese_name: 总监员工
+    - key: president
+      chinese_name: 總裁員工
+      english_name: President staff
+      simple_chinese_name: 总裁员工
+    - key: director_in_informal
+      chinese_name: 總監(非正式)
+      english_name: Director (informal)
+      simple_chinese_name: 总监(非正式)
+    - key: president_in_informal
+      chinese_name: 總裁(非正式)
+      english_name: President (informal)
+      simple_chinese_name: 总裁(非正式)
+    - key: part_time
+      chinese_name: 兼職
+      english_name: Part time
+      simple_chinese_name: 兼职
+    - key: trainee
+      chinese_name: 實習生
+      english_name: Intern
+      simple_chinese_name: 实习生
+  default: informal_employees
+payment_method:
+  options:
+    - key: check
+      chinese_name: 支票
+      english_name: Check
+      simple_chinese_name: 支票
+    - key: cash
+      chinese_name: 現金
+      english_name: Cash
+      simple_chinese_name: 现金
+
+provident_fund: &provident_fund
+  options:
+    - key: true
+      chinese_name: 是
+      english_name: Yes
+      simple_chinese_name: 是
+    - key: false
+      chinese_name: 否
+      english_name: No
+      simple_chinese_name: 否
+
+double_pay:
+  <<: *provident_fund
+
+reduce_salary_for_sick:
+  <<: *provident_fund
+
+position_type:
+  options:
+    - key: business_staff_48
+      chinese_name: 營業性員工-48小時
+      english_name: Operating staff-48hours
+      simple_chinese_name: 营业性员工-48小时
+    - key: business_staff_40
+      chinese_name: 營業性員工-40小時
+      english_name: Operating staff-40hours
+      simple_chinese_name: 营业性员工-40小时
+    - key: non_business_staff_48
+      chinese_name: 非營業性員工-48小時
+      english_name: Non-profit staff-48hours
+      simple_chinese_name: 非营业性员工-48小时
+    - key: non_business_staff_40
+      chinese_name: 非營業性員工-40小時
+      english_name: Non-profit staff-40hours
+      simple_chinese_name: 非营业性员工-40小时
+
+provident_airfare: &provident_airfare
+  options:
+    - key: true
+      chinese_name: 享有
+      english_name: Enjoy
+      simple_chinese_name: 享有
+    - key: false
+      chinese_name: 不適用
+      english_name: No enjoy
+      simple_chinese_name: 不适用
+
+provide_airfare:
+  <<: *provident_airfare
+
+provide_uniform:
+  <<: *provident_airfare
+
+provide_accommodation:
+  <<: *provident_airfare
+compensation_year:
+  <<: *provident_airfare
+notice_period_compensation:
+  <<: *provident_airfare
+salary_composition:
+  options:
+    - key: fixed
+      chinese_name: 固定
+      english_name: Fixed
+      simple_chinese_name: 固定
+    - key: float
+      chinese_name: 浮動
+      english_name: Float
+      simple_chinese_name: 浮动
+
+transfer_reason: &transfer_reason
+  options:
+    - key: entry
+      chinese_name: 入職
+      english_name: Entry
+      simple_chinese_name: 入职
+    - key: probaton_passed
+      chinese_name: 通過試用期
+      english_name: Through probation period
+      simple_chinese_name: 通过试用期
+    - key: promotion
+      chinese_name: 晉升
+      english_name: Promotion
+      simple_chinese_name: 晋升
+    - key: department_transfer_personal_request
+      chinese_name: 跨部門調職(個人申請)
+      english_name: Department transfer (personal request)
+      simple_chinese_name: 跨部门调职(个人申请)
+    - key: department_transfer_department_request
+      chinese_name: 跨部門調職(部門申請)
+      english_name: Department transfer (department request)
+      simple_chinese_name: 跨部门调职(部门申请)
+    - key: location_transfer
+      chinese_name: 調館
+      english_name: Transfer the location
+      simple_chinese_name: 调馆
+    - key: transfer_within_same_department_personal_request
+      chinese_name: 同部門調職(個人申請)
+      english_name: Transfer within same department (personal request)
+      simple_chinese_name: 同部门调职(个人申请)
+    - key: transfer_within_same_department_department_request
+      chinese_name: 同部門調職(部門申請)
+      english_name: Transfer within same department (department request)
+      simple_chinese_name: 同部门调职(部门申请)
+    - key: company_transfer_personal_request
+      chinese_name: 跨公司調職(個人申請)
+      english_name: Company transfer (personal request)
+      simple_chinese_name: 跨公司调职(个人申请)
+    - key: company_transfer_department_request
+      chinese_name: 跨公司調職(部門申請)
+      english_name: Company transfer (department request)
+      simple_chinese_name: 跨公司调职(部门申请)
+
+change_reason:
+  <<: *deployment_type
+resigned_reason:
+  options:
+    - key: resignation
+      chinese_name: 員工辭職
+      english_name: Staff resignation
+      simple_chinese_name: 员工辞职
+    - key: termination
+      chinese_name: 終止僱用
+      english_name: Termination
+      simple_chinese_name: 终止雇佣
+    - key: lay_off
+      chinese_name: 遣散
+      english_name: lay_off
+      simple_chinese_name: 遣散
+    - key: company_transfer_personal_request
+      chinese_name: 跨公司調職(個人申請)
+      english_name: Company transfer (personal request)
+      simple_chinese_name: 跨公司调职(个人申请)
+    - key: company_transfer_department_request
+      chinese_name: 跨公司調職(部門申請)
+      english_name: Company transfer (department request)
+      simple_chinese_name: 跨公司调职(部门申请)
+    - key: retirement
+      chinese_name: 退休
+      english_name: Retirement
+      simple_chinese_name: 退休
+    - key: others
+      chinese_name: 其他
+      english_name: Others
+      simple_chinese_name: 其他
+
+reason_for_resignation:
+  options:
+    - key: job_description
+      chinese_name: 工作職能
+      english_name: Job duties
+      simple_chinese_name: 工作职能
+    - key: family_or_other_external_reason
+      chinese_name: 家庭或其他外在因素
+      english_name: Family or other external factors
+      simple_chinese_name: 家庭或其他外在因素
+    - key: employee_benefits
+      chinese_name: 員工福利待遇
+      english_name: Staff benefits
+      simple_chinese_name: 员工福利待遇
+    - key: career_development
+      chinese_name: 職業發展
+      english_name: Career development
+      simple_chinese_name: 职业发展
+    - key: personal_career_development
+      chinese_name: 個人生涯發展
+      english_name: Personal career development
+      simple_chinese_name: 个人生涯发展
+    - key: personal_reason
+      chinese_name: 個人因素
+      english_name: Personal reason
+      simple_chinese_name: 个人因素
+    - key: relationship
+      chinese_name: 人際關係
+      english_name: Interpersonal relationships
+      simple_chinese_name: 人际关系
+    - key: others
+      chinese_name: 其他
+      english_name: Others
+      simple_chinese_name: 其他
+
+company_name:
+  options:
+    - key: suncity_gaming_promotion_company_limited
+      chinese_name: 太陽城博彩中介一人有限公司
+      english_name: Sun city gaming intermediaries one person co ltd
+      simple_chinese_name: 太阳城博彩中介一人有限公司
+    - key: suncity_group_commercial_consulting
+      chinese_name: 太陽城集團商業顧問有限公司
+      english_name: Sun city group business consultants co ltd
+      simple_chinese_name: 太阳城集团商业顾问有限公司
+    - key: suncity_group_tourism_limited
+      chinese_name: 太陽城集團旅遊有限公司
+      english_name: Sun city group travel co ltd
+      simple_chinese_name: 太阳城集团旅游有限公司
+    - key: tian_mao_yi_hang
+      chinese_name: 天貿易行
+      english_name: TianMao yi xing
+      simple_chinese_name: 天贸易行
+  default: suncity_gaming_promotion_company_limited
+
+grade:
+  options:
+    - key: 1
+      chinese_name: 1
+      english_name: 1
+      simple_chinese_name: 1
+    - key: 2
+      chinese_name: 2
+      english_name: 2
+      simple_chinese_name: 2
+    - key: 3
+      chinese_name: 3
+      english_name: 3
+      simple_chinese_name: 3
+    - key: 4
+      chinese_name: 4
+      english_name: 4
+      simple_chinese_name: 4
+    - key: 5
+      chinese_name: 5
+      english_name: 5
+      simple_chinese_name: 5
+    - key: 6
+      chinese_name: 6
+      english_name: 6
+      simple_chinese_name: 6
+
+shift_setting_grade:
+  options:
+    - key: total
+      chinese_name: 總人數
+      english_name: total
+      simple_chinese_name: 总人数
+    - key: 3
+      chinese_name: 經理級
+      english_name: 3
+      simple_chinese_name: 经理级
+    - key: 4
+      chinese_name: 主任級
+      english_name: 4
+      simple_chinese_name: 主任级
+
+inputer_api_select:
+  type: api
+  endpoint: /users
+
+position_api_select:
+  type: api
+  endpoint: /positions
+
+department_api_select:
+  type: api
+  endpoint: /departments
+
+group_api_select:
+  type: api
+  endpoint: /groups
+
+location_api_select:
+  type: api
+  endpoint: /locations
+
+position_to_apply:
+  type: api
+  endpoint: /jobs/jobs_with_pending
+
+division_of_job:
+  options:
+    - key: front_office
+      chinese_name: 前線
+      english_name: Front office
+      simple_chinese_name: 前线
+    - key: back_office
+      chinese_name: 後勤
+      english_name: Logistics office
+      simple_chinese_name: 后勤
+  default: front_office
+
+referred_by:
+  options:
+    - key: recruitment_agency
+      chinese_name: 招募代理
+      english_name: Recruitment agency
+      simple_chinese_name: 招募代理
+    - key: friend
+      chinese_name: 朋友
+      english_name: Friend
+      simple_chinese_name: 朋友
+    - key: newspaper
+      chinese_name: 报纸
+      english_name: Newspaper
+      simple_chinese_name: 报纸
+    - key: flyers
+      chinese_name: 宣傳單
+      english_name: Flyer
+      simple_chinese_name: 宣传单
+    - key: internet
+      chinese_name: 互聯網
+      english_name: The Internet
+      simple_chinese_name: 互联网
+    - key: others
+      chinese_name: 其他
+      english_name: Others
+      simple_chinese_name: 其他
+
+language_skill:
+  options:
+    - key: excellent
+      chinese_name: 優
+      english_name: Excellent
+      simple_chinese_name: 优
+    - key: good
+      chinese_name: 良
+      english_name: Good
+      simple_chinese_name: 良
+    - key: fair
+      chinese_name: 一般
+      english_name: Mean
+      simple_chinese_name: 一般
+
+get_info_from:
+  options:
+    - key: macao_daily_news
+      chinese_name: 澳門日報
+      english_name: Macao Daily News
+      simple_chinese_name: 澳门日报
+    - key: power_daily
+      chinese_name: 力報
+      english_name: Reported force
+      simple_chinese_name: 力报
+    - key: campus_web
+      chinese_name: 校內網頁
+      english_name: Campus web
+      simple_chinese_name: 校内网页
+    - key: friends
+      chinese_name: 朋友
+      english_name: Friend
+      simple_chinese_name: 朋友
+    - key: the_labour_affairs_bureau
+      chinese_name: 勞工事務局
+      english_name: Labor Bureau
+      simple_chinese_name: 劳工事务局
+    - key: leaflets
+      chinese_name: 宣傳單
+      english_name: Flyer
+      simple_chinese_name: 宣传单
+    - key: recommender_program
+      chinese_name: 推薦人計畫
+      english_name: Recommended program
+      simple_chinese_name: 推荐人计划书
+    - key: internet
+      chinese_name: 互聯網(請列明)
+      english_name: The Internet (please specify)
+      simple_chinese_name: 互联网(请列明)
+    - key: others
+      chinese_name: 其他(請列明）
+      english_name: Others(please specify)
+      simple_chinese_name: 其他(请列明)
+
+dimission_type:
+  options:
+    - key: resignation
+      chinese_name: 員工辭職
+      english_name: Staff resignation
+      simple_chinese_name: 员工辞职
+    - key: termination
+      chinese_name: 終止僱傭
+      english_name: Terminate employment
+      simple_chinese_name: 终止雇佣
+
+employee_type:
+  options:
+    - key: local_employee
+      chinese_name: 本地僱員
+      english_name: Local Employee
+      simple_chinese_name: 本地雇员
+    - key: nonlocal_employee
+      chinese_name: 外地僱員
+      english_name: Non-local Employee
+      simple_chinese_name: 外地雇员
+
+contribution_item:
+  options:
+    - key: employer_contribution
+      chinese_name: 僱主供款
+      english_name: employer_contribution
+      simple_chinese_name: 雇主供款
+    - key: membership_contribution
+      chinese_name: 成員供款
+      english_name: membership_contribution
+      simple_chinese_name: 成员供款
+    - key: employer_voluntary_contribution
+      chinese_name: 僱主自願性供款
+      english_name: employee_voluntary_contribution
+      simple_chinese_name: 雇主自愿性供款
+    - key: employee_voluntary_contribution
+      chinese_name: 成員自願性供款
+      english_name: employer_voluntary_contribution
+      simple_chinese_name: 成员自愿性供款
+record_type:
+  options:
+    - key: annual_reward
+      chinese_name: 年度獎金
+      english_name: Annual Bonus
+      simple_chinese_name: 年度奖金
+    - key: leave_salary
+      chinese_name: 離職尾期薪金
+      english_name: Dimission Salary
+      simple_chinese_name: 离职尾期薪金
+    - key: salary
+      chinese_name: 工資
+      english_name: Salary
+      simple_chinese_name: 工资
+#table: trains
+#column: status
+train_status:
+  options:
+    - key: not_published
+      chinese_name: 未公布
+      english_name: Unpublished
+      simple_chinese_name: 未公布
+    - key: has_been_published
+      chinese_name: 已公布　
+      english_name: Published
+      simple_chinese_name: 已公布
+    - key: signing_up
+      chinese_name: 報名中
+      english_name: Appliable
+      simple_chinese_name: 报名中
+    - key: registration_ends
+      chinese_name: 報名結束
+      english_name: Expired
+      simple_chinese_name: 报名结束
+    - key: training
+      chinese_name: 培訓中
+      english_name: Under training
+      simple_chinese_name: 培训中
+    - key: completed
+      chinese_name: 已完成
+      english_name: Completed
+      simple_chinese_name: 已完成
+    - key: cancelled
+      chinese_name: 已取消
+      english_name: Cancelled
+      simple_chinese_name: 已取消
+#table: trains
+#column: registration_method
+registration_method:
+  options:
+    - key: by_employee
+      chinese_name: 員工報名
+      english_name: Staff registration
+      simple_chinese_name: 员工报名　
+    - key: by_department
+      chinese_name: 部門報名
+      english_name: Department registration
+      simple_chinese_name: 部门报名
+    - key: by_employee_and_department
+      chinese_name: 員工＆部門報名
+      english_name: Staff & Department registration
+      simple_chinese_name: 员工＆部门报名
+#table: train_templates
+#column: online_or_offline_training
+
+online_or_offline_training:
+  options:
+    - key: online_training
+      chinese_name: 線上培訓
+      english_name: Online training
+      simple_chinese_name: 线上培训
+    - key: offline_training
+      chinese_name: 線下培訓
+      english_name: Maximum number
+      simple_chinese_name: 线上培训
+#table: train_templates
+#column: assessment_method
+assessment_method:
+  options:
+    - key: by_attendance_rate
+      chinese_name: 出席率
+      english_name: Attendance rate
+      simple_chinese_name: 出席率
+    - key: by_test_scores
+      chinese_name: 考試分數
+      english_name: Scores
+      simple_chinese_name: 考试分数
+    - key: by_both
+      chinese_name: 出席率和考試分數
+      english_name: Attendance and test scores
+      simple_chinese_name: 出席率和考试分数

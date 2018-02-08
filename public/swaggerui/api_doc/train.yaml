@@ -1,0 +1,3902 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 培训
+
+# Describe your paths here
+paths:
+  /final_lists/{id}/train_result:
+    patch:
+      tags:
+        - 培训名单
+      description: '更新培训结果'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训记录id'
+          type: integer
+        - name: update_params
+          in: body
+          required: true
+          description: '更新参数'
+          schema:
+            $ref: '#/definitions/UpdateFinalListResult'
+      responses:
+        200:
+          description: ok
+
+  /trains/{id}/get_training_absentees_status:
+    get:
+      tags:
+        - 培训缺席
+      description: 判断培训缺席状态
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: 'user_id'
+          type: integer
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainingAbsenteesStatus'
+
+  /trains/{id}/create_training_papers:
+    patch:
+      tags:
+        - 发起考试
+      description: 发起考试
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+  /trains/{id}/create_student_evaluations:
+    patch:
+      tags:
+        - 发起学员评价
+      description: 发起学员评价
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+        - name: questionnaire_template_id
+          in: query
+          required: true
+          type: integer
+          description: '问卷模板id'
+      responses:
+        200:
+          description: ok
+  /trains/{id}/create_supervisor_assessment:
+    patch:
+      tags:
+        - 发起上司考核
+      description: 发起上司考核
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+        - name: questionnaire_template_id
+          in: query
+          required: true
+          type: integer
+          description: '问卷模板id'
+      responses:
+        200:
+          description: ok
+  /trains/{id}/trains_info_by_user:
+    get:
+      tags:
+        - 员工档案
+      description: '员工档案中培训信息'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '员工id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainsInfoByUser'
+  /trains/{id}/has_been_published:
+    patch:
+      tags:
+        - 培训状态
+      description: 公布培训
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+  /trains/{id}/training:
+    patch:
+      tags:
+        - 培训状态
+      description: 培训中
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+  /trains/{id}/cancelled:
+    patch:
+      tags:
+        - 培训状态
+      description: 取消培训
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+        - name: reason
+          in: query
+          type: string
+          required: true
+          description: 取消原因
+      responses:
+        200:
+          description: ok
+  /trains/{id}/completed:
+    patch:
+      tags:
+        - 培训状态
+      description: 完成培训
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+
+  /trains/{id}/result_evaluation:
+    get:
+      tags:
+        - 课程评价结果
+      description: '评价结果栏信息'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ResultEvaluationInfo'
+  /trains/{id}/update_result_evaluation:
+    patch:
+      tags:
+        - 课程评价结果
+      description: '更新评价结果满意度'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: '培训id'
+          required: true
+        - name: satisfaction_percentage
+          in: query
+          type: string
+          description: 课程满意度
+          required: true
+      responses:
+        200:
+          description: ok
+  /trains/options_for_create_train:
+    get:
+      tags:
+        - 培训管理
+      description: '培训－发起页:筛选项接口'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/OptionsForCreateTrain'
+  /trains/options:
+    get:
+      tags:
+        - 培训管理
+      description: '培训－列表页：筛选项接口'
+      responses:
+        200:
+          description: ok
+  /trains/columns:
+    get:
+      tags:
+        - 培训管理
+      description: '培训－列表页：表头接口'
+      responses:
+        200:
+          description: ok
+  /trains/field_options_by_get_user:
+    get:
+      tags:
+        - 员工搜索
+      description: 员工筛选
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/GetUserOptions'
+  /trains:
+    post:
+      tags:
+        - 培训
+      description: '创建培训'
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: '创建参数'
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: '创建成功'
+    get:
+      description: 获取培训列表页
+      tags:
+        - 培训
+      parameters:
+      - name: page
+        type: string
+        in: query
+        required: true
+        description: '页数'
+      - name: query_method
+        type: string
+        in: query
+        required: true
+        description: '请求方式{by_hr;　by_department ;　by_mine }'
+      - name: sort_column
+        type: string
+        in: query
+        required: false
+        description: '筛选字段'
+      - name: sort_direction
+        type: string
+        in: query
+        required: false
+        description: '筛选方向（desc/asc）'
+      - name: status
+        type: string
+        in: query
+        required: false
+        description: '{not_published: 未公布, has_been_published: 公布, signing_up:报名中, registration_ends:　报名结束, training: 培训中 , completed: 已完成,cancelled: 已取消}'
+      - name: train_date_begin
+        type: string
+        in: query
+        required: false
+        description: '培训开始日期'
+      - name: train_date_end
+        type: string
+        in: query
+        required: false
+        description: '培训结束日期'
+      - name: registration_method
+        type: string
+        in: query
+        required: false
+        description: '报名方式{by_employee: 0, by_department: 1, by_employee_and_department: 2}'
+      - name: train_template_type_id
+        type: integer
+        in: query
+        required: false
+        description: 培训种类id
+      - name: train_cost
+        type: string
+        in: query
+        required: false
+        description: '培训总费用'
+      - name: registration_begin_date
+        type: string
+        in: query
+        required: false
+        description: '报名开始日期'
+      - name: registration_date_end
+        type: string
+        in: query
+        required: false
+        description: '报名结束日期'
+      - name: online_or_offline_training
+        type: string
+        in: query
+        required: false
+        description: '线上或线下培训{online_training: 0, offline_training: 1}'
+      - name: training_credits
+        type: string
+        in: query
+        required: false
+        description: '培训学分'
+      - name: be_invited_count
+        type: integer
+        in: query
+        required: false
+        description: '受邀人数'
+
+      - name: train_attendance_percentage
+        type: string
+        description: '课程出席率'
+        in: query
+        required: false
+
+      - name: train_completed_percentage
+        type: string
+        description: '学员通过率'
+        in: query
+        required: false
+
+      - name: train_approved_percetage
+        type: string
+        description: 课程满意度
+        in: query
+        required: false
+
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainLists'
+  /trains/{id}/classes:
+    get:
+      tags:
+        - 培训
+      description: 显示培训课程信息
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+          description: 培训id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainClasses'
+  /trains/{id}/titles:
+    get:
+      tags:
+        - 培训
+      description: 显示培训班别信息
+      parameters:
+        - name: id
+          type: integer
+          in: path
+          required: true
+          description: 培训id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainTitles'
+  /trains/{id}:
+    patch:
+      tags:
+        - 培训
+      description: '信息编辑页更新'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: '培训id'
+        - name: update_params
+          in: body
+          required: true
+          description: '更新参数'
+          schema:
+            $ref: '#/definitions/UpdateParams'
+      responses:
+        200:
+          description: ok
+  /trains/{id}/introduction:
+    get:
+      description: '获取培训简介'
+      tags:
+        - 培训
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainShowInIntroduction'
+  /trains/{id}/online_materials:
+    get:
+      tags:
+        - 培训
+      description: '显示某培训线上资料'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: '培训id'
+          required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/OnlineMaterials'
+  /trains/{id}/final_lists:
+    get:
+      tags:
+        - 培训名单
+      description: '获取某个培训的培训名单'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: '排序方向（desc/asc）'
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: '员工id'
+        - name: name
+          in: query
+          required: false
+          type: string
+          description: '员工姓名'
+        - name: department_id
+          in: query
+          required: false
+          type: integer
+          description: '部门id'
+        - name: position_id
+          in: query
+          required: false
+          type: integer
+          description: '职位id'
+        - name: working_status
+          in: query
+          required: false
+          type: integer
+          description: '培训期间状态{on_duty: 0, leave: 1}'
+        - name: title_id
+          in: query
+          required: false
+          type: integer
+          description: '班次id, 放到数组中'
+        - name: cost
+          in: query
+          required: false
+          type: string
+          description: '培训费用'
+        - name: train_result
+          in: query
+          required: false
+          type: string
+          description: '培训结果{train_leave: 0, train_pass: 1, train_not_pass: 2 }'
+        - name: attendance_percentage
+          in: query
+          required: false
+          type: string
+          description: '出席率'
+        - name: test_score
+          in: query
+          required: false
+          type: string
+          description: '考试分数'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ShowFinalList'
+
+  /trains/{id}/entry_lists/field_options:
+    get:
+      tags:
+        - 报名名单
+      description: '获取报名名单筛选项'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/EntryListsFieldOptions'
+  /trains/{id}/entry_lists/field_columns:
+    get:
+      tags:
+        - 报名名单
+      description: '获取报名名单表头'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/EntryListsFieldColumns'
+  /trains/by_year_month:
+    get:
+      description: 按日历获取列表页
+      tags:
+        - 培训
+      parameters:
+      - name: year_month
+        type: string
+        in: query
+        required: false
+        description: '年月（YYYY/mm）'
+      - name: query_method
+        type: string
+        in: query
+        required: true
+        description: '请求方式{by_hr;　by_department ;　by_mine }'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainListsByYearMonth'
+  /trains/field_options:
+    get:
+      description: '获取筛选项'
+      tags:
+        - 培训
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/FieldOptions'
+  /trains/{id}/cancel:
+    patch:
+      tags:
+        - 培训
+      description: '培训'
+      parameters:
+        - name: id
+          type: integer
+          description: '培训id'
+          required: true
+          in: path
+        - name: cancel_udpate_params
+          required: true
+          description: 取消原因
+          in: body
+          schema:
+            $ref: '#/definitions/CancelUpdateParams'
+      responses:
+        200:
+          description: ok
+
+  /entry_lists:
+    post:
+      tags:
+        - 报名名单
+      description: 'hr或员工报名'
+      parameters:
+        - name: entry_list_create_params
+          in: body
+          required: true
+          description: '创建参数'
+          schema:
+            $ref: '#/definitions/EntryListCreateParams'
+      responses:
+        200:
+          description: '创建成功'
+          schema:
+            $ref: '#/definitions/AddEntrySuccess'
+  /trains/{id}/entry_lists_with_to_confirm:
+    get:
+      tags:
+        - 确认名单页
+      description: '报名名单过滤掉,邀请待确认和取消报名'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: '培训id'
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: '排序方向（desc/asc）'
+        - name: registration_time_begin
+          in: query
+          required: false
+          type: string
+          description: '报名时间筛选－开始时间'
+        - name: registration_time_end
+          in: query
+          required: false
+          type: string
+          description: '报名时间筛选－结束时间'
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: '员工编号'
+        - name: name
+          in: query
+          required: false
+          type: string
+          description: '员工姓名'
+        - name: department_id
+          in: query
+          required: false
+          type: string
+          description: '部门id,放到数组中'
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: '职位id，放到数组中'
+        - name: is_can_be_absent
+          in: query
+          required: false
+          type: boolean
+          description: '是否倍豁免缺席，放到数组中'
+        - name: working_status
+          in: query
+          required: false
+          type: boolean
+          description: '在职状态{on_duty: 0, leave: 1}'
+        - name: title_id
+          in: query
+          required: false
+          type: integer
+          description: '培训班次id'
+        - name: is_in_working_time
+          in: query
+          required: false
+          type: string
+          description: '是否在工作时间培训'
+        - name: registration_status
+          in: query
+          required: false
+          type: string
+          description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4}'
+        - name: creator_name
+          in: query
+          required: false
+          type: string
+          description: '报名人的姓名'
+        - name: creator_department_id
+          in: query
+          required: false
+          type: string
+          description: '报名人部门id'
+        - name: creator_position_id
+          in: query
+          required: false
+          type: string
+          description: '报名人职位id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/EntryLists'
+  /trains/{id}/entry_lists:
+    post:
+      tags:
+        - 报名名单
+      description: '邀请员工添加到报名名单'
+      parameters:
+        - name: id
+          type: integer
+          description: '培训id'
+          required: true
+          in: path
+        - name: entry_lists_create_params
+          description: '邀请员工名单'
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/EntryListsCreateParams'
+      responses:
+        200:
+          description: ok
+    patch:
+      tags:
+        - 部门主管报名页
+      description: '更新报名状态并提交新的报名'
+      parameters:
+        - name: id
+          type: integer
+          description: '培训id'
+          required: true
+          in: path
+        - name: update_params
+          description: 参数
+          required: true
+          in: body
+          schema:
+            $ref: '#/definitions/EntryListsUpdateFromDepartment'
+      responses:
+        200:
+          description: ok
+    get:
+      tags:
+        - 报名名单
+      description: '获取某个培训的报名名单列表页'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: '培训id'
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: '排序方向（desc/asc）'
+        - name: registration_time_begin
+          in: query
+          required: false
+          type: string
+          description: '报名时间筛选－开始时间'
+        - name: registration_time_end
+          in: query
+          required: false
+          type: string
+          description: '报名时间筛选－结束时间'
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: '员工编号'
+        - name: name
+          in: query
+          required: false
+          type: string
+          description: '员工姓名'
+        - name: department_id
+          in: query
+          required: false
+          type: string
+          description: '部门id,放到数组中'
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: '职位id，放到数组中'
+        - name: is_can_be_absent
+          in: query
+          required: false
+          type: boolean
+          description: '是否倍豁免缺席，放到数组中'
+        - name: working_status
+          in: query
+          required: false
+          type: boolean
+          description: '在职状态{on_duty: 0, leave: 1}'
+        - name: title_id
+          in: query
+          required: false
+          type: integer
+          description: '培训班次id'
+        - name: is_in_working_time
+          in: query
+          required: false
+          type: string
+          description: '是否在工作时间培训'
+        - name: registration_status
+          in: query
+          required: false
+          type: string
+          description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4}'
+        - name: creator_name
+          in: query
+          required: false
+          type: string
+          description: '报名人的姓名'
+        - name: creator_department_id
+          in: query
+          required: false
+          type: string
+          description: '报名人部门id'
+        - name: creator_position_id
+          in: query
+          required: false
+          type: string
+          description: '报名人职位id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/EntryLists'
+  /trains/get_user.json:
+    get:
+      tags:
+        - 搜索员工
+      description: '培训中邀请员工'
+      parameters:
+        - name: deparment_id
+          required: true
+          type: integer
+          in: query
+          description: '部门id,放在数组中'
+        - name: position_id
+          required: true
+          in: query
+          type: integer
+          description: '职位id　放在数组中'
+        - name: grade
+          required: true
+          in: query
+          type: string
+          description: '职级'
+        - name: division_of_job
+          required: true
+          in: query
+          type: string
+          description: '员工归属类别'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/Users'
+  /entry_lists/{id}:
+    patch:
+      tags:
+        - 报名名单
+      description: 'hr更新报名信息'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: '报名记录id'
+        - name: entry_list_update_params
+          in: body
+          required: true
+          description: '更新报名记录的参数'
+          schema:
+            $ref: '#/definitions/EntryListUpdateParams'
+      responses:
+        200:
+          description: ok
+  /entrylists/batch_update:
+    patch:
+      tags:
+        - 报名名单
+      description: '批量更新报名名单'
+      parameters:
+        - name: entry_lists_batch_update_params
+          in: body
+          required: true
+          description: '批量更新报名名单参数'
+          schema:
+            $ref: '#/definitions/EntryListsBatchUpdateParams'
+      responses:
+        200:
+          description: ok
+  /entry_lists/batch_update_and_to_final_lists:
+    patch:
+      tags:
+        - 报名名单
+      description: '更新报名名单并生成培训名单'
+      parameters:
+        - name: entry_lists_batch_update_params_generate_final_lists_params
+          in: body
+          required: true
+          description: '更新报名名单并生成培训名单参数'
+          schema:
+            $ref: '#/definitions/EntryListsBatchUpdateAndGenerateFinalLists'
+      responses:
+        200:
+          description: ok
+
+  /trains/{id}/train_classes:
+    get:
+      tags:
+        - 签到表
+      description: '获取培训的课程信息'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ShowTrainClasses'
+  /trains/{id}/sign_lists:
+    get:
+      tags:
+        - 签到表
+      description: '获取某个培训的签到表列表页'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: '培训id'
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: '排序方向（desc/asc）'
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: '员工编号'
+        - name: name
+          in: query
+          required: false
+          type: string
+          description: '员工姓名'
+        - name: department_id
+          in: query
+          required: false
+          type: string
+          description: '部门id,放到数组中'
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: '职位id，放到数组中'
+        - name: title_id
+          in: query
+          required: false
+          type: string
+          description: '班次id,放到数组中'
+        - name: train_class_id
+          in: query
+          required: false
+          type: string
+          description: '课id,放到数组中'
+        - name: working_status
+          in: query
+          required: false
+          type: boolean
+          description: '在职状态{on_duty: 0, leave: 1}, 放到数组中'
+        - name: sign_status
+          in: query
+          required: false
+          type: string
+          description: '签到状态{attend: 0, absence: 1}, 放到数组中'
+      responses:
+        200:
+          description: '请求成功'
+          schema:
+            $ref: '#/definitions/ShowSignLists'
+
+  /sign_list/{id}:
+    post:
+      tags:
+        - 签到表
+      description: '签卡记录更新'
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: '记录id'
+        - name: update_params
+          required: true
+          in: body
+          description: '更新参数'
+          schema:
+            $ref: '#/definitions/UpdateParamsForSignList'
+      responses:
+        200:
+          description: ok
+  /trains/{id}/result:
+    get:
+      tags:
+        - 课程评价结果
+      description: '显示课程评价结果'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/ResultInfo'
+
+  /trains/{id}/result_index:
+    get:
+      tags:
+        - 课程评价结果
+      description: '学员评价详情列表'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/StudentEvaluationItem'
+  /trains/{id}/result_index/field_options:
+    get:
+      tags:
+        - 课程评价结果
+      description: '学员评价详情列表筛选项'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+  /trains/{id}/result_index/field_columns:
+    get:
+      tags:
+        - 课程评价结果
+      description: '学员评价详情列表表头'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+  /trains/{id}/final_lists/field_options:
+    get:
+      tags:
+        - 培训名单
+      description: '培训名单筛选项'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+  /trains/{id}/final_lists/field_columns:
+    get:
+      tags:
+        - 培训名单
+      description: '培训名单表头'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+  /trains/{id}/sign_lists/field_options:
+    get:
+      tags:
+        - 签到表
+      description: '签到表筛选项'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+  /trains/{id}/sign_lists/field_columns:
+    get:
+      tags:
+        - 签到表
+      description: '签到表表头'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: '培训id'
+          type: integer
+      responses:
+        200:
+          description: ok
+
+
+  /departments/{id}/train_entry_lists:
+    get:
+      tags:
+        - 部门主管报名页
+      description: '某个培训一个部门下所有员工的报名情况'
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: '部门id'
+        - name: train_id
+          in: query
+          type: integer
+          required: true
+          description: '培训id'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/DepartmentEntryLists'
+  /trains/all_trains.json:
+    get:
+      tags:
+        - 培训记录
+      description: 所有员工培训记录列表
+      parameters:
+        - name: sort_column
+          in: query
+          type: string
+          required: true
+          description: '筛选字段'
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: '筛选方向'
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: '员工编号'
+        - name: name
+          in: query
+          required: false
+          type: string
+          description: '员工姓名'
+        - name: locale
+          in: query
+          required: false
+          type: string
+          description: '请求时语言'
+        - name: department_id
+          in: query
+          required: false
+          type: string
+          description: 部门id(放入数组中)
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: 职位id(放入数组中)
+        - name: date_of_employment_begin
+          in: query
+          required: false
+          type: string
+          description: '（YYYY/mm/dd）入职日期'
+        - name: date_of_employment_end
+          in: query
+          required: false
+          type: string
+          description: '（YYYY/mm/dd）入职日期'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/TrainsOfUsers'
+  /trains/field_options_by_all_trains:
+    get:
+      tags:
+        - 培训记录
+      description: '获取员工参加明细列表筛选项'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/AllTrainFieldOptions'
+  /final_lists:
+    get:
+      tags:
+        - 培训记录
+      description: '全部已完成培训记录'
+      parameters:
+        - name: sort_column
+          in: query
+          type: string
+          required: false
+          description: '筛选字段'
+        - name: sort_direction
+          in: query
+          type: string
+          required: false
+          description: '筛选方向(desc/asc)'
+        - name: empoid
+          in: query
+          type: string
+          description: 员工编号
+          required: false
+        - name: position_id
+          in: query
+          type: integer
+          description: '职位id'
+          required: false
+        - name: department_id
+          in: query
+          type: integer
+          description: '部门id'
+          required: false
+        - name: name
+          in: query
+          type: string
+          required: false
+          description: '培训名称'
+        - name: locale
+          in: query
+          type: string
+          required: false
+          description: '当前使用语言'
+        - name: train_number
+          in: query
+          required: false
+          type: string
+          description: '培训编号'
+        - name: train_date_begin
+          in: query
+          required: false
+          type: string
+          description: 培训开始日期
+        - name: train_date_end
+          in: query
+          required: false
+          type: string
+          description: '培训结束日期'
+        - name: train_template_type_id
+          in: query
+          required: false
+          type: integer
+          description: '培训种类id'
+        - name: train_cost
+          in: query
+          required: false
+          type: string
+          description: '培训花费'
+        - name: attendance_percentage
+          in: query
+          required: false
+          type: string
+          description: '出席率'
+        - name: train_result
+          in: query
+          required: false
+          type: string
+          description: '培训结果{train_leave: 0, train_pass: 1, train_not_pass: 2 }'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/FinalListsInCompleted'
+  /final_lists/field_options:
+    get:
+      tags:
+        - 培训记录
+      description: '培训记录全部已完成记录筛选项'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/FinalListsCompletedFieldOptions'
+
+  /final_lists/{id}:
+    patch:
+      tags:
+        - 培训名单
+      description: 更新培训记录
+      parameters:
+        - name: id
+          type: integer
+          required: true
+          in: path
+          description: 'ok'
+        - name: train_class_ids
+          in: body
+          required: true
+          description: '培训课程ids'
+          schema:
+            $ref: '#/definitions/TrainClassIds'
+      responses:
+        200:
+          description: ok
+  /locations/each_department_train_info:
+    get:
+      tags:
+        - 培训记录
+      description: '场馆下部门的已完成培训信息'
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/LocationsEachDepartmentTrainInfo'
+
+definitions:
+  TrainsInfoByUser:
+    type: object
+    properties:
+      total_training_credits:
+        type: string
+        description: '总学分'
+      training_attend_percentage:
+        type: string
+        description: '出席率'
+      passing_trainning_percentage:
+        type: string
+        description: '通过率'
+      is_can_be_absent:
+        type: boolean
+        description: 是否豁免缺席
+      trains:
+        type: array
+        items:
+          type: object
+          properties:
+            chinese_name:
+              type: string
+              description: '繁体名'
+            english_name:
+              type: string
+              description: '英文名'
+            simple_chinese_name:
+              type: string
+              description: '简体名'
+            train_date_begin:
+              type: string
+              description: '培训开始日期 :datatime'
+            train_date_end:
+              type: string
+              description: '培训结束日期：datetime'
+            train_template:
+              type: object
+              properties:
+                training_credits:
+                  type: string
+                  description: 课程学分
+                train_template_type:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: 培训种类繁体名
+                    english_name:
+                      type: string
+                      description: 培训种类英文名
+                    simple_chinese_name:
+                      type: string
+                      description: 培训种类简体名
+            calcul_single_cost:
+              type: string
+              description: '个人培训费用'
+            calcul_attend_percentage:
+              type: string
+              description: '出席率'
+            calcul_test_score:
+              type: string
+              description: '考试分数'
+            calcul_train_result:
+              type: boolean
+              description: '培训结果'
+  ResultEvaluationInfo:
+    type: object
+    properties:
+      attend_count:
+        type: integer
+        description: 出席总人数
+      evaluation_count:
+        type: integer
+        description: 评价总人数
+      satisfacation_percentage:
+        type: number
+        description: '课程满意度'
+  StudentEvaluationItem:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '学员评价id'
+            region:
+              type: string
+              description: '地区'
+            user_id:
+              type: string
+              description: '员工id'
+            employment_status:
+              type: string
+              description: '在职状态'
+            user:
+              type: object
+              description: 员工对象
+              properties:
+                empoid:
+                  type: string
+                  description: '员工编号'
+                chinese_name:
+                  type: string
+                  description: '繁体名'
+                english_name:
+                  type: string
+                  description: '英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '简体名'
+                position_id:
+                  type: integer
+                  description: '职位id'
+                location_id:
+                  type: integer
+                  description: '场馆id'
+                department_id:
+                  type: integer
+                  description: '部门id'
+            questionnaire:
+              type: object
+              properties:
+                fill_in_the_blank_questions:
+                  type: array
+                  items:
+                    type: object
+                    description: '填空题'
+                    properties:
+                      order_no:
+                        type: integer
+                        description: '题号'
+                      answer:
+                        type: string
+                        description: '答案'
+                choice_questions:
+                  type: array
+                  items:
+                    type: object
+                    description: '多项选者题'
+                    properties:
+                      order_no:
+                        type: integer
+                        description: '题号'
+                      answer:
+                        type: array
+                        items:
+                          type: integer
+                          description: '答案'
+                matrix_single_choice_questions:
+                  type: array
+                  items:
+                    type: object
+                    description: '矩阵选者题'
+                    properties:
+                      order_no:
+                        type: integer
+                        description: '题号'
+                      title:
+                        type: string
+                        description: 问题
+                      max_score:
+                        type: integer
+                        description: '最高分'
+                      matrix_single_choice_items:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            item_no:
+                              type: integer
+                              description: '项目编号'
+                            score:
+                              type: integer
+                              description: '所答分数'
+  CancelUpdateParams:
+    type: object
+    properties:
+      reason:
+        type: string
+        description: 取消原因
+  EntryListsUpdateFromDepartment:
+    type: array
+    items:
+      type: object
+      properties:
+        registration_status:
+          type: string
+          description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4}'
+        title_id:
+          type: integer
+          description: '班次id'
+        change_reason:
+          type: string
+          description: '变更原因'
+        id:
+          type: integer
+          description: 员工id
+  UpdateParamsForSignList:
+    type: object
+    properties:
+      sign_status:
+        type: string
+        description: '签卡状态：attend: 0, absence: 1'
+      comment:
+        type: string
+        description: '备注'
+      operator:
+        type: string
+        description: '操作人：hr;leader;employee'
+  TrainClassIds:
+    type: array
+    items:
+      type: integer
+      description: '培训课程id'
+  ResultInfo:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          description: '矩形单选题'
+          properties:
+            id:
+              type: integer
+              description: id
+            order_no:
+              type: integer
+              description: '题目序号'
+            title:
+              type: string
+              description: 标题
+            max_score:
+              type: integer
+              description: '最高分'
+            matrix_single_choice_items:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: '项目id'
+                  item_no:
+                    type: integer
+                    description: '项目序号'
+                  question:
+                    type: string
+                    description: '问题'
+                  figure_result:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          type: number
+                          description: 选择率
+                      average_number:
+                        type: number
+                        description: 平均值
+                description: '评价项目'
+
+  OptionsForCreateTrain:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          locations:
+            type: array
+            items:
+              type: object
+              description: '场馆对象'
+          positions:
+            type: array
+            items:
+              type: object
+              description: '职位对象'
+          departments:
+            type: array
+            items:
+              type: object
+              description: '部门对象'
+          grades:
+            type: array
+            items:
+              type: object
+              description: '职级'
+          division_of_job:
+            type: array
+            items:
+              type: object
+              description: '归属类别'
+
+
+  TrainTitles:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+              description: '班名'
+            col:
+              type: integer
+              description: '列数'
+
+  GetUserOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          positions:
+            type: array
+            items:
+              type: object
+          departments:
+            type: array
+            items:
+              type: object
+          grades:
+            type: array
+            items:
+              type: object
+          division_of_jobs:
+            type: array
+            items:
+              type: object
+
+  EntryListsBatchUpdateAndGenerateFinalLists:
+    type: object
+    properties:
+      update:
+        type: array
+        items:
+          type: object
+          description: '每个更新报名记录的参数'
+          properties:
+            id:
+              type: integer
+              description: '报名记录的id'
+            registration_status:
+              type: string
+              description: 登记状态
+            change_reason:
+              type: string
+              description: '报名原因'
+            title_id:
+              type: integer
+              description: '班次id'
+      create:
+        type: array
+        items:
+          type: integer
+          description: '确认生成培训名单的报名记录的id'
+
+  EntryListsBatchUpdateParams:
+    type: array
+    items:
+      type: object
+      description: '每个更新报名记录的参数'
+      properties:
+        id:
+          type: integer
+          description: '报名记录的id'
+        registration_status:
+          type: string
+          description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4}'
+        change_reason:
+          type: string
+          description: '报名原因'
+        title_id:
+          type: integer
+          description: 班次id
+  TrainClasses:
+    type: object
+    properties:
+      data:
+        properties:
+          train_place:
+            type: string
+            description: '培训地点'
+          train_classes:
+            type: array
+            items:
+              type: object
+              description: 一个班次
+              properties:
+                id:
+                  type: integer
+                  description: '班次id'
+                begin_date:
+                  type: string
+                  description: '培训开始日期（datetime类型）'
+                time_end:
+                  type: string
+                  description: '培训结束日期（datetime类型）'
+                row:
+                  type: integer
+                  description: '节次'
+                title:
+                  type: object
+                  properties:
+                    col:
+                      type: integer
+                      description: 班次的列数
+          titles:
+            type: array
+            items:
+              type: object
+              description: '一个班别'
+              properties:
+                id:
+                  type: integer
+                  description: '班别id'
+                name:
+                  type: string
+                  description: '班别名称'
+                col:
+                  type: string
+                  description: '班别列数'
+#      meta:
+#        type: object
+#        description: 存放页面信息
+#        properties:
+#          total_count:
+#            type: integer
+#            description: 总记录数
+#          total_page:
+#            type: integer
+#            description: 总页数
+#          current_page:
+#            type: integer
+#            description: 当前页数
+#          columns:
+#            type: array
+#            items:
+#              type: object
+#              properties:
+#                key:
+#                  type: string
+#                  description: '字段key值'
+#                chinese_name:
+#                  type: string
+#                  description: 'key值繁体'
+#                english_name:
+#                  type: string
+#                  description: 'key值英文'
+#                simple_chinese_name:
+#                  type: string
+#                  description: 'key值简体'
+#                sorter:
+#                  type: boolean
+#                  description: '是否支持排序'
+#                value_type:
+#                  type: string
+#                  description: '列表中结果值类型string_value select_value bool_value date_value obj_value'
+#                search:
+#                  type: string
+#                  description: '搜索方式｛null search screen date｝'
+#                data_index:
+#                  type: string
+#                  description: '取值位置'
+#                options:
+#                  type: array
+#                  items:
+#                    type: object
+#                    properties:
+#                      key:
+#                        type: string
+#                        description: '筛选项的键'
+#                      chinese_name:
+#                        type: string
+#                        description: '筛选项的繁体显示'
+#                      english_anme:
+#                        type: string
+#                        description: '筛选项的英文显示'
+#                      simple_chinese_name:
+#                        type: string
+#                        description: '筛选项的简体显示'
+  LocationsEachDepartmentTrainInfo:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description:  场馆id
+            chinese_name:
+              type: string
+              description: '场馆中文'
+            english_name:
+              type: string
+              description: '场馆英文'
+            simple_chinese_name:
+              type: string
+              description: '场馆简体'
+            department:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description:  部门id
+                chinese_name:
+                  type: string
+                  description: '部门中文'
+                english_name:
+                  type: string
+                  description: '部门英文'
+                simple_chinese_name:
+                  type: string
+                  description: '部门简体'
+            count_of_train:
+              type: integer
+              description: 培训次数
+            count_of_employee_train:
+              type: integer
+              description: 员工培训总次数
+            total_cost:
+              type: string
+              description: '培训总费用'
+            average_cost:
+              type: string
+              description: '平均费用'
+            average_attendance_percentage:
+              type: string
+              description: '平均出席率'
+            average_complete_percentage:
+              type: string
+              description: '平均通过率'
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_page:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+          columns:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: '字段key值'
+                chinese_name:
+                  type: string
+                  description: 'key值繁体'
+                english_name:
+                  type: string
+                  description: 'key值英文'
+                simple_chinese_name:
+                  type: string
+                  description: 'key值简体'
+                sorter:
+                  type: boolean
+                  description: '是否支持排序'
+                value_type:
+                  type: string
+                  description: '列表中结果值类型string_value select_value bool_value date_value obj_value'
+                search:
+                  type: string
+                  description: '搜索方式｛null search screen date｝'
+                data_index:
+                  type: string
+                  description: '取值位置'
+                options:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                        description: '筛选项的键'
+                      chinese_name:
+                        type: string
+                        description: '筛选项的繁体显示'
+                      english_anme:
+                        type: string
+                        description: '筛选项的英文显示'
+                      simple_chinese_name:
+                        type: string
+                        description: '筛选项的简体显示'
+
+
+  FinalListsCompletedFieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          departments:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '部门id'
+                chinese_name:
+                  type: string
+                  description: '中文名'
+                english_name:
+                  type: string
+                  description: '英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '简体名'
+          positions:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '职位id'
+                chinese_name:
+                  type: string
+                  description: '中文名'
+                english_name:
+                  type: string
+                  description: '英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '简体名'
+          train_template_types:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '培训种类id'
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+          train_results:
+            type: array
+            items:
+              type: string
+              description: '培训结果{train_leave: 0, train_pass: 1, train_not_pass: 2 }'
+
+  FinalListsInCompleted:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                empoid:
+                  type: string
+                  description: '员工编号'
+                chinese_name:
+                  type: string
+                  description: '员工中文姓名'
+                english_name:
+                  type: string
+                  description: '员工英文姓名'
+                simple_chinese_name:
+                  type: string
+                  description: '员工简体名'
+                department:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: '部门繁体名'
+                    english_name:
+                      type: string
+                      description: '部门英文名'
+                    simple_chinese_name:
+                      type: string
+                      description: '部门简体名'
+                position:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: '职位繁体名'
+                    english_name:
+                      type: string
+                      description:  '职位英文名'
+                    simple_chinese_name:
+                      type: string
+                      description: '职位简体名'
+            train:
+              type: object
+              properties:
+                train_template:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: '培训繁体名'
+                    english_name:
+                      type: string
+                      description: '培训英文名'
+                    simple_chinese_name:
+                      type: string
+                      description: '培训简体名'
+                    train_date_begin:
+                      type: string
+                      description: '培训开始日期（YYYY/mm/dd）'
+                    train_date_end:
+                      type: string
+                      description: '培训结束日期（YYYY/mm/dd）'
+                    train_template_type:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: '培训种类id'
+                        chinese_name:
+                          type: string
+                          description: '培训种类中文名'
+                        english_name:
+                          type: string
+                          description: '培训种类英文名'
+                        simple_chinese_name:
+                          type: string
+                          description: '培训种类简体名'
+                    train_cost:
+                      type: string
+                      description: 培训费用
+            attendance_percentage:
+              type: string
+              description: '出席率'
+            train_result:
+              type: string
+              description: '培训结果'
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_page:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+          columns:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: '字段key值'
+                chinese_name:
+                  type: string
+                  description: 'key值繁体'
+                english_name:
+                  type: string
+                  description: 'key值英文'
+                simple_chinese_name:
+                  type: string
+                  description: 'key值简体'
+                sorter:
+                  type: boolean
+                  description: '是否支持排序'
+                value_type:
+                  type: string
+                  description: '列表中结果值类型string_value select_value bool_value date_value obj_value'
+                search:
+                  type: string
+                  description: '搜索方式｛null search screen date｝'
+                data_index:
+                  type: string
+                  description: '取值位置'
+                options:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                        description: '筛选项的键'
+                      chinese_name:
+                        type: string
+                        description: '筛选项的繁体显示'
+                      english_anme:
+                        type: string
+                        description: '筛选项的英文显示'
+                      simple_chinese_name:
+                        type: string
+                        description: '筛选项的简体显示'
+
+  AllTrainFieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          departments:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '部门id'
+                chinese_name:
+                  type: string
+                  description: '中文名'
+                english_name:
+                  type: string
+                  description: '英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '简体名'
+          positions:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '职位id'
+                chinese_name:
+                  type: string
+                  description: '中文名'
+                english_name:
+                  type: string
+                  description: '英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '简体名'
+          date_of_employment:
+            type: array
+            items:
+              type: string
+              description: '入职日期（YYYY/mm/dd）'
+  TrainsOfUsers:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            empoid:
+              type: string
+              description: 员工编号
+            chinese_name:
+              type: string
+              description: '员工繁体姓名'
+            english_name:
+              type: string
+              description: '员工英文姓名'
+            simple_chinese_name:
+              type: string
+              description: '员工简体姓名'
+            department:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '部门繁体名'
+                english_name:
+                  type: string
+                  description: '部门英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '部门简体名'
+            position:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '职位繁体名'
+                english_name:
+                  type: string
+                  description:  '职位英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '职位简体名'
+            profile:
+              type: object
+              properties:
+                data:
+                  type: object
+                  properties:
+                    position_information:
+                      type: object
+                      properties:
+                        filed_values:
+                          type: object
+                          properties:
+                            date_of_employment:
+                              type: string
+                              description: '入职日期'
+            trains:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: '培训id'
+                  chinese_name:
+                    type: string
+                    description: '培训中文名'
+                  english_name:
+                    type: string
+                    description: '培训英文名'
+                  simple_chinese_name:
+                    type: string
+                    description: '培训简体名'
+                  train_number:
+                    type: string
+                    description: '培训编号'
+                  train_date_begin:
+                    type: string
+                    description: '培训开始日期（YYYY/mm/dd）'
+                  train_date_end:
+                    type: string
+                    description: '培训结束日期（YYYY/mm/dd）'
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_page:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+          columns:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: '字段key值'
+                chinese_name:
+                  type: string
+                  description: 'key值繁体'
+                english_name:
+                  type: string
+                  description: 'key值英文'
+                simple_chinese_name:
+                  type: string
+                  description: 'key值简体'
+                sorter:
+                  type: boolean
+                  description: '是否支持排序'
+                value_type:
+                  type: string
+                  description: '列表中结果值类型string_value select_value bool_value date_value obj_value'
+                search:
+                  type: string
+                  description: '搜索方式｛null search screen date｝'
+                data_index:
+                  type: string
+                  description: '取值位置'
+                options:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                        description: '筛选项的键'
+                      chinese_name:
+                        type: string
+                        description: '筛选项的繁体显示'
+                      english_anme:
+                        type: string
+                        description: '筛选项的英文显示'
+                      simple_chinese_name:
+                        type: string
+                        description: '筛选项的简体显示'
+
+
+
+
+
+  DepartmentEntryLists:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            empoid:
+              type: string
+              description: '员工编号'
+            chinese_name:
+              type: string
+              description: '员工繁体名'
+            english_name:
+              type: string
+              description: '员工英文名'
+            simple_chinese_name:
+              type: string
+              description: '员工简体名'
+            department:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '部门繁体名'
+                english_name:
+                  type: string
+                  description: '部门英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '部门简体名'
+            position:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '职位繁体名'
+                english_name:
+                  type: string
+                  description: '职位英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '职位简体名'
+            is_can_be_absent:
+              type: boolean
+              description: '是否豁免缺席'
+            working_status:
+              type: string
+              description: '培训期状态{on_duty: 0, leave: 1}'
+            registration_status:
+              type: string
+              description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4, not_enrolled: 5 }'
+            title_id:
+              type: integer
+              description: '班次id'
+            title:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '班次id'
+                name:
+                  type: string
+                  description: '班次名称'
+            change_reason:
+              type: string
+              description: '变动原因'
+      meta:
+        type: object
+        properties:
+          limit_number:
+            type: integer
+            description: '培训上限人数'
+          titles:
+            type: array
+            items:
+              type: object
+              properties:
+                col:
+                  type: integer
+                  description: 列数
+                name:
+                  type: string
+                  description: '名称'
+                total_count:
+                  type: integer
+                  description: '全部已报名人数'
+                department_count:
+                  type: integer
+                  description: '部门内已报名人数'
+          total_count_in_all_titles:
+            type: integer
+            description: '全部已报名人数'
+          department_count_in_all_titles:
+            type: integer
+            description: '部门内已报名人数'
+
+
+
+
+
+  ShowSignLists:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            user:
+              type: object
+              properties:
+                empoid:
+                  type: string
+                  description: '员工编号'
+                chinese_name:
+                  type: string
+                  description: '员工繁体姓名'
+                english_name:
+                  type: string
+                  description: '员工英文姓名'
+                simple_chinese_name:
+                  type: string
+                  description: '员工简体姓名'
+                departments:
+                  type: array
+                  items:
+                    type: object
+                    description: '一个部门对象'
+                    properties:
+                      id:
+                        type: integer
+                        description: '部门id'
+                      chinese_name:
+                        type: string
+                        description: '部门繁体名'
+                      english_name:
+                        type: string
+                        description: '部门英文名'
+                      simple_chinese_name:
+                        type: string
+                        description: '部门简体名'
+                positions:
+                  type: array
+                  items:
+                    type: object
+                    description: '一个职位对象'
+                    properties:
+                      id:
+                        type: integer
+                        description: '职位id'
+                      chinese_name:
+                        type: string
+                        description: '职位繁体名'
+                      english_name:
+                        type: string
+                        description: '职位英文名'
+                      simple_chinese_name:
+                        type: string
+                        description: '职位简体名'
+            titles:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '班次id'
+                name:
+                  type: string
+                  description: '班次名称'
+            train_class:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '培训id'
+                time_begin:
+                  type: string
+                  description: '开始时间（datetime）'
+                time_end:
+                  type: string
+                  description: '结束时间(datetime)'
+            working_status:
+              type: string
+              description: '培训期间状态{on_duty: 0, leave: 1}'
+            sign_status:
+              type: string
+              description: '签到状态{attend: 0, absence: 1}'
+            comment:
+              type: string
+              description: '备注'
+
+
+
+  ShowTrainClasses:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          description: '一次课程信息'
+          properties:
+            id:
+              type: integer
+              description: '课程id'
+            time_begin:
+              type: string
+              description: '培训开始时间'
+            time_end:
+              type: string
+              description: '培训结束时间'
+            row:
+              type: integer
+              description: '节次'
+            title:
+              type: object
+              properties:
+                col:
+                  type: integer
+                  description: '列数'
+                name:
+                  type: string
+                  description: '班次名'
+      meta:
+        type: object
+        properties:
+          train_place:
+            type: string
+            description: '培训地点'
+          train_class_max_row:
+            type: integer
+            description: '课程最大节数'
+  EntryListsFieldColumns:
+    type: array
+    items:
+      type: object
+  EntryListsFieldOptions:
+    type: object
+#    properties:
+#      departments:
+#        type: array
+#        items:
+#          type: object
+#          description: '一个部门对象'
+#          properties:
+#            id:
+#              type: integer
+#              description: '部门id'
+#            chinese_name:
+#              type: string
+#              description: '部门繁体名'
+#            english_name:
+#              type: string
+#              description: '部门英文名'
+#            simple_chinese_name:
+#              type: string
+#              description: '部门简体名'
+#      positions:
+#        type: array
+#        items:
+#          type: object
+#          description: '一个职位对象'
+#          properties:
+#            id:
+#              type: integer
+#              description: '职位id'
+#            chinese_name:
+#              type: string
+#              description: '职位繁体名'
+#            english_name:
+#              type: string
+#              description: '职位英文名'
+#            simple_chinese_name:
+#              type: string
+#              description: '职位简体名'
+#      is_can_be_absent:
+#        type: array
+#        items:
+#          type: boolean
+#          description: '是否豁免缺席'
+#      working_status:
+#        type: array
+#        items:
+#          type: string
+#          description: '培训期间状态{on_duty: 0, leave: 1}'
+#      titles:
+#        type: array
+#        items:
+#          type: object
+#          properties:
+#            id:
+#              type: integer
+#              description: '班次id'
+#            name:
+#              type: string
+#              description: '班次名称'
+#      is_in_working_time:
+#        type: array
+#        items:
+#          type: string
+#          description: '是否在工作时间培训{operating_hours: 0, non_working_time: 1, both_are: 2}'
+#      registration_status:
+#        type: array
+#        items:
+#          type: string
+#          description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4}'
+#      creator_departments:
+#        type: array
+#        items:
+#          type: object
+#          description: '一个部门对象'
+#          properties:
+#            id:
+#              type: integer
+#              description: '部门id'
+#            chinese_name:
+#              type: string
+#              description: '部门繁体名'
+#            english_name:
+#              type: string
+#              description: '部门英文名'
+#            simple_chinese_name:
+#              type: string
+#              description: '部门简体名'
+#      creator_positions:
+#        type: array
+#        items:
+#          type: object
+#          description: '一个职位对象'
+#          properties:
+#            id:
+#              type: integer
+#              description: '职位id'
+#            chinese_name:
+#              type: string
+#              description: '职位繁体名'
+#            english_name:
+#              type: string
+#              description: '职位英文名'
+#            simple_chinese_name:
+#              type: string
+#              description: '职位简体名'
+
+  ShowFinalList:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          description: '一条培训名单记录'
+          properties:
+            user:
+              type: object
+              properties:
+                empoid:
+                  type: string
+                  description: '员工编号'
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+                department:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                    english_name:
+                      type: string
+                    simple_chinese_name:
+                      type: string
+                position:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                    english_name:
+                      type: string
+                    simple_chinese_name:
+                      type: string
+                working_status:
+                  type: string
+                  description: '培训期间状态（{on_duty: 0, leave: 1}）'
+                train_classes:
+                  type: array
+                  items:
+                    type: object
+                    description: 一条节次信息
+                    properties:
+                      time_begin:
+                        type: string
+                        description: '培训开始日期（datetime）'
+                      time_end:
+                        type: string
+                        description: '培训结束日期（datetime）'
+                      row:
+                        type: integer
+                        description: '节次'
+                      title:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            description: '班次id'
+                          name:
+                            type: string
+                            description: '班级名称'
+                cost:
+                  type: string
+                  description: '培训费用'
+                train_result:
+                  type: string
+                  description: '培训结果{train_leave: 0, train_pass: 1, train_not_pass: 2 }'
+                attendance_percentage:
+                  type: string
+                  description: '出席率'
+                test_score:
+                  type: string
+                  description: '考试分数'
+                comment:
+                  type: string
+                  description: '备注'
+  OnlineMaterials:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          description: '一条线上资料记录'
+          properties:
+            name:
+              type: string
+              description: '培训资料名称'
+            file_name:
+              type: string
+              description: '文件名'
+            attachment_id:
+              type: integer
+              description: '相关文件id'
+            instruction:
+              type: string
+              description: 培训资料说明
+            creator:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '经手人繁体名'
+                english_name:
+                  type: string
+                  description: '经手人英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '经手人简体名'
+            updated_at:
+              type: string
+              description: '创建日期YYYY/mm/dd HH:MM'
+  EntryListUpdateParams:
+    type: object
+    properties:
+#      registration_status:
+#        type: string
+#        description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4}'
+      change_reason:
+        type: string
+        description: '变动原因'
+      title_id:
+        type: integer
+        description: '班次id'
+      operator:
+        type: string
+        description: '操作人：hr; employee'
+      edit_action:
+        type: string
+        description: '更新動作:cancel; update_title; accept'
+  EntryLists:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          description: '一条报名记录'
+          properties:
+            registration_time:
+              type: string
+              description: '报名时间（YYYY/mm/dd HH:MM）'
+            empoid:
+              type: string
+              description: 员工编号
+            chinese_name:
+              type: string
+            english_name:
+              type: string
+            simple_chinese_name:
+              type: string
+            department:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '部门繁体名'
+                english_name:
+                  type: string
+                  description: '部门英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '部门简体名'
+            position:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '职位繁体名'
+                english_name:
+                  type: string
+                  description: '职位英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '职位简体名'
+            is_can_be_absent:
+              type: boolean
+              description: 是否豁免缺席
+            working_status:
+              type: string
+              description: '培训期间状态{on_duty: 0, leave: 1}'
+            title_id:
+              type: integer
+              description: '班次id'
+            title:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: id
+                name:
+                  type: string
+                  description: '班次名称'
+            is_in_working_time:
+              type: string
+              description: '是否在工作时间培训{operating_hours: 0, non_working_time: 1, both_are: 2}'
+            registration_status:
+              type: string
+              description: '报名状态{staff_registration: 0, department_registration: 1, invite_to_register: 2, invitation_to_be_confirmed: 3, cancel_the_registration: 4}'
+            creator:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '报名人繁体名称'
+                english_name:
+                  type: string
+                  description: '报名人英文名称'
+                simple_chinese_name:
+                  type: string
+                  description: '报名人简体名称'
+                department:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: '部门繁体名'
+                    english_name:
+                      type: string
+                      description: '部门英文名'
+                    simple_chinese_name:
+                      type: string
+                      description: '部门简体名'
+                position:
+                  type: object
+                  properties:
+                    chinese_name:
+                      type: string
+                      description: '职位繁体名'
+                    english_name:
+                      type: string
+                      description: '职位英文名'
+                    simple_chinese_name:
+                      type: string
+                      description: '职位简体名'
+            change_reason:
+              type: string
+              description: '变动原因'
+      meta:
+        type: object
+        properties:
+          limit_number:
+            type: integer
+            description: '培训上限人数'
+          titles:
+            type: array
+            items:
+              type: object
+              properties:
+                col:
+                  type: integer
+                  description: 列数
+                name:
+                  type: string
+                  description: '名称'
+                total_count:
+                  type: integer
+                  description: '全部已报名人数'
+                department_count:
+                  type: integer
+                  description: '部门内已报名人数'
+          total_count_in_all_titles:
+            type: integer
+            description: '全部已报名人数'
+          department_count_in_all_titles:
+            type: integer
+            description: '部门内已报名人数'
+
+  Users:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          description: 'User'
+          properties:
+            id:
+              type: integer
+              description: 'user_Id'
+            chinese_name:
+              type: string
+              description: '中文姓名'
+            english_name:
+              type: string
+              description: '英文姓名'
+            simple_chinese_name:
+              type: string
+              description: '简体中文名'
+            empoid:
+              type: string
+              description: '员工编号'
+            department:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '部门繁体名'
+                english_name:
+                  description: '部门英文名'
+                simple_chinese_name:
+                  description: '部门简体名'
+            position:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '职位繁体名'
+                english_name:
+                  type: string
+                  description:  '职位英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '职位简体名'
+            grade:
+              type: string
+              description: '职级'
+            division_of_job:
+              type: string
+              description: '员工归属类别'
+
+  EntryListsCreateParams:
+    type: array
+    items:
+      type: integer
+      description: 'user_id'
+  AddEntrySuccess:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: '报名记录id'
+          reject:
+            type: string
+            description: 'has_absence_record; reason_not_be_approved'
+  EntryListCreateParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: '员工id'
+      title_id:
+        type: integer
+        description: '班次id'
+      operation:
+        type: string
+        description: 'by_hr;by_employee'
+      train_id:
+        type: integer
+        description: '培训id'
+
+  TrainingAbsenteesStatus:
+    type: string
+    description: 'need_to_fill_reason; waiting, ok'
+
+  TrainShowInIntroduction:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          entry_lists_count:
+            type: integer
+            description: '报名人数'
+          final_lists_count:
+            type: integer
+            description: '出席人数'
+          average_cost_of_entry:
+            type: string
+            description: 报名人均培训费用
+          average_cost_of_final:
+            type: string
+            description: 完成培训人均费用
+          the_total_number_of_participants:
+            type: string
+            description: '可参与对象总人数'
+          chinese_name:
+            type: string
+            description: '培训中文名称'
+          english_name:
+            type: string
+            description: '培训英文名称'
+          simple_chinese_name:
+            type: string
+            description: '培训简体中文名称'
+          train_number:
+            type: string
+            description: '培训编号'
+          train_date_begin:
+            type: string
+            description: '培训开始日期（YYYY/mm/dd）'
+          train_date_end:
+            type: string
+            description: '培训结束日期（YYYY/mm/dd）'
+          train_place:
+            type: string
+            description: '培训地点'
+          registration_begin_date:
+            type: string
+            description: '报名开始日期（YYYY/mm/dd）'
+          registration_date_end:
+            type: string
+            description: '报名结束日期（YYYY/mm/dd）'
+          registration_method:
+            type: string
+            description: '培训报名方式'
+          limit_number:
+            type: string
+            description: '培训人数上限'
+          locations:
+            type: array
+            items:
+              type: object
+              description: 场馆对象
+          locations_is_all:
+            type: boolean
+            description: 标记locations是否是全部
+          departments:
+            type: array
+            items:
+              type: object
+              description: '部门对象'
+          departments_is_all:
+            type: boolean
+            description: 标记departments是否是全部
+          positions:
+            type: array
+            items:
+              type: object
+              description: '职位对象'
+          positions_is_all:
+            type: boolean
+            description: 标记positions是否是全部
+          grade:
+            type: array
+            items:
+              type: integer
+              description: '职级'
+          division_of_job:
+            type: array
+            items:
+              type: integer
+              description: '员工归属类别'
+          train_classes:
+            type: array
+            items:
+              type: object
+              description: 一个班次
+              properties:
+                id:
+                  type: integer
+                  description: '班次id'
+                time_begin:
+                  type: string
+                  description: '培训开始日期（datetime类型）'
+                time_end:
+                  type: string
+                  description: '培训结束日期（datetime类型）'
+                row:
+                  type: integer
+                  description: '节次'
+                title:
+                  type: object
+                  properties:
+                    col:
+                      type: integer
+                      description: 班次的列数
+          titles:
+            type: array
+            items:
+              type: object
+              description: '一个班别'
+              properties:
+                id:
+                  type: integer
+                  description: '班别id'
+                name:
+                  type: string
+                  description: '班别名称'
+                col:
+                  type: string
+                  description: '班别列数'
+          train_template_id:
+            type: integer
+            description: 培训模板id
+          train_template:
+            type: object
+            properties:
+              chinese_name:
+                type: string
+                description: 培训模板中文名
+              english_name:
+                type: string
+                description: '培训模板英文名'
+              simple_chinese_name:
+                type: string
+                description: '培训模板简体名'
+              teaching_form:
+                type: string
+                description: '授课形式'
+              train_template_type_id:
+                type: integer
+                description: '培训种类的id'
+              train_template_type:
+                type: object
+                properties:
+                  chinese_name:
+                    type: string
+                    description: '培训种类中文名'
+                  english_name:
+                    type: string
+                    description: '培训种类英文名'
+                  simple_chinese_name:
+                    type: string
+                    description: '培训种类简体名'
+              training_credits:
+                type: string
+                description: '培训学分'
+              online_or_offline_training:
+                type: string
+                description: '{online_training: 0, offline_training: 1}'
+              course_total_time:
+                type: string
+                description: '课程总时数'
+              course_total_count:
+                type: string
+                description: '培训总费用'
+              trainer:
+                type: string
+                description: '实施培训的对象'
+              language_of_training:
+                type: string
+                description: '授课语言'
+              place_of_training:
+                type: string
+                description: '培训地点'
+              contact_person_of_training:
+                type: string
+                description: '培训联络人'
+              course_series:
+                type: string
+                description: '课程系列'
+              course_certificate:
+                type: string
+                description: '课程证书'
+              introduction_of_trainee:
+                type: string
+                description: '授课对象'
+              introduction_of_course:
+                type: string
+                description: 课程简介
+              goal_of_learning:
+                type: string
+                description: '学习目标'
+              content_of_course:
+                type: string
+                description: '课程内容'
+              goal_of_course:
+                type: string
+                description: '课程目的'
+              assessment_method:
+                type: string
+                description: '考核方式'
+              test_scores_not_less_than:
+                type: string
+                description: '考试分数不低于'
+              comprehensive_attendance_not_less_than:
+                type: string
+                description: '出勤率不低于'
+              comprehensive_attendance_and_test_scores_not_less_than:
+                type: string
+                description: '综合出席率与考试分数不低于'
+              attendance_score_percentage:
+                type: string
+                description: '出席率占比'
+              exam_format:
+                type: string
+                description: '考试形式{online: 0, offline: 1}'
+              #Todo:试卷相关模板等待李高峰
+              exam_template_id:
+                type: integer
+                description: '试卷id'
+              attend_attachments:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    file_name:
+                      type: string
+                      description: '文件名'
+                    updated_at:
+                      type: string
+                      description: '上传时间（YYYY/mm/dd HH:MM）'
+                    creator_id:
+                      type: integer
+                      description: '上传者id'
+                    creator:
+                      type: object
+                      properties:
+                        chinese_name:
+                          type: string
+                          description: 上传者中文名
+                        english_name:
+                          type: string
+                          description: '上传者英文名'
+                        simple_chinese_name:
+                          type: string
+                          description: '上传者简体名'
+                    comment:
+                      type: string
+                      description: 备注
+          comment:
+            type: string
+            description: '备注'
+      meta:
+        type: object
+        properties:
+          has_run_sa:
+            type: boolean
+            description: 是否已经发起了上司考核
+          has_run_se:
+            type: boolean
+            description: 是否已经发起了学员评价
+          has_run_tp:
+            type: boolean
+            description: 是否已经发起了考试
+          has_run_fl:
+            type: boolean
+            description: 是否已经确认名单
+
+  UpdateParams:
+    type: object
+    properties:
+      reason_of_cancel:
+        type: string
+        description: '取消原因'
+      status:
+        type: string
+        description: '培训状态{not_published: 0, has_been_published: 1, signing_up:2, registration_ends:3, training: 4 , completed: 5,cancelled: 6}'
+      chinese_name:
+        type: string
+        description: '培训中文名称'
+      english_name:
+        type: string
+        description: '培训英文名称'
+      simple_chinese_name:
+        type: string
+        description: '培训简体名称'
+      train_number:
+        type: string
+        description: '培训编号'
+      train_date_begin:
+        type: string
+        description: '培训开始日期（YYYY/mm/dd）'
+      train_date_end:
+        type: string
+        description: '培训结束日期（YYYY/mm/dd）'
+      train_place:
+        type: string
+        description: '培训地点'
+      train_cost:
+        type: string
+        description: '培训花费'
+      registration_begin_date:
+        type: string
+        description: '报名开始日期（YYYY/mm/dd）'
+      registration_date_end:
+        type: string
+        description: '报名结束日期(YYYY/mm/dd)'
+      registration_method:
+        type: string
+        description: '报名方式{by_employee: 0, by_department: 1, by_employee_and_department: 2}'
+      limit_number:
+        type: integer
+        description: '培训上限人数'
+      locations:
+        type: array
+        items:
+          type: integer
+          description: '场馆id'
+      departments:
+        type: array
+        items:
+          type: integer
+          description: '部门id'
+      positions:
+        type: array
+        items:
+          type: integer
+          description: '职位id'
+      grade:
+        type: array
+        items:
+          type: integer
+          description: 职级
+      division_of_job:
+        type: array
+        items:
+          type: string
+          description: '归属类别'
+      titles:
+        type: object
+        properties:
+          delete:
+            type: array
+            items:
+              type: integer
+              description: '班次的id'
+          update:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '班次的id'
+                name:
+                  type: string
+                  description: '班次的姓名'
+                col:
+                  type: string
+                  description: '班次显示的列数'
+              description: '班次所需更新的信息'
+          create:
+            type: array
+            items:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: '班次的姓名'
+                col:
+                  type: string
+                  description: '班次显示的列数'
+      train_classes:
+        type: object
+        properties:
+          create:
+            type: array
+            description: 创建课程
+            items:
+              type: object
+              properties:
+                time_begin:
+                  type: string
+                  description: 'YYYY/mm/dd HH:MM'
+                time_end:
+                  type: string
+                  description: 'YYYY/mm/dd HH:MM'
+                row:
+                  type: integer
+                  description: '课程节次'
+                col:
+                  type: integer
+                  description: '课程的列数'
+          update:
+            type: array
+            description: 更新课程
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: 课程id
+                time_begin:
+                  type: string
+                  description: 'YYYY/mm/dd HH:MM'
+                time_end:
+                  type: string
+                  description: 'YYYY/mm/dd HH:MM'
+                row:
+                  type: integer
+                  description: '课程节次'
+                col:
+                  type: integer
+                  description: '课程的列数'
+          delete:
+            type: array
+            description: 删除课程
+            items:
+              type: integer
+              description: '课程id'
+      attend_attachments:
+        type: object
+        properties:
+          create:
+            type: array
+            items:
+              type: object
+              properties:
+                attachment_id:
+                  type: string
+                  description: '附件id'
+                file_name:
+                  type: string
+                  description: 文件名
+                comment:
+                  type: string
+                  description: '备注'
+          update:
+            type: array
+            items:
+              type: object
+              properties:
+                attachment_id:
+                  type: integer
+                  description: '附件id'
+                id:
+                  type: integer
+                  description: '相关文件id'
+                file_name:
+                  type: string
+                  description: '文件名'
+                comment:
+                  type: string
+                  description: '备注'
+          delete:
+            type: array
+            items:
+              type: integer
+              description: '相关文件id'
+      comment:
+        type: string
+        description: '备注'
+  CreateParams:
+    type: object
+    properties:
+      train_template_id:
+        type: integer
+        description: '培训模板id'
+      chinese_name:
+        type: string
+        description: '培训中文名称'
+      english_name:
+        type: string
+        description: '培训英文名称'
+      simple_chinese_name:
+        type: string
+        description: '培训简体名称'
+      train_number:
+        type: string
+        description: '培训编号'
+      train_date_begin:
+        type: string
+        description: '培训开始日期（YYYY/mm/dd）'
+      train_date_end:
+        type: string
+        description: '培训结束日期（YYYY/mm/dd）'
+      train_place:
+        type: string
+        description: '培训地点'
+      train_cost:
+        type: string
+        description: '培训花费'
+      registration_date_begin:
+        type: string
+        description: '报名开始日期（YYYY/mm/dd）'
+      registration_date_end:
+        type: string
+        description: '报名结束日期(YYYY/mm/dd)'
+      registration_method:
+        type: string
+        description: '报名方式{by_employee: 0, by_department: 1, by_employee_and_department: 2}'
+      limit_number:
+        type: integer
+        description: '培训上限人数'
+      locations:
+        type: array
+        items:
+          type: integer
+          description: '场馆id'
+      departments:
+        type: array
+        items:
+          type: integer
+          description: '部门id'
+      positions:
+        type: array
+        items:
+          type: integer
+          description: '职位id'
+      users_by_invite:
+        type: array
+        items:
+          type: integer
+          description: '邀请员工id'
+      titles:
+        type: array
+        items:
+          type: object
+          properties:
+            name:
+              type: string
+              description: '班别的名称'
+            col:
+              type: integer
+              description: '班别的列数'
+      train_classes:
+        type: array
+        items:
+          type: object
+          description: '一次课程'
+          properties:
+            time_begin:
+              type: string
+              description: 'YYYY/mm/dd HH:MM'
+            time_end:
+              type: string
+              description: 'YYYY/mm/dd HH:MM'
+            row:
+              type: integer
+              description: '课程节次'
+            col:
+              type: integer
+              description: '课程的列数'
+      grade:
+        type: array
+        items:
+          type: integer
+          description: 职级
+      division_of_job:
+        type: array
+        items:
+          type: string
+          description: '归属类别'
+#      attend_attachments:
+#        type: array
+#        items:
+#          type: object
+#          description: '相关文件'
+#          properties:
+#            attachment_id:
+#              type: string
+#              description: '附件id'
+#            file_name:
+#              type: string
+#              description: '文件名'
+#            comment:
+#              type: string
+#              description: '备注'
+      comment:
+        type: string
+        description: '备注'
+
+  TrainListsByYearMonth:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '课程id'
+            time_begin:
+              type: string
+              description: 课程开始时间（datetime）
+            time_end:
+              type: string
+              description: 课程结束时间（datetime）
+            title:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: '班别的名称'
+            train:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: '培训状态'
+                chinese_name:
+                  type: string
+                  description: 繁体培训名称
+                english_name:
+                  type: string
+                  description: 英文培训名称
+                simple_chinese_name:
+                  type: string
+                  description: 简体培训名称
+                train_number:
+                  type: string
+                  description: '培训编号'
+                train_place:
+                  type: string
+                  description: '培训地点'
+
+
+  FieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          registration_method:
+            type: array
+            items:
+              type: string
+              description: '报名方式'
+          online_or_offline_training:
+            type: array
+            items:
+              type: string
+              description: '线上或线下培训'
+          train_template_type:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: '类别id'
+                chinese_name:
+                  type: string
+                  description: '培训类别中文名'
+                english_name:
+                  type: string
+                  description: '培训类别英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '培训类别简体名'
+          training_credits:
+            type: array
+            items:
+              type: string
+              description: '培训学分'
+  TrainLists:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            status:
+              type: string
+              description: '培训状态'
+            chinese_name:
+              type: string
+              description: '培训中文名'
+            english_name:
+              type: string
+              description: '培训英文名'
+            simple_chinese_name:
+              type: string
+              description: '培训简体名'
+            train_template_chinese_name:
+              type: string
+              description: '培训模板中文名'
+            train_template_english_name:
+              type: string
+              description: '培训模板英文名'
+            train_template_simple_chinese_name:
+              type: string
+              description: '培训模板简体名'
+            train_number:
+              type: string
+              description: '培训编号'
+            train_date_begin:
+              type: string
+              description: '培训开始日期（YYYY/mm/dd）'
+            train_date_end:
+              type: string
+              description: '培训结束日期（YYYY/mm/dd）'
+            registration_date_begin:
+              type: string
+              description: '报名开始日期（YYYY/mm/dd）'
+            registration_date_end:
+              type: string
+              description: '报名结束日期（YYYY/mm/dd）'
+            registration_method:
+              type: string
+              description: '报名方式{by_employee: 0, by_department: 1, by_employee_and_department: 2}'
+            train_cost:
+              type: string
+              description: '培训总费用'
+            online_or_offline_training:
+              type: string
+              description: 'online_training: 0, offline_training: 1}'
+            train_template_type:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: '培训类别中文名'
+                english_name:
+                  type: string
+                  description: '培训类别英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '培训类别简体名'
+            training_credits:
+              type: string
+              description: '培训学分'
+            be_invited_count:
+              type: integer
+              description: '受邀人数'
+            entry_lists_count:
+              type: integer
+              description: '报名人数'
+            final_lists_count:
+              type: integer
+              description: '出席人数'
+            entry_lists_count_by_department:
+              type: integer
+              description: '报名人数按部门'
+            final_lists_count_by_department:
+              type: integer
+              description: '出席人数按部门'
+            train_attendance_percentage:
+              type: string
+              description: '课程出席率'
+            train_completed_percentage:
+              type: string
+              description: '学员通过率'
+            train_approved_percetage:
+              type: string
+              description: 课程满意度
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_pages:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+          all_train_count:
+            type: integer
+            description: '培训总数'
+          not_published:
+            type: integer
+            description: '未公布的数量'
+          has_been_published:
+            type: integer
+            description: '已公布的数量'
+          signing_up:
+            type: integer
+            description: '报名中'
+          registration_ends:
+            type: integer
+            description: '报名结束'
+          training:
+            type: integer
+            description: '培训中'
+          completed:
+            type: integer
+            description: '已完成'
+          cancelled:
+            type: integer
+            description: '已取消'
+  UpdateFinalListResult:
+    type: object
+    properties:
+      train_result:
+        type: string
+        description: '{train_pass: 0, train_not_pass: 1, train_leave: 2 }'
+      comment:
+        type: string
+        description: 'string'

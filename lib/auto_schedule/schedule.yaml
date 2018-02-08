@@ -1,0 +1,99 @@
+date-range: [2016-12-01, 2016-12-28]
+
+period:
+    - id: 1
+      name: 早班
+      begin: 6:00:00
+      end: 12:00:00
+    - id: 2
+      name: 中班
+      begin: 12:00:00
+      end: 18:00:00
+    - id: 3
+      name: 晚班
+      begin: 18:00:00
+      end: 24:00:00
+
+title:
+    - id: 1
+      name: 普通员工
+    - id: 2
+      name: 经理
+    - id: 3
+      name: 主任
+
+position:
+    - id: 1
+      name: RD
+      min-rest-time: 10   # hour(s)
+      vacation: 2         # day(s)
+      max-rest-gap: 8     # day(s)
+      max-period-type: 2
+
+staff:
+    - id: 1
+      name: 员工A
+      title-id: 1
+      position-id: 1
+    - id: 2
+      name: 员工B
+      title-id: 1
+      position-id: 1
+    - id: 3
+      name: 员工C
+      title-id: 1
+      position-id: 1
+    - id: 4
+      name: 员工D
+      title-id: 1
+      position-id: 1
+    - id: 5
+      name: 员工E
+      title-id: 1
+      position-id: 1
+    - id: 6
+      name: 员工F
+      title-id: 1
+      position-id: 1
+
+staff-number:
+    - date-range: [2016-12-01, 2016-12-28]
+      period-id: [1, 2, 3]
+      title-id: 1
+      number-range: [1, 2]
+
+prefer-period:
+    - staff-id: 1
+      date-range: [2016-12-01, 2016-12-07]
+      period-id: 2
+    - staff-id: 5
+      date-range: [2016-12-01, 2016-12-14]
+      period-id: 1
+    - staff-id: 3
+      date-range: [2016-12-01, 2016-12-14]
+      period-id: 3
+
+
+prefer-vacation:
+  - staff-id: 1
+    days:
+        - 2016-12-01
+        - 2016-12-12
+  - staff-id: 2
+    days:
+        - 2016-12-01
+        - 2016-12-13
+  - staff-id: 3
+    days:
+        - 2016-12-04
+  - staff-id: 4
+    days:
+        - 2016-12-03
+
+partner:
+    - date-range: [2016-12-01, 2016-12-28]
+      staff-id: [3, 4]
+
+confliction:
+    - date-range: [2016-12-01, 2016-12-07]
+      staff-id: [3, 6]

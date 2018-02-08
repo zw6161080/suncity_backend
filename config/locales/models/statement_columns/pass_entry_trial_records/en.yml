@@ -1,0 +1,15 @@
+en:
+  pass_entry_trial_records:
+    file_name: pass_entry_trial_report
+  statement_columns:
+    pass_entry_trial_records:
+      empoid: ID
+      name: Name
+      company_name: Company
+      location: Location
+      department: Department
+      group: Group
+      grade: Grade
+      division_of_job: Division of job
+      career_begin: Date of employment
+      trial_period_expiration_date: Trial period date

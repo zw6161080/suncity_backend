@@ -1,0 +1,74 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 假期定义
+
+# Describe your paths here
+paths:
+  /profiles/{profile_id}/suncity_charity:
+    get:
+      description: 获取档案太阳城爱心基金信息
+      tags:
+        - 太阳城爱心基金信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/SuncityCharityInfo'
+    patch:
+      description: 更新太阳城爱心基金信息
+      tags:
+        - 太阳城爱心基金信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: update_prarams
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#definitions/UpdateParams'
+      responses:
+        200:
+          description: 更新成功
+        422:
+          description: 参数错误
+definitions:
+  UpdateParams:
+    type: object
+    properties:
+      to_status:
+        type: string
+        description: '变更状态join/unjoin'
+      valid_data:
+        type: string
+        description: '生效日期'
+  SuncityCharityInfo:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          current_status:
+            type: string
+            description: 'join/unjoin'
+          to_status:
+            type: string
+            description: 'join/unjoin'
+          valid_date:
+            type: string
+            description: '2015-03-06'

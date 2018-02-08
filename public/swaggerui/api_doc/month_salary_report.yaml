@@ -1,0 +1,650 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 在职员工每月薪酬
+
+# Describe your paths here
+paths:
+  /month_salary_attachments/{id}:
+    get:
+      tags:
+        - 报表生成
+      description: 报表生成状态
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: 报表id
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/MonthSalaryAttachment'
+  /month_salary_reports/index_by_left_options:
+    get:
+      tags:
+        - 离职员工每月薪酬
+      description: 筛选项接口
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/index_options:
+    get:
+      tags:
+        - 全部员工每月薪酬
+      description: 筛选项接口
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/{id}/show_by_options:
+    get:
+      tags:
+        - 在职员工每月薪酬
+      description: 筛选项接口
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+          description: 报表id
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/{id}/examine_by_user/{user_id}:
+    patch:
+      tags:
+        - 离职员工每月薪酬
+      description: 审批
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: 每月薪酬报表id
+          required: true
+        - name: user_id
+          in: path
+          type: integer
+          description: 员工id
+          required: true
+        - name: examine_by_user_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ExamineByUserParams'
+
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/{id}/update_by_user/{user_id}:
+    patch:
+      tags:
+        - 离职员工每月薪酬
+      description: 更新
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: 每月薪酬报表id
+          required: true
+        - name: user_id
+          in: path
+          type: integer
+          description: 员工id
+          required: true
+        - name: update_by_user_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/ExamineByUserParams'
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/options:
+    get:
+      tags:
+        - 在职员工每月薪酬
+      description: 获取在职报表筛选项
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/Options'
+  /month_salary_reports/index_by_left_export:
+    get:
+      tags:
+        - 离职员工每月薪酬汇出
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/index_by_left.json:
+    get:
+      tags:
+        - 离职员工每月薪酬
+      description: 获取离职员工每月薪酬
+      parameters:
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 页数
+        - name: sort_column
+          in: query
+          type: string
+          required: false
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          type: string
+          required: false
+          description: 排序方向
+        - name: '1'
+          in: query
+          type: string
+          required: false
+          description: 员工编号
+        - name: '2'
+          in: query
+          type: string
+          required: false
+          description: 姓名
+        - name: '5'
+          in: query
+          type: string
+          required: false
+          description: 公司名称
+        - name: '6'
+          in: query
+          type: integer
+          required: false
+          description: 场馆id
+        - name: '8'
+          in: query
+          type: integer
+          required: false
+          description: 职位id
+        - name: '7'
+          in: query
+          type: integer
+          required: false
+          description: 部门id
+        - name: '3'
+          in: query
+          type: string
+          required: false
+          description: 年度
+        - name: '4'
+          in: query
+          type: string
+          required: false
+          description: 月份
+        - name: '9'
+          in: query
+          required: false
+          type: string
+          description: 职级
+        - name: '0'
+          in: query
+          type: string
+          required: false
+          description: 审批状态
+          enum:
+            - 'granted'
+            - 'not_granted'
+        - name: original_column_order
+          in: query
+          required: false
+          type: string
+          description: 匯出時的column数组
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/IndexByLeft'
+  /month_salary_reports:
+    post:
+      tags:
+        - '在职员工每月薪酬'
+      description: 创建某月在职员工薪酬报表
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 创建成功
+  /month_salary_reports/index_export:
+    get:
+      tags:
+        - 全部员工每月薪酬汇出
+      responses:
+        200:
+          description: ok
+  /month_salary_reports.json:
+    get:
+      tags:
+        - 全部员工每月薪酬
+      description: 获取全部员工每月薪酬
+      parameters:
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 页数
+        - name: sort_column
+          in: query
+          type: string
+          required: false
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          type: string
+          required: false
+          description: 排序方向
+        - name: '1'
+          in: query
+          type: string
+          required: false
+          description: 员工编号
+        - name: '2'
+          in: query
+          type: string
+          required: false
+          description: 姓名
+        - name: '5'
+          in: query
+          type: string
+          required: false
+          description: 公司名称
+        - name: '6'
+          in: query
+          type: integer
+          required: false
+          description: 场馆id
+        - name: '8'
+          in: query
+          type: integer
+          required: false
+          description: 职位id
+        - name: '7'
+          in: query
+          type: integer
+          required: false
+          description: 部门id
+        - name: '3'
+          in: query
+          type: string
+          required: false
+          description: 年度
+        - name: '4'
+          in: query
+          type: string
+          required: false
+          description: 月份
+        - name: '9'
+          in: query
+          required: false
+          type: string
+          description: 职级
+        - name: original_column_order
+          in: query
+          required: false
+          type: string
+          description: 匯出時的column数组
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/Index'
+  /month_salary_reports/{id}/preliminary_examine:
+    patch:
+      tags:
+        - '在职员工每月薪酬'
+      description: 初审批
+      parameters:
+        - name: id
+          type: integer
+          description: 报表id
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/{id}/president_examine:
+    patch:
+      tags:
+        - '在职员工每月薪酬'
+      description: 总裁审批
+      parameters:
+        - name: id
+          type: integer
+          description: 报表id
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/{id}/cancel:
+    patch:
+      tags:
+        - '在职员工每月薪酬'
+      description: 取消
+      parameters:
+        - name: id
+          type: integer
+          description: 报表id
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/{id}/show_export:
+    get:
+      tags:
+        - 在职员工每月薪酬汇出
+      parameters:
+        - name: id
+          type: integer
+          description: 报表id
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+  /month_salary_reports/{id}.json:
+    get:
+      tags:
+        - '在职员工每月薪酬'
+      description: 某月在职员工薪酬
+      parameters:
+        - name: id
+          type: integer
+          description: 报表id
+          required: true
+          in: path
+        - name: page
+          in: query
+          type: integer
+          required: false
+          description: 页数
+        - name: sort_column
+          in: query
+          type: string
+          required: false
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          type: string
+          required: false
+          description: 排序方向
+        - name: '1'
+          in: query
+          type: string
+          required: false
+          description: 员工编号
+        - name: '2'
+          in: query
+          type: string
+          required: false
+          description: 姓名
+        - name: '5'
+          in: query
+          type: string
+          required: false
+          description: 公司名称
+        - name: '6'
+          in: query
+          type: integer
+          required: false
+          description: 场馆id
+        - name: '8'
+          in: query
+          type: integer
+          required: false
+          description: 职位id
+        - name: '7'
+          in: query
+          type: integer
+          required: false
+          description: 部门id
+        - name: '3'
+          in: query
+          type: string
+          required: false
+          description: 年度
+        - name: '4'
+          in: query
+          type: string
+          required: false
+          description: 月份
+        - name: '9'
+          in: query
+          required: false
+          type: string
+          description: 职级
+        - name: original_column_order
+          in: query
+          required: false
+          type: string
+          description: 匯出時的column数组
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/SalaryReportOnMonth'
+    patch:
+      tags:
+        - '在职员工每月薪酬'
+      description: 更新在职员工每月薪酬
+      parameters:
+        - name: id
+          type: integer
+          description: 报表id
+          required: true
+          in: path
+      responses:
+        200:
+          description: ok
+definitions:
+  MonthSalaryAttachment:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 文件id
+      status:
+        type: string
+        description: 报表状态
+      download_process:
+        type: string
+        description: 报表生成进度
+  ExamineByUserParams:
+    type: object
+    properties:
+      year_month:
+        type: string
+        description: 年月
+      resignation_record_id:
+        type: integer
+        description: 离职记录id
+  Options:
+    type: object
+    properties:
+      month_salary_reports:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 报表id
+            status:
+              type: string
+              description: 报表状态
+            year_month:
+              type: string
+              description: 报表月份
+            salary_type:
+              type: string
+              description: 报表种类
+  Index:
+    type: object
+    properties:
+      salary_values:
+        type: array
+        items:
+          type: object
+          properties:
+            value:
+              type: object
+            year_month:
+              type: string
+              description: 年月
+            salary_column_id:
+              type: integer
+              description: 薪金项ID
+      user_year_month:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 员工id
+            year_month:
+              type: integer
+              description: 年月
+            salary_value:
+              type: string
+              description: 审批状态
+              enum:
+                - granted
+                - not_granted
+
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          current_page:
+            type: integer
+            description: 当前页面
+          total_pages:
+            type: integer
+            description: 总页数
+  IndexByLeft:
+    type: object
+    properties:
+      salary_values:
+        type: array
+        items:
+          type: object
+          properties:
+            value:
+              type: object
+            year_month:
+              type: string
+              description: 年月
+            salary_column_id:
+              type: integer
+              description: 薪金项ID
+      user_year_month:
+        type: array
+        items:
+          type: object
+          properties:
+            salary_value:
+              type: string
+              description: 审批状态
+              enum:
+                - granted
+                - not_granted
+            user_id:
+              type: integer
+              description: 员工id
+            year_month:
+              type: integer
+              description: 年月
+            resignation_record_id:
+              type: integer
+              description: 离职记录id
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          current_page:
+            type: integer
+            description: 当前页面
+          total_pages:
+            type: integer
+            description: 总页数
+  SalaryReportOnMonth:
+    type: object
+    properties:
+      month_salary_report:
+        type: object
+        properties:
+          year_month:
+            type: string
+            description: 年月
+      salary_values:
+        type: array
+        items:
+          type: object
+          properties:
+            value:
+              type: object
+            year_month:
+              type: string
+              description: 年月
+            salary_column_id:
+              type: integer
+              description: 薪金项ID
+      user_year_month:
+        type: array
+        items:
+          type: object
+          properties:
+            salary_value:
+              type: string
+              description: 审批状态
+              enum:
+                - granted
+                - not_granted
+            user_id:
+              type: integer
+              description: 员工id
+            year_month:
+              type: integer
+              description: 年月
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          current_page:
+            type: integer
+            description: 当前页面
+          total_pages:
+            type: integer
+            description: 总页数
+  CreateParams:
+    type: object
+    properties:
+      year_month:
+        type: string
+        description: 年月
+
+

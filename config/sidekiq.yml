@@ -1,0 +1,14 @@
+# Options here can still be overridden by cmd line args.
+#   sidekiq -C sidekiq.yml
+---
+:concurrency: 10
+:pidfile: tmp/sidekiq.pid
+:logfile: log/sidekiq.log
+:queues:
+  - [notifications, 100]
+  - [http_request, 50]
+  - [default, 3]
+  - [statement_report, 1]
+  - [sms, 100]
+  - [email, 50]
+  - [attend_report, 3]

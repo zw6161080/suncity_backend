@@ -1,0 +1,12 @@
+zh-HK:
+  statement_columns:
+    revise_clock_items:
+      empoid: 員工編號
+      name: 姓名
+      department_id: 部門
+      position_id: 職位
+      clock_date: 颶風上班日期
+      money: 金額
+      creator_name: 錄入人
+      created_at: 錄入日期
+      

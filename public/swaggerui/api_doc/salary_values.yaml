@@ -1,0 +1,36 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 薪金值
+
+# Describe your paths here
+paths:
+  /salary_values/{id}/update_value:
+    patch:
+      description: '更新薪金值'
+      tags:
+        - 薪金值
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: 薪金值id
+        - name: update_value
+          in: body
+          required: true
+          description: 更新值
+          schema:
+            $ref: '#/definitions/Value'
+      responses:
+        200:
+          description: ok
+definitions:
+  Value:
+    type: object
+    description: 更新值

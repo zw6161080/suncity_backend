@@ -1,0 +1,388 @@
+occupation_tax_items:
+  columns:
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: chinese_name
+      value_type: string_value
+      data_index: user.chinese_name
+      search_type: search
+      sorter: true
+      search_attirbute: user.chinese_name
+
+    - key: english_name
+      value_type: string_value
+      data_index: user.english_name
+      search_type: search
+      sorter: true
+      search_attribute: user.english_name
+
+    - key: department
+      value_type: obj_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: department_id
+
+    - key: position
+      value_type: obj_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: position_id
+
+    - key: month_1_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      #column_option 中给出筛选项
+      option: company_name
+
+    - key: month_2_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_3_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_4_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_5_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_6_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_7_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_8_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_9_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_10_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_11_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: month_12_company
+      value_type: select_value
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: company_name
+      option: company_name
+
+    - key: type_of_id
+      value_type: select_value
+      data_index: user.profile.data.personal_information.field_values.type_of_id
+      search_type: screen
+      sorter: false
+      options_type: selects
+      options_select_key: type_of_id
+      search_attribute: user.profile.personal_information.type_of_id
+
+    - key: id_number
+      value_type: string_value
+      data_index: user.profile.data.personal_information.field_values.id_number
+      search_type: search
+      sorter: false
+      search_attribute: user.profile.personal_information.id_number
+
+    - key: tax_number
+      value_type: string_value
+      data_index: user.profile.data.personal_information.field_values.tax_number
+      search_type: search
+      sorter: false
+      search_attribute: user.profile.personal_information.tax_number
+
+    - key: career_entry_date
+      value_type: date_value
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      value_format: yyyy/mm/dd
+      search_type: date
+      search_attribute: user.profile.position_information.date_of_employment
+      sorter: false
+
+    - key: resigned_date
+      data_index: user.profile.data.position_information.field_values.resigned_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      search_attribute: user.profile.position_information.resigned_date
+      sorter: false
+
+    - key: double_pay_bonus_and_award
+      value_type: string_value
+
+
+
+    - key: month_1_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_1_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+
+    - key: month_2_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_2_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+
+
+    - key: month_3_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_3_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_1_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_1_tax_mop_before_adjust
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_1_tax_mop_after_adjust
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+
+    - key: month_4_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_4_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+
+    - key: month_5_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_5_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_6_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_6_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_2_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_2_tax_mop_before_adjust
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_2_tax_mop_after_adjust
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_7_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_7_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_8_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_8_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+
+    - key: month_9_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_9_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_3_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_3_tax_mop_before_adjust
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_3_tax_mop_after_adjust
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_10_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_10_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+
+    - key: month_11_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_11_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+
+    - key: month_12_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: month_12_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_4_income_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_4_tax_mop_before_adjust
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: year_income_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: year_payable_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: year_paid_tax_mop
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: quarter_4_tax_mop_after_adjust
+      value_type: string
+      search_type: decimal_range
+      sorter: false
+
+    - key: comment
+      value_type: string
+      search_type: null
+      sorter: false
+

@@ -1,0 +1,37 @@
+en:
+  salary_records:
+    file_name: salary_records
+  statement_columns:
+    salary_records:
+      empoid: ID
+      name: Name
+      division_of_job: Job type
+      company_name: Company
+      location: Location
+      department: Department
+      position: Position
+      grade: Grade
+      date_of_employment: Date of employment
+      leave_date: Leave date
+      salary_begin: Transfer date
+      change_reason: Reason
+      type_of_id: Card type
+      basic_salary: Basic Salary
+      bonus: Bonus
+      attendance_award: Attendance Bonus
+      house_bonus: Housing Allowance
+      region_bonus: Regional Allowance
+      tea_bonus: Tips
+      kill_bonus: Win/Lose
+      performance_bonus: Rolling
+      charge_bonus: Credit Card Commission
+      commission_bonus: Commission copies
+      receive_bonus: Debtors
+      exchange_rate_bonus: Commission Difference
+      guest_card_bonus: Card Sales
+      respect_bonus: E-mall
+      new_year_bonus: New Year lai see
+      project_bonus: Project copies
+      product_bonus: Luxe
+
+

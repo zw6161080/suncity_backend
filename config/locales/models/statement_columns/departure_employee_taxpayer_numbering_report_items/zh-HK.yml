@@ -1,0 +1,14 @@
+zh-HK:
+  departure_employee_taxpayer_numbering_report_items:
+    file_name: 離職僱員納稅人編號表
+  statement_columns:
+    departure_employee_taxpayer_numbering_report_items:
+      year_month:  申請月份
+      company_name: 公司姓名
+      deployer_retirement_fund_number: 僱主退休基金號碼
+      provident_fund_resignation_date: 公積金贖回日期
+      employee_id: 員工編號
+      employee_name: 員工姓名
+      member_retirement_fund_number: 成員退休基金號碼
+      beneficiary_name: 受益人姓名
+      tax_number: 稅務編號

@@ -1,0 +1,16 @@
+local_fulltime_more_than_15_days_employee_payment_mop: 30
+local_fulltime_less_than_15_days_employee_payment_mop: 0
+
+local_parttime_more_than_15_days_employee_payment_mop: 30
+local_parttime_less_than_15_days_employee_payment_mop: 15
+
+nonlocal_employee_payment_mop: 0
+
+local_fulltime_more_than_15_days_company_payment_mop: 60
+local_fulltime_less_than_15_days_company_payment_mop: 0
+
+local_parttime_more_than_15_days_company_payment_mop: 60
+local_parttime_less_than_15_days_company_payment_mop: 30
+
+nonlocal_entry_after_15_day_of_month_company_payment_mop: 200
+nonlocal_entry_before_15_day_of_month_company_payment_mop: 0

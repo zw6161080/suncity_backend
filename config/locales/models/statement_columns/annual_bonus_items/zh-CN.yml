@@ -1,0 +1,14 @@
+zh-CN:
+  statement_columns:
+    annual_bonus_items:
+      employee_id: 员工编号
+      employee_name: 姓名
+      department: 部门
+      position: 职位
+      career_entry_date: 入职日期
+      has_annual_incentive_payment: 是否符合全年勤工奖
+      annual_incentive_payment_hkd: 全年勤工奖金额(HKD)
+      has_double_pay: 是否符合双量
+      double_pay_mop: 双量金额(MOP)
+      has_year_end_bonus: 是否符合花红
+      year_end_bonus_mop: 花红金额(MOP)

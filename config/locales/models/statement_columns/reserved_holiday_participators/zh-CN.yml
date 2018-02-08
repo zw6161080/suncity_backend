@@ -1,0 +1,17 @@
+zh-CN:
+  reserved_holiday_participators:
+    file_name: 预留假期符合人员名单
+  statement_columns:
+    reserved_holiday_participators:
+      reserved_holiday_setting: 预留假期设置
+      empoid: 员工编号
+      name: 姓名
+      department: 部门
+      position: 场馆
+      employment_status: 在职类别
+      grade: 职级
+      date_of_employment: 入职日期
+      owned_days_count: 获得天数
+      taken_days_count: 已申请天数
+
+

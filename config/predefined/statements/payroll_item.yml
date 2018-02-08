@@ -1,0 +1,373 @@
+payroll_items:
+  columns:
+    - key: year_month
+      value_type: date_value
+      value_format: 'yyyy/mm'
+      search_type: month_range
+      sorter: true
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: employee_name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: location_options
+      search_attribute: user.location_id
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: check_or_cash
+      value_type: select_value
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: payment_method
+
+    - key: bank_of_china_account_mop
+      value_type: string_value
+      data_index: user.profile.data.personal_information.field_values.bank_of_china_account_mop
+      search_type: search
+      sorter: false
+      search_attribute: user.profile.bank_of_china_account_mop
+
+    - key: bank_of_china_account_hkd
+      value_type: string_value
+      data_index: user.profile.data.personal_information.field_values.bank_of_china_account_hkd
+      search_type: search
+      sorter: false
+      search_attribute: user.profile.bank_of_china_account_hkd
+
+    - key: social_security_fund_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: actual_amount_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: actual_amount_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: total_amount_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: base_salary_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: overtime_pay_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: compulsion_holiday_compensation_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: public_holiday_compensation_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: medicare_reimbursement_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: vip_card_consumption_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: paid_maternity_compensation_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: double_pay_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: year_end_bonus_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: seniority_compensation_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: dismission_annual_holiday_compensation_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: dismission_inform_period_compensation_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: total_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: medical_insurance_plan_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: public_accumulation_fund_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: love_fund_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: absenteeism_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: immediate_leave_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_leave_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_marriage_leave_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_compassionate_leave_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_maternity_leave_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: pregnant_sick_leave_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: occupational_injury_reduction_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: total_salary_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: benefits_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: incentive_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: housing_benefit_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: cover_charge_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: kill_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: performance_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: swiping_card_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: commission_margin_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: collect_accounts_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: exchange_rate_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: zunhuadian_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: xinchunlishi_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: project_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: shangpin_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: dispatch_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: recommand_new_guest_bonus_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: typhoon_benefits_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: annual_incentive_payment_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: back_pay_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: total_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: absenteeism_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: immediate_leave_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_leave_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_marriage_leave_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_compassionate_leave_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_maternity_leave_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: pregant_sick_leave_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: occupational_injury_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: paid_sick_leave_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: late_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: missing_punch_card_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true
+
+    - key: punishment_reduction_hkd
+      value_type: string_value
+      search_type: decimal_range
+      sorter: true

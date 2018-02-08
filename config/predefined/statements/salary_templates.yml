@@ -1,0 +1,79 @@
+salary_templates:
+  columns:
+    - key: chinese_name
+      value_type: string_value
+      data_index: template_chinese_name
+
+    - key: belongs_to
+      value_type: string
+      data_index: belongs_to_string
+
+    - key: basic_salary
+      value_type: string_value
+
+    - key: bonus
+      value_type: string_value
+
+    - key: attendance_award
+      value_type: string_value
+
+    - key: house_bonus
+      value_type: string_value
+
+    - key: region_bonus
+      value_type: string_value
+
+    - key: service_award
+      value_type: string_value
+
+    - key: internship_bonus
+      value_type: string_value
+
+    - key: total_count
+      value_type: string_value
+
+    - key: tea_bonus
+      value_type: string_value
+
+    - key: kill_bonus
+      value_type: string_value
+
+    - key: performance_bonus
+      value_type: string_value
+
+    - key: charge_bonus
+      value_type: string_value
+
+    - key: commission_bonus
+      value_type: string_value
+
+    - key: receive_bonus
+      value_type: string_value
+
+    - key: exchange_rate_bonus
+      value_type: string_value
+
+    - key: guest_card_bonus
+      value_type: string_value
+
+    - key: respect_bonus
+      value_type: string_value
+
+    - key: new_year_bonus
+      value_type: string_value
+
+    - key: project_bonus
+      value_type: string_value
+
+    - key: product_bonus
+      value_type: string_value
+
+    - key: performance_award
+      value_type: string_value
+
+    - key: special_tie_bonus
+      value_type: string_value
+
+    - key: comment
+      value_type: string_value
+

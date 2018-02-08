@@ -1,0 +1,15 @@
+default:
+  ratio_superior: 25
+  ratio_subordinate: 25
+  ratio_collegue: 25
+  ratio_self: 25
+  ratio_others_superior: 33
+  ratio_others_subordinate: 33
+  ratio_others_collegue: 33
+  group_A: [1, 2, 3, 4]
+  group_B: [5]
+  group_C: []
+  group_D: []
+  group_E: []
+  questionnaire_submit_once_only: true
+  introduction:

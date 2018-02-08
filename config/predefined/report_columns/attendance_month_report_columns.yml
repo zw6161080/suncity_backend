@@ -1,0 +1,101 @@
+attendance_year_month:
+  chinese_name: 考勤月份
+  english_name: Attendance month
+  simple_chinese_name: 考勤月份
+  value_type: date_value
+  value_format: yyyy/mm
+  data_index: attendance_year_month
+  search_type: date
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: AttendanceMonthReportItem
+  source_attribute: year_month
+  option_attribute: null
+
+attendance_normal_overtime_hours:
+  chinese_name: 正常加班小時數
+  english_name: Normal overtime hours
+  simple_chinese_name: 正常加班小时数
+  value_type: string_value
+  value_format: null
+  data_index: attendance_normal_overtime_hours
+  search_type: null
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: AttendanceMonthReportItem
+  source_attribute: normal_overtime_hours
+  option_attribute: null
+
+attendance_holiday_overtime_hours:
+  chinese_name: 假期加班小時數
+  english_name: Holiday overtime hours
+  simple_chinese_name: 假期加班小时数
+  value_type: string_value
+  value_format: null
+  data_index: attendance_holiday_overtime_hours
+  search_type: null
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: AttendanceMonthReportItem
+  source_attribute: holiday_overtime_hours
+  option_attribute: null
+
+attendance_compulsion_holiday_compensation_days:
+  chinese_name: 強制假期補償天數
+  english_name: Holiday compensation days
+  simple_chinese_name: 强制假期补偿天数
+  value_type: string_value
+  value_format: null
+  data_index: attendance_compulsion_holiday_compensation_days
+  search_type: null
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: AttendanceMonthReportItem
+  source_attribute: compulsion_holiday_compensation_days
+  option_attribute: null
+
+attendance_public_holiday_compensation_days:
+  chinese_name: 公衆假期補償天數
+  english_name: Public holiday compensation days
+  simple_chinese_name: 公众假期补偿天数
+  value_type: string_value
+  value_format: null
+  data_index: attendance_public_holiday_compensation_days
+  search_type: null
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: AttendanceMonthReportItem
+  source_attribute: public_holiday_compensation_days
+  option_attribute: null
+
+attendance_absenteeism_days:
+  chinese_name: 曠工天數
+  english_name: Absenteeism days
+  simple_chinese_name: 旷工天数
+  value_type: string_value
+  value_format: null
+  data_index: attendance_absenteeism_days
+  search_type: null
+  sorter: true
+  options_type: null
+  options_predefined: null
+  options_endpoint: null
+  source_data_type: model
+  source_model: AttendanceMonthReportItem
+  source_attribute: absenteeism_days
+  option_attribute: null

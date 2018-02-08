@@ -1,0 +1,149 @@
+social_security_fund_items:
+  columns:
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: employment_status
+      value_type: obj_value
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: employment_status
+
+    - key: department
+      value_type: obj_value
+      value_format: null
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: department_id
+
+    - key: position
+      value_type: obj_value
+      value_format: null
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: position_id
+
+    - key: chinese_name
+      data_index: user.chinese_name
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: english_name
+      data_index: user.english_name
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: career_entry_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true
+
+    - key: resigned_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true
+
+
+    - key: date_to_submit_fingermold
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true
+
+    - key: cancel_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true
+
+    - key: company_name
+      value_type: obj_value
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: company_name
+
+    - key: id_number
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: sss_number
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: gender
+      value_type: select_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: gender_options
+
+    - key: date_of_birth
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true
+
+    - key: tax_declare_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true
+
+    - key: type_of_id
+      value_type: select_value
+      search_type: screen
+      options_type: selects
+      options_select_key: type_of_id
+      sorter: true
+
+    - key: tax_number
+      value_type: string_value
+      search_type: search
+      sorter: true
+
+    - key: year
+      data_index: year_month
+      value_type: date_value
+      value_format: 'yyyy'
+      date_value_format: '%Y'
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: year_options
+
+    - key: month
+      data_index: year_month
+      value_type: date_value
+      value_format: 'mm'
+      date_value_format: '%m'
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: month_options
+
+    - key: employee_payment_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+
+    - key: company_payment_mop
+      value_type: string_value
+      search_type: decimal_range
+      sorter: false
+

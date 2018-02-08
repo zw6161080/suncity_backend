@@ -1,0 +1,55 @@
+zh-CN:
+  month_salary_change_records:
+    file_name: 员工薪酬变动报表
+  statement_columns:
+    month_salary_change_records:
+      empoid: 员工编号
+      name: 姓名
+      division_of_job: 在职类别
+      company_name: 公司名称
+      location: 场馆
+      department: 部门
+      position: 职位
+      grade: 职级
+      date_of_employment: 入职日期
+      leave_date: 离职日期
+      salary_begin: 调整日期
+      change_reason: 调整原因
+      type_of_id: 证件类型
+      original_basic_salary: 底薪(原薪酬)
+      original_bonus: 津貼(原薪酬)
+      original_attendance_award: 勤工(原薪酬)
+      original_house_bonus: 房屋津貼(原薪酬)
+      original_region_bonus: 地区津贴(原薪酬)
+      original_tea_bonus: 茶資份數(原薪酬)
+      original_kill_bonus: 殺數分紅份數(原薪酬)
+      original_performance_bonus: 業績分紅份數(原薪酬)
+      original_charge_bonus: 刷卡獎金份數(原薪酬)
+      original_commission_bonus: 佣金差額份數(原薪酬)
+      original_receive_bonus: 收賬分紅份數(原薪酬)
+      original_exchange_rate_bonus: 匯率分紅份數(原薪酬)
+      original_guest_card_bonus: 貴賓卡消費份數(原薪酬)
+      original_respect_bonus: 尊華殿份數(原薪酬)
+      original_new_year_bonus: 新春利是份數(原薪酬)
+      original_project_bonus: 項目分紅份數(原薪酬)
+      original_product_bonus: 尚品獎金份數(原薪酬)
+      updated_basic_salary: 底薪(調整後薪酬)
+      updated_bonus: 津貼(調整後薪酬)
+      updated_attendance_award: 勤工(調整後薪酬)
+      updated_house_bonus: 房屋津貼(調整後薪酬)
+      updated_region_bonus: 地区津贴(調整後薪酬)
+      updated_tea_bonus: 茶資份數(調整後薪酬)
+      updated_kill_bonus: 殺數分紅份數(調整後薪酬)
+      updated_performance_bonus: 業績分紅份數(調整後薪酬)
+      updated_charge_bonus: 刷卡獎金份數(調整後薪酬)
+      updated_commission_bonus: 佣金差額份數(調整後薪酬)
+      updated_receive_bonus: 收賬分紅份數(調整後薪酬)
+      updated_exchange_rate_bonus: 匯率分紅份數(調整後薪酬)
+      updated_guest_card_bonus: 貴賓卡消費份數(調整後薪酬)
+      updated_respect_bonus: 尊華殿份數(調整後薪酬)
+      updated_new_year_bonus: 新春利是份數(調整後薪酬)
+      updated_project_bonus: 項目分紅份數(調整後薪酬)
+      updated_product_bonus: 尚品獎金份數(調整後薪酬)
+
+
+

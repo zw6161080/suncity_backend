@@ -1,0 +1,227 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 更组
+
+# Describe your paths here
+paths:
+  /rosters/{roster_id}/shift_groups:
+    get:
+      description: 获取某排班表的更组列表
+      tags:
+        - 更组
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: is_together
+          in: path
+          required: false
+          type: boolean
+          description: 是否同更,默认true
+      responses:
+        200:
+          description:  获取某排班表的更组
+    post:
+      description: 创建某排班表的更组
+      tags:
+        - 更组
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_group_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/ShiftGroupCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+
+  /rosters/{roster_id}/shift_groups/{shift_group_id}:
+    get:
+      description: 获取更组排班项目
+      tags:
+        - 更组
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_group_id
+          in: path
+          required: true
+          type: integer
+          description: 更组ID
+      responses:
+        200:
+          description:  获取更组排班项目
+    patch:
+      description: 获取更组排班项目
+      tags:
+        - 更组
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_group_id
+          in: path
+          required: true
+          type: integer
+          description: 更组ID
+        - name: shift_group_params
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#/definitions/ShiftGroupUpdateParams'
+      responses:
+        200:
+          description:  获取更组排班项目
+    delete:
+      description: 删除更组排班项目
+      tags:
+        - 更组
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_group_id
+          in: path
+          required: true
+          type: integer
+          description: 更组ID
+      responses:
+        200:
+          description:  删除更组排班项目
+
+  /rosters/{roster_id}/shift_groups/{shift_group_id}/add_users:
+    patch:
+      description: 获取更组排班项目
+      tags:
+        - 更组添加用户
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_group_id
+          in: path
+          required: true
+          type: integer
+          description: 更组ID
+        - name: member_user_ids
+          in: body
+          required: true
+          type: array
+          item:
+            type: integer
+            description: User ID
+          description: 添加的UserId数组
+      responses:
+        200:
+          description:  获取更组排班项目
+
+  /rosters/{roster_id}/shift_groups/{shift_group_id}/remove_users:
+    patch:
+      description: 获取更组排班项目
+      tags:
+        - 更组移除用户
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: shift_group_id
+          in: path
+          required: true
+          type: integer
+          description: 更组ID
+        - name: member_user_ids
+          in: body
+          required: true
+          type: array
+          item:
+            type: integer
+            description: User ID
+          description: 移除的UserId数组
+      responses:
+        200:
+          description:  获取更组排班项目
+
+definitions:
+  ShiftGroupCreateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 更组中文名称
+      english_name:
+        type: string
+        description: 更组中文名称
+      is_together:
+        type: boolean
+        description: 是否同更
+      comment:
+        type: string
+        description: '备注'
+      member_user_ids:
+        type: array
+        items:
+          type: integer
+          description: User ID
+        description: UserId数组
+
+  ShiftGroupUpdateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 更组中文名称
+      english_name:
+        type: string
+        description: 更组中文名称
+      is_together:
+        type: boolean
+        description: 是否同更
+      comment:
+        type: string
+        description: '备注'
+      member_user_ids:
+        type: array
+        items:
+          type: integer
+          description: User ID
+        description: UserId数组
+
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

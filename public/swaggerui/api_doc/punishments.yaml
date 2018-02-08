@@ -1,0 +1,1130 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 纪律处分申请
+
+# Describe your paths here
+paths:
+  /punishments:
+    get:
+      description: 获取纪律处分申请列表
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: page
+        type: integer
+        in: query
+        required: false
+        description: 页面编号
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: punishment_status
+        type: string
+        in: query
+        required: false
+        description: 处分状态，允许的值只有2种 { "punishment.enum_punishment_status.punishing"，"punishment.enum_punishment_status.punished" }
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位
+      - name: punishment_date
+        type: string
+        in: query
+        required: false
+        description: 处分日期 `YYYY/MM/DD`，传一个range
+      - name: punishment_result
+        type: string
+        in: query
+        required: false
+        description: 处理结果，允许的值只有6种 { "punishment.enum_punishment_result.cancel_warning_letter"，"punishment.enum_punishment_result.verbal_warning"，"punishment.enum_punishment_result.classA_written_warning"，"punishment.enum_punishment_result.classB_written_warning"，"punishment.enum_punishment_result.final_written_warning"，"punishment.enum_punishment_result.fired" }
+      - name: punishment_category
+        type: string
+        in: query
+        required: false
+        description: 过错类别，允许的值只有3种 { "punishment.enum_punishment_category.classA"，"punishment.enum_punishment_category.classB"，"punishment.enum_punishment_category.grave_fault" }
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/Punishments'
+    post:
+      description: 创建纪律处分申请记录
+      parameters:
+      - name: punishmen_params
+        in: body
+        required: true
+        description: 纪律处分申请记录数据
+        schema:
+          $ref: '#/definitions/IncidentParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /punishments/{punishment_id}:
+    get:
+      description: 获取一条纪律处分申请记录
+      parameters:
+      - name: punishment_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/OnePunishmentFullInformation'
+    patch:
+      description: 更新一条纪律处分申请记录
+      parameters:
+      - name: punishment_id
+        in: path
+        required: true
+        type: integer
+      - name: target_response_and_punishment_result
+        in: body
+        required: true
+        description: 员工回应信息和纪律处分结果
+        schema:
+          $ref: '#/definitions/TargetResponseAndPunishmentResultParams'
+      responses:
+        200:
+          description: 成功响应
+    delete:
+      description: 删除一条纪律处分申请记录
+      parameters:
+      - name: punishment_id
+        in: path
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+
+  /punishments/{user_id}/index_by_empoid_or_name:
+    get:
+      description: 按照 员工的编号/中文名/英文名 查找员工列表，选其一后获取员工ID，再根据员工ID返回若干纪律处分申请记录
+      parameters:
+      - name: user_id
+        type: integer
+        in: path
+        required: true
+        description: user_id
+      responses:
+        200:
+          description: Successful response
+          schema:
+            $ref: '#/definitions/PunishmentsOfOneEmployee'
+
+  /punishments/field_options:
+    get:
+      description: 获取列表页中所有的筛选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/FieldOptions'
+
+  /punishments/export:
+    get:
+      description: 以Excel文件的形式 汇出紀律處分申請列表
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: punishment_status
+        type: string
+        in: query
+        required: false
+        description: 处分状态，允许的值只有2种 { "punishment.enum_punishment_status.punishing"，"punishment.enum_punishment_status.punished" }
+      - name: employee_name
+        type: string
+        in: query
+        required: false
+        description: 员工姓名（中/英均可）
+      - name: employee_no
+        type: string
+        in: query
+        required: false
+        description: 员工编号
+      - name: department_id
+        type: integer
+        in: query
+        required: false
+        description: 员工部门
+      - name: position_id
+        type: integer
+        in: query
+        required: false
+        description: 员工职位
+      - name: punishment_date
+        type: string
+        in: query
+        required: false
+        description: 处分日期 `YYYY/MM/DD`，传一个range
+      - name: punishment_result
+        type: string
+        in: query
+        required: false
+        description: 处理结果，允许的值只有6种 { "punishment.enum_punishment_result.cancel_warning_letter"，"punishment.enum_punishment_result.verbal_warning"，"punishment.enum_punishment_result.classA_written_warning"，"punishment.enum_punishment_result.classB_written_warning"，"punishment.enum_punishment_result.final_written_warning"，"punishment.enum_punishment_result.fired" }
+      - name: punishment_category
+        type: string
+        in: query
+        required: false
+        description: 过错类别，允许的值只有3种 { "punishment.enum_punishment_category.classA"，"punishment.enum_punishment_category.classB"，"punishment.enum_punishment_category.grave_fault" }
+      responses:
+        200:
+          description: 成功响应
+
+  /punishments/show_profile:
+    get:
+      description: 获取员工信息，及其场馆、部门、职位、档案信息
+      parameters:
+      - name: user_id
+        type: integer
+        in: query
+        required: true
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/Profile'
+
+  /punishments/profile_index:
+    get:
+      description: 获取员工档案-纪律处分列表
+      parameters:
+      - name: user_id
+        in: query
+        required: true
+        type: integer
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/ProfilePunishments'
+
+  /punishments/profile_create:
+    post:
+      description: 创建一条员工档案-纪律处分
+      parameters:
+      - name: profile_punishment_params
+        in: body
+        required: true
+        description: 创建一条员工档案-纪律处分所需参数
+        schema:
+          $ref: '#/definitions/ProfilePunishmentParams'
+      responses:
+        200:
+          description: 成功响应
+
+  /punishments/profile_show:
+    get:
+      description: 获取一条员工档案-纪律处分
+      parameters:
+      - name: id
+        in: query
+        required: true
+        type: integer
+        description: 员工档案-纪律处分记录的ID
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/ProfilePunishment'
+
+  /punishments/profile_update:
+    patch:
+      description: 修改一条员工档案-纪律处分
+      parameters:
+      - name: id
+        in: query
+        required: true
+        type: integer
+      - name: profile_punishment_params
+        in: body
+        required: true
+        description: 创建一条员工档案-纪律处分所需参数
+        schema:
+          $ref: '#/definitions/ProfilePunishmentParams'
+      responses:
+        200:
+          description: 成功响应
+
+definitions:
+  Punishments:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          title: 处分条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 纪律处分记录ID
+            punishment_status:
+              type: string
+              description: 处分状态，允许的值只有2种 { "punishing"，"punished" }
+            user_id:
+              type: integer
+              description: 待处分人ID
+            user:
+              description: 待处分人相关信息
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: user_id
+                empoid:
+                  type: string
+                  description: 待处分人编号
+                chinese_name:
+                  type: string
+                  description: 待处分人繁体中文名
+                english_name:
+                  type: string
+                  description: 待处分人英文名
+                simple_chinese_name:
+                  type: string
+                  description: 待处分人简体中文名
+                department:
+                  type: object
+                  description: 部门信息
+                position:
+                  type: object
+                  description: 职位信息
+            punishment_date:
+              type: string
+              description: 处分日期 `YYYY/MM/DD`
+            punishment_result:
+              type: string
+              description: 处分结果，允许的值只有6种 { "cancel_warning_letter"，"verbal_warning"，"classA_written_warning"，"classB_written_warning"，"final_written_warning"，"fired" }
+            punishment_category:
+              type: string
+              description: 过错类别，允许的值只有3种 { "classA"，"classB"，"grave_fault" }
+            punishment_content:
+              type: string
+              description: 过错内容
+            punishment_remarks:
+              type: string
+              description: 备注
+            track_date:
+              type: string
+              description: 录入日期 `YYYY/MM/DD`
+            tracker:
+              description: 录入人
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: 录入人繁体中文名
+                english_name:
+                  type: string
+                  description: 录入人英文名
+                simple_chinese_name:
+                  type: string
+                  description: 录入人简体中文名
+
+  IncidentParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: user_id
+      incident_time_from:
+        type: string
+        description: 事件发生的日期时间的起点 `YYYY/MM/DD  hh:mm`
+      incident_time_to:
+        type: string
+        description: 事件发生的日期时间的终点 `YYYY/MM/DD  hh:mm`
+      incident_place:
+        type: string
+        description: 发生地点
+      incident_discoverer:
+        type: string
+        description: 发现者姓名
+      incident_discoverer_phone:
+        type: string
+        description: 发现者联络电话
+      incident_handler:
+        type: string
+        description: 处理人姓名
+      incident_handler_phone:
+        type: string
+        description: 处理人联络电话
+      incident_description:
+        type: string
+        description: 事件详情
+      incident_financial_influence:
+        type: boolean
+        description: 此事件是否对公司造成财务上的影响
+      incident_money_involved:
+        type: number
+        description: 涉及金额
+      incident_customer_involved:
+        type: boolean
+        description: 事件是否涉及客人
+      incident_employee_involved:
+        type: boolean
+        description: 事件是否涉及员工
+      incident_casino_involved:
+        type: boolean
+        description: 事件是否涉及赌场
+      incident_thirdparty_involved:
+        type: boolean
+        description: 事件是否涉及第三方
+      incident_suspended:
+        type: boolean
+        description: 是否停职调查
+      incident_suspended_date:
+        type: string
+        description: 停职日期 `YYYY/MM/DD`，当 incident_suspended 为 true 时提供此参数
+      punishment_remarks:
+        type: string
+        description: 备注
+      deployment_instructions:
+        type: string
+        description: 调配说明，当 incident_suspended 为 true 时提供此参数
+      comment:
+        type: string
+        description: 备注，当 incident_suspended 为 true 时提供此参数
+      is_poor_attendance:
+        type: string
+        description: 是否考勤欠佳
+
+  TargetResponseAndPunishmentResultParams:
+    type: object
+    properties:
+      target_response_title:
+        type: boolean
+        description: 员工回应
+      target_response_content:
+        type: string
+        description: 员工回应内容
+      target_response_datetime_from:
+        type: string
+        description: 面谈日期时间的起点 `YYYY/MM/DD  hh:mm`
+      target_response_datetime_to:
+        type: string
+        description: 面谈日期时间的终点 `YYYY/MM/DD  hh:mm`
+      punishment_date:
+        type: string
+        description: 处分日期 `YYYY/MM/DD`
+      punishment_category:
+        type: string
+        description: 过错类别，允许的值只有3种 { "punishment.enum_punishment_category.classA"，"punishment.enum_punishment_category.classB"，"punishment.enum_punishment_category.grave_fault" }
+      punishment_content:
+        type: string
+        description: 过错内容
+      punishment_result:
+        type: string
+        description: 处理结果，允许的值只有6种 { "punishment.punishment_result.cancel_warning_letter"，"punishment.punishment_result.verbal_warning"，"punishment.punishment_result.classA_written_warning"，"punishment.punishment_result.classB_written_warning"，"punishment.punishment_result.final_written_warning"，"punishment.punishment_result.fired" }
+      reinstated:
+        type: boolean
+        description: 是否复职
+      reinstated_date:
+        type: string
+        description: 复职日期 `YYYY/MM/DD`，当 reinstated 为 true 时提供此参数
+      punishment_remarks:
+        type: string
+        description: 备注
+      approval_items:
+        type: array
+        items:
+          type: object
+          description: 一个审批记录的信息
+          properties:
+            user_id:
+              type: integer
+            datetime:
+              type: string
+            comment:
+              type: string
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          description: 一个相关文件的信息
+          properties:
+            file_name:
+              type: string
+            creator_id:
+              type: integer
+            comment:
+              type: string
+            attachment_id:
+              type: integer
+
+  PunishmentsOfOneEmployee:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          title: 处分条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 处分ID
+            punishment_date:
+              type: string
+              description: 处分日期 `YYYY/MM/DD`
+            punishment_result:
+              type: string
+              description: 处理结果，允许的值只有6种 { "cancel_warning_letter"，"verbal_warning"，"classA_written_warning"，"classB_written_warning"，"final_written_warning"，"fired" }
+            punishment_category:
+              type: string
+              description: 过错类别，允许的值只有3种 { "classA"，"classB"，"grave_fault" }
+            punishment_content:
+              type: string
+              description: 过错内容
+            profile_abolition_date:
+              type: string
+              description: 效力废止日期 `YYYY/MM/DD`
+            user_id:
+              type: integer
+              description: 待处分人ID
+            user:
+              type: object
+              description: 待处分人相关信息
+
+  OnePunishmentFullInformation:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          punishment_infomation:
+            description: 一条纪律处分的信息
+            type: object
+            properties:
+              id:
+                type: integer
+                description: 处分ID
+              user_id:
+                type: integer
+                description: 被处分人ID
+              user:
+                description: 被处分人相关信息
+                type: object
+                properties:
+                  empoid:
+                    type: string
+                    description: 待处分人编号
+                  chinese_name:
+                    type: string
+                    description: 待处分人繁体中文名
+                  english_name:
+                    type: string
+                    description: 待处分人英文名
+                  simple_chinese_name:
+                    type: string
+                    description: 待处分人简体中文名
+                  department:
+                    type: object
+                    description: 部门信息
+                  position:
+                    type: object
+                    description: 职位信息
+                  location:
+                    type: object
+                    description: 场馆信息
+                  company_name:
+                    type: string
+                    description: 公司名称
+                  grade:
+                    type: string
+                    description: 职级
+              punishment_status:
+                type: string
+                description: 处分状态，允许的值只有2种 { "punishing"，"punished" }
+              punishment_date:
+                type: string
+                description: 纪律处分-日期 `YYYY/MM/DD`
+              punishment_category:
+                type: string
+                description: 纪律处分-类别，允许的值只有3种 { "classA"，"classB"，"grave_fault" }
+              punishment_content:
+                type: string
+                description: 纪律处分-内容
+              punishment_result:
+                type: string
+                description: 纪律处分-结果，允许的值只有6种 { "cancel_warning_letter"，"verbal_warning"，"classA_written_warning"，"classB_written_warning"，"final_written_warning"，"fired" }
+              profile_abolition_date:
+                type: string
+                description: 效力废止日期 `YYYY/MM/DD`
+              punishment_remarks:
+                type: string
+                description: 备注
+              track_date:
+                type: string
+                description: 录入日期 `YYYY/MM/DD`
+              tracker_id:
+                type: object
+                description: 录入人ID
+              incident_time_from:
+                type: string
+                description: 事件说明-发生日期时间起点 `YYYY/MM/DD hh:mm`
+              incident_time_to:
+                type: string
+                description: 事件说明-发生日期时间终点 `YYYY/MM/DD hh:mm`
+              incident_place:
+                type: string
+                description: 事件说明-发生地点
+              incident_discoverer:
+                type: string
+                description: 事件说明-发现者姓名
+              incident_discoverer_phone:
+                type: string
+                description: 事件说明-发现者联络电话
+              incident_handler:
+                type: string
+                description: 事件说明-处理人姓名
+              incident_handler_phone:
+                type: string
+                description: 事件说明-处理人联络电话
+              incident_description:
+                type: string
+                description: 事件说明-详情
+              incident_financial_influence:
+                type: boolean
+                description: 事件说明-此事件是否對公司造成財務上的影響
+              incident_money_involved:
+                type: number
+                description: 事件说明-涉及金額
+              incident_customer_involved:
+                type: boolean
+                description: 事件说明-事件涉及客人
+              incident_employee_involved:
+                type: boolean
+                description: 事件说明-事件涉及员工
+              incident_casino_involved:
+                type: boolean
+                description: 事件说明-事件涉及赌场
+              incident_thirdparty_involved:
+                type: boolean
+                description: 事件说明-事件涉及第三方
+              incident_suspended:
+                type: boolean
+                description: 事件说明-是否停职
+              incident_suspended_date:
+                type: string
+                description: 事件说明-停职日期 `YYYY/MM/DD`
+              target_response_title:
+                type: boolean
+                description: 员工回应-标题
+              target_response_content:
+                type: string
+                description: 员工回应-内容
+              target_response_datetime_from:
+                type: string
+                description: 员工回应-面谈日期时间起点 `YYYY/MM/DD hh:mm`
+              target_response_datetime_to:
+                type: string
+                description: 员工回应-面谈日期时间终点 `YYYY/MM/DD hh:mm`
+              reinstated:
+                type: boolean
+                description: 纪律处分-是否复职
+              reinstated_date:
+                type: string
+                description: 纪律处分-复职日期 `YYYY/MM/DD`
+              approval_items:
+                type: object
+                description: 审批记录
+                properties:
+                  data:
+                    description: 列表数据
+                    type: array
+                    items:
+                      title: 审批记录条目数据
+                      type: object
+                      properties:
+                        user_id:
+                          type: integer
+                          description: 审批人ID
+                        user:
+                          type: object
+                          description: 审批人
+                        datetime:
+                          type: string
+                          description: 审批时间 `YYYY/MM/DD`
+                        comment:
+                          type: string
+                          description: 审批意见
+              attend_attachments:
+                type: object
+                description: 相关文件
+                properties:
+                  data:
+                    description: 列表数据
+                    type: array
+                    items:
+                      title: 相关文件条目数据
+                      type: object
+                      properties:
+                        file_name:
+                          type: string
+                          description: 文件名
+                        created_at:
+                          type: string
+                          description: 上传时间 `YYYY/MM/DD`
+                        creator_id:
+                          type: integer
+                          description: 上传者ID
+                        creator:
+                          type: object
+                          description: 上传者
+                        comment:
+                          type: string
+                          description: 备注
+          user_profile:
+            description: 被处分人的档案
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  personal_information:
+                    type: object
+                    properties:
+                      field_values:
+                        type: object
+                        properties:
+                          mobile_number:
+                            type: string
+                            description: 手提電話
+                  position_information:
+                    type: object
+                    properties:
+                      field_values:
+                        type: object
+                        properties:
+                          date_of_employment:
+                            type: string
+                            description: 入职日期
+                  career_history:
+                    type: object
+                    properties:
+                      rows:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            position_start_date:
+                              type: string
+                              description: 職位開始日期
+                            deployment_type:
+                              type: string
+                              description: 調配類型
+                            salary_calculation:
+                              type: string
+                              description: 薪酬計算
+                            company_name:
+                              type: string
+                              description: 公司名稱
+                            grade:
+                              type: integer
+                              description: 職級
+                            employment_status:
+                              type: string
+                              description: 在職類別
+                            division_of_job:
+                              type: string
+                              description: 員工歸屬類別
+
+  FieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          positions:
+            description: 职位筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Position'
+          departments:
+            description: 部门筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Department'
+          punishment_statuses:
+            description: 处分状态筛选项
+            type: array
+            items:
+              $ref: '#/definitions/PunishmentStatus'
+          punishment_results:
+            description: 处理结果筛选项
+            type: array
+            items:
+              $ref: '#/definitions/PunishmentResult'
+          punishment_categories:
+            description: 过错类别筛选项
+            type: array
+            items:
+              $ref: '#/definitions/PunishmentCategory'
+      state:
+        type: string
+        description: 请求状态，成功为success
+
+  Position:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      number:
+        type: integer
+      grade:
+        type: integer
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+
+  Department:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+      head_id:
+        type: integer
+
+  PunishmentStatus:
+    type: object
+    properties:
+      key:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+
+  PunishmentResult:
+    type: object
+    properties:
+      key:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+
+  PunishmentCategory:
+    type: object
+    properties:
+      key:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+
+  Profile:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          profile:
+            description: 被处分人的档案
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  personal_information:
+                    type: object
+                    properties:
+                      field_values:
+                        type: object
+                        properties:
+                          mobile_number:
+                            type: string
+                            description: 手提電話
+                          chinese_name:
+                            type: string
+                            description: 中文姓名
+                          english_name:
+                            type: string
+                            description: 英文姓名
+                  position_information:
+                    type: object
+                    properties:
+                      field_values:
+                        type: object
+                        properties:
+                          empoid:
+                            type: string
+                            description: 员工编号
+                          date_of_employment:
+                            type: string
+                            description: 入职日期
+                  career_history:
+                    type: object
+                    properties:
+                      rows:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            position_start_date:
+                              type: string
+                              description: 職位開始日期
+                            deployment_type:
+                              type: string
+                              description: 調配類型
+                            salary_calculation:
+                              type: string
+                              description: 薪酬計算
+                            company_name:
+                              type: string
+                              description: 公司名稱
+                            grade:
+                              type: integer
+                              description: 職級
+                            employment_status:
+                              type: string
+                              description: 在職類別
+                            division_of_job:
+                              type: string
+                              description: 員工歸屬類別
+          department_data:
+            type: object
+            properties:
+              chinese_name:
+                type: string
+              english_name:
+                type: string
+              simple_chinese_name:
+                type: string
+          position_data:
+            type: object
+            properties:
+              chinese_name:
+                type: string
+              english_name:
+                type: string
+              simple_chinese_name:
+                type: string
+          location_data:
+            type: object
+            properties:
+              chinese_name:
+                type: string
+              english_name:
+                type: string
+              simple_chinese_name:
+                type: string
+
+  ProfilePunishments:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          current_profile_penalty_score:
+            type: integer
+            description: 当前处分扣分（表头）
+          current_profile_punishment_status:
+            type: string
+            description: 当前处分状态（表头）
+          current_profile_abolition_date:
+            type: string
+            description: 效力废止日期（表头）
+          data:
+            type: array
+            items:
+              type: object
+              properties:
+                profile_punishment_status:
+                  type: string
+                  description: 处分状态
+                punishment_date:
+                  type: string
+                  description: 处分日期
+                punishment_result:
+                  type: string
+                  description: 处分结果
+                punishment_category:
+                  type: string
+                  description: 处分类别
+                punishment_content:
+                  type: string
+                  description: 处分内容
+                profile_validity_period:
+                  type: integer
+                  description: 有效期
+                profile_abolition_date:
+                  type: string
+                  description: 效力废止日期
+                profile_penalty_score:
+                  type: integer
+                  description: 处分扣分
+                tracker_id:
+                  type: integer
+                  description: 记录人ID
+                track_date:
+                  type: string
+                  description: 记录日期
+                profile_remarks:
+                  type: string
+                  description: 备注
+                is_poor_attendance:
+                  type: boolean
+                  description: 是否出勤欠佳
+                tracker:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    chinese_name:
+                      type: string
+                    english_name:
+                      type: string
+                    simple_chinese_name:
+                      type: string
+
+  ProfilePunishment:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+          profile_punishment_status:
+            type: string
+            description: 处分状态
+          punishment_date:
+            type: string
+            description: 处分日期
+          punishment_result:
+            type: string
+            description: 处分结果
+          punishment_category:
+            type: string
+            description: 处分类别
+          punishment_content:
+            type: string
+            description: 处分内容
+          profile_abolition_date:
+            type: string
+            description: 效力废止日期
+          profile_remarks:
+            type: string
+            description: 备注
+
+  ProfilePunishmentParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: user_id，（创建时提供，修改时不提供）
+      profile_punishment_status:
+        type: string
+        description: 处分状态，值可取三种 { 'punishment.profile_punishment_status.in_effect', 'punishment.profile_punishment_status.cancelled', 'punishment.profile_punishment_status.logout' }
+      punishment_date:
+        type: string
+        description: 处分日期 `YYYY/MM/DD`
+      punishment_result:
+        type: string
+        description: 处分结果，允许的值只有4种 { "punishment.enum_punishment_result.verbal_warning"，"punishment.enum_punishment_result.classA_written_warning"，"punishment.enum_punishment_result.classB_written_warning"，"punishment.enum_punishment_result.final_written_warning" }
+      punishment_category:
+        type: string
+        description: 处分类别
+      punishment_content:
+        type: string
+        description: 处分内容
+      profile_abolition_date:
+        type: string
+        description: 效力废止日期（创建时不提供，仅在修改时提供） `YYYY/MM/DD`
+      profile_remarks:
+        type: string
+        description: 备注
+

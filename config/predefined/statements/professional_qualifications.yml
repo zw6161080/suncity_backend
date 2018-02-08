@@ -1,0 +1,49 @@
+professional_qualifications:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: profile.user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: profile.user
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: profile.user.location
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: profile.user.department
+      sorter: true
+
+    - key: position
+      value_type: obj_value
+      data_index: profile.user.position
+      sorter: true
+
+    - key: date_of_employment
+      value_type: string_value
+      data_index: profile.user.profile.data.position_information.field_values.date_of_employment
+      sorter: true
+
+    - key: leave_date
+      value_type: string_value
+      data_index: profile.user.profile.data.position_information.field_values.resigned_date
+      sorter: true
+
+    - key: professional_certificate
+      data_index: professional_certificate
+      value_type: string_value
+
+    - key: orgnaization
+      data_index: orgnaization
+      value_type: string_value
+
+    - key: issue_date
+      data_index: issue_date
+      value_type: date_value
+      value_format: yyyy/mm/dd

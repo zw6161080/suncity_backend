@@ -1,0 +1,19 @@
+zh-HK:
+  employee_redemption_report_items:
+    file_name: 成員基金贖回表
+  statement_columns:
+    employee_redemption_report_items:
+      provident_fund_resignation_date: Trade Date 公積金贖回日期
+      employee_id: Employee ID 員工編號
+      chinese_name: Employee Chinese Name  中文姓名
+      english_name: Employee English/Portuguese Name 外文姓名
+      department:  Department 部门
+      position: Position 职位
+      grade: Grade 职级
+      member_retirement_fund_number:  Employee Pension Fund No.  成員退休基金號碼
+      resigned_date: Last Employement Date  離職日期
+      resigned_reason: Other Redemption Reason  離職原因
+      contribution_item: Contribution Item  供款科目
+      vesting_percentage:  Vesting Percentage (%) 應得供款百分比
+      bank_of_china_account_mop: ICBC (Macau) A/C No. - MOP  銀行賬號(葡幣)
+      bank_of_china_account_hkd: ICBC (Macau) A/C No. - RMB  銀行賬號(港幣)

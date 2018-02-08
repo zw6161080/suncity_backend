@@ -1,0 +1,29 @@
+Department:
+  model_to_user_foreign_key: null
+  user_to_model_foreign_key: department_id
+  join_type: user
+  join_attribute: null
+
+Position:
+  model_to_user_foreign_key: null
+  user_to_model_foreign_key: position_id
+  join_type: user
+  join_attribute: null
+
+Location:
+  model_to_user_foreign_key: null
+  user_to_model_foreign_key: location_id
+  join_type: user
+  join_attribute: null
+
+AttendanceMonthReportItem:
+  model_to_user_foreign_key: user_id
+  user_to_model_foreign_key: null
+  join_type: user_month
+  join_attribute: year_month
+
+AccountingStatementMonthItem:
+  model_to_user_foreign_key: user_id
+  user_to_model_foreign_key: null
+  join_type: user_month
+  join_attribute: settle_year_month

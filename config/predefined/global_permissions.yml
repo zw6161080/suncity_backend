@@ -1,0 +1,10 @@
+global_permissions:
+  chinese_name:
+    admin: '權限管理'
+    access_company_structure_management: '組織架構-查看'
+  english_name:
+    admin: 'system admin'
+    access_company_structure_management: 'company structure management'
+  simple_chinese_name:
+    admin: '权限管理'
+    access_company_structure_management: '组织架构-查看'

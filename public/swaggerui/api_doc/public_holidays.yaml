@@ -1,0 +1,128 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 假期定义
+
+# Describe your paths here
+paths:
+  /public_holidays:
+    post:
+      description: 创建公共假期接口
+      tags:
+        - 公共假期
+      parameters:
+        - name: PublicHolidaysCreateParams
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/PublicHolidaysCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+    get:
+      description: 获取公共假期列表
+      tags:
+        - 公共假期
+      responses:
+        200:
+          description:
+  /public_holidays/{public_holiday_id}:
+    get:
+      description: 获取公共假期信息
+      tags:
+        - 公共假期
+      parameters:
+        - name: public_holiday_id
+          in: path
+          required: true
+          type: integer
+          description: 公共假期ID
+      responses:
+        200:
+          description: 响应公共假期信息
+    delete:
+      description: 删除公共假期
+      tags:
+        - 公共假期
+      parameters:
+        - name: public_holiday_id
+          in: path
+          required: true
+          type: integer
+          description: 公共假期ID
+      responses:
+        200:
+          description: 响应公共假期信息
+    patch:
+      description: 更新公共假期接口
+      tags:
+        - 公共假期
+      parameters:
+        - name: PublicHolidaysUpdateParams
+          in: body
+          required: true
+          description: 更新参数
+          schema:
+            $ref: '#/definitions/PublicHolidaysCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          scheme:
+            $ref: '#/definitions/EmptyData'
+  /public_holidays/find_over_lap:
+    get:
+      description: 判断已有假期日期重叠
+      tags:
+        - 公共假期
+      parameters:
+        - name: start_date
+          in: path
+          required: true
+          type: string
+          description: 创建公共假期的开始日期
+        - name: end_date
+          in: path
+          required: true
+          type: string
+          description: 创建公共假期的结束日期
+definitions:
+  PublicHolidaysCreateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 公共假期中文名
+      english_name:
+        type: string
+        description: 公共假期英文名
+      category:
+        type: string
+        description: 公共假期类型(強制性假日/公眾假日)
+      start_date:
+        type: string
+        description: 公共假期开始日期
+      end_date:
+        type: string
+        description:  公共假期结束日期
+      comment:
+        type: string
+        description: 公共假期的備註
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

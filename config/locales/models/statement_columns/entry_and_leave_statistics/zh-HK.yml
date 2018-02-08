@@ -1,0 +1,15 @@
+zh-HK:
+  entry_and_leave_statistics:
+    file_name: 入離職統計報表
+  statement_columns:
+    entry_and_leave_statistics:
+      date_begin: 開始日期
+      date_end: 結束日期
+      location: 場館
+      department: 部門
+      original: 原有人數
+      entry: 入職
+      leave: 離職
+      lent_in: 調入
+      lent_out: 調出
+      current: 現有人數

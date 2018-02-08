@@ -1,0 +1,679 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 薪酬模板
+
+# Describe your paths here
+paths:
+  /salary_templates/export:
+    get:
+      description: 汇出
+      parameters:
+        - name: template_name
+          in: query
+          required: false
+          type: integer
+          description: 福利模板名
+        - name: department_id
+          in: query
+          required: false
+          type: string
+          description: 类型为字符串组成的数组
+        - name: position_id
+          in: query
+          required: false
+          type: string
+          description: 类型为字符串组成的数组
+      responses:
+        200:
+          description: 获取福利模板列表
+
+  /can_create:
+    post:
+      description: 验证创建参数是否正确
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 创建成功
+          schema:
+            $ref: '#/definitions/IsCanCreate'
+  /salary_templates:
+    get:
+      description: 获取模板信息列表
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: template_name
+          in: query
+          required: false
+          type: string
+          description: 福利模板名
+        - name: salary_unit
+          in: query
+          required: false
+          type: string
+          description: 薪酬單位
+        - name: basic_salary
+          in: query
+          required: false
+          type: integer
+          description: 底薪
+        - name: bonus
+          in: query
+          required: false
+          type: integer
+          description: 津貼
+        - name: attendance_award
+          in: query
+          required: false
+          type: integer
+          description: 勤工
+        - name: house_bonus
+          in: query
+          required: false
+          type: integer
+          description: 房屋津貼
+        - name: tea_bonus
+          in: query
+          required: false
+          type: integer
+          description: 茶資份數
+        - name: kill_bonus
+          in: query
+          required: false
+          type: integer
+          description: 殺數分紅份數
+        - name: performance_bonus
+          in: query
+          required: false
+          type: integer
+          description: 業績分紅份數
+        - name: charge_bonus
+          in: query
+          required: false
+          type: integer
+          description: 刷卡獎金份數
+        - name: commission_bonus
+          in: query
+          required: false
+          type: integer
+          description: 佣金差額份數
+        - name: receive_bonus
+          in: query
+          required: false
+          type: integer
+          description: 收賬分紅份數
+        - name: exchange_rate_bonus
+          in: query
+          required: false
+          type: integer
+          description: 匯率分紅份數
+        - name: guest_card_bonus
+          in: query
+          required: false
+          type: integer
+          description: 貴賓卡消費份數
+        - name: respect_bonus
+          in: query
+          required: false
+          type: integer
+          description: 尊華殿份數
+      responses:
+        200:
+          description: 获取薪酬模板列表
+          schema:
+            $ref: '#/definitions/WelfareTemplateListData'
+
+
+
+    post:
+      description: 创建模板
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+
+
+      responses:
+        200:
+          description: 创建成功
+  /salary_templates/field_options:
+    get:
+      description: 获取筛选项
+      responses:
+        200:
+          description: 获取模板名称筛选项
+          schema:
+            $ref: '#/definitions/WelfareTemplateOptionsData'
+  /salary_templates/like_field_options:
+    get:
+      description: 获取筛选项(模糊匹配)
+      parameters:
+        - name: template_chinese_name
+          type: string
+          required: false
+          in: query
+          description: 模板中文名筛选参数
+        - name: department_id
+          type: string
+          required: false
+          in: query
+          description: '部门id'
+        - name: position_id
+          type: string
+          required: false
+          in: query
+          description: '职位id'
+
+      responses:
+        200:
+          description: 获取匹配参数的，模板名称筛选项
+          schema:
+            $ref: '#/definitions/WelfareTemplateOptionsSimpleData'
+
+  /salary_templates/find_template_for_department_and_position:
+    get:
+      description: 获取某部门职位的模版
+      parameters:
+        - name: department_id
+          type: string
+          required: false
+          in: query
+          description: '部门id'
+        - name: position_id
+          type: string
+          required: false
+          in: query
+          description: '职位id'
+
+      responses:
+        200:
+          description: 获取某部门职位模版的详情
+          schema:
+            $ref: '#/definitions/WelfareTemplateDataForDepartmentAndPosition'
+  /salary_templates/department_and_position_options:
+    get:
+      description: 获取部门职位筛选项
+      responses:
+        200:
+          description: 获取匹配参数的，模板名称筛选项
+          schema:
+            $ref: '#/definitions/WelfareTemplateDepartmentAndPositionData'
+
+
+  /salary_templates/{id}:
+    get:
+      description: 获取单个模板信息
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 取得模板信息
+          schema:
+            $ref: '#/definitions/WelfareTemplateEditData'
+    patch:
+      description: 更新模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 更新成功
+
+    delete:
+      description: 删除模板
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 成功删除
+  /salary_templates/{id}/can_be_destroy:
+    get:
+      description: '判断这个模板是否能被删除'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+          description: ID
+      responses:
+        200:
+          description: 给出判断结果
+          schema:
+            $ref: '#/definitions/BooleanResult'
+
+
+definitions:
+  BooleanResult:
+    type: object
+    properties:
+      data:
+        type: boolean
+        description: 判断结果
+
+  WelfareTemplateDepartmentAndPositionData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            department:
+              type: object
+              description: 使用模板的一个部门
+            positions:
+              type: array
+              items:
+                type: object
+                description: 使用模板的部门下的职位
+          description: 使用的一个部门和职位的集合
+        description: 使用的部门和职位集合
+  CreateParams:
+    type: object
+    properties:
+      template_chinese_name:
+        type: string
+        description: 模板中文名
+      template_english_name:
+        type: string
+        description: 模板英文名
+      salary_unit:
+        type: string
+        description: '薪酬單位(eg: mop/hkd)'
+      basic_salary:
+        type: integer
+        description: 底薪
+      bonus:
+        type: integer
+        description: 津貼
+      attendance_award:
+        type: integer
+        description: 勤工
+      house_bonus:
+        type: integer
+        description: 房屋津貼
+      tea_bonus:
+        type: integer
+        description: 茶資份數
+      kill_bonus:
+        type: integer
+        description: 殺數分紅份數
+      performance_bonus:
+        type: integer
+        description: 業績分紅份數
+      charge_bonus:
+        type: integer
+        description: 刷卡獎金份數
+      commission_bonus:
+        type: integer
+        description: 佣金差額份數
+      receive_bonus:
+        type: integer
+        description: 收賬分紅份數
+      exchange_rate_bonus:
+        type: integer
+        description: 匯率分紅份數
+      guest_card_bonus:
+        type: integer
+        description: 貴賓卡消費份數
+      respect_bonus:
+        type: integer
+        description: 尊華殿份數
+      comment:
+        type: string
+        description: 备注
+      belongs_to:
+        type: object
+        description: '值为一json 键是部门id , 值为职位id组成的数组 eg: {"1" => ["1","2"] }'
+
+
+
+  WelfareTemplateListData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 薪酬模板ID，用于删除更新
+            template_name:
+              type: string
+              description: 福利模板名
+            salary_unit:
+              type: string
+              description: 薪酬單位
+            basic_salary:
+              type: integer
+              description: 底薪
+            bonus:
+              type: integer
+              description: 津貼
+            attendance_award:
+              type: integer
+              description: 勤工
+            house_bonus:
+              type: integer
+              description: 房屋津貼
+            tea_bonus:
+              type: integer
+              description: 茶資份數
+            kill_bonus:
+              type: integer
+              description: 殺數分紅份數
+            performance_bonus:
+              type: integer
+              description: 業績分紅份數
+            charge_bonus:
+              type: integer
+              description: 刷卡獎金份數
+            commission_bonus:
+              type: integer
+              description: 佣金差額份數
+            receive_bonus:
+              type: integer
+              description: 收賬分紅份數
+            exchange_rate_bonus:
+              type: integer
+              description: 匯率分紅份數
+            guest_card_bonus:
+              type: integer
+              description: 貴賓卡消費份數
+            respect_bonus:
+              type: integer
+              description: 尊華殿份數
+            service_award:
+              type: string
+              description: 服務獎金
+            internship_bonus:
+              type: string
+              description:  实习奖金
+            performance_award:
+              type: string
+              description:  績效獎金份數
+            special_tie_bonus:
+              type: string
+              description: 特別茶資份數
+            comment:
+              type: string
+              description: 备注
+            department&position:
+              type: array
+              items:
+                type: object
+                properties:
+                  department:
+                    type: object
+                    description: 使用模板的一个部门
+                  positions:
+                    type: array
+                    items:
+                      type: object
+                      description: 使用模板的部门下的职位
+                description: 使用的一个部门和职位的集合
+              description: 使用的部门和职位集合
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+          total_page:
+            type: integer
+            description: 总页数
+          current_page:
+            type: integer
+            description: 当前页数
+  WelfareTemplateOptionsData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: string
+  WelfareTemplateEditData:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: '模板id'
+          template_chinese_name:
+            type: string
+            description: '模板中文名'
+          template_english_name:
+            type: string
+            description: '模板英文名'
+          template_simple_chinese_name:
+            type: string
+            description: '模板简体名'
+          salary_unit:
+            type: string
+            description: 薪金单位
+          basic_salary:
+            type: integer
+            description: 底薪
+          bonus:
+            type: integer
+            description: 福利
+          attendance_award:
+            type: integer
+            description: 勤工
+          house_bonus:
+            type: integer
+            description: '房屋津贴'
+          tea_bonus:
+            type: integer
+            description: 茶资
+          kill_bonus:
+            type: integer
+            description: '杀数分红分数'
+          performance_bonus:
+            type: integer
+            description: '业绩分红分数'
+          charge_bonus:
+            type: integer
+            description: '刷卡奖金分数'
+          commission_bonus:
+            type: integer
+            description: '佣金差额分数'
+          exchange_rate_bonus:
+            type: integer
+            description: '收账分红分数'
+          guest_card_bonus:
+            type: integer
+            description: '貴賓卡消費份數'
+          respect_bonus:
+            type: integer
+            description: '尊華殿份數'
+          comment:
+            type: string
+            description: '备注'
+
+
+  WelfareTemplateOptionsSimpleData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '模板id'
+            template_name:
+              description: '模板名称'
+
+  WelfareTemplateDataForDepartmentAndPosition:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: '模板id'
+            template_chinese_name:
+              type: string
+              description: '模板中文名'
+            template_english_name:
+              type: string
+              description: '模板英文名'
+            template_simple_chinese_name:
+              type: string
+              description: '模板简体名'
+            salary_unit:
+              type: string
+              description: 薪金单位
+            basic_salary:
+              type: integer
+              description: 底薪
+            bonus:
+              type: integer
+              description: 福利
+            attendance_award:
+              type: integer
+              description: 勤工
+            house_bonus:
+              type: integer
+              description: '房屋津贴'
+            tea_bonus:
+              type: integer
+              description: 茶资
+            kill_bonus:
+              type: integer
+              description: '杀数分红分数'
+            performance_bonus:
+              type: integer
+              description: '业绩分红分数'
+            charge_bonus:
+              type: integer
+              description: '刷卡奖金分数'
+            commission_bonus:
+              type: integer
+              description: '佣金差额分数'
+            exchange_rate_bonus:
+              type: integer
+              description: '收账分红分数'
+            guest_card_bonus:
+              type: integer
+              description: '貴賓卡消費份數'
+            respect_bonus:
+              type: integer
+              description: '尊華殿份數'
+            comment:
+              type: string
+              description: '备注'
+  IsCanCreate:
+    type: object
+    properties:
+      template_name:
+        type: boolean
+        description: 模板名称
+      belongs_to:
+        type: boolean
+        description: 所属部门职位
+      basic_salary:
+        type: boolean
+        description: 底薪
+      bonus:
+        type: boolean
+        description: 津貼
+      attendance_award:
+        type: boolean
+        description: 勤工
+      house_bonus:
+        type: boolean
+        description: 房屋津貼
+      tea_bonus:
+        type: boolean
+        description: 茶資份數
+      kill_bonus:
+        type: boolean
+        description: 殺數分紅份數
+      performance_bonus:
+        type: boolean
+        description: 業績分紅份數
+      charge_bonus:
+        type: boolean
+        description: 刷卡獎金份數
+      commission_bonus:
+        type: boolean
+        description: 佣金差額份數
+      receive_bonus:
+        type: boolean
+        description: 收賬分紅份數
+      exchange_rate_bonus:
+        type: boolean
+        description: 匯率分紅份數
+      guest_card_bonus:
+        type: boolean
+        description: 貴賓卡消費份數
+      respect_bonus:
+        type: boolean
+        description: 尊華殿份數
+      service_award:
+        type: boolean
+        description: 服務獎金
+      internship_bonus:
+        type: boolean
+        description:  实习奖金
+      performance_award:
+        type: boolean
+        description:  績效獎金份數
+      special_tie_bonus:
+        type: boolean
+        description: 特別茶資份數

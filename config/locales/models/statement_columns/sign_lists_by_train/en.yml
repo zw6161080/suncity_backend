@@ -1,0 +1,14 @@
+en:
+  sign_lists_by_train:
+    sign_list: Registration list
+  statement_columns:
+    sign_lists_by_train:
+      empoid: ID
+      name: Name
+      department: Department
+      position: Position
+      title: Training classes
+      train_class_time: Training time
+      working_status: State during the traing
+      sign_status: Check-in status
+      comment: Remarks

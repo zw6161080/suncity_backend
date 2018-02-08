@@ -1,0 +1,55 @@
+reserved_holiday_settings:
+  columns:
+    - key: name
+      value_type: obj_value
+      data_index: name
+      search_type: search
+      sorter: true
+
+    - key: date_begin
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: date_begin
+      search_type: date
+      sorter: true
+
+    - key: date_end
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: date_end
+      search_type: date
+      sorter: true
+
+    - key: days_count
+      value_type: string_value
+      data_index: days_count
+      search_type: search
+      sorter: true
+
+    - key: member_count
+      value_type: string_value
+      data_index: member_count
+      search_type: search
+      sorter: true
+
+    - key: comment
+      value_type: string_value
+      data_index: comment
+
+    - key: creator
+      value_type: obj_value
+      data_index: creator
+      search_type: search
+      sorter: true
+
+    - key: update_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: update_date
+      search_type: date
+      sorter: true
+
+    - key: update_time
+      value_type: date_value
+      value_format: HH:MM:ss
+      data_index: update_date

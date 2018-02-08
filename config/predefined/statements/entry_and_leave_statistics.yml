@@ -1,0 +1,43 @@
+entry_and_leave_statistics:
+  columns:
+    - key: date_begin
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: date_begin
+
+    - key: date_end
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: date_end
+
+    - key: location
+      value_type: obj_value
+      data_index: location
+
+    - key: department
+      value_type: obj_value
+      data_index: department
+
+    - key: original
+      value_type: string_value
+      data_index: original
+
+    - key: entry
+      value_type: string_value
+      data_index: entry
+
+    - key: leave
+      value_type: string_value
+      data_index: leave
+
+    - key: lent_in
+      value_type: string_value
+      data_index: lent_in
+
+    - key: lent_out
+      value_type: string_value
+      data_index: lent_out
+
+    - key: current
+      value_type: string_value
+      data_index: current

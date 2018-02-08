@@ -1,0 +1,15 @@
+en:
+  reserved_holiday_settings:
+    file_name: Appraisal Reports
+  statement_columns:
+    reserved_holiday_settings:
+      name: Name
+      date_begin: Date Begin
+      date_end: Date end
+      days_count: Count
+      member_count: Member Count
+      comment: Comment
+      creator: Creator
+      update_date: Create at
+      update_time: Create time
+

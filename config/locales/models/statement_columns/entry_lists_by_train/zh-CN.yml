@@ -1,0 +1,19 @@
+zh-CN:
+  entry_lists_by_train:
+    entry_list: 报名名单
+  statement_columns:
+    entry_lists_by_train:
+      registration_time: 报名时间
+      empoid: 员工编号
+      name: 员工姓名
+      department: 部门
+      position: 职位
+      is_can_be_absent: 是否豁免缺席
+      working_status: 培训期间状态
+      title: 培训班次
+      is_in_working_time: 是否在工作时间培训
+      registration_status: 报名状态
+      creator_name: 报名人姓名
+      creator_department: 报名人部门
+      creator_position: 报名人职位
+      change_reason: 变动原因

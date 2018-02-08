@@ -1,0 +1,61 @@
+revise_clock_items:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: department_id
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      options_type: options
+      options_action: department_options
+      sorter: true
+      search_attribute: user.department_id
+
+    - key: position_id
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      options_type: options
+      options_action: position_options
+      sorter: true
+      search_attribute: user.position_id
+
+    - key: clock_date
+      value_type: date_value
+      data_index: clock_date
+      value_fomat: 'YYYY/mm/dd'
+      date_value_fomat: '%Y/%m/%d'
+      sorter: true
+      search_type: date
+      search_attribute: clock_date
+
+    - key: money
+      value_type: string_value
+      data_index: money
+      sorter: false
+      search_type: null
+
+    - key: creator_name
+      value_type: obj_value
+      data_index: revise_clock.creator
+      sorter: true
+      search_type: search
+
+    - key: created_at
+      value_type: date_value
+      data_index: created_at
+      value_fomat: 'YYYY/mm/dd'
+      sorter: true
+      search_type: date
+      search_attribute: created_at

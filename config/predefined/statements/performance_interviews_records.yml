@@ -1,0 +1,153 @@
+performance_interviews_records:
+  columns:
+    - key: appraisal_name
+      value_type: string_value
+      data_index: appraisal.appraisal_name
+
+    - key: appraisal_date
+      value_type: string_value
+      data_index: appraisal.appraisal_date
+      sorter: true
+      search_type: date
+
+    - key: performance_interview_status
+      value_type: select_value
+      data_index: performance_interview_status
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: completed
+          chinese_name: 已完成
+          english_name: Completed
+          simple_chinese_name: 已完成
+        - key: not_completed
+          chinese_name: 未完成
+          english_name: Not complete
+          simple_chinese_name: 未完成
+      option:
+        - key: completed
+          chinese_name: 已完成
+          english_name: Completed
+          simple_chinese_name: 已完成
+        - key: not_completed
+          chinese_name: 未完成
+          english_name: Not complete
+          simple_chinese_name: 未完成
+
+    - key: empoid
+      value_type: string_value
+      data_index: appraisal_participator.user.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: appraisal_participator.user
+      search_type: search
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: appraisal_participator.user.location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: location_options
+      search_attribute: user.location_id
+
+    - key: department
+      value_type: obj_value
+      data_index: appraisal_participator.user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: appraisal_participator.user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: grade
+      value_type: string_value
+      data_index: appraisal_participator.user.grade
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: grade
+      search_attribute: user.grade
+
+    - key: division_of_job
+      value_type: select_value
+      data_index: appraisal_participator.user.profile.data.position_information.field_values.division_of_job
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: front_office
+          chinese_name: 前線
+          english_name: Front Office
+          simple_chinese_name: 前线
+        - key: back_office
+          chinese_name: 後勤
+          english_name: Back Office
+          simple_chinese_name: 后勤
+      option:
+        - key: front_office
+          chinese_name: 前線
+          english_name: Front Office
+          simple_chinese_name: 前线
+        - key: back_office
+          chinese_name: 後勤
+          english_name: Back Office
+          simple_chinese_name: 后勤
+
+    - key: date_of_employment
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: appraisal_participator.user.profile.data.position_information.field_values.date_of_employment
+      search_type: date
+      sorter: true
+
+    - key: performance_moderator
+      value_type: obj_value
+      data_index: performance_moderator
+      search_type: search
+      sorter: true
+
+    - key: interview_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: interview_date
+      search_type: date
+      sorter: true
+
+    - key: interview_time
+      value_type: string_value
+      data_index: interview_time
+
+    - key: attachment
+      value_type: array_value
+      item_type: string_value
+      item_index: file_name
+      join_format: " "
+      data_index: appraisal.appraisal_attachments
+
+    - key: operator
+      value_type: obj_value
+      data_index: operator
+      search_type: search
+      sorter: true
+
+    - key: operator_at
+      data_index: operator_at
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      sorter: true

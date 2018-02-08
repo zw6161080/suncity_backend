@@ -1,0 +1,22 @@
+zh-HK:
+  performance_interviews_records:
+    file_name: 360評核記錄(績效面談記錄)
+  statement_columns:
+    performance_interviews_records:
+      appraisal_name: 360評核名稱
+      appraisal_date: 360評核日期
+      performance_interview_status: 面談狀態
+      empoid: 員工編號
+      name: 姓名
+      location: 場館
+      department: 部門
+      position: 職位
+      grade: 職級
+      division_of_job: 員工歸屬類別
+      date_of_employment: 入職日期
+      performance_moderator: 面談主持人
+      interview_date: 面談日期
+      interview_time: 面談時間
+      attachment: 相關文件
+      operator: 錄入人
+      operator_at: 錄入日期

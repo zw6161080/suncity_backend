@@ -1,0 +1,21 @@
+zh-CN:
+  statement_columns:
+    dismission_salary_items:
+      dimission_date: 离职日期
+      employee_id: 员工编号
+      employee_name: 姓名
+      company: 归属公司
+      department: 部门
+      position: 职位
+      grade: 职级
+      dimission_type: 离职类型
+      dimission_reason: 离职原因
+      base_salary_hkd: 底薪(HKD)
+      benefits_hkd: 津贴(HKD)
+      annual_incentive_hkd: 勤工(HKD)
+      housing_benefits_hkd: 房屋津贴(HKD)
+      seniority_compensation_hkd: 年资补偿(HKD)
+      dismission_annual_holiday_compensation_hkd: 离职年假补偿(HKD)
+      dismission_inform_period_compensation_hkd: 离职通知期补偿(HKD)
+      has_seniority_compensation: 是否有年资补偿
+      has_inform_period_compensation: 是否有通知期补偿

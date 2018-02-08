@@ -1,0 +1,13 @@
+en:
+  taken_holiday_records:
+    file_name: taken_holiday_records
+  statement_columns:
+    taken_holiday_records:
+      empoid: No
+      name: Name
+      department: Department
+      position: Position
+      taken_holiday_date: Date
+      taken_holiday_type: Type
+      taken_roster_object: Roster
+

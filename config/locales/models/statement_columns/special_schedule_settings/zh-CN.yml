@@ -1,0 +1,15 @@
+zh-CN:
+  special_schedule_settings:
+    file_name: 特别排班设定
+  statement_columns:
+    special_schedule_settings:
+      empoid: 员工编号
+      name: 姓名
+      location: 场馆
+      department: 部门
+      position: 职位
+      date_of_employment: 入职日期
+      target_location: 特别排班场馆
+      target_department: 特别排班部门
+      schedule_date: 特别排班日期
+      comment: 备注

@@ -1,0 +1,21 @@
+en:
+  statement_columns:
+    dismission_salary_items:
+      dimission_date: Resigned date
+      employee_id: ID
+      employee_name: Name
+      company: Company
+      department: Department
+      position: Position
+      grade: Grade
+      dimission_type: Resigned type
+      dimission_reason: Resigned reason
+      base_salary_hkd: Base Salary (HKD)
+      benefits_hkd: Allowance (HKD)
+      annual_incentive_hkd: Attendance Bonus (HKD)
+      housing_benefits_hkd: Housing Allowance (HKD)
+      seniority_compensation_hkd: Seniority Compensation (HKD)
+      dismission_annual_holiday_compensation_hkd: Dimission Annual Holiday Compensation (HKD)
+      dismission_inform_period_compensation_hkd: Dimission Information Period Compensation (HKD)
+      has_seniority_compensation: Has Seniority Compensation
+      has_inform_period_compensation: Has Inform Period Compensation

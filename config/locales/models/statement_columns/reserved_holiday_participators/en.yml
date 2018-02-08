@@ -1,0 +1,16 @@
+en:
+  reserved_holiday_participators:
+    file_name: Reserved holiday participators
+  statement_columns:
+    reserved_holiday_participators:
+      reserved_holiday_setting: Holiday type
+      empoid: ID
+      name: Name
+      department: Department
+      position: Position
+      employment_status: Employment status
+      grade: Grade
+      date_of_employment: Date Of Employment
+      owned_days_count: Owned days
+      taken_days_count: Taken days
+

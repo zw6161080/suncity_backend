@@ -1,0 +1,90 @@
+final_lists_by_train:
+  columns:
+    - key: empoid
+      data_index: user.empoid
+      value_type: string_value
+      sorter: true
+      search_type: search
+
+    - key: name
+      data_index: user
+      value_type: obj_value
+      sorter: true
+      search_type: search
+
+    - key: department_id
+      data_index: user.department
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position_id
+      data_index: user.position
+      value_type: obj_value
+      sorter: true
+      search_type: screen
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: working_status
+      data_index: working_status
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: on_duty
+          chinese_name: 在職
+          english_name: on_duty
+          simple_chinese_name: 在职
+        - key: leave
+          chinese_name: 離職
+          english_name: leave
+          simple_chinese_name: 离职
+
+    - key: cost
+      data_index: cost
+      value_type: string_value
+      sorter: true
+      search_type: search
+
+    - key: train_result
+      data_index: train_result
+      value_type: string_value
+      sorter: true
+      search_type: screen
+      options_type: predefined
+      options_predefined:
+        - key: train_pass
+          chinese_name: 通過
+          english_name: train_pass
+          simple_chinese_name: 通过
+        - key: train_not_pass
+          chinese_name: 未通過
+          english_name: train_not_pass
+          simple_chinese_name: 未通过
+        - key: train_leave
+          chinese_name: 離職
+          english_name: train_leave
+          simple_chinese_name: 离职
+
+    - key: attendance_percentage
+      data_index: attendance_percentage
+      value_type: number_value
+      sorter: true
+      search_type: search
+
+    - key: test_score
+      data_index: test_score
+      value_type: number_value
+      sorter: true
+      search_type: search
+
+    - key: comment
+      data_index: comment
+      value_type: string_value
+

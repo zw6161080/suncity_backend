@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+
+  seaweedfs_master:
+    image: chrislusf/seaweedfs
+    container_name: seaweedfs_master
+    command: "master"
+    networks:
+      - suncity
+
+  seaweedfs_volume:
+    image: chrislusf/seaweedfs
+    container_name: seaweedfs_volume
+    volumes:
+      - weed_volume:/var/lib/seaweed/data
+    command: 'volume -dir="/var/lib/seaweed/data" -max=5 -mserver="seaweedfs_master:9333" -port=8080'
+    depends_on:
+      - seaweedfs_master
+    networks:
+      - suncity
+
+  redis:
+    image: redis
+    container_name: redis
+    networks:
+      - suncity
+
+  memcached:
+    image: memcached
+    container_name: memcached
+    networks:
+      - suncity
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    volumes:
+      - postgres_volume:/var/lib/postgres/data/pgdata
+    environment:
+      - POSTGRES_USER=suncity
+      - POSTGRES_PASSWORD=wearetheword
+      - POSTGRES_DB=suncity
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    networks:
+      - suncity
+
+  suncity_hrm_backend:
+    image: nightfade/suncity-hrm-backend
+    container_name: suncity_hrm_backend
+    ports:
+      - 80:80
+    env_file:
+      - .env.docker
+    networks:
+      - suncity
+
+networks:
+  suncity:
+
+volumes:
+  postgres_volume:
+  weed_volume:
+

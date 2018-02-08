@@ -1,0 +1,131 @@
+appraisal_participator_distributions:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: location_options
+      search_attribute: user.location_id
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: grade
+      value_type: string_value
+      data_index: user.grade
+      search_type: screen
+      sorter: true
+      options_type: selects
+      options_select_key: grade
+      search_attribute: user.grade
+
+    - key: division_of_job
+      value_type: select_value
+      data_index: user.profile.data.position_information.field_values.division_of_job
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: front_office
+          chinese_name: 前線
+          english_name: Front Office
+          simple_chinese_name: 前线
+        - key: back_office
+          chinese_name: 後勤
+          english_name: Back Office
+          simple_chinese_name: 后勤
+      option:
+        - key: front_office
+          chinese_name: 前線
+          english_name: Front Office
+          simple_chinese_name: 前线
+        - key: back_office
+          chinese_name: 後勤
+          english_name: Back Office
+          simple_chinese_name: 后勤
+
+    - key: date_of_employment
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      search_type: date
+      sorter: true
+
+    - key: times_assessing_others
+      value_type: string_value
+      data_index: assess_others
+      search_type: search
+      search_attribute: assess_others
+      sorter: true
+
+    - key: times_assessed_by_superior
+      value_type: string_value
+      data_index: assessors_count.superior_assessors_count
+      search_type: search
+      search_attribute: superior_assessors_count
+      sorter: true
+
+    - key: superior_assessors
+      value_type: array_value
+      item_type: string_value
+      item_index: chinese_name
+      join_format: " "
+      data_index: superior_assessors
+
+    - key: times_assessed_by_colleague
+      value_type: string_value
+      data_index: assessors_count.colleague_assessors_count
+      search_type: search
+      search_attribute: colleague_assessors_count
+      sorter: true
+
+    - key: colleague_assessors
+      value_type: array_value
+      item_type: string_value
+      item_index: chinese_name
+      join_format: " "
+      data_index: colleague_assessors
+
+    - key: times_assessed_by_subordinate
+      value_type: string_value
+      data_index: assessors_count.subordinate_assessors_count
+      search_type: search
+      search_attribute: subordinate_assessors_count
+      sorter: true
+
+    - key: subordinate_assessors
+      value_type: array_value
+      item_type: string_value
+      item_index: chinese_name
+      join_format: " "
+      data_index: subordinate_assessors

@@ -1,0 +1,16 @@
+en:
+  trains:
+    train_class: Course name
+  statement_columns:
+    trains:
+      status: Status
+      train_name: Training name
+      train_number: Training number
+      train_date: Training date
+      registration_date: Registration date
+      registration_method: Registration method
+      online_or_offline_training: Online / Offline training
+      train_template_type: Training category
+      training_credits: Course credits
+      entry_lists_count: Number of applicants
+      final_lists_count: Attendance

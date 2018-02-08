@@ -1,0 +1,35 @@
+zh-HK:
+  annual_award_report_items:
+    file_name: 年度獎金報表
+  statement_columns:
+    annual_award_report_items:
+      empoid: 員工編號
+      name: 員工姓名
+      department_id: 部門
+      position_id: 職位
+      career_entry_date: 入職日期
+      add_double_pay: 是否享有雙糧
+      work_days_this_year: 本年在職天數
+      deducted_days: 應扣減天數
+      double_pay_hkd: 雙糧(HKD)
+      double_pay_alter_hkd: 雙糧調整(HKD)
+      double_pay_final_hkd: 雙糧實發(HKD)
+      add_end_bonus: 是否享有花紅
+      end_bonus_hkd: 花紅應發(HKD)
+      praise_times: 表揚信次數
+      end_bonus_add_hkd: 花紅總增加(HKD)
+      absence_times:  全年曠工次數
+      notice_times: 全年即告次數
+      late_times: 全年遲到次數
+      lack_sign_card_times: 全年漏打上下班次數
+      punishment_times: 處罰通知書次數
+      de_end_bonus_for_absence_hkd: 扣減花紅_曠工(HKD)
+      de_bonus_for_notice_hkd: 扣減花紅_即告(HKD)
+      de_end_bonus_for_late_hkd: 扣減花紅_遲到(HKD)
+      de_end_bonus_for_sign_card_hkd: 扣減花紅_漏打卡上下班(HKD)
+      de_end_bonus_for_punishment_hkd: 扣減花紅_處罰通知書(HKD)
+      de_bonus_total_hkd: 花紅總扣減(HKD)
+      end_bonus_final_hkd: 花紅實發(HKD)
+      present_at_duty_first_half: 上年度是否全勤
+      annual_at_duty_basic_hkd: 全年勤工基數(HKD)
+      annual_at_duty_final_hkd: 全年勤工實發(HKD)

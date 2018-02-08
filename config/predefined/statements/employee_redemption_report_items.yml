@@ -1,0 +1,99 @@
+employee_redemption_report_items:
+  columns:
+    - key: provident_fund_resignation_date
+      data_index: user.profile.provident_fund.provident_fund_resignation_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      date_value_format: '%Y/%m/%d'
+      search_type: day_range
+      sorter: true
+      search_attribute: provident_funds.provident_fund_resignation_date
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: chinese_name
+      value_type: string_value
+      data_index: user.chinese_name
+      search_type: search
+      sorter: true
+      search_attirbute: user.chinese_name
+
+    - key: english_name
+      value_type: string_value
+      data_index: user.english_name
+      search_type: search
+      sorter: true
+      search_attribute: user.english_name
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: member_retirement_fund_number
+      value_type: string_value
+      data_index: user.profile.provident_fund.member_retirement_fund_number
+      search_type: search
+      sorter: true
+      search_attribute: provident_fund.member_retirement_fund_number
+
+    - key: resigned_date
+      data_index: user.profile.data.position_information.field_values.resigned_date
+      value_type: date_value
+      search_type: date
+      value_format: yyyy/mm/dd
+      sorter: true
+      search_attribute: user.profile.position_information.resigned_date
+
+    - key: resigned_reason
+      data_index: resigned_reason
+      value_type: select_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: resigned_reason_options
+
+    - key: contribution_item
+      value_type: obj_value
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: contribution_options
+
+    - key: vesting_percentage
+      value_type: string
+      search_type: search
+      sorter: true
+
+    - key: bank_of_china_account_mop
+      value_type: string_value
+      data_index: user.profile.data.personal_information.field_values.bank_of_china_account_mop
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.bank_of_china_account_mop
+
+    - key: bank_of_china_account_hkd
+      value_type: string_value
+      data_index: user.profile.data.personal_information.field_values.bank_of_china_account_hkd
+      search_type: search
+      sorter: true
+      search_attribute: user.profile.personal_information.bank_of_china_account_hkd
+

@@ -1,0 +1,16 @@
+en:
+  appraisal_reports:
+    file_name: Appraisal Reports
+  statement_columns:
+    appraisal_reports:
+      empoid: No
+      name: Name
+      location: Location
+      department: Department
+      position: Position
+      grade: Grade
+      division_of_job: Division of job
+      date_of_employment: Date of employment
+      count_of_assessor: Count of assessor
+      overall_score: Score
+

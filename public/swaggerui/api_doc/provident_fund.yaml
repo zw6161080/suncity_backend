@@ -1,0 +1,625 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 公积金
+
+# Describe your paths here
+paths:
+  /provident_funds:
+    get:
+      description: 获取公积金列表
+      parameters:
+        - name: participation_date
+          in: query
+          required: false
+          description: '参加开始日期;object格式｛begin: value, end: value｝'
+          type: string
+        - name: member_retirement_fund_number
+          in: query
+          required: false
+          description: 退休成员编号
+          type: string
+        - name: tax_registration
+          in: query
+          required: false
+          description: 登记国家
+          type: string
+        - name: icbc_account_number_mop
+          in: query
+          required: false
+          description: 葡币账户
+          type: string
+        - name: icbc_account_number_rmb
+          in:   query
+          required: false
+          description: 人名币账户
+          type: string
+        - name: is_an_american
+          in: query
+          required: false
+          description: descripiton
+          type: string
+        - name: has_permanent_resident_certificate
+          in:   query
+          required: false
+          description:  有居民证
+          type: string
+        - name: supplier
+          in: query
+          required: false
+          description: 供应商
+          type: string
+        - name: steady_growth_fund_percentage
+          in: query
+          required: false
+          description: 平稳增长百分比
+          type: string
+        - name: steady_fund_percentage
+          in: query
+          required: false
+          description: 稳健基金百分比
+          type: string
+        - name: a_fund_percentage
+          in: query
+          required: false
+          description:  a公积金百分比
+          type:  string
+        - name: b_fund_percentage
+          in:  query
+          required: false
+          description: b公积金百分比
+          type: string
+        - name: provident_fund_resignation_date
+          in: query
+          required: false
+          description: '赎回公积金日期;object格式｛begin: value, end: value｝'
+          type: string
+        - name: provident_fund_resignation_reason
+          in:  query
+          required: false
+          description: 赎回公积金原因
+          type: string
+        - name: position
+          in: query
+          required: false
+          description: 职位id
+          type: integer
+        - name: department
+          in: query
+          required: false
+          description: 部门id
+          type: integer
+        - name: chinese_name
+          in: query
+          required: false
+          description: 中文名
+          type: string
+        - name: english_name
+          in: query
+          required: false
+          description: 英文名
+          type: string
+        - name: empoid
+          in: query
+          required: false
+          description: 员工编号
+          type: string
+        - name: grade
+          in: query
+          required: false
+          description:  职级
+          type: string
+        - name: date_of_employment
+          in: query
+          required: false
+          description: '入职开始结束日期;object格式｛begin: value, end: value｝'
+          type: string
+        - name: date_of_birth
+          in: query
+          required: false
+          description:  '出生开始日期;object格式｛begin: value, end: value｝'
+          type: string
+        - name: gender
+          in: query
+          required: true
+          description: 性别
+          type: string
+        - name: national
+          in: query
+          required: false
+          description: 国籍
+          type: string
+        - name: place_of_birth
+          in: query
+          required: false
+          description: 出生地
+          type: string
+        - name: email
+          in: query
+          required: false
+          description: email
+          type: string
+        - name: mobile_number
+          in: query
+          required: false
+          description: 手机
+          type: string
+        - name: address
+          in: query
+          required: false
+          description: 地址
+          type: string
+        - name: type_of_id
+          in: query
+          required: false
+          description: 证件类型
+          type: string
+        - name: certificate_issued_country
+          in:  query
+          required: false
+          description:  证件颁发国家
+          type:  string
+        - name: id_number
+          in: query
+          required: false
+          description: 证件编号
+          type: string
+        - name: tax_number
+          in: query
+          required: false
+          description: 税务编号
+          type: string
+        - name: is_leave
+          in: query
+          required: false
+          description: 是否离职
+          type: string
+      responses:
+        200:
+          description: 成功
+  /provident_funds/field_options:
+    get:
+      description: 获取筛选项
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/FieldOptions'
+  /provident_funds/create_options:
+    get:
+      description: 获取创建筛选项
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/CreateOptions'
+  /profiles/{profile_id}/provident_fund/update_from_profile:
+    patch:
+      description: 更新档案公积金信息(檔案中)
+      tags:
+        - 档案公积金信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 成功
+  /profiles/{profile_id}/provident_fund:
+    get:
+      description: 获取档案公积金信息
+      tags:
+        - 档案公积金信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ProvidentFundInfo'
+    post:
+      description: 创建档案公积金信息
+      tags:
+        - 档案公积金信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 成功
+        422:
+          description: 参数错误
+    patch:
+      description: 更新档案公积金信息
+      tags:
+        - 档案公积金信息
+      parameters:
+        - name: profile_id
+          in: path
+          required: true
+          description: 档案id
+          type: integer
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: 成功
+
+
+
+definitions:
+  CreateOptions:
+    type: object
+    properties:
+      type_of_id:
+        type: object
+        properties:
+          options:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: key值
+                chinese_name:
+                  type: string
+                  description: '中文名'
+                english_name:
+                  type: string
+                  description: '英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '简体名'
+      nationality:
+        description: '国籍筛选项'
+        type: object
+        properties:
+          options:
+            type: array
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: key值
+                chinese_name:
+                  type: string
+                  description: '中文名'
+                english_name:
+                  type: string
+                  description: '英文名'
+                simple_chinese_name:
+                  type: string
+                  description: '简体名'
+
+
+  FieldOptions:
+    type: object
+    properties:
+      created_at:
+        type: array
+        items:
+          type: string
+          description: 参加时间
+      grade:
+        type: array
+        items:
+          type: string
+          description: 职级
+      date_of_employment:
+        type: array
+        items:
+          type: string
+          description: 入职日期
+      date_of_birth:
+        type: array
+        items:
+          type: string
+          description: 出生日期
+      gender:
+        type: array
+        items:
+          type: string
+          description: 性别
+      national:
+        type: array
+        items:
+          type: string
+          description: 国籍
+      type_of_id:
+        type: array
+        items:
+          type: string
+          description: 证件类别
+      certificate_issued_country:
+        type: array
+        items:
+          type: string
+          description: 证件发出国家
+      tax_registration:
+        type: array
+        items:
+          type: string
+          description: 税籍
+      is_an_american:
+        type: array
+        items:
+          type: string
+          description: 是否美国人
+      has_permanent_resident_certificate:
+        type: array
+        items:
+          type: string
+          description: 是否有美国永久居住证
+      supplier:
+        type: array
+        items:
+          type: string
+          description: 供应商
+      provident_fund_resignation_date:
+        type: array
+        items:
+          type: string
+          description: 公积金赎回日期
+      position:
+        type: array
+        items:
+          type: object
+          description: 职位
+      department:
+        type: array
+        items:
+          type: object
+          description: 部门
+      provident_fund_resignation_reason:
+        type: array
+        items:
+          type: string
+          description: 公积金赎回原因
+
+
+  CreateParams:
+    type: object
+    properties:
+      provident_fund:
+        type: object
+        properties:
+          participation_date:
+            type: string
+            description: 参加日期
+          member_retirement_fund_number:
+            type: string
+            description: 成員退休基金號碼
+          tax_registration:
+            type: string
+            description: 稅籍
+          icbc_account_number_mop:
+            type: string
+            description: 工銀戶口號碼-澳門幣
+          icbc_account_number_rmb:
+            type: string
+            description: 工銀戶口號碼-人民幣
+          is_an_american:
+            type: boolean
+            description: 是否美国公民
+          has_permanent_resident_certificate:
+            type: boolean
+            description: 是否持有美國永久居民證
+          supplier:
+            type: string
+            description: 供应商
+          steady_growth_fund_percentage:
+            type: string
+            description: 平穩增長基金百分比
+          steady_fund_percentage:
+            type: string
+            description: 穩健基金百分比
+          a_fund_percentage:
+            type: string
+            description: A基金百分比
+          b_fund_percentage:
+            type: string
+            description: B基金百分比
+          provident_fund_resignation_date:
+            type: string
+            description: 公積金贖回日期
+          provident_fund_resignation_reason:
+            type: string
+            description: 公積金贖回原因
+      first_beneficiary:
+        type: object
+        properties:
+          name:
+            type: string
+            description: 姓名
+          certificate_type:
+            type: string
+            description: 证件类型
+          id_number:
+            type: string
+            description: 证件编号
+          relationship:
+            type: string
+            description: 关系
+          percentage:
+            type: string
+            description: 获益百分比
+          address:
+            type: string
+            description: 地址
+      second_beneficiary:
+        type: object
+        properties:
+          name:
+            type: string
+            description: 姓名
+          certificate_type:
+            type: string
+            description: 证件类型
+          id_number:
+            type: string
+            description: 证件编号
+          relationship:
+            type: string
+            description: 关系
+          percentage:
+            type: string
+            description: 获益百分比
+          address:
+            type: string
+            description: 地址
+      third_beneficiary:
+        type: object
+        properties:
+          name:
+            type: string
+            description: 姓名
+          certificate_type:
+            type: string
+            description: 证件类型
+          id_number:
+            type: string
+            description: 证件编号
+          relationship:
+            type: string
+            description: 关系
+          percentage:
+            type: string
+            description: 获益百分比
+          address:
+            type: string
+            description: 地址
+
+  ProvidentFundInfo:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: 公积金id
+      participation_date:
+        type: string
+        description: 参加日期
+      member_retirement_fund_number:
+        type: string
+        description: 成員退休基金號碼
+      tax_registration:
+        type: string
+        description: 稅籍
+      icbc_account_number_mop:
+        type: string
+        description: 工銀戶口號碼-澳門幣
+      icbc_account_number_rmb:
+        type: string
+        description: 工銀戶口號碼-人民幣
+      is_an_american:
+        type: boolean
+        description: 是否美国公民
+      has_permanent_resident_certificate:
+        type: boolean
+        description: 是否持有美國永久居民證
+      supplier:
+        type: string
+        description: 供应商
+      steady_growth_fund_percentage:
+        type: string
+        description: 平穩增長基金百分比
+      steady_fund_percentage:
+        type: string
+        description: 穩健基金百分比
+      a_fund_percentage:
+        type: string
+        description: A基金百分比
+      b_fund_percentage:
+        type: string
+        description: B基金百分比
+      provident_fund_resignation_date:
+        type: string
+        description: 公積金贖回日期
+      provident_fund_resignation_reason:
+        type: string
+        description: 公積金贖回原因
+      profile_id:
+        type: integer
+        description: 档案id
+      first_beneficiary_id:
+        type: integer
+        description: 第一获益人id
+      second_beneficiary_id:
+        type: integer
+        description: 第二获益人id
+      thrid_beneficiary_id:
+        type: integer
+        description: 第三获益人id
+      first_beneficiary:
+        type: object
+        description: 第一获益人
+      second_beneficiary:
+        type: object
+        description: 第二获益人
+      third_beneficiary:
+        type: object
+        description: 第三获益人
+
+  PublicHolidaysCreateParams:
+    type: object
+    properties:
+      chinese_name:
+        type: string
+        description: 公共假期中文名
+      english_name:
+        type: string
+        description: 公共假期英文名
+      category:
+        type: string
+        description: 公共假期类型(強制性假日/公眾假日)
+      start_date:
+        type: string
+        description: 公共假期开始日期
+      end_date:
+        type: string
+        description:  公共假期结束日期
+      comment:
+        type: string
+        description: 公共假期的備註
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

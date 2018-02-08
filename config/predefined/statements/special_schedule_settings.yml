@@ -1,0 +1,73 @@
+special_schedule_settings:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: location_options
+      search_attribute: user.location_id
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: date_of_employment
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      search_type: date
+      sorter: true
+
+    - key: target_location
+      value_type: obj_value
+      data_index: target_location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: target_location_options
+
+    - key: target_department
+      value_type: obj_value
+      data_index: target_department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: target_department_options
+
+    - key: schedule_date
+      value_type: string_value
+      data_index: schedule_date
+      sorter: true
+
+    - key: comment
+      value_type: string_value
+      data_index: comment

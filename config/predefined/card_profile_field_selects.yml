@@ -1,0 +1,101 @@
+gender:
+  options:
+    - key: male
+      chinese_name: 男
+      simple_chinese_name: 男
+      english_name: Male
+    - key: female
+      chinese_name: 女
+      simple_chinese_name: 女
+      english_name: Female
+status:
+  options:
+    - key: applying
+      chinese_name: 申請中
+      simple_chinese_name: 申请中
+      english_name: Applying
+    - key: fingermold
+      chinese_name: 已打指模
+      simple_chinese_name: 已打指模
+      english_name: Finger mold
+    - key: getvisa
+      chinese_name: 已轉工作簽證
+      simple_chinese_name: 已转工作签证
+      english_name: Work visa
+    - key: canceled
+      chinese_name: 已取消
+      simple_chinese_name: 已取消
+      english_name: Cancelled
+allocation_company:
+  options:
+    - key: suncity_gaming_promotion_company_limited
+      chinese_name: 太陽城博彩中介一人有限公司
+      simple_chinese_name: 太阳城博彩中介一人有限公司
+      english_name: Sun city gaming intermediaries one person co ltd
+    - key: suncity_group_commercial_consulting
+      chinese_name: 太陽城集團商業顧問有限公司
+      simple_chinese_name: 太阳城集团商业顾问有限公司
+      english_name: Sun city group business consultants co ltd
+    - key: suncity_group_tourism_limited
+      chinese_name: 太陽城集團旅遊有限公司
+      simple_chinese_name: 太阳城集团旅游有限公司
+      english_name: Sun city group travel co ltd
+    - key: tian_mao_yi_hang
+      chinese_name: 天貿易行
+      simple_chinese_name: 天贸易行
+      english_name: TianMao yi xing
+report_salary_unit:
+  options:
+    - key: mop
+      chinese_name: 澳門幣
+      simple_chinese_name: 澳门币
+      english_name: MOP
+    - key: hkd
+      chinese_name: 港幣
+      simple_chinese_name: 港币
+      english_name: HKD
+
+labor_company:
+  options:
+    - key: tong_li_company
+      chinese_name: 通力勞資顧問有限公司
+      simple_chinese_name: 通力劳资顾问有限公司
+      english_name: KONE labor consultants  co ltd
+    - key: zhu_hai_international_company
+      chinese_name:  珠海國際(澳門)職業介紹所有限公司
+      simple_chinese_name: 珠海国际(澳门)职业介绍所有限公司
+      english_name: Zhuhai international (Macao) employment agency  co ltd
+    - key: guangzhou_labor_company
+      chinese_name: 廣州外經(澳門)職業介紹所有限公司
+      simple_chinese_name: 广州外经(澳门)职业介绍所有限公司
+      english_name: Guangzhou foreign trade (Macao) employment Agency  co ltd
+    - key: zhongzhi_labor_company
+      chinese_name:  中智(澳門)職業介紹所有限公司
+      simple_chinese_name:  中智(澳门)职业介绍所有限公司
+      english_name: Zhongzhi (Macao) employment agency co ltd
+
+new_or_renew:
+  options:
+    - key: new
+      chinese_name: 新辦證
+      simple_chinese_name: 新办证
+      english_name: New card
+    - key: renew
+      chinese_name: 續期
+      simple_chinese_name: 续期
+      english_name: Renewal
+certificate_type:
+  options:
+    - key: hong_kong_identity_card
+      chinese_name: 香港居民身份證
+      simple_chinese_name: 香港居民身份证
+      english_name: HKID
+    - key: valid_exit_entry_permit_eep_to_hk_macau
+      chinese_name: 港澳通行證
+      simple_chinese_name: 港澳通行证
+      english_name: HK/Macau pass
+    - key: passport
+      chinese_name: 護照
+      simple_chinese_name: 护照
+      english_name: Passport
+

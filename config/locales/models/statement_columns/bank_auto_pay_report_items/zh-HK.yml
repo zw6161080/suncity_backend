@@ -1,0 +1,23 @@
+zh-HK:
+  bank_auto_pay_report_items:
+    file_name: 銀行自動轉賬報表
+  statement_columns:
+    bank_auto_pay_report_items:
+      record_type: 類別
+      year_month: 結算月份
+      balance_date: 結算日期
+      company: 歸屬公司
+      employee_id: 員工編號
+      employee_name: 姓名
+      department: 部門
+      position: 職位
+      position_of_govt_record: 報政府職位
+      id_number: 員工證件編號
+      bank_of_china_account_mop: 葡幣賬戶號碼
+      bank_of_china_account_hkd: 港幣賬戶號碼
+      cash_or_check: 支票/現金出糧
+      amount_in_mop: 葡幣金額
+      amount_in_hkd: 港幣金額
+      begin_work_date: 薪酬開始日期
+      end_work_date: 薪酬結束日期
+      leave_in_this_month: 是否本月離職

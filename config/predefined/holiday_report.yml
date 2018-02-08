@@ -1,0 +1,37 @@
+holiday_type:
+  - use_value: 年假
+    return_value: annual_holiday
+  - use_value: 生日假
+    return_value: birthday_holiday
+  - use_value: 有薪奖励假
+    return_value: bonus_holiday
+  - use_value: 补假
+    return_value: supplement_holiday
+  - use_value: 有薪病假
+    return_value: paid_illness_leave
+  - use_value: 无薪假
+    return_value: none_paid_leave
+  - use_value: 有薪婚假
+    return_value: paid_marriage_holiday
+  - use_value: 无薪婚假
+    return_value: nonepaid_marriage_holiday
+  - use_value: 有薪恩恤假
+    return_value: paid_grace_leave
+  - use_value: 无薪恩恤假
+    return_value: nonepaid_grace_leave
+  - use_value: 侍产假
+    return_value: awaiting_delivery_leave
+  - use_value: 有薪分娩假
+    return_value: paid_maternity_leave
+  - use_value: 无薪分娩假
+    return_value: nonepaid_maternity_leave
+  - use_value: 工伤
+    return_value: work_injury_leave
+  - use_value: 停薪留职
+    return_value: without_pay_stay_leave
+  - use_value: 怀孕事假
+    return_value: pregnancy_leave
+  - use_value: 最佳员工奖励假
+    return_value: best_empolyee_holiday
+  - use_value: 其他
+    return_value: other_leave

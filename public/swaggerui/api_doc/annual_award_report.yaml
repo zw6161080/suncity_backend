@@ -1,0 +1,271 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 年度奖金
+
+# Describe your paths here
+paths:
+  /annual_award_report_items/{id}:
+    patch:
+      tags:
+        - 年度奖金记录
+      description: 更新年度奖金记录
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: 年度奖金记录id
+          required: true
+        - name: annual_award_report_item_params
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/UpdateParams'
+      responses:
+        200:
+          description: ok
+
+  /annual_award_report_items:
+    get:
+      description: 获取年度奖金列表页
+      tags:
+        - 年度奖金
+      parameters:
+        - name: path_param
+          in: query
+          type: integer
+          description: 年度奖金报表id
+          required: true
+      responses:
+        200:
+          description: ok
+  /annual_award_reports/{id}/grant:
+    patch:
+      description: 发放年度奖金报表
+      tags:
+        - 年度奖金
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: 年度奖金报表id
+          required: true
+      responses:
+        200:
+          description: ok
+  /annual_award_reports/{id}:
+    delete:
+      description: 删除年度奖金报表
+      tags:
+        - 年度奖金
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: 年度奖金报表id
+          required: true
+      responses:
+        200:
+          description: ok
+    get:
+      description: 获取年度奖金报表详情
+      tags:
+        - 年度奖金
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: 年度奖金报表id
+          required: true
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/AnnualAwardReportDetail'
+  /annual_award_reports:
+    get:
+      description: 年度奖金报表选项
+      tags:
+        - 年度奖金
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/AnnualAwardReportList'
+
+    post:
+      description: 创建年度奖金报表
+      tags:
+        - 年度奖金
+      parameters:
+        - name: create_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/CreateParams'
+      responses:
+        200:
+          description: ok
+  /annual_award_reports/grant_type_options:
+    get:
+      description: 花红发放-员工类型选项
+      tags:
+        - 年度奖金
+      responses:
+        200:
+          description: ok
+          schema:
+            $ref: '#/definitions/GrantTypeOptions'
+definitions:
+  UpdateParams:
+    type: object
+    properties:
+      annual_award_report_item_params:
+        type: object
+        properties:
+          double_pay_alter_hkd:
+            type: string
+            description: 双粮修订
+  AnnualAwardReportList:
+    type: object
+    properties:
+      annual_award_reports:
+        type: array
+        items:
+          type: object
+          properties:
+            status:
+              type: string
+              description: 报表状态
+              enum:
+                - not_granted
+                - has_granted
+            id:
+              type: integer
+              description: 报表id
+            year_month:
+              type: string
+              description: 年度
+  GrantTypeOptions:
+    type: array
+    items:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 部门id
+        key:
+          type: string
+          description: 员工类型
+        chinese_name:
+          type: string
+          description: 繁体名
+        english_name:
+          type: string
+          description: 英文名
+        simple_chinese_name:
+          type: string
+          description: 简体名
+  CreateParams:
+    type: object
+    properties:
+      year_month:
+        type: string
+        description: 年度
+      annual_attendance_award_hkd:
+        type: string
+        description: '全年勤工奖（hkd）'
+      annual_bonus_grant_type:
+        type: string
+        description: 花红发放方式
+        enum:
+          - all
+          - departments
+          - division_of_job
+      grant_type_rule:
+        type: array
+        items:
+          type: object
+          description: 花红分配
+          properties:
+            key:
+              type: string
+              description: 员工类型
+            add_basic_salary:
+              type: boolean
+              description: 是否增加基本工资倍数
+            basic_salary_time:
+              type: integer
+              description: 基本工资倍数
+            add_bonus:
+              type: boolean
+              description: 是否增加津贴倍数
+            bonus_time:
+              type: integer
+              description: 津贴倍数
+            add_attendance_bonus:
+              type: boolean
+              description: 是否增加勤工倍数
+            attendance_bonus_time:
+              type: integer
+              description: 勤工倍数
+            add_fixed_award:
+              type: boolean
+              description: 是否增加固定金额
+            fixed_award_mop:
+              type: string
+              description: 固定金额
+      absence_deducting:
+        type: string
+        description: 旷工扣除百分比
+      notice_deducting:
+        type: string
+        description: 即告扣除百分比
+      late_5_times_deducting:
+        type: string
+        description: 遲到5次及以上扣除百分比
+      sign_card_deducting:
+        type: string
+        description: 漏打卡上下班扣除百分比
+      one_letter_of_warning_deducting:
+        type: string
+        description: 1封警告信扣除百分比
+      two_letters_of_warning_deducting:
+        type: string
+        description: 2封及以上警告信扣除百分比
+      each_piece_of_awarding_deducting:
+        type: string
+        description: 每封表揚信獎勵百分比
+      method_of_settling_accounts:
+        type: string
+        description: 结算方式
+        enum:
+          - wage
+          - single-handed
+      award_date:
+        type: string
+        description: 发放日期
+  AnnualAwardReportDetail:
+    type: object
+    properties:
+      annual_award_report:
+        type: object
+        properties:
+          status:
+            type: string
+            description: 报表状态
+            enum:
+              - not_granted
+              - has_granted
+          method_of_settling_accounts:
+            type: string
+            description: 结算方式
+          award_date:
+            type: string
+            description: 结算日期

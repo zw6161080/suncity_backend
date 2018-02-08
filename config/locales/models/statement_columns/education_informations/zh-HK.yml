@@ -1,0 +1,21 @@
+zh-HK:
+  education_informations:
+    file_name: 學歷信息報表
+  statement_columns:
+    education_informations:
+      empoid: 員工編號
+      name: 姓名
+      location: 場館
+      department: 部門
+      position: 職位
+      date_of_employment: 入職日期
+      leave_date: 離職日期
+      from_mm_yyyy: 由(月/年)/入學
+      to_mm_yyyy: 由(月/年)/畢業
+      college_university: 畢業院校
+      educational_department: 科系
+      graduate_level: 學歷程度(如:初中/高中/大學)
+      diploma_degree_attained: 學位及專業
+      certificate_issue_date: 證書頒發日期
+      graduated: 是否畢業
+      highest: 是否最高學歷

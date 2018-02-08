@@ -1,0 +1,3 @@
+class TokenExpireError < StandardError
+
+end

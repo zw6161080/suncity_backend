@@ -1,0 +1,14 @@
+zh-CN:
+  sign_lists_by_train:
+    sign_list: 签到名单
+  statement_columns:
+    sign_lists_by_train:
+      empoid: 员工编号
+      name: 员工姓名
+      department: 部门
+      position: 职位
+      title: 培训班次
+      train_class_time: 培训时间
+      working_status: 培训期间状态
+      sign_status: 签到状态
+      comment: 备注

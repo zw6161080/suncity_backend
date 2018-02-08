@@ -1,0 +1,9 @@
+zh-CN:
+  student_evaluations:
+    student_evaluation: 学员评价
+  statement_columns:
+    student_evaluations:
+      empoid: 员工编号
+      name: 员工姓名
+      department: 部门
+      position: 职位

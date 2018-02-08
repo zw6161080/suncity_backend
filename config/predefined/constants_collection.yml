@@ -1,0 +1,270 @@
+IstWelfareTemplateSelected: 1
+OneYear: 31536000
+OneDay: 86400
+#mop
+LoveFundCost: 20
+#mop
+MedicalInsuranceParticipator: 50
+
+
+#可申请假期类型
+BirthdayHolidayType: 1,
+AnnualLeaveType: 0
+BonusHolidayType: 2
+SupplementHolidayType: 3,
+PaidIllnessLeaveType: 4
+NonePaidLeaveType: 5,
+PaidMarriageHolidayType: 6,
+NonepaidMarriageHolidayType: 7,
+PaidGraceLeaveType: 8,
+NonepaidGraceLeaveType: 9,
+AwaitingDeliveryLeaveType: 10,
+PaidMaternityLeaveType: 11,
+NonepaidMaternityLeaveType: 12,
+WorkInjuryLeaveType: 13,
+WithoutPayStayLeaveType: 14,
+PregnancyLeaveType: 15,
+BestEmpolyeeHolidayType: 16,
+OtherLeaveType: 17
+
+#有薪婚嫁可申请天数
+PaidMarriageHolidayDays: 3
+
+#无薪婚嫁可申请天数
+NonepaidMarriageHolidayDays: 2
+
+#有薪恩恤每天可放天数
+PaidGraceLeaveDays: 3
+#无薪有薪恩恤每天可放天数
+NonepaidGraceLeaveDays: 2
+
+#有薪分娩假一次性放假天数:
+PaidMaternityLeaveDays: 56
+#无薪分娩假一次性放假天数:
+NonepaidMaternityLeaveDays: 34
+#假期申请天数无限制
+NOLimitToHoliay: 10000
+
+none_template:
+  chinese_name: 不按照模板
+  english_name: No template
+  simple_chinese_name: 不按照模板
+
+#档案中table section　里　未生效的记录
+ToForceStatus: '2'
+#档案中table section　里　正在生效的记录
+ForcingStatus: '1'
+#档案中table section　里　无效的记录
+UnforcedStatus: '0'
+
+#档案(profile)中正式员工的类别
+FormalEmployeeType:
+  - formal_employees
+  - director
+  - president
+
+# 档案中兼职员工的类别
+PartTimeEmployeeType:
+  - part_time
+  - trainee
+
+# 档案中试用期员工的类别
+InformalEmployeeType:
+  - informal_employees
+  - director_in_informal
+  - president_in_informal
+
+SalaryHistoryHideColumn:
+  - basic_salary_unit
+  - bonus_unit
+  - attendance_award_unit
+  - house_bonus_unit
+  - total_count_unit
+  - basic_salary
+  - bonus
+  - attendance_award
+  - house_bonus
+  - tea_bonus
+  - kill_bonus
+  - performance_bonus
+  - charge_bonus
+  - commission_bonus
+  - receive_bonus
+  - exchange_rate_bonus
+  - guest_card_bonus
+  - respect_bonus
+  - new_year_bonus
+  - project_bonus
+  - product_bonus
+WelfareHistorySelectableColumn:
+  - annual_leave
+  - sick_leave
+  - office_holiday
+  - holiday_type
+  - probation
+  - notice_period
+  - double_pay
+  - reduce_salary_for_sick
+  - provide_uniform
+  - salary_composition
+  - over_time_salary
+  - force_holiday_make_up
+TableSection:
+  - career_history
+  - welfare_history
+  - salary_history
+  - lent_information
+  - museum_information
+  - resignation_information
+CreateTableSection:
+  - career_history
+  - welfare_history
+  - salary_history
+PositionInformationUpdatedColumn:
+  - company_name
+  - department
+  - position
+  - grade
+  - employment_status
+  - division_of_job
+CardProfile:
+  employ_information:
+    - empo_chinese_name
+    - empo_english_name
+    - sex
+    - status
+  quota_information:
+    - allocation_company
+    - allocation_valid_date
+    - approval_id
+    - approved_job_name
+    - approved_job_number
+    - date_to_submit_data
+    - labor_company
+    - new_approval_valid_date
+    - new_or_renew
+    - report_salary_count
+    - report_salary_unit
+  certificate_information:
+    - certificate_id
+    - certificate_type
+    - certificate_valid_date
+    - date_to_submit_certificate
+  street_paper_information:
+    - date_to_get_card
+    - date_to_stamp
+    - date_to_submit_fingermold
+  card_information:
+    - cancel_date
+    - card_id
+    - card_valid_date
+    - original_user
+  comment_information:
+    - comment
+#离职横幅是否显示
+mark:
+  valid: true
+  invalid: false
+#是否离职
+employment_of_status:
+  leave_out: leave_out
+  on_working: on_working
+
+#是否参加
+join_or_unjoin:
+  join: join
+  unjoin: unjoin
+
+#AttendanceState 代号
+AttendanceState:
+  working_when_typhoon: e
+
+
+#参加培训给出培训缺席状态
+TrainingAbsentee:
+  need_to_fill_reason: need_to_fill_reason
+  waiting: waiting
+  ok: ok
+
+#培训名单： 表头节数预设
+RowTranslation:
+  1:
+    chinese_name: 第一節培訓
+    english_name: the first class
+    simple_chinese_name: 第一节培训
+  2:
+    chinese_name: 第二節培訓
+    english_name: the second class
+    simple_chinese_name: 第二节培训
+  3:
+    chinese_name: 第三節培訓
+    english_name: the third class
+    simple_chinese_name: 第三节培训
+  4:
+    chinese_name: 第四節培訓
+    english_name: the fourth class
+    simple_chinese_name: 第四节培训
+  5:
+    chinese_name: 第五節培訓
+    english_name: the fifth class
+    simple_chinese_name: 第五节培训
+  6:
+    chinese_name: 第六節培訓
+    english_name: the sixth class
+    simple_chinese_name: 第六节培训
+  7:
+    chinese_name: 第七節培訓
+    english_name: the seventh class
+    simple_chinese_name: 第七节培训
+  8:
+    chinese_name: 第八節培訓
+    english_name: the eighth class
+    simple_chinese_name: 第八节培训
+  9:
+    chinese_name: 第九節培訓
+    english_name: the ninth class
+    simple_chinese_name: 第九节培训
+  10:
+    chinese_name: 第十節培訓
+    english_name: the tenth class
+    simple_chinese_name: 第十节培训
+  11:
+    chinese_name: 第十一節培訓
+    english_name: the eleventh class
+    simple_chinese_name: 第十一节培训
+  12:
+    chinese_name: 第十二節培訓
+    english_name: the twelfth class
+    simple_chinese_name: 第十二节培训
+  13:
+    chinese_name: 第十三節培訓
+    english_name: the thirteenth class
+    simple_chinese_name: 第十三节培训
+  14:
+    chinese_name: 第十四節培訓
+    english_name: the fourteenth class
+    simple_chinese_name: 第十四节培训
+  15:
+    chinese_name: 第十五節培訓
+    english_name: the fifteenth class
+    simple_chinese_name: 第十五节培训
+  16:
+    chinese_name: 第十六節培訓
+    english_name: the sixteenth class
+    simple_chinese_name: 第十六节培训
+  17:
+    chinese_name: 第十七節培訓
+    english_name: the seventeeth class
+    simple_chinese_name: 第十七节培训
+  18:
+    chinese_name: 第十八節培訓
+    english_name: the eighteenth class
+    simple_chinese_name: 第十八节培训
+  19:
+    chinese_name: 第十九節培訓
+    english_name: the nineteenth class
+    simple_chinese_name: 第十九节培训
+  20:
+    chinese_name: 第二十節培訓
+    english_name: the twentieth class
+    simple_chinese_name: 第二十节培训

@@ -1,0 +1,16 @@
+zh-CN:
+  turnover_rate:
+    file_name: 离职率报表
+  statement_columns:
+    turnover_rate:
+      years: 年资
+      both: 本地员工+非本地员工
+      local: 本地员工
+      foreign: 非本地员工
+  sub_columns:
+    turnover_rate:
+      in_service: 期末在职人数
+      leave: 离职人数
+      rate: 离职率
+
+

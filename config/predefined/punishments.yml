@@ -1,0 +1,49 @@
+punishment_statuses:
+  - key: punishing
+    chinese_name: 待處分
+    english_name: To be punish
+    simple_chinese_name: 待处分
+  - key: punished
+    chinese_name: 完成處分
+    english_name: Punished
+    simple_chinese_name: 完成处分
+
+punishment_results:
+  - key: cancel_warning_letter
+    chinese_name: 取消警告信
+    english_name: Cancel warning letter
+    simple_chinese_name: 取消警告信
+  - key: verbal_warning
+    chinese_name: 口頭警告
+    english_name: Verbal warning
+    simple_chinese_name: 口头警告
+  - key: classA_written_warning
+    chinese_name: 甲類書面警告
+    english_name: Class A written warning
+    simple_chinese_name: 甲类书面警告
+  - key: classB_written_warning
+    chinese_name: 乙類書面警告
+    english_name: Class B written warning
+    simple_chinese_name: 乙类书面警告
+  - key: final_written_warning
+    chinese_name: 最後書面警告
+    english_name: Finally written warning
+    simple_chinese_name: 最后书面警告
+  - key: fired
+    chinese_name: 解僱
+    english_name: Fire
+    simple_chinese_name: 解雇
+
+punishment_categories:
+  - key: classA
+    chinese_name: 甲類過錯
+    english_name: Class A fault
+    simple_chinese_name: 甲类过错
+  - key: classB
+    chinese_name: 乙類過錯
+    english_name: Class B fault
+    simple_chinese_name: 乙类过错
+  - key: grave_fault
+    chinese_name: 重大過錯
+    english_name: A major fault
+    simple_chinese_name: 重大过错

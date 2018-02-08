@@ -1,0 +1,225 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 调更调假
+
+# Describe your paths here
+paths:
+  /holiday_switches:
+    post:
+      description: 创建调更调假接口
+      tags:
+        - 调更调假
+      parameters:
+        - name: HolidayCreateParams
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/HolidaySwitchCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+    get:
+      description: 获取调更调假列表
+      tags:
+        - 调更调假
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: string
+          description: 查询的页面编号
+        - name: record_type
+          in: query
+          required: false
+          type: string
+          description: 查询的調更調假記錄的申請類型
+        - name: date
+          in: query
+          required: false
+          type: string
+          description: 調更調假日期(甲方)
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号(甲方)
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名(甲方)
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称(甲方)
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称(甲方)
+        - name: location
+          in: query
+          required: false
+          type: string
+          description: 查询的場館(甲方)
+        - name: date_b
+          in: query
+          required: false
+          type: string
+          description: 調更調假日期(乙方)
+        - name: empoid_b
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号(乙方)
+        - name: user_chinese_name_b
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名(乙方)
+        - name: department_chinese_name_b
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称(乙方)
+        - name: position_chinese_name_b
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称(乙方)
+        - name: location_b
+          in: query
+          required: false
+          type: string
+          description: 查询的場館((乙方)
+        - name: status
+          in: query
+          required: false
+          type: string
+          description: 狀態
+        - name: created_at
+          in: query
+          required: false
+          type: string
+          description: 錄入日期
+        - name: creator_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 錄入人中文名
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+      responses:
+        200:
+          description: 响应调更调假列表
+  /holiday_switches/{holiday_switch_items_id}:
+    get:
+      description: 获取调更调假信息
+      tags:
+        - 调更调假
+      parameters:
+        - name: holiday_switch_items_id
+          in: path
+          required: true
+          type: integer
+          description: 调更调假ID
+      responses:
+        200:
+          description: 响应调更调假信息
+  /holiday_switches/field_options:
+    get:
+      description: 获取记录列表可供筛选的字段
+      tags:
+        - 调更调假
+      responses:
+        200:
+          description: 成功响应
+
+definitions:
+  HolidaySwitchCreateParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: 员工的user_id
+      user_b_id:
+        type: integer
+        description: 员工B的user_b_id
+      comment:
+        type: string
+        description: 备注
+      holiday_switch_items:
+        type: array
+        items:
+          type: object
+          properties:
+            a_date:
+              type: string
+              description: 员工A的互换日期 '2017/5/03'
+            b_date:
+              type: string
+              description: 员工b的互换日期 '2017/5/01'
+            comment:
+              type: string
+              description: '备注'
+        description: 创建调更调假记录数组
+      attend_approvals:
+        type: array
+        items:
+          type: object
+          properties:
+            user_id:
+              type: integer
+              description: 审批人id
+            date:
+              type: string
+              description: 审批时间 2017-01-10
+            comment:
+              type: string
+              description: 审批建议
+        description: 创建调更调假审批记录
+      attend_attachments:
+        type: array
+        items:
+          type: object
+          properties:
+            file_name:
+              type: string
+              description: 附件名称 'fn.jpg'
+            comment:
+              type: string
+              description: 附件备注 'test comment'
+            attachment_id:
+              type: integer
+              description: 附件id
+        description: 调更调假记录附件
+
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

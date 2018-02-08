@@ -1,0 +1,14 @@
+zh-HK:
+  force_holiday_working_records:
+    file_name: 強制假日上班報表
+  statement_columns:
+    force_holiday_working_records:
+      empoid: 員工編號
+      name: 姓名
+      department: 部門
+      position: 職位
+      date_of_employment: 入職日期
+      force_holiday_working_date: 強制假日上班日期
+      origin_working_range: 原工作時間
+      origin_working_hours: 原工作時長
+      real_working_hours: 實際工作時長

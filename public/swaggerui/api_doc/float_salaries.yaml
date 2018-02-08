@@ -1,0 +1,721 @@
+swagger: "2.0"
+info:
+  description: "浮动薪金API"
+  version: "1.0.0"
+  title: "浮动薪金API"
+
+paths:
+  /float_salary_month_entries:
+    get:
+      description: "获取浮动薪金条目列表数据"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "page"
+        in: "query"
+        description: "分页页码"
+        required: false
+        type: "number"
+        default: 1
+      responses:
+        200:
+          description: "获取成功"
+          schema:
+            $ref: "#/definitions/FloatSalaryMonthEntriesResponse"
+    post:
+      description: "创建浮动薪金条目数据"
+      parameters:
+      - name: year_month
+        in: "body"
+        description: "创建浮动薪金条目的年月 (格式：yyyy/mm)"
+        required: true
+        schema:
+          $ref: "#/definitions/FloatSalaryMonthEntryCreateRequest"
+      responses:
+        201:
+          description: "创建成功"
+
+  /float_salary_month_entries/check:
+    get:
+      description: "检查当年月是否已经有条目"
+      parameters:
+      - name: "year_month"
+        in: "query"
+        description: "希望检查的年月（格式: yyyy/mm）"
+        type: "string"
+        required: true
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: "#/definitions/FloatSalaryMonthEntryCheckResponse"
+
+  /float_salary_month_entries/{id}:
+    get:
+      description: "获取浮动薪金条目审批信息"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "浮动薪金条目ID"
+        type: "integer"
+        format: "int64"
+        required: true
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: "#/definitions/FloatSalaryMonthEntry"
+    patch:
+      description: "更新浮动薪金条目审批状态"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "浮动薪金条目ID"
+        type: "integer"
+        format: "int64"
+        required: true
+      - name: "status"
+        in: "body"
+        description: "审批状态"
+        required: true
+        schema:
+          $ref: "#/definitions/FloatSalaryMonthEntryPatchRequest"
+      responses:
+        202:
+          description: "更新成功"
+        422:
+          description: "更新失败"
+    delete:
+      description: "删除浮动薪金条目"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "浮动薪金条目ID"
+        type: "integer"
+        format: "int64"
+        required: true
+      responses:
+        200:
+          description: "请求成功"
+
+  /locations/with_departments:
+    get:
+      description: "获取所有场馆以及各场馆内的部门"
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: "#/definitions/LocationsWithDepartmentsResponse"
+
+  /bonus_elements:
+    get:
+      description: "获取所有浮动薪金项"
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: '#/definitions/BonusElementsResponse'
+
+  /bonus_element_month_amounts:
+    get:
+      description: "获取浮动薪金每份设定数值项"
+      parameters:
+      - name: "float_salary_month_entry_id"
+        in: "query"
+        type: "integer"
+        description: "浮动薪金条目ID"
+      - name: "year_month"
+        in: "query"
+        type: "string"
+        format: "yyyy/mm"
+        description: "浮动薪金设定年月"
+      - name: "bonus_element_id"
+        in: "query"
+        type: "integer"
+        description: "浮动薪金项ID"
+      - name: "location_id"
+        in: "query"
+        type: "integer"
+        description: "场馆ID"
+      - name: "position_id"
+        in: "query"
+        type: "integer"
+        description: "职位ID"
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: '#/definitions/BonusElementMonthAmountsResponse'
+  /bonus_element_month_amounts/{id}:
+    get:
+      description: "查询特定一项浮动薪金设定数值"
+      parameters:
+      - name: "id"
+        in: "path"
+        type: "integer"
+        description: "浮动薪金设定数值项ID"
+        required: true
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: '#/definitions/BonusElementMonthAmount'
+    patch:
+      description: "修改特定一项浮动薪金设定的数值"
+      parameters:
+      - name: "id"
+        in: "path"
+        type: "integer"
+        description: "浮动薪金设定数值项ID"
+        required: true
+      - name: "amount"
+        in: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/BonusElementMonthAmountRequest'
+      responses:
+        202:
+          description: 修改成功
+
+  /bonus_element_month_amounts/batch_update:
+    patch:
+      description: "批量修改浮动薪金每份设定项"
+      parameters:
+      - name: "updates"
+        in: "body"
+        description: "批量修改数据"
+        required: true
+        schema:
+          $ref: '#/definitions/BonusElementMonthAmountsBatchUpdateRequest'
+      responses:
+        202:
+          description: 修改成功
+
+
+  /bonus_element_month_shares:
+    get:
+      description: "获取浮动薪金份数设定数值项"
+      parameters:
+      - name: "float_salary_month_entry_id"
+        in: "query"
+        type: "integer"
+        description: "浮动薪金条目ID"
+      - name: "year_month"
+        in: "query"
+        type: "string"
+        format: "yyyy/mm"
+        description: "浮动薪金设定年月"
+      - name: "bonus_element_id"
+        in: "query"
+        type: "integer"
+        description: "浮动薪金项ID"
+      - name: "location_id"
+        in: "query"
+        type: "integer"
+        description: "场馆ID"
+      - name: "position_id"
+        in: "query"
+        type: "integer"
+        description: "职位ID"
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: '#/definitions/BonusElementMonthAmountsResponse'
+
+  /bonus_element_month_shares/{id}:
+    get:
+      description: "查询特定一项浮动薪金设定份数"
+      parameters:
+      - name: "id"
+        in: "path"
+        type: "integer"
+        description: "浮动薪金设定份数项ID"
+        required: true
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: '#/definitions/BonusElementMonthShare'
+    patch:
+      description: "修改特定一项浮动薪金设定的份数"
+      parameters:
+      - name: "id"
+        in: "path"
+        type: "integer"
+        description: "浮动薪金设定份数项ID"
+        required: true
+      - name: "shares"
+        in: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/BonusElementMonthShareRequest'
+      responses:
+        202:
+          description: 修改成功
+
+  /bonus_element_month_shares/batch_update:
+    patch:
+      description: "批量修改浮动薪金份数设定项"
+      parameters:
+      - name: "updates"
+        in: "body"
+        description: "批量修改数据"
+        required: true
+        schema:
+          $ref: '#/definitions/BonusElementMonthSharesBatchUpdateRequest'
+      responses:
+        202:
+          description: 修改成功
+
+  /bonus_element_month_personals:
+    get:
+      description: 获取浮动薪金个人设置项
+      parameters:
+      - name: "float_salary_month_entry_id"
+        in: "query"
+        type: "integer"
+        description: "浮动薪金条目ID"
+      - name: "year_month"
+        in: "query"
+        type: "string"
+        format: "yyyy/mm"
+        description: "浮动薪金设定年月"
+      - name: "bonus_element_id"
+        in: "query"
+        type: "integer"
+        description: "浮动薪金项ID"
+      - name: "location_id"
+        in: "query"
+        type: "integer"
+        description: "场馆ID"
+      - name: "position_id"
+        in: "query"
+        type: "integer"
+        description: "职位ID"
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: '#/definitions/BonusElementMonthPersonalsResponse'
+
+  /bonus_element_month_personals/{id}:
+    get:
+      description: "查询特定一项浮动薪金个人设定项"
+      parameters:
+      - name: "id"
+        in: "path"
+        type: "integer"
+        description: "浮动薪金设定个人项ID"
+        required: true
+      responses:
+        200:
+          description: "请求成功"
+          schema:
+            $ref: '#/definitions/BonusElementMonthPersonal'
+    patch:
+      description: "修改特定一项个人浮动薪金设定值"
+      parameters:
+      - name: "id"
+        in: "path"
+        type: "integer"
+        description: "浮动薪金个人设定项ID"
+        required: true
+      - name: "amount"
+        in: "body"
+        required: true
+        schema:
+          $ref: '#/definitions/BonusElementMonthPersonalRequest'
+      responses:
+        202:
+          description: 修改成功
+
+definitions:
+  Location:
+    type: object
+    properties:
+      id:
+        type: integer
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+
+  Position:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      number:
+        type: integer
+      grade:
+        type: integer
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+
+  Department:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+      head_id:
+        type: integer
+
+  BonusElementMonthAmount:
+    type: object
+    properties:
+      id:
+        type: integer
+      location_id:
+        type: integer
+      float_salary_month_entry_id:
+        type: integer
+      bonus_element_id:
+        type: integer
+      amount:
+        type: string
+      department_id:
+        type: integer
+      level:
+        type: string
+        enum:
+          - ordinary
+          - manager
+
+  BonusElementMonthShare:
+    type: object
+    properties:
+      id:
+        type: integer
+      location_id:
+        type: integer
+      float_salary_month_entry_id:
+        type: integer
+      bonus_element_id:
+        type: integer
+      shares:
+        type: string
+      department_id:
+        type: integer
+
+  BonusElementMonthPersonal:
+    type: object
+    properties:
+      id:
+        type: integer
+      user_id:
+        type: integer
+        description: 对应用户ID
+      float_salary_month_entry_id:
+        type: integer
+        description: 对应浮动薪金条目ID
+      bonus_element_id:
+        type: integer
+        description: 对应浮动薪金项ID
+      amount:
+        type: string
+        description: 个人浮动薪金数值，注意用字符串，浮点数可能有误差
+
+  BonusElementMonthAmountRequest:
+    type: object
+    properties:
+      amount:
+        type: "string"
+        description: "浮动薪金设定数值，注意用字符串，浮点型可能会有误差"
+
+  BonusElementMonthShareRequest:
+    type: object
+    properties:
+      amount:
+        type: "string"
+        description: "浮动薪金设定份数，注意用字符串，浮点型可能会有误差"
+
+  BonusElementMonthPersonalRequest:
+    type: object
+    properties:
+      amount:
+        type: "string"
+        description: "浮动薪金个人设定值，注意用字符串，浮点型可能会有误差"
+
+  BonusElementMonthAmountsBatchUpdateRequest:
+    type: object
+    properties:
+      updates:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            amount:
+              type: string
+
+  BonusElementMonthSharesBatchUpdateRequest:
+    type: object
+    properties:
+      updates:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            shares:
+              type: string
+
+  BonusElementMonthAmountsResponse:
+    type: array
+    items:
+      $ref: '#/definitions/BonusElementMonthAmount'
+
+  BonusElement:
+    type: object
+    properties:
+      id:
+        description: 浮动薪金项的ID
+        type: integer
+      chinese_name:
+        type: string
+        description: 浮动薪金项繁体中文名
+
+      english_name:
+        type: string
+        description: 浮动薪金项英文名
+
+      simple_chinese_name:
+        type: string
+        description: 浮动薪金项简体中文名
+      key:
+        type: string
+        description: 浮动薪金项的key
+      levels:
+        type: array
+        description: 浮动薪金项目下的设定分级( 'ordinary' / 'manager')
+        items:
+          type: string
+          enum:
+            - ordinary
+            - manager
+
+  BonusElementsResponse:
+    type: array
+    items:
+      $ref: "#/definitions/BonusElement"
+
+  FloatSalaryMonthEntryPatchRequest:
+    type: "object"
+    properties:
+      status:
+        type: string
+        enum:
+          - "not_approved"
+          - "approved"
+
+  FloatSalaryMonthEntry:
+    type: "object"
+    properties:
+      year_month:
+        type: "string"
+        format: "yyyy/mm"
+        description: "浮动薪金年月"
+      status:
+        type: "string"
+        description: "审批状态"
+        enum:
+        - "not_approved"
+        - "approved"
+      employees_count:
+        type: "number"
+        description: "当月浮动薪金设定中的总员工数量"
+      locations_with_departments:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 场馆ID
+            chinese_name:
+              type: string
+              description: 中文名
+            english_name:
+              type: string
+              description: 英文名
+            simple_chinese_name:
+              type: string
+              description: 简体名
+            employess_total:
+              type: string
+              description: 表格顯示人數
+            employees_on_duty:
+              type: string
+              description: 这个月在职员工数
+            employees_left_this_month:
+              type: string
+              description: 这个月离职员工数
+            employees_left_last_day:
+              type: string
+              description: 这个月最后一天离职员工数
+            departments:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: 部门id
+                  chinese_name:
+                    type: string
+                    description: 繁体名
+                  english_name:
+                    type: string
+                    description: 英文名
+                  simple_chinese_name:
+                    type: string
+                    description: 简体名
+                  employees_on_duty:
+                    type: integer
+                    description: 这个月在职员工数
+                  employess_total:
+                    type: string
+                    description: 表格顯示人數
+                  employees_left_this_month:
+                    type: integer
+                    description: 这个月离职员工数
+                  employees_left_last_day:
+                    type: integer
+                    description: 这个月最后一天离职员工数
+  FloatSalaryMonthEntryCreateRequest:
+    type: "object"
+    properties:
+      year_month:
+        description: "浮动薪金创建年月（yyyy/mm 格式)"
+        type: "string"
+
+  FloatSalaryMonthEntryCheckResponse:
+    type: "object"
+    properties:
+      data:
+        type: "boolean"
+
+  FloatSalaryMonthEntriesResponse:
+    type: "object"
+    properties:
+      data:
+        type: "array"
+        items:
+          $ref: '#/definitions/FloatSalaryMonthEntry'
+      meta:
+        type: "object"
+        properties:
+          total_count:
+            type: "number"
+            description: "条目总数"
+          current_page:
+            type: "number"
+            description: "当前页码"
+          total_pages:
+            type: "number"
+            description: "总页数"
+
+  LocationsWithDepartmentsResponse:
+    type: "object"
+    properties:
+      data:
+        type: "array"
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+            created_at:
+              type: string
+            updated_at:
+              type: string
+            chinese_name:
+              type: string
+            english_name:
+              type: string
+            simple_chinese_name:
+              type: string
+            region_key:
+              type: string
+            parent_id:
+              type: integer
+            departments:
+              type: array
+              items:
+                $ref: "#/definitions/Department"
+
+  BonusElementMonthPersonalsResponse:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/BonusElementMonthPersonal'
+      meta:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            description: 结果总数
+          current_page:
+            type: integer
+            description: 当前页码
+          total_pages:
+            type: integer
+            description: 总页数
+          sort_column:
+            type: string
+            description: 排序项的key
+          sort_direction:
+            type: string
+            description: 排序顺序
+            enum:
+            - desc
+            - asc

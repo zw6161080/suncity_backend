@@ -1,0 +1,112 @@
+appraisal_questionnaires_records:
+  columns:
+    - key: appraisal_name
+      value_type: string_value
+      data_index: appraisal.appraisal_name
+
+    - key: appraisal_date
+      value_type: string_value
+      data_index: appraisal.appraisal_date
+      sorter: true
+      search_type: date
+
+    - key: participator_empoid
+      value_type: string_value
+      data_index: appraisal_participator.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+    - key: participator_name
+      value_type: obj_value
+      data_index: appraisal_participator
+      search_type: search
+      sorter: true
+
+    - key: participator_location
+      value_type: obj_value
+      data_index: appraisal_participator.location
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: location_options
+      search_attribute: user.location_id
+
+    - key: assess_type
+      value_type: select_value
+      data_index: assess_type
+      search_type: screen
+      sorter: true
+      options_type: predefined
+      options_predefined:
+        - key: self_assess
+          chinese_name: 自我評核
+          english_name: Self assess
+          simple_chinese_name: 自我评核
+        - key: superior_assess
+          chinese_name: 上司评核
+          english_name: Superior assess
+          simple_chinese_name: 同事评核
+        - key: colleague_assess
+          chinese_name: 同事评核
+          english_name: Colleague assess
+          simple_chinese_name: 上司评核
+        - key: subordinate_assess
+          chinese_name: 下属评核
+          english_name: Subordinate assess
+          simple_chinese_name: 下属评核
+      option:
+        - key: self_assess
+          chinese_name: 自我評核
+          english_name: Self assess
+          simple_chinese_name: 自我评核
+        - key: superior_assess
+          chinese_name: 上司评核
+          english_name: Superior assess
+          simple_chinese_name: 同事评核
+        - key: colleague_assess
+          chinese_name: 同事评核
+          english_name: Colleague assess
+          simple_chinese_name: 上司评核
+        - key: subordinate_assess
+          chinese_name: 下属评核
+          english_name: Subordinate assess
+          simple_chinese_name: 下属评核
+
+    - key: assessment_score
+      value_type: string_value
+      data_index: final_score
+
+    - key: assessor_name
+      value_type: obj_value
+      data_index: assess_participator
+      sorter: true
+      search_type: search
+
+    - key: assessor_empoid
+      value_type: string_value
+      data_index: assess_participator.empoid
+      search_type: search
+      search_attribute: user.empoid
+      sorter: true
+
+
+    - key: submit_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      data_index: questionnaire.submit_date
+      search_type: date
+      sorter: true
+
+    - key: release_user
+      data_index: questionnaire.release_user
+      value_type: obj_value
+      search_type: search
+      sorter: true
+
+    - key: release_date
+      data_index: questionnaire.release_date
+      value_type: date_value
+      value_format: yyyy/mm/dd
+      search_type: date
+      sorter: true

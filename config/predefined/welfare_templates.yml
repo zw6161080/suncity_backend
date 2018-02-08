@@ -1,0 +1,41 @@
+annual_leave:
+  - return_value: 0
+  - return_value: 7
+  - return_value: 12
+  - return_value: 15
+sick_leave:
+  - return_value: 0
+  - return_value: 6
+office_holiday:
+  - return_value: 0
+  - return_value: 1
+  - return_value: 1.5
+  - return_value: 2
+holiday_type:
+  - use_value: '无'
+    return_value: 0
+  - use_type: '强制性假期'
+    retune_value: 1
+  - use_value: '强制性及公众假期'
+    return_value: 2
+probation:
+  - return_value: 0
+  - return_value: 30
+  - return_value: 60
+  - return_value: 90
+  - return_value: 180
+notice_period:
+  - return_value: 0
+  - return_value: 7
+  - return_value: 30
+  - return_value: 60
+over_time_salary:
+  - use_value: '1倍'
+    return_value: 0
+  - use_value: '1.2倍'
+    return_value: 1
+  - use_value: '2倍'
+    return_value: 2
+  - use_value: '1.2倍及2倍'
+    return_value: 3
+

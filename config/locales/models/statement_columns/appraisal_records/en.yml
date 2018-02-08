@@ -1,0 +1,24 @@
+en:
+  appraisal_records:
+    file_name: Appraisal Reports
+  statement_columns:
+    appraisal_records:
+      empoid: No
+      name: Name
+      location: Location
+      department: Department
+      position: Position
+      grade: Grade
+      division_of_job: Division of job
+      date_of_employment: Date of employment
+  sub_columns:
+    appraisal_records:
+      assessor_count: Assessor Count
+      assessment_score: Assessment Score
+      superior_count: Superior Count
+      superior_score: Superior Score
+      colleague_count: Colleague Count
+      colleague_score: Colleague Score
+      subordinate_count: Subordinate count
+      subordinate_score: Subordinate Score
+      self_score: Self score

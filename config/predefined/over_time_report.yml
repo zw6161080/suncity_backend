@@ -1,0 +1,13 @@
+
+make_up_type:
+  - use_value: '補假'
+    return_value: 'add_holiday'
+  - use_value: '補錢'
+    return_value: 'add_money'
+over_time_type:
+  - use_value: '下班後加班'
+    return_value: "after_work_time"
+  - use_value: '上班前加班'
+    return_value: "before_work_time"
+  - use_value: '公休加班'
+    return_value: "work_when_holiday"

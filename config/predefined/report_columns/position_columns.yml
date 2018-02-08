@@ -1,0 +1,33 @@
+position_chinese_name:
+  chinese_name: 職位
+  english_name: Position
+  simple_chinese_name: 职位
+  value_type: string_value
+  value_format: null
+  data_index: position_chinese_name
+  search_type: screen
+  sorter: true
+  options_type: api
+  options_predefined: null
+  options_endpoint: '/positions'
+  source_data_type: model
+  source_model: Position
+  source_attribute: chinese_name
+  option_attribute: id
+
+position_english_name:
+  chinese_name: 職位
+  english_name: Position
+  simple_chinese_name: 职位
+  value_type: string_value
+  value_format: null
+  data_index: position_english_name
+  search_type: screen
+  sorter: true
+  options_type: api
+  options_predefined: null
+  options_endpoint: '/positions'
+  source_data_type: model
+  source_model: Position
+  source_attribute: english_name
+  option_attribute: id

@@ -1,0 +1,385 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 职位调配
+
+# Describe your paths here
+paths:
+  /job_transfers:
+    # This is a HTTP operation
+    get:
+      # Describe this verb here. Note: you can use markdown
+      description: |
+        获取职位调配列表
+      # This is array of GET operation parameters:
+      # Expected responses for this operation:
+      tags:
+        - 职位调配
+
+      parameters:
+        - name: region
+          in: query
+          required: false
+          type: string
+          description: 地区
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 员工编号
+        - name: date_of_employment_begin
+          in: query
+          required: false
+          type: string
+          description: 入职日期
+        - name: date_of_employment_end
+          in: query
+          required: false
+          type: string
+          description: 入职日期
+        - name: position_resigned_date_begin
+          in: query
+          required: false
+          type: string
+          description: 离职日期
+        - name: position_resigned_date_end
+          in: query
+          required: false
+          type: string
+          description: 离职日期
+        - name: transfer_type
+          in: query
+          required: false
+          type: string
+          description: 调配类型
+        - name: new_company_name
+          in: query
+          required: false
+          type: string
+          description: 新公司
+        - name: new_location_id
+          in: query
+          required: false
+          type: string
+          description: 新场馆
+        - name: new_department_id
+          in: query
+          required: false
+          type: string
+          description: 新部门
+        - name: new_position_id
+          in: query
+          required: false
+          type: string
+          description: 新职位
+        - name: new_grade
+          in: query
+          required: false
+          type: integer
+          description: 新职级
+        - name: new_employment_status
+          in: query
+          required: false
+          type: string
+          description: 新在职类别
+        - name: original_company_name
+          in: query
+          required: false
+          type: string
+          description: 原公司
+        - name: original_location_id
+          in: query
+          required: false
+          type: string
+          description: 原场馆
+        - name: original_department_id
+          in: query
+          required: false
+          type: string
+          description: 原部门
+        - name: original_position_id
+          in: query
+          required: false
+          type: string
+          description: 原职位
+        - name: original_grade
+          in: query
+          required: false
+          type: integer
+          description: 原职级
+        - name: original_employment_status
+          in: query
+          required: false
+          type: string
+          description: 原在职类别
+        - name: apply_date
+          in: query
+          required: false
+          type: string
+          description: 申请日期
+        - name: employee_name
+          in: query
+          required: false
+          type: string
+          description: 员工姓名
+        - name: position_start_date
+          in: query
+          required: false
+          type: string
+          description: 职位开始日期
+        - name: position_end_date
+          in: query
+          required: false
+          type: string
+          description: 职位结束日期
+        - name: trial_expiration_date
+          in: query
+          required: false
+          type: string
+          description: 试用期满日期
+        - name: inputter
+          in: query
+          required: false
+          type: string
+          description: 录入人
+        - name: input_date
+          in: query
+          required: false
+          type: string
+          description: 录入日期
+        - name: salary_calculation
+          in: query
+          required: false
+          description: 薪酬计算
+          type: string
+      responses:
+        # Response code
+        200:
+           description: 获取职位调配列表
+           schema:
+             $ref: '#/definitions/JobTransferListData'
+
+definitions:
+  JobTransferListData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 职位调配记录 id
+            transferable_id:
+              type: integer
+              description: 所属调配记录id
+            transferable_type:
+              type: string
+              description: 调配类型
+            apply_date:
+              type: string
+              description: 申请日期 yyyy-mm-dd
+            user_id:
+              type: integer
+              description: 员工记录id
+            user:
+              type: object
+              properties:
+                chinese_name:
+                  type: string
+                  description: 中文姓名
+                english_name:
+                  type: string
+                  description: 英文姓名
+                simple_chinese_name:
+                  type: string
+                  description: 简体名
+                empoid:
+                  type: string
+                  description: 员工编号
+                profile:
+                  type: object
+                  properties:
+                    data:
+                      type: object
+                      properties:
+                        position_information:
+                          type: object
+                          properties:
+                            filed_values:
+                              type: object
+                              properties:
+                                date_of_employment:
+                                  type: string
+                                  description: 入职日期
+                                position_resigned_date:
+                                  type: string
+                                  description: 离职日期
+
+            job_transfer_type:
+              type: string
+              description: 职位调配类型
+            position_start_date:
+              type: string
+              description: 职位开始日期 yyyy-mm-dd
+            position_end_date:
+              type: string
+              description: 职位结束日期 yyyy-mm-dd
+            apply_result:
+              type: boolean
+              description: 申请结果
+            trial_expiration_date:
+              type: string
+              description: 试用期满日期 yyyy-mm-dd
+            new_company_name:
+              type: string
+            new_location:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+              description: 新场馆
+            new_department:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+              description: 新部门
+            new_position:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+              description: 新职位
+            new_grade:
+              type: integer
+              description: 新职级
+            new_employment_status:
+              type: string
+            instructions:
+              type: string
+              description: 调配说明
+            original_company_name:
+              type: string
+              description: 原公司名
+            original_location:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+              description: 原场馆
+
+            original_department:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+              description: 原部门
+
+            original_position:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+              description: 原职位
+
+            original_grade:
+              type: integer
+              description: 原职级
+
+            original_employment_status:
+              type: string
+              description: 原在职类别
+
+            inputter:
+              type: object
+              properties:
+                id:
+                  type: integer
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+              description: 录入人姓名
+
+            input_date:
+              type: string
+              description: 录入日期 yyyy-mm-dd
+
+            comment:
+              type: string
+              description: 备注
+      meta:
+        type: object
+        description: 存放页面信息
+        properties:
+          total_count:
+            type: integer
+            description: 总记录数
+
+          total_page:
+            type: integer
+            description: 总页数
+
+          current_page:
+            type: integer
+            description: 当前页数

@@ -1,0 +1,155 @@
+# fields config
+
+chinese_name:
+  chinese_name: 中文姓名
+  english_name: Chinese Name
+  type: string
+  selectable: true
+  required: true
+  meta:
+    hooks:
+      - sync_with_user_chinese_name
+
+english_name:
+  chinese_name: 外文姓名
+  english_name: English Name
+  selectable: true
+  required: true
+  type: string
+  meta:
+    hooks:
+      - sync_with_user_english_name
+
+nick_name:
+  chinese_name: 昵稱
+  english_name: Nickname
+  selectable: true
+  required: true
+
+last_name:
+  chinese_name: 姓
+  english_name: Last Name
+  selectable: true
+  required: true
+  type: string
+
+first_name:
+  chinese_name: 名
+  english_name: First Name
+  required: true
+  type: string
+
+middle_name:
+  chinese_name: 中間名
+  english_name: Middle Name
+  required: true
+  
+photo:
+  chinese_name: 照片
+  english_name: Photo
+  type: image
+
+mothers_maiden_name:
+  chinese_name: 母親婚前姓
+  english_name: Mother's Maiden Name
+  type: string
+
+husbands_last_name:
+  chinese_name: 父親姓氏
+  english_name: Husband's Last Name
+  type: string
+
+gender:
+  chinese_name: 性別
+  english_name: Gender
+  type: select
+  meta: 
+    select: gender
+
+nationality:
+  chinese_name: 國籍
+  english_name: Nationality
+  type: select
+  meta:
+    select: nationality
+
+bank_of_china_account_mop:
+  chinese_name: 中國銀行帳號碼(葡幣)
+  english_name: Bank of China Account( MOP )
+  selectable: true
+  type: string
+
+bank_of_china_account_hkd:
+  chinese_name: 中國銀行帳號碼(港幣)
+  english_name: Bank of China Account ( HKD )
+  selectable: true
+  type: string
+
+place_of_birth:
+  chinese_name: 出生地
+  english_name: Place Of Birth
+  selectable: true
+  type: string
+
+date_of_birth:
+  chinese_name: 出生日期
+  english_name: Date of birth
+  selectable: true
+  type: string
+
+id_number:
+  chinese_name: 證件號碼
+  english_name: ID Number
+  selectable: true
+  type: string
+
+type_of_id:
+  chinese_name: 證件類型
+  english_name: Type of ID
+  selectable: true
+  type: select
+  meta:
+    select: type_of_id
+
+marital_status:
+  chinese_name: 婚姻狀況
+  english_name: Marital Status
+  type: select
+  selectable: true
+  meta:
+    select: marital_status
+  
+empoid:
+  chinese_name: 員工編號
+  english_name: Employee Number
+  type: string
+  default: Logic#EmpoidService
+  meta:
+    before_save: SyncToUserAttribute
+  
+contract_terminated_date:
+  chinese_name: 合约终止日期
+  english_name: Contract Terminated Date
+  type: date
+
+position_start_date:
+  chinese_name: 職位開始日期
+  english_name: Start date
+  type: date
+
+position_end_date:
+  chinese_name: 職位結束日期
+  english_name: End date
+  type: date
+
+department:
+  chinese_name: 部門
+  english_name: Department
+  type: select
+  meta: 
+    select: Logic#Department
+
+resigned_date:
+  chinese_name: 離職日期
+  english_name: Resigned date
+  type: date

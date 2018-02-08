@@ -1,0 +1,78 @@
+work_experences:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      sorter: true
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      sorter: true
+
+    - key: date_of_employment
+      value_type: string_value
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      sorter: true
+
+    - key: leave_date
+      value_type: string_value
+      data_index: user.profile.data.position_information.field_values.resigned_date
+      sorter: true
+
+    - key: company_organazition
+      data_index: company_organazition
+      value_type: string_value
+
+    - key: work_experience_position
+      data_index: work_experience_position
+      value_type: string_value
+
+    - key: work_experience_from
+      data_index: work_experience_from
+      value_type: date_value
+      value_format: mm/yyyy
+
+    - key: work_experience_to
+      data_index: work_experience_to
+      value_type: date_value
+      value_format: mm/yyyy
+
+    - key: job_description
+      data_index: job_description
+      value_type: string_value
+
+    - key: work_experience_salary
+      data_index: work_experience_salary
+      value_type: string_value
+
+    - key: work_experience_reason_for_leaving
+      data_index: work_experience_reason_for_leaving
+      value_type: string_value
+
+    - key: work_experience_company_phone_number
+      data_index: work_experience_company_phone_number
+      value_type: string_value
+
+    - key: former_head
+      data_index: former_head
+      value_type: string_value
+
+    - key: work_experience_email
+      data_index: work_experience_email
+      value_type: string_value

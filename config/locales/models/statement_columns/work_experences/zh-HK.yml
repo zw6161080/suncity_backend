@@ -1,0 +1,22 @@
+zh-HK:
+  work_experences:
+    file_name: 工作經驗報表
+  statement_columns:
+    work_experences:
+      empoid: 員工編號
+      name: 姓名
+      location: 場館
+      department: 部門
+      position: 職位
+      date_of_employment: 入職日期
+      leave_date: 離職日期
+      company_organazition: 任職公司
+      work_experience_position: 職位
+      work_experience_from: 由(MM/YYYY)
+      work_experience_to: 至(MM/YYYY)
+      job_description: 工作概要
+      work_experience_salary: 現時/離職時每月薪金
+      work_experience_reason_for_leaving: 離職原因
+      work_experience_company_phone_number: 公司電話
+      former_head: 前負責人/上司姓名
+      work_experience_email: 電郵地址

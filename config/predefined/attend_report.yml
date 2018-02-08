@@ -1,0 +1,290 @@
+attend_report_fields:
+  - key: force_holiday_counts
+    chinese_name: 強制性假日天數
+    english_name: Force Holiday Counts
+    simple_chinese_name: 强制性假日天数
+
+  - key: force_holiday_for_leave_counts
+    chinese_name: 強制性假日補假天數
+    english_name: Force Holiday For Leave Counts
+    simple_chinese_name: 强制性假日补假天数
+
+  - key: force_holiday_for_money_counts
+    chinese_name: 強制性假日補薪天數
+    english_name: Force Holiday For Money Counts
+    simple_chinese_name: 强制性假日补薪天数
+
+  - key: public_holiday_counts
+    chinese_name: 公眾假日天數
+    english_name: Public Holiday Counts
+    simple_chinese_name: 公众假日天数
+
+  - key: public_holiday_for_leave_counts
+    chinese_name: 公眾假日補假天數
+    english_name: Public Holiday For Leave Counts
+    simple_chinese_name: 公众假日补假天数
+
+  - key: public_holiday_for_money_counts
+    chinese_name: 公眾假日補薪天數
+    english_name: Public Holiday For Money Counts
+    simple_chinese_name: 公众假日补薪天数
+
+  - key: working_day_counts
+    chinese_name: 當月上班天數
+    english_name: Working Day Counts
+    simple_chinese_name: 当月上班天数
+
+  - key: general_holiday_counts
+    chinese_name: 當月公休天數
+    english_name: General Holiday Counts
+    simple_chinese_name: 当月公休天数
+
+  - key: late_mins
+    chinese_name: 遲到時長（分鐘）
+    english_name: Late mins
+    simple_chinese_name: 迟到时长（分钟）
+
+  - key: late_counts
+    chinese_name: 遲到次數
+    english_name: Late Counts
+    simple_chinese_name: 迟到次数
+
+  - key: late_mins_less_than_10
+    chinese_name: 遲到小於 10 次數
+    english_name: Late Counts(Less than 10 mins)
+    simple_chinese_name: 迟到小于 10 次数
+
+  - key: late_mins_less_than_20
+    chinese_name: 遲到小於 20 次數
+    english_name: Late Counts(Less than 20 mins)
+    simple_chinese_name: 迟到小于 20 次数
+
+  - key: late_mins_less_than_30
+    chinese_name: 遲到小於 30 次數
+    english_name: Late Counts(Less than 30 mins)
+    simple_chinese_name: 迟到小于 30 次数
+
+  - key: late_mins_more_than_30
+    chinese_name: 遲到大於 30 次數
+    english_name: Late Counts(More than 30 mins)
+    simple_chinese_name: 迟到大于 30 次数
+
+  - key: late_mins_more_than_120
+    chinese_name: 遲到大於 120 次數
+    english_name: Late Counts(More than 120 mins)
+    simple_chinese_name: 迟到大于 120 次数
+
+  - key: leave_early_mins
+    chinese_name: 早退時長
+    english_name: Leave Early Mins
+    simple_chinese_name: 早退时长
+
+  - key: leave_early_counts
+    chinese_name: 早退次數
+    english_name: Leave Early Counts
+    simple_chinese_name: 早退次数
+
+  - key: leave_early_mins_not_include_allowable
+    chinese_name: 早退時長（已扣除允許時長）
+    english_name: Leave Early Mins Not Include Allowable
+    simple_chinese_name: 早退时长（已扣除允许时长）
+
+  - key: sick_leave_counts_link_off
+    chinese_name: 病假連off天數
+    english_name: Sick Leave Counts Link Off
+    simple_chinese_name: 病假连off天数
+
+  - key: sick_leave_counts_not_link_off
+    chinese_name: 病假不連off天數
+    english_name: Sick Leave Counts Not Link Off
+    simple_chinese_name: 病假不连off天数
+
+  - key: annual_leave_counts
+    chinese_name: 年假天數
+    english_name: annual_leave_counts
+    simple_chinese_name: 年假天数
+
+  - key: birthday_leave_counts
+    chinese_name: 生日假天數
+    english_name: Birthday Leave Counts
+    simple_chinese_name: 生日假天数
+
+  - key: paid_bonus_leave_counts
+    chinese_name: 有薪獎勵假天數
+    english_name: Paid Bonus Leave Counts
+    simple_chinese_name: 有薪奖励假天数
+
+  - key: compensatory_leave_counts
+    chinese_name: 補假天數
+    english_name: Compensatory Leave Counts
+    simple_chinese_name: 补假天数
+
+  - key: paid_sick_leave_counts
+    chinese_name: 有薪病假天數
+    english_name: Paid Sick Leave Counts
+    simple_chinese_name: 有薪病假天数
+
+  - key: unpaid_sick_leave_counts
+    chinese_name: 無薪病假天數
+    english_name: Unpaid Sick Leave Counts
+    simple_chinese_name: 无薪病假天数
+
+  - key: unpaid_leave_counts
+    chinese_name: 無薪假天數
+    english_name: Unpaid Leave Counts
+    simple_chinese_name: 无薪假天数
+
+  - key: paid_marriage_leave_counts
+    chinese_name: 有薪婚假天數
+    english_name: Paid Marriage Leave Counts
+    simple_chinese_name: 有薪婚假天数
+
+  - key: unpaid_marriage_leave_counts
+    chinese_name: 無薪婚假天數
+    english_name: Unpaid Marriage Leave Counts
+    simple_chinese_name: 无薪婚假天数
+
+  - key: paid_compassionate_leave_counts
+    chinese_name: 有薪恩恤假天數
+    english_name: Paid Compassionate Leave Counts
+    simple_chinese_name: 有薪嗯恤假天数
+
+  - key: unpaid_compassionate_leave_counts
+    chinese_name: 無薪恩恤假天數
+    english_name: Unpaid Compassionate Leave Counts
+    simple_chinese_name: 无薪嗯恤假天数
+
+  - key: maternity_leave_counts
+    chinese_name: 待產假天數
+    english_name: Maternity Leave Counts
+    simple_chinese_name: 待产假天数
+
+  - key: paid_maternity_leave_counts
+    chinese_name: 有薪分娩假天數
+    english_name: Paid Maternity Leave Counts
+    simple_chinese_name: 有薪分娩假天数
+
+  - key: unpaid_maternity_leave_counts
+    chinese_name: 無薪分娩假天數
+    english_name: Unpaid Maternity Leave Counts
+    simple_chinese_name: 无薪分娩假天数
+
+  - key: immediate_leave_counts
+    chinese_name: 即告天數
+    english_name: Immediate Leave Counts
+    simple_chinese_name: 即告天数
+
+  - key: absenteeism_counts
+    chinese_name: 曠工天數
+    english_name: Absenteeism Counts
+    simple_chinese_name: 旷工天数
+
+  - key: work_injury_before_7_counts
+    chinese_name: 工傷（首7天）天數
+    english_name: Work Injury Before 7 Counts
+    simple_chinese_name: 工伤（首7天）天数
+
+  - key: work_injury_after_7_counts
+    chinese_name: 工傷(7天後)天數
+    english_name: Work Injury After 7 Counts
+    simple_chinese_name: 工伤（7天后）天数
+
+  - key: unpaid_but_maintain_position_counts
+    chinese_name: 停薪留職天數
+    english_name: Unpaid But Maintain Position Counts
+    simple_chinese_name: 停薪留职天数
+
+  - key: overtime_leave_counts
+    chinese_name: 加班補假小時
+    english_name: Overtime Leave Counts
+    simple_chinese_name: 加班补假天数
+
+  - key: pregnant_sick_leave_counts
+    chinese_name: 懷孕病假天數
+    english_name: Pregnant Sick Leave Counts
+    simple_chinese_name: 怀孕病假天数
+
+  - key: absenteeism_from_exception_counts
+    chinese_name: 考勤異常導致曠工天數
+    english_name: Absenteeism From Exception Counts
+    simple_chinese_name: 考勤异常导致旷工天数
+
+  - key: signcard_forget_to_punch_in_counts
+    chinese_name: 簽卡漏打卡上班次數
+    english_name: Signcard Forget To Punch In Counts
+    simple_chinese_name: 签卡漏打卡上班次数
+
+  - key: signcard_forget_to_punch_out_counts
+    chinese_name: 簽卡漏打卡下班次數
+    english_name: Signcard Forget To Punch Out Counts
+    simple_chinese_name: 签卡漏打卡下班次数
+
+  - key: signcard_leave_early_counts
+    chinese_name: 簽卡早退次數
+    english_name: Signcard Leave Early Counts
+    simple_chinese_name: 签卡早退次数
+
+  - key: signcard_work_out_counts
+    chinese_name: 簽卡外出工作次數
+    english_name: Signcard Work Out Counts
+    simple_chinese_name: 签卡外出工作次数
+
+  - key: signcard_others_counts
+    chinese_name: 簽卡其他次數
+    english_name: Signcard Others Counts
+    simple_chinese_name: 签卡其他次数
+
+  - key: signcard_typhoon_counts
+    chinese_name: 簽卡颱風次數
+    english_name: Signcard Typhoon Counts
+    simple_chinese_name: 签卡台风次数
+
+  - key: weekdays_overtime_hours
+    chinese_name: 平日加班時數
+    english_name: Weekdays Overtime Hours
+    simple_chinese_name: 平日加班时数
+
+  - key: general_holiday_overtime_hours
+    chinese_name: 公休加班時數
+    english_name: General Holiday Overtime Hours
+    simple_chinese_name: 公休日加班时数
+
+  - key: force_holiday_overtime_hours
+    chinese_name: 強制性假日加班時數
+    english_name: Force Holiday Overtime Hours
+    simple_chinese_name: 强制性假日加班时数
+
+  - key: public_holiday_overtime_hours
+    chinese_name: 公眾假日加班時數
+    english_name: Public Holiday Overtime Hours
+    simple_chinese_name: 公众假日加班时数
+
+  - key: vehicle_department_overtime_mins
+    chinese_name: 車務部平時加班分鐘
+    english_name: Vehicle Department Overtime Mins
+    simple_chinese_name: 车务部平时加班分钟
+
+  - key: as_a_in_borrow_hours_counts
+    chinese_name: 借鐘（甲方）次數
+    english_name: As A In Borrow Hours Counts
+    simple_chinese_name: 借钟（甲方）次数
+
+  - key: as_a_in_return_hours_counts
+    chinese_name: 還鐘（甲方）次數
+    english_name: As A In Return Hours Counts
+    simple_chinese_name: 还钟（甲方）次数
+
+  - key: as_b_in_borrow_hours_counts
+    chinese_name: 借鐘（乙方）次數
+    english_name: As B In Borrow Hours Counts
+    simple_chinese_name: 借钟（乙方）次数
+
+  - key: as_b_in_return_hours_counts
+    chinese_name: 還鐘（乙方）次數
+    english_name: As B In Return Hours Counts
+    simple_chinese_name: 还钟（乙方）次数
+
+  - key: typhoon_allowance_counts
+    chinese_name: 颱風津貼次數
+    english_name: Typhoon Allowance Counts
+    simple_chinese_name: 台风津贴次数

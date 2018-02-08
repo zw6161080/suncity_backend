@@ -1,0 +1,27 @@
+zh-CN:
+  statement_columns:
+    attendance_month_report_items:
+      year_month: 考勤月份
+      employee_id: 员工编号
+      employee_name: 姓名
+      department: 部门
+      position: 职位
+      normal_overtime_hours: 正常加班小时
+      holiday_overtime_hours: 假期加班小时
+      compulsion_holiday_compensation_days: 强制假期补偿天数
+      public_holiday_compensation_days: 公众假期补偿天数
+      absenteeism_days: 旷工天数
+      immediate_leave_days: 即告天数
+      unpaid_leave_days: 无薪假天数
+      paid_sick_leave_days: 有薪病假天数
+      unpaid_marriage_leave_days: 无薪婚假天数
+      unpaid_compassionate_leave_days: 无薪恩恤假天数
+      unpaid_maternity_leave_days: 无薪分娩假天数
+      paid_maternity_leave_days: 有薪分娩假天数
+      pregnant_sick_leave_days: 怀孕病假天数
+      occupational_injury_days: 工伤天数
+      late_0_10_min_times: 迟到次数(10分钟之内)
+      late_10_20_min_times: 迟到次数(10~20分钟)
+      late_20_30_min_times: 迟到次数(20~30分钟)
+      late_30_120_min_times: 迟到次数(30~120分钟)
+      missing_punch_times: 漏打上/下班时间次数

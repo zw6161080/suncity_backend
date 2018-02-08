@@ -1,0 +1,33 @@
+department_chinese_name:
+  chinese_name: 部门
+  english_name: Department
+  simple_chinese_name: 部门
+  value_type: string_value
+  value_format: null
+  data_index: department_chinese_name
+  search_type: screen
+  sorter: true
+  options_type: api
+  options_predefined: null
+  options_endpoint: '/departments'
+  source_data_type: model
+  source_model: Department
+  source_attribute: chinese_name
+  option_attribute: id
+
+department_english_name:
+  chinese_name: 部門
+  english_name: Department
+  simple_chinese_name: 部门
+  value_type: string_value
+  value_format: null
+  data_index: department_english_name
+  search_type: screen
+  sorter: true
+  options_type: api
+  options_predefined: null
+  options_endpoint: '/departments'
+  source_data_type: model
+  source_model: Department
+  source_attribute: english_name
+  option_attribute: id

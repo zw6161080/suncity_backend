@@ -1,0 +1,112 @@
+education_informations:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      sorter: true
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      sorter: true
+
+    - key: date_of_employment
+      value_type: string_value
+      data_index: user.profile.data.position_information.field_values.date_of_employment
+      sorter: true
+
+    - key: leave_date
+      data_index: user.profile.data.position_information.field_values.resigned_date
+      value_type: string_value
+      sorter: true
+
+    - key: from_mm_yyyy
+      data_index: from_mm_yyyy
+      value_type: date_value
+      value_format: mm/yyyy
+
+    - key: to_mm_yyyy
+      data_index: to_mm_yyyy
+      value_type: date_value
+      value_format: mm/yyyy
+
+    - key: college_university
+      data_index: college_university
+      value_type: string_value
+
+    - key: educational_department
+      data_index: educational_department
+      value_type: string_value
+
+    - key: graduate_level
+      data_index: graduate_level
+      value_type: string_value
+
+    - key: diploma_degree_attained
+      data_index: diploma_degree_attained
+      value_type: string_value
+
+    - key: certificate_issue_date
+      data_index: certificate_issue_date
+      value_type: string_value
+
+    - key: graduated
+      data_index: graduated
+      value_type: select_value
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: True
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: False
+          simple_chinese_name: 否
+      option:
+        - key: true
+          chinese_name: 是
+          english_name: True
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: False
+          simple_chinese_name: 否
+
+    - key: highest
+      data_index: highest
+      value_type: select_value
+      options_type: predefined
+      options_predefined:
+        - key: true
+          chinese_name: 是
+          english_name: True
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: False
+          simple_chinese_name: 否
+      option:
+        - key: true
+          chinese_name: 是
+          english_name: True
+          simple_chinese_name: 是
+        - key: false
+          chinese_name: 否
+          english_name: False
+          simple_chinese_name: 否

@@ -1,0 +1,34 @@
+# profile items config
+
+#
+# 
+#  Type: fields table mirror(连接到某个模版)
+# 
+#
+
+personal_information:
+  chinese_name: 個人信息
+  english_name: Personal infomation
+  simple_chinese_name: 个人信息
+  type: fields
+  multi_regions: true
+  regions:
+    macau:
+      fields:
+        - chinese_name
+        - english_name
+        - photo
+        - gender
+        - nationality
+        - contract_terminated_date 
+
+career_history:
+  chinese_name: 職程信息
+  english_name: Career history
+  simple_chinese_name: 职程信息
+  type: table
+  table:
+    schema:
+      - position_start_date
+      - position_end_date
+      - resigned_date

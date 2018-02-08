@@ -1,0 +1,26 @@
+en:
+  bank_auto_pay_report_items:
+    file_name: Bank auto pay report
+  statement_columns:
+    bank_auto_pay_report_items:
+      record_type: Record type
+      year_month: Settlement month
+      balance_date: Settlement date
+      company: Attribution company
+      employee_id: ID
+      employee_name: Name
+      department: Department
+      position: Position
+      position_of_govt_record: Position of Govt. Record
+      id_number: ID number
+      bank_of_china_account_mop: Mop account number
+      bank_of_china_account_hkd: Hkd account number
+      cash_or_check: Payment method
+      amount_in_mop: Mop money
+      amount_in_hkd: Hkd money
+      begin_work_date: Salary start date
+      end_work_date: Salary end date
+      leave_in_this_month: Turnover in the month
+
+
+

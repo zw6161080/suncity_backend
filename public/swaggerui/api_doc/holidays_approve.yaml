@@ -1,0 +1,102 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 假期審批报表
+
+# Describe your paths here
+paths:
+  /holidays_approve/index:
+    get:
+      description: 获取一页假期審批列表
+      tags:
+        - 假期審批
+      parameters:
+        - name: page
+          in: query
+          required: false
+          type: string
+          description: 查询的页面编号
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: 查询的员工编号
+        - name: user_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的员工姓名
+        - name: department_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的部门名称
+        - name: position_chinese_name
+          in: query
+          required: false
+          type: string
+          description: 查询的职位名称
+        - name: start
+          in: query
+          required: false
+          type: string
+          description: 查询假期审批的开始时间
+        - name: end
+          in: query
+          requied: false
+          type: string
+          description: 查询假期审批的结束时间
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+      responses:
+        200:
+          description: 成功响应
+  /holidays_approve/field_options:
+    get:
+      description: 获取假期審批列表可供筛选的字段
+      tags:
+        - 假期審批
+      responses:
+        200:
+          description: 成功响应
+  /holidays_approve/export:
+    get:
+      description: 导出当前假期審批的记录列表
+      tags:
+        - 假期審批
+      responses:
+        200:
+          description: 成功响应
+  /holidays_approve/table_header:
+    get:
+      description: 列表的表头数据
+      tags:
+        - 假期審批
+      parameters:
+        - name: start
+          in: query
+          required: false
+          type: string
+          description: 查询假期审批的开始时间
+        - name: end
+          in: query
+          required: false
+          type: string
+          description: 查询假期审批的结束时间
+      responses:
+        200:
+          description: 成功响应
+

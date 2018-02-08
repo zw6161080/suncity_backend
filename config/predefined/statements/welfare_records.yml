@@ -1,0 +1,126 @@
+welfare_records:
+  columns:
+    - key: empoid
+      value_type: string_value
+      data_index: user.empoid
+      sorter: true
+
+    - key: name
+      value_type: obj_value
+      data_index: user
+      sorter: true
+
+    - key: company_name
+      value_type: obj_value
+      data_index: user.company_name
+      sorter: true
+
+    - key: location
+      value_type: obj_value
+      data_index: user.location
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      data_index: user.department
+      sorter: true
+
+    - key: position
+      value_type: obj_value
+      data_index: user.position
+      sorter: true
+
+    - key: grade
+      value_type: string_value
+      data_index: user.grade
+      sorter: true
+
+    - key: local_or_foreign
+      data_index: user.profile.data.position_information.field_values.local_or_foreign
+      value_type: select_value
+      options_type: selects
+      options_select_key: local_or_foreign
+      option: local_or_foreign
+
+
+    - key: welfare_begin
+      data_index: welfare_begin
+      value_type: date_value
+      value_format: yyyy/mm/dd
+
+    - key: annual_leave
+      data_index: annual_leave
+      value_type: string_value
+
+    - key: sick_leave
+      data_index: sick_leave
+      value_type: string_value
+
+    - key: office_holiday
+      data_index: office_holiday
+      value_type: string_value
+
+    - key: holiday_type
+      data_index: holiday_type
+      value_type: select_value
+      options_type: selects
+      options_select_key: holiday_type
+      option: holiday_type
+
+    - key: probation
+      data_index: probation
+      value_type: string_value
+
+    - key: notice_period
+      data_index: notice_period
+      value_type: string_value
+
+    - key: double_pay
+      data_index: double_pay
+      value_type: select_value
+      options_type: selects
+      options_select_key: double_pay
+      option: double_pay
+
+    - key: reduce_salary_for_sick
+      data_index: reduce_salary_for_sick
+      value_type: select_value
+      options_type: selects
+      options_select_key: reduce_salary_for_sick
+      option: reduce_salary_for_sick
+
+    - key: provide_uniform
+      data_index: provide_uniform
+      value_type: select_value
+      options_type: selects
+      options_select_key: provide_uniform
+      option: provide_uniform
+
+    - key: salary_composition
+      data_index: salary_composition
+      value_type: select_value
+      options_type: selects
+      options_select_key: salary_composition
+      option: salary_composition
+
+    - key: over_time_salary
+      data_index: over_time_salary
+      value_type: select_value
+      options_type: selects
+      options_select_key: over_time_salary
+      option: over_time_salary
+
+    - key: force_holiday_make_up
+      data_index: force_holiday_make_up
+      value_type: select_value
+      options_type: selects
+      options_select_key: force_holiday_make_up
+      option: force_holiday_make_up
+
+    - key: position_type
+      value_type: string_value
+      options_type: selects
+      options_select_key: position_type
+
+    - key: work_days_every_week
+      value_type: integer_value

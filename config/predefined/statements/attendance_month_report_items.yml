@@ -1,0 +1,174 @@
+attendance_month_report_items:
+  columns:
+    - key: year_month
+      value_type: date_value
+      value_format: 'yyyy/mm'
+      data_index: year_month
+      search_type: null
+      sorter: true
+
+    - key: employee_id
+      value_type: string_value
+      data_index: user.empoid
+      search_type: search
+      sorter: true
+      search_attribute: user.empoid
+
+    - key: employee_name
+      value_type: obj_value
+      data_index: user
+      search_type: search
+      sorter: true
+
+    - key: department
+      value_type: obj_value
+      value_format: null
+      data_index: user.department
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: department_options
+      search_attribute: user.department_id
+
+    - key: position
+      value_type: obj_value
+      value_format: null
+      data_index: user.position
+      search_type: screen
+      sorter: true
+      options_type: options
+      options_action: position_options
+      search_attribute: user.position_id
+
+    - key: normal_overtime_hours
+      value_type: string_value
+      value_format: null
+      data_index: normal_overtime_hours
+      search_type: decimal_range
+      sorter: true
+
+    - key: holiday_overtime_hours
+      value_type: string_value
+      value_format: null
+      data_index: holiday_overtime_hours
+      search_type: decimal_range
+      sorter: true
+
+    - key: compulsion_holiday_compensation_days
+      value_type: string_value
+      value_format: null
+      data_index: compulsion_holiday_compensation_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: public_holiday_compensation_days
+      value_type: string_value
+      value_format: null
+      data_index: public_holiday_compensation_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: absenteeism_days
+      value_type: string_value
+      value_format: null
+      data_index: absenteeism_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: immediate_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: immediate_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: unpaid_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: paid_sick_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: paid_sick_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_marriage_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: unpaid_marriage_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_compassionate_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: unpaid_compassionate_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: unpaid_maternity_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: unpaid_maternity_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: paid_maternity_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: paid_maternity_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: pregnant_sick_leave_days
+      value_type: string_value
+      value_format: null
+      data_index: pregnant_sick_leave_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: occupational_injury_days
+      value_type: string_value
+      value_format: null
+      data_index: occupational_injury_days
+      search_type: decimal_range
+      sorter: true
+
+    - key: late_0_10_min_times
+      value_type: integer_value
+      value_format: null
+      data_index: late_0_10_min_times
+      search_type: number_range
+      sorter: true
+
+    - key: late_10_20_min_times
+      value_type: integer_value
+      value_format: null
+      data_index: late_10_20_min_times
+      search_type: number_range
+      sorter: true
+
+    - key: late_20_30_min_times
+      value_type: integer_value
+      value_format: null
+      data_index: late_20_30_min_times
+      search_type: number_range
+      sorter: true
+
+    - key: late_30_120_min_times
+      value_type: integer_value
+      value_format: null
+      data_index: late_30_120_min_times
+      search_type: number_range
+      sorter: true
+
+    - key: missing_punch_times
+      value_type: integer_value
+      value_format: null
+      data_index: missing_punch_times
+      search_type: number_range
+      sorter: true

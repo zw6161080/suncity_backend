@@ -1,0 +1,494 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 员工意见及投诉
+
+# Describe your paths here
+paths:
+  /staff_feedbacks:
+    get:
+      description: 显示员工意见及投诉列表
+      parameters:
+        - name: locale
+          in: query
+          required: false
+          type: string
+          description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: feedback_date
+          in: query
+          required: false
+          type: string
+          description: 提交日期 `YYYY/MM/DD`，传一个range
+        - name: employee_name
+          in: query
+          required: false
+          type: string
+          description: 提交人姓名（中/英均可）
+        - name: employee_no
+          in: query
+          required: false
+          type: string
+          description: 提交人员工编号
+        - name: department_id
+          in: query
+          required: false
+          type: integer
+          description: 提交人部门
+        - name: position_id
+          in: query
+          required: false
+          type: integer
+          description: 提交人职位
+        - name: feedback_track_status
+          in: query
+          required: false
+          type: string
+          description: 跟进状态，三种{staff_feedback.enum_track_status.untracked，staff_feedback.enum_track_status.tracking，staff_feedback.enum_track_status.tracked}
+        - name: tracker_name
+          in: query
+          required: false
+          type: string
+          description: 跟进人姓名（中/英均可）
+        - name: track_date
+          in: query
+          required: false
+          type: string
+          description: 跟进日期 `YYYY/MM/DD`，传一个range
+      responses:
+        200:
+          description: 获取员工意见及投诉列表
+          schema:
+            $ref: '#/definitions/StaffFeedbacks'
+    post:
+      description: 新增员工意见及投诉
+      parameters:
+        - name: staff_feedbacks
+          in: body
+          required: true
+          description: 员工意见及投诉记录数据
+          schema:
+            $ref: '#/definitions/StaffFeedbackParams'
+      responses:
+        200:
+          description: 创建员工意见及投诉
+
+  /staff_feedbacks/{staff_feedback_id}:
+    patch:
+      description: 更新一条员工意见及投诉的记录
+      parameters:
+      - name: staff_feedback_id
+        in: path
+        required: true
+        type: integer
+      - name: staff_feedback_title_and_content
+        in: body
+        required: true
+        description: 一条意见及投诉的标题和内容
+        schema:
+          $ref: '#/definitions/UpdatesOnTitleAndContent'
+      responses:
+        200:
+          description: 成功响应
+
+  /staff_feedbacks/index_my_feedbacks:
+    get:
+      description: 显示我的意见及投诉列表
+      parameters:
+        - name: locale
+          in: query
+          required: false
+          type: string
+          description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+        - name: page
+          in: query
+          required: false
+          type: integer
+          description: 页面编号
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 排序字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 排序方向
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 员工编号
+        - name: feedback_date
+          in: query
+          required: false
+          type: string
+          description: 提交日期
+        - name: feedback_track_status
+          in: query
+          required: false
+          type: string
+          description: 跟进状态，三种{staff_feedback.enum_track_status.untracked，staff_feedback.enum_track_status.tracking，staff_feedback.enum_track_status.tracked}
+        - name: tracker_name
+          in: query
+          required: false
+          type: string
+          description: 跟进人姓名（中/英均可）
+        - name: track_date
+          in: query
+          required: false
+          type: string
+          description: 跟进日期 `YYYY/MM/DD`，传一个range
+      responses:
+        200:
+          description: 获取我的意见及投诉列表
+          schema:
+            $ref: '#/definitions/StaffFeedbacks'
+
+  /staff_feedbacks/{staff_feedback_id}/staff_feedback_tracks:
+    get:
+      description: 显示跟进列表
+      parameters:
+      - name: staff_feedback_id
+        in: path
+        required: true
+        type: integer
+        description: 跟进记录所属员工意见及投诉记录的ID
+      responses:
+        200:
+          description: 获取跟进记录列表
+          schema:
+            $ref: '#/definitions/StaffFeedbackTracks'
+    post:
+      description: 新增跟进记录
+      parameters:
+        - name: staff_feedback_track
+          in: body
+          required: true
+          description: 跟进记录
+          schema:
+           $ref: '#/definitions/StaffFeedbackTrackParams'
+      responses:
+        200:
+          description: 创建跟进记录
+
+  /staff_feedbacks/field_options:
+    get:
+      description: 获取列表页中所有的筛选项
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/FieldOptions'
+
+  /staff_feedbacks/export_all_feedbacks:
+    get:
+      description: 以Excel文件的形式 汇出员工意见及投诉列表
+      parameters:
+      - name: locale
+        in: query
+        required: false
+        type: string
+        description: 语言环境，值有三种 {'en'，'zh-CN'，'zh-HK'}，取其一
+      - name: sort_column
+        in: query
+        required: false
+        type: string
+        description: 排序字段
+      - name: sort_direction
+        in: query
+        required: false
+        type: string
+        description: 排序方向
+      - name: feedback_date
+        in: query
+        required: false
+        type: string
+        description: 提交日期 `YYYY/MM/DD`，传一个range
+      - name: employee_name
+        in: query
+        required: false
+        type: string
+        description: 提交人姓名（中/英均可）
+      - name: employee_no
+        in: query
+        required: false
+        type: string
+        description: 提交人员工编号
+      - name: department_id
+        in: query
+        required: false
+        type: integer
+        description: 提交人部门
+      - name: position_id
+        in: query
+        required: false
+        type: integer
+        description: 提交人职位
+      - name: feedback_track_status
+        in: query
+        required: false
+        type: string
+        description: 跟进状态，三种{staff_feedback.enum_track_status.untracked，staff_feedback.enum_track_status.tracking，staff_feedback.enum_track_status.tracked}
+      - name: tracker_name
+        in: query
+        required: false
+        type: string
+        description: 跟进人姓名（中/英均可）
+      - name: track_date
+        in: query
+        required: false
+        type: string
+        description: 跟进日期 `YYYY/MM/DD`，传一个range
+      responses:
+        200:
+          description: 成功响应
+
+
+definitions:
+  StaffFeedbacks:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          title: 员工意见及投诉条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 记录编号
+            feedback_date:
+              type: string
+              description: 提交日期 (YYYY/MM/DD)
+            feedback_title:
+              type: string
+              description: 意见及投诉标题
+            feedback_content:
+              type: string
+              description: 意见及投诉内容
+            feedback_track_status:
+              type: string
+              description: 跟进状态
+            user_id:
+              type: integer
+              description: 提交人员工编号
+            track_id:
+              type: integer
+              description: 最新一条跟进记录的ID
+            user:
+              type: object
+              description: 提交人相关信息
+              properties:
+                id:
+                  type: integer
+                empoid:
+                  type: string
+                chinese_name:
+                  type: string
+                english_name:
+                  type: string
+                simple_chinese_name:
+                  type: string
+                department:
+                  type: object
+                position:
+                  type: object
+            track:
+              type: object
+              description: 最新一条跟进记录的相关信息
+              properties:
+                id:
+                  type: integer
+                track_status:
+                  type: string
+                created_at:
+                  type: string
+                tracker:
+                  type: object
+
+  StaffFeedbackParams:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        description: 提交人员工编号
+      feedback_date:
+        type: string
+        description: 提交日期 (YYYY/MM/DD)
+      feedback_title:
+        type: string
+        description: 意见及投诉标题
+      feedback_content:
+        type: string
+        description: 意见及投诉内容
+      feedback_track_status:
+        type: string
+        description: 跟进状态（可传 可不传）
+
+  StaffFeedbackTracks:
+    type: object
+    properties:
+      data:
+        description: 列表数据
+        type: array
+        items:
+          title: 跟进条目数据
+          type: object
+          properties:
+            id:
+              type: integer
+              description: 跟进ID
+            track_status:
+              type: string
+              description: 跟进状态
+            staff_feedback_id:
+              type: integer
+              description: staff_feedback_id
+            track_content:
+              type: string
+              description: 跟进内容
+            tracker_id:
+              type: object
+              description: 跟进人
+            created_at:
+              type: string
+              description: 跟进日期 (YYYY/MM/DD)
+            tracker:
+              type: object
+              description: 跟进人信息
+
+  StaffFeedbackTrackParams:
+    type: object
+    properties:
+      track_status:
+        type: string
+        description: 跟进状态，三种{staff_feedback.enum_track_status.untracked，staff_feedback.enum_track_status.tracking，staff_feedback.enum_track_status.tracked}
+      track_content:
+        type: string
+        description: 跟进内容
+      staff_feedback_id:
+        type: integer
+        description: 所属"员工意见及投诉"记录ID
+
+  FieldOptions:
+    type: object
+    properties:
+      data:
+        type: object
+        properties:
+          positions:
+            description: 职位筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Position'
+          departments:
+            description: 部门筛选项
+            type: array
+            items:
+              $ref: '#/definitions/Department'
+          track_statuses:
+            description: 跟进状态筛选项
+            type: array
+            items:
+              $ref: '#/definitions/TrackStatus'
+      state:
+        type: string
+        description: 请求状态，成功为success
+
+  Position:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      number:
+        type: integer
+      grade:
+        type: integer
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+
+  Department:
+    type: object
+    properties:
+      id:
+        type: integer
+      comment:
+        type: string
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+      region_key:
+        type: string
+      parent_id:
+        type: integer
+      status:
+        type: string
+      head_id:
+        type: integer
+
+  TrackStatus:
+    type: object
+    properties:
+      key:
+        type: string
+      chinese_name:
+        type: string
+      english_name:
+        type: string
+      simple_chinese_name:
+        type: string
+
+  UpdatesOnTitleAndContent:
+    type: object
+    properties:
+      feedback_title:
+        type: string
+        description: 意见及投诉标题
+      feedback_content:
+        type: string
+        description: 意见及投诉内容

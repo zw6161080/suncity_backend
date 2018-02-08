@@ -1,0 +1,252 @@
+# Example YAML to get you started quickly.
+# Be aware that YAML has indentation based scoping.
+# Code completion support is available so start typing for available options.
+swagger: '2.0'
+
+# This is your document metadata
+info:
+  version: "0.1.0"
+  title: 排班表
+
+# Describe your paths here
+paths:
+  /rosters:
+    post:
+      description: 创建排班表接口
+      tags:
+        - 排班表
+      parameters:
+        - name: roster_params
+          in: body
+          required: true
+          description: 创建参数
+          schema:
+            $ref: '#/definitions/RosterCreateParams'
+      responses:
+        200:
+          description: 成功响应
+          schema:
+            $ref: '#/definitions/EmptyData'
+    get:
+      description: 获取排班表列表
+      tags:
+        - 排班表
+      parameters:
+        - name: year
+          in: query
+          required: false
+          type: string
+          description: 查询该年份排班表
+        - name: month
+          in: query
+          type: string
+          required: false
+          description: 查询该月份排班表
+        - name: department_id
+          required: false
+          in: query
+          type: integer
+          description: 查询的部门ID
+      responses:
+        200:
+          description: 响应排班表列表
+  /rosters/{roster_id}:
+    get:
+      description: 获取排班表信息
+      tags:
+        - 排班表
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+      responses:
+        200:
+          description: 响应排班表信息
+
+  /rosters/{roster_id}/items:
+    get:
+      description: 获取排班表排班项目
+      tags:
+        - 排班表
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+        - name: sort_column
+          in: query
+          required: false
+          type: string
+          description: 筛选字段
+        - name: sort_direction
+          in: query
+          required: false
+          type: string
+          description: 筛选方向
+        - name: date_of_employment
+          in: query
+          required: false
+          type: string
+          description: 入职日期(eg:2017/06/07)
+        - name: empoid
+          in: query
+          required: false
+          type: string
+          description: '员工编号'
+        - name: position_id
+          in: query
+          required: false
+          type: integer
+          description: '职位id'
+        - name: gender
+          in: query
+          required: false
+          type: string
+          description: '性别(eg:male/female)'
+        - name: user_name
+          in: query
+          required: false
+          type: string
+          description: '姓名(繁体)'
+      responses:
+        200:
+          description:  获取排班表排班项目
+  /rosters/{roster_id}/items/field_options:
+    get:
+      description:  获取排班表排班项目筛选项
+      tags:
+        - 排班表
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+      responses:
+        200:
+          description:  获取排班表排班项目筛选项
+  /rosters/{roster_id}/settings:
+    get:
+      description: 获取排班表设定
+      tags:
+        - 排班表设定
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+      responses:
+        200:
+          description:  获取排班表排班项目
+
+    post:
+      description: 修改排班设定
+      tags:
+        - 排班表设定表
+      parameters:
+        - name: roster_id
+          in: path
+          required: true
+          type: integer
+          description: 排班表ID
+          schema:
+            $ref: '#/definitions/RosterSettingCreateParams'
+      responses:
+        200:
+          description:  获取排班表排班项目
+  /rosters/show_by_single_month:
+    get:
+      description: 获取某用户某月所有排班详情
+      tags:
+        - 调更调假调用
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 用户id
+        - name: year_and_month
+          in: query
+          required: true
+          type: string
+          description: '年/月(eg:"2017/01")'
+      responses:
+        200:
+          description:  获取某用户某月排班详情
+  /rosters/show_by_date:
+    get:
+      description: 获取某用户某日所有排班详情
+      tags:
+        - 排班信息查询
+      parameters:
+        - name: user_id
+          in: query
+          required: true
+          type: integer
+          description: 用户id
+        - name: date
+          in: query
+          required: true
+          type: string
+          description: '年/月/日(eg:"2017/01/03")'
+      responses:
+        200:
+          description:  获取某用户某日排班详情
+definitions:
+  RosterCreateParams:
+    type: object
+    properties:
+      from:
+        type: string
+        description: 排班表开始日期
+      to:
+        type: string
+        description: 排班表结束日期
+      region:
+        type: string
+        description: 区域
+      location_department_ids:
+        type: array
+        items:
+          type: integer
+        description: 创建排班表的区域与部门ID数组 [location_id, department_id, location_id, department_id, location_id, department_id...]
+
+  RosterSettingCreateParams:
+    type: object
+    properties:
+      shift_interval_hour:
+        type: array
+        items:
+          title: 空数组
+        description: position_id => 值
+      rest_number:
+        type: array
+        items:
+          title: 空数组
+        description: position_id => 值
+      rest_interval_day:
+        type: array
+        items:
+          title: 空数组
+        description: position_id => 值
+      shift_type_number:
+        type: array
+        items:
+          title: 空数组
+        description: position_id => 值
+
+  EmptyData:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          title: 空数组
+      meta:
+        type: array
+        items:
+          title: 空数组

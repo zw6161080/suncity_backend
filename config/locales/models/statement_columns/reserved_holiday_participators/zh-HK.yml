@@ -1,0 +1,15 @@
+zh-HK:
+  reserved_holiday_participators:
+    file_name: 預留假期符合人員名單
+  statement_columns:
+    reserved_holiday_participators:
+      reserved_holiday_setting: 預留假期類別
+      empoid: 員工編號
+      name: 姓名
+      department: 部門
+      position: 職位
+      employment_status: 在職類別
+      grade: 職級
+      date_of_employment: 入職日期
+      owned_days_count: 獲得天數
+      taken_days_count: 已申請天數

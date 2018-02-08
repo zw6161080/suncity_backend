@@ -1,0 +1,15 @@
+en:
+  statement_columns:
+    pay_slips:
+      year_month: Salary month
+      salary_begin: Salary start date
+      salary_end: Salary end date
+      name: Staff name
+      empoid: Staff number
+      company_name: Company name
+      location_id: Location
+      department_id: Department
+      position_id: Position
+      entry_on_this_month: Entry in the month
+      leave_on_this_month: Turnover in the month
+      comment: Comment
